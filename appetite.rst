@@ -1,7 +1,8 @@
-========================================
+.._tut-intro:
+
+****************************************
 Um dich auf den Geschmack zu bringen
-========================================
-.. sectionauthor:: Michael Markert <markert.michael@gmail.com>
+****************************************
 
 Wenn du viel am Computer arbeitest, kommst du irgendwann zu dem Schluss, dass es
 eine Aufgabe gibt, die du gern automatisieren würdest. Beispielsweise könntest du
