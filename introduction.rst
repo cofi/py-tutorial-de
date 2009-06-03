@@ -190,4 +190,223 @@ magischen Verhalten verdeckt.
 Strings
 -------
 
+Neben Nummern kann Python auch Strings verändern, die in mehreren Arten
+ausgedrückt werden können. Sie können in einfachen oder doppelten
+Anführungszeichen eingeschlossen werden::
 
+    >>> 'spam eggs'
+    'spam eggs'
+    >>> 'doesn\'t'
+    "doesn't"
+    >>> "doesn't"
+    "doesn't"
+    >>> '"Yes," he said.'
+    '"Yes," he said.'
+    >>> "\"Yes,\" he said."
+    '"Yes," he said.'
+    >>> '"Isn\'t," she said.'
+    '"Isn\'t," she said.
+
+Der Interpreter gibt das Ergebnis von Stringoperationen auf die gleiche Weise
+aus, wie sie eingegeben werden: Innerhalb von Anführungszeichen und mit
+durch Backslashes maskierten Anführungszeichen oder anderen seltsamen Zeichen,
+um den präzisen Wert wiederzugeben. Der String wird von doppelten
+Anführungszeichen eingeschlossen, wenn er ein einfaches Anführungszeichen, aber
+keine doppelten enthält, sonst wird er von einfachen Anführungszeichen
+eingeschlossen. Wieder einmal produziert die Funktion :func:`print` eine
+lesbarere Ausgabe.
+
+Stringliterale können auf mehrere Arten mehrere Zeilen enthalten.
+Fortsetzungszeilen können benutzt werden, die mit einem Backslash am Ende der
+Zeile anzeigen, dass die nächste Zeile die logische Fortsetzung der aktuellen
+ist::
+
+    hello = "This is a rather long string containing\n\
+    several lines of text just as you would do in C.\n\
+        Note that whitespace at the beginning of the line is\
+    significant."
+
+    print(hello)
+
+Bemerke, dass Zeilenumbrüche immernoch in den String mit Hilfe von ``\n``
+eingebettet werden müssen; der auf den Backslash folgende Zeilenumbruch wird
+verworfen. Das Beispiel würde folgendes ausgeben::
+
+    This is a rather long string containing
+    several lines of text just as you would do in C.
+        Note that whitespace at the beginning of the line is significant.
+
+Wenn wir den Stringliteral zu einem "raw"-String machen, werden ``\n`` Sequenzen
+nicht zu Zeilenumbrüchen konvertiert, aber sowohl der Backslash am Ende der
+Zeile, als auch das Zeilenumbruch-Zeichen im Quellcode sind als Daten im String
+vorhanden. Deshalb würde das Beispiel::
+
+    hello = r"This is a rather long string containing\n\
+    several lines of text much as you would do in C."
+
+    print(hello)
+
+folgendes anzeigen::
+
+   This is a rather long string containing\n\
+   several lines of text much as you would do in C.
+
+Strings können mit dem ``+`` Operator verknüpft (zusammengeklebt) und mit
+``*`` wiederholt werden::
+
+    >>> word = 'Help' + 'A'
+    >>> word
+    'HelpA'
+    >>> '<' + word*5 + '>'
+    '<HelpAHelpAHelpAHelpAHelpA>'
+
+Zwei Stringliterale nebeneinander werden automatisch miteinander verknüpft; die
+erste Zeile im obigen Beispiel hätte also auch ``word = 'Help' 'A'`` lauten
+können; das funktioniert nur mit zwei Literalen, nicht mit beliebigen String
+Ausdrücken::
+    >>> 'str' 'ing'                   #  <-  Das ist ok
+    'string'
+    >>> 'str'.strip() + 'ing'   #  <-  Das ist ok
+    'string'
+    >>> 'str'.strip() 'ing'     #  <-  Das ist ungültig
+     File "<stdin>", line 1, in ?
+       'str'.strip() 'ing'
+                         ^
+    SyntaxError: invalid syntax
+
+Strings können indiziert werden; wie in C hat das erste Zeichen des Strings den
+Index 0. Es gibt keinen getrennten Zeichentyp (wie ``char`` in C); ein Zeichen
+ist einfach ein String der Länge eins. Wie in der Programmiersprache Icon können
+Teilketten mit der *Slice-Notation* festgelegt werden: Zwei Indices getrennt von
+einem Doppelpunkt (``:``).
+::
+
+    >>> word[4]
+    'A'
+    >>> word[0:2]
+    'He'
+    >>> word[2:4]
+    'lp'
+
+Slice-Indices haben nützliche Standardwerte; ein ausgelassener erster Index
+fällt zurück auf null, ein ausgelassener zweiter Index fällt zurück auf die die
+Länge des Strings der geschnitten wird. ::
+
+    >>> word[:2]    # Die ersten beiden Zeichen
+    'He'
+    >>> word[2:]    # Alles außer den ersten beiden Zeichen
+    'lpA'
+
+Anders als ein C-String, kann ein Python-String nicht verändert werden.
+Zuweisungen an eine indizierte Position eines Strings führen zu einem Fehler::
+
+    >>> word[0] = 'x'
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in ?
+   TypeError: 'str' object does not support item assignment
+   >>> word[:1] = 'Splat'
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in ?
+   TypeError: 'str' object does not support slice assignment
+
+Jedoch ist es einfach und effizient einen String mit dem kombinierten Inhalt zu
+erzeugen::
+
+    >>> 'x' + word[1:]
+    'xelpA'
+    >>> 'Splat' + word[4]
+    'SplatA'
+
+Hier ist eine nützliche Invariante von Slice-Operationen: ``s[:i] + s[i:]``
+entspricht ``s``.
+::
+
+    >>> word[:2] + word[2:]
+    'HelpA'
+    >>> word[:3] + word[3:]
+    'HelpA'
+
+Ausgeartete Slice-Indices werden elegant behandelt: Ein zu großer Index wird
+durch die Länge des Strings ersetzt, eine Obergrenze, die kleiner ist als die
+Untergrenze gibt einen leeren String zurück. ::
+
+    >>> word[1:100]
+    'elpA'
+    >>> word[10:]
+    ''
+    >>> word[2:1]
+    ''
+
+Indices können auch negative Zahlen sein, um von rechts an zu zählen. Zum
+Beispiel::
+
+    >>> word[-1]     # Das letzte Zeichen
+    'A'
+    >>> word[-2]     # Das vorletzte Zeichen
+    'p'
+    >>> word[-2:]    # Die letzten zwei Zeichen
+    'pA'
+    >>> word[:-2]    # Alles außer die letzten beiden Zeichen
+    'Hel'
+
+Aber bemerke, dass -0 wirklich das selbe ist wie 0, es also nicht von rechts zu
+zählen beginnt!
+::
+    >>> word[-0]     # (da -0 gleich 0)
+    'H'
+
+Negative Slice-Indices werden gekürzt, aber versuche das nicht bei
+einfachen (nicht-Slice) Indices::
+
+    >>> word[-100:]
+    'HelpA'
+    >>> word[-10]    # Fehler
+    Traceback (most recent call last):
+     File "<stdin>", line 1, in ?
+    IndexError: string index out of range
+
+Ein Weg sich zu merken wie Slices funktionieren ist, sich die Indices so
+vorzustellen, als würden sie *zwischen* die Zeichen zeigen, wobei die linke Ecke
+des ersten Zeichens die Nummer 0 hat und die rechte Ecke des letzten Zeichens
+eines Strings aus *n* Zeichen den Index *n* hat, zum Beispiel::
+
+    +---+---+---+---+---+
+    | H | e | l | p | A |
+    +---+---+---+---+---+
+    0   1   2   3   4   5
+   -5  -4  -3  -2  -1
+
+Die erste Reihe von Nummern gibt die Position der Indices 0...5 im String an und
+die zweite Reihe die entsprechenden negativen Indices. Der Slice von *i* bis *j*
+besteht aus all den Zeichen zwischen den Ecken die von *i* beziehungsweise *j*
+gekennzeichnet werden.
+
+Für nicht-negative Indices ist die Länge des Slices die Differenz der Indices,
+sofern beide innerhalb der Schranken sind. Zum Beispiel ist die Länge von
+``word[1:3]`` 2.
+
+Die eingebaute Funktion :func:`len` gibt die Länge eines Strings zurück::
+
+    >>> s = 'supercalifragilisticexpialidocious'
+    >>> len(s)
+    34
+
+
+.. seealso::
+
+    :ref:`typesseq`
+        Strings sind Exemplare von *Sequenztypen* und unterstützen die
+        normalen Operationen die von solchen Typen unterstützt werden.
+
+    :ref:`string-methods`
+        Strings halten eine große Zahl von Methoden für fundamentale
+        Transformationen und Suche bereit.
+
+    :ref:`string-formatting`
+        Informationen über Stringformatierung mit :meth:`str.format` sind hier
+        zu finden.
+
+    :ref:`old-string-formatting`
+        Die alten Formatierungsoperationen, die aufgerufen werden, wenn Strings
+        und Unicodestrings die linken Operanden des ``%`` Operators sind, werden
+        hier in detailliert beschrieben.
