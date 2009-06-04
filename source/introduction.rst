@@ -463,3 +463,166 @@ Kodierung. Kleingeschriebene Namen werden für Kodierungen bevorzugt. ::
 Listen
 ------
 
+Python kennt viele zusammengesetzte Datentypen (*compound data types*), die dazu
+benutzt werden können verschiedene Werte zu gruppieren. Die flexibelste davon
+ist die Liste (*list*), die als eine Liste von Werten (Elemente), die durch
+Kommas getrennt und von eckigen Klammern eingeschlossen werden. Listenelemente
+müssen nicht alle denselben Typ haben. ::
+
+    >>> a = ['spam', 'eggs', 100, 1234]
+    >>> a
+    ['spam', 'eggs', 100, 1234]
+
+Genauso wie Stringindices starten Listenindices bei 0, genauso können Listen
+gescliced, verbunden usw. werden::
+
+    >>> a[0]
+    'spam'
+    >>> a[3]
+    1234
+    >>> a[-2]
+    100
+    >>> a[1:-1]
+    ['eggs', 100]
+    >>> a[:2] + ['bacon', 2*2]
+    ['spam', 'eggs', 'bacon', 4]
+    >>> 3*a[:3] + ['Boo!']
+    ['spam', 'eggs', 100, 'spam', 'eggs', 100, 'spam', 'eggs', 100, 'Boo!']
+
+Anders als Strings, die *unveränderbar* (*immutable*) sind, ist es möglich
+einzelne Listenelemente zu verändern::
+
+    >>> a
+    ['spam', 'eggs', 100, 1234]
+    >>> a[2] = a[2] + 23
+    >>> a
+    ['spam', 'eggs', 123, 1234]
+
+Zuweisungen zu Slices sind ebenso möglich, was sogar die Länge der Liste
+verändern oder sogar ganz leeren kann::
+
+    >>> # Ein paar Elemente ersetzen:
+    ... a[0:2] = [1, 12]
+    >>> a
+    [1, 12, 123, 1234]
+    >>> # Ein paar entfernen:
+    ... a[0:2] = []
+    >>> a
+    [123, 1234]
+    >>> # Ein paar einfügen:
+    ... a[1:1] = ['bletch', 'xyzzy']
+    >>> a
+    [123, 'bletch', 'xyzzy', 1234]
+    >>> # (Eine Kopie von) sich selbst am Anfang einfügen:
+    >>> a[:0] = a
+    >>> a
+    [123, 'bletch', 'xyzzy', 1234, 123, 'bletch', 'xyzzy', 1234]
+    >>> # Die Liste leeren: Alle Elemente mit einer leeren Liste  ersetzen
+    >>> a[:] = []
+    >>> a
+    []
+
+Die eingebaute Funktion :func:`len` lässt sich auch auf Listen anwenden::
+
+    >>> a = ['a', 'b', 'c', 'd']
+    >>> len(a)
+    4
+
+Es ist möglich Listen zu verschalten (*nest*) (Listen zu erzeugen, die andere Listen
+enthalten), zum Beispiel::
+
+    >>> q = [2, 3]
+    >>> p = [1, q, 4]
+    >>> len(p)
+    3
+    >>> p[1]
+    [2, 3]
+    >>> p[1][0]
+    2
+
+Man kann etwas ans Ende der Liste hängen::
+
+    >>> p[1].append('xtra')
+    >>> p
+    [1, [2, 3, 'xtra'], 4]
+    >>> q
+    [2, 3, 'xtra']
+
+Bemerke, dass im letzten Beispiel ``p[1]`` ``q`` wirklich auf dasselbe Objekt
+zeigen! Wir kommen später zur *Objektsemantik* zurück.
+
+.. _tut-firststeps:
+
+Erste Schritte zur Programmierung
+=================================
+
+Natürlich können wir Python für kompliziere Aufgaben verwenden, als nur zwei und
+zwei zusammen zu addieren. Beispielsweise können wir die anfängliche Teilfolge
+der *Fibonacci-Folge* folgendermaßen schreiben::
+
+    >>> # Fibonacci-Folge:
+    ... # Die Summe zweier Elemente ergibt das nächste
+    ... a, b = 0, 1
+    >>> while b < 10:
+    ...     print(b)
+    ...     a, b = b, a+b
+    ...
+    1
+    1
+    2
+    3
+    5
+    8
+
+Dieses Beispiel stellt ein paar neue Eigenschaften vor.
+
+* Die erste Zeile enthält eine *Mehrfachzuweisung* (*multiple assignment*): Die
+Variablen ``a`` und ``b`` bekommen gleichzeitig die neuen Werte 0 und 1. In der
+letzten Zeile wird sie erneut genutzt, um zu zeigen, dass die zuerst alle
+Ausdrücke auf der rechten Seite ausgewertet werden, bevor
+irgendeine Zuweisung passiert. Die Ausdrücke auf der rechten Seite werden von
+links nach rechts ausgewertet.
+
+* Die :keyword:`while` Schleife wird solange ausgeführt, wie die Bedingung
+(hier: ``b < 10``) wahr bleibt. In Python, wie in C, ist jede von null
+verschiedene Zahl wahr (*true*); null ist unwahr (*false*). Die Bedingung kann
+auch ein String- oder Listenwert sein, eigentlich sogar jede Sequenz; alles mit
+einer von null verschiedenen Länge ist wahr, leere Sequenzen sind unwahr. Der
+Test im Beispiel ist ein einfacher Vergleich. Die normalen Vergleichsoperatoren
+werden wie in C geschrieben: ``<`` (kleiner als), ``>`` (größer als), ``==``
+(gleich), ``<=`` (kleiner oder gleich), ``>=`` (größer oder gleich) und ``!=``
+(ungleich).
+
+* Der *Körper* der Schleife ist *eingerückt* (*indented*): Einrückung ist
+Pythons Art Anweisungen zu gruppieren. Python unterstützt (noch!) keine
+intelligente Zeilenbearbeitungshilfe, deshalb muss man selbst für jede
+eingerückte Zeile ein Tab oder Leerzeichen eingeben. In der Praxis bereitet man
+kompliziertere Eingaben in einem Texteditor vor; die meisten Texteditoren haben
+eine Hilfe, die automatisch einrückt. Wird eine zusammengesetzte Anweisung
+(*compound statement*) interaktiv eingegegeben, muss eine Leerzeile darauf
+folgen, um anzuzeigen, dass sie abgeschlossen ist (da der Interpreter nicht
+erahnen kann, wann man die letzte Zeile eingegeben hat). Bemerke, dass jede
+Zeile innerhalb eines Hauptblockes um den selben Betrag eingerückt sein muss.
+
+* Die Funktion :func:`print` gibt den Wert des Ausdrucks aus, der ihr übergeben
+wurde. Die Ausgabe unterscheidet sich von der Ausgabe, die auftritt, wenn man
+die Ausdrücke einfach so eingibt (wie wir es vorher in den Rechner Beispielen
+gemacht haben), in der Art, wie sie Mehrfachausdrücke, Fliesskommazahlen und
+Strings behandelt. Strings werden ohne Anführungszeichen ausgegeben und ein
+Leerzeichen wird zwischen den einzelnen Elementen eingefügt, sodass man sie
+einfach formatieren kann, so wie folgt::
+
+    >>> i = 256*256
+    >>> print('The value of i is', i)
+    The value of i is 65536
+
+Das Schlüsselwortargument *end* kann dazu benutzt werden den Zeilenumbruch nach
+der Ausgabe zu verhindern oder die Ausgabe mit einem anderen String zu beenden::
+
+    >>> a, b = 0, 1
+    >>> while b < 1000:
+    ...     print(b, end=' ')
+    ...     a, b = b, a+b
+    ...
+    1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+
