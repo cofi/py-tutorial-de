@@ -155,3 +155,64 @@ Argument aufnehmen.
 
 .. _tut-break:
 
+:keyword:`break` und :keyword:`continue` Anweisungen und der :keyword:`else` Zweig bei Schleifen
+================================================================================================
+
+Die :keyword:`break` Anweisung springt, wie in C, aus der nächsten umgebenden
+:keyword:`for` oder :keyword:`while` Schleife.
+
+Die :keyword:`continue` Anweisung, ebenso von C geliehen, springt in die nächste
+Iteration der Schleife.
+
+Schleifen-Anweisungen können einen :keyword:`else` Zweig haben. Dieser wird
+ausgeführt, wenn Sequenz erschöpft (mit :keyword:`for`) oder wenn die Bedingung
+unwahr wird (mit :keyword:`while`), nicht jedoch, wenn die Schleife durch eine
+:keyword:`break` Anweisung abgebrochen wird. Dies von folgender Schleife, die
+Primzahlen sucht, veranschaulicht::
+
+    >>> for n in range(2, 10):
+    ...     for x in range(2, n):
+    ...         if n % x == 0:
+    ...             print(n, 'equals', x, '*', n//x)
+    ...             break
+    ...     else:
+    ...         # Schleife wurde durchlaufen, ohne dass ein Faktor gefunden wurde
+    ...         print(n, 'is a prime number')
+    ...
+    2 is a prime number
+    3 is a prime number
+    4 equals 2 * 2
+    5 is a prime number
+    6 equals 2 * 3
+    7 is a prime number
+    8 equals 2 * 4
+    9 equals 3 * 3
+
+.. _tut-pass:
+
+:keyword:`pass` Anweisungen
+===========================
+
+Die :keyword:`pass` Anweisung tut nichts. Sie kann benutzt werden wenn
+syntaktisch eine Anweisung benötigt wir, das Programm jedoch keine Tätigkeit
+benötigt. Zum Beispiel::
+
+    >>> while True:
+    ...     pass  # geschäftiges Warten auf den Tastatur Interrupt (:kbd:`Strg+C`)
+    ...
+
+Das wird üblicherweise benutzt um minimale Klassen zu erzeugen::
+
+   >>> class MyEmptyClass:
+   ...     pass
+   ...
+
+Eine andere Stelle an der :keyword:`pass` benutzt werden kann, ist als Platzhalter für eine Funktion oder einen Zweigkörper wenn man an neuem Code arbeitet, und einem so erlaubt auf einer abstrakteren Ebene zu denken.
+Das :keyword:`pass` wird still ignoriert::
+
+   >>> def initlog(*args):
+   ...     pass   # Nicht vergessen das zu implementieren!
+   ...
+
+.. _tut-functions:
+
