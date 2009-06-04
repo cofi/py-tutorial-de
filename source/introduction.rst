@@ -63,7 +63,7 @@ Gruppierung benutzt werden. Zum Beispiel::
     >>> 8/5 # Brüche gehen nicht verloren, wenn man Ganzzahlen teilen
     1.6000000000000001
 
-Anmerkung: Du siehst vielleicht nicht genau das selbe Ergebnis;
+Anmerkung: Du siehst vielleicht nicht genau dasselbe Ergebnis;
 Fliesskommazahlen Ergebnisse können sich von  Maschine zu Maschine
 unterscheiden. Später gehen wir näher auf die Kontrolle des Aussehens bei der
 Ausgabe von Fliesskommazahlen ein; was wir hier sehen ist die informativste
@@ -349,7 +349,7 @@ Beispiel::
     >>> word[:-2]    # Alles außer die letzten beiden Zeichen
     'Hel'
 
-Aber bemerke, dass -0 wirklich das selbe ist wie 0, es also nicht von rechts zu
+Aber bemerke, dass -0 wirklich dasselbe ist wie 0, es also nicht von rechts zu
 zählen beginnt!
 ::
     >>> word[-0]     # (da -0 gleich 0)
@@ -410,3 +410,56 @@ Die eingebaute Funktion :func:`len` gibt die Länge eines Strings zurück::
         Die alten Formatierungsoperationen, die aufgerufen werden, wenn Strings
         und Unicodestrings die linken Operanden des ``%`` Operators sind, werden
         hier in detailliert beschrieben.
+
+
+.. _tut-unicodestrings:
+
+Über Unicode
+------------
+
+Beginnend mit Python 3.0 unterstützen alle Strings Unicode (siehe
+http://www.unicode.org/)
+
+Unicode hat den Vorteil, dass es eine Ordnungszahl für jedes Zeichen in jedem
+Schriftstück, das in modernen und antiken Texten benutzt wird, bereitstellt.
+Davor waren nur 256 Ordnungszahlen für Schriftzeichen möglich. Texte waren
+typischerweise an eine Codepage gebunden, die die Ordnungszahlen den
+Schriftzeichen zugeordnet hat. Das führte zu großer Verwirrung, vor allem im
+Hinblick auf Internationalisierung (üblicherweise ``i18n`` --- ``'i'`` + 18
+Zeichen + ``'n'``) von Software. Unicode löst diese Probleme, indem es eine
+Codepage für alle Schriftstücke definiert.
+
+Wenn man spezielle Zeichen in einen String einbinden will, kann man das über die
+Benutzung von Pythons *Unicode-Escape* Kodierung bewerkstelligen. Das folgende
+Beispiel zeigt wie::
+
+    >>> 'Hello\u0020World !'
+    'Hello World !'
+
+Die Escapesequenz ``\u0020`` gibt an, dass das Unicodezeichen mit der
+Ordnungszahl 0x0020 (das Leerzeichen) an der gegebenen Position eingefügt werden
+soll.
+
+
+Andere Zeichen werden interpretiert, indem ihre jeweiligen Ordnungszahlen direkt
+als Unicode-Ordnungszahlen benutzt werden. Hat man Stringliterale in der
+normalen Latin-1 Kodierung, die in vielen westlichen Ländern benutzt wird,
+empfindet man es als angenehmen, dass die ersten 256 Zeichen von Unicode, die
+selben Zeichen wie die 256 Latin-1 Zeichen sind.
+
+Neben diesen Standardkodierungen stellt Python eine ganze Reihe anderer
+Möglichkeiten bereit, Unicodestrings zu erstellen, sofern man die benutzte
+Kodierung kennt.
+
+Um einen String zu einer Bytesequenz zu konvertieren, halten Stringobjekte die
+Methode :func:`encode` bereit, die ein Argument entgegennimmt: Den Namen der
+Kodierung. Kleingeschriebene Namen werden für Kodierungen bevorzugt. ::
+
+    >>> "Ã„pfel".encode('utf-8')
+    b'\xc3\x84pfel'
+
+.. _tut-lists:
+
+Listen
+------
+
