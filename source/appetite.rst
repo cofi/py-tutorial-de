@@ -1,4 +1,4 @@
-.._tut-intro:
+.. _tut-intro:
 
 ****************************************
 Um dich auf den Geschmack zu bringen
