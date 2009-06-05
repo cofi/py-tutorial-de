@@ -333,6 +333,84 @@ Python:
     definiert. Sie hängt ein neues Element an das Ende der Liste an. Im Beispiel
     ist es äquivalent zu ``result = result + [b]``, aber viel effizienter.
 
+Mehr zum Definieren von Funktion
+================================
+
+Es ist auch möglich Funktionen mit einer variablen Anzahl von Argumenten zu
+definieren. Es gibt dabei drei Varianten, die auch kombiniert werden können.
+
+
+.. _tut-defaultargs:
+
+Standardwerte für Argumente
+---------------------------
+
+Die nützlichste Variante ist, einen Standardwert für ein oder mehrere Argumente
+anzugeben. Das erzeugt eine Funktion, die mit weniger Argumenten aufgerufen
+werden kann, als sie definitionsgemäß erlaubt. Zum Beispiel::
+
+    def ask_ok(prompt, retries=4, complaint='Bitte Ja oder Nein!'):
+       while True:
+           ok = input(prompt)
+           if ok in ('j', 'J', 'ja', 'Ja'): return True
+           if ok in ('n', N', 'ne', 'Ne', 'Nein'): return False
+           retries = retries - 1
+           if retries < 0:
+               raise IOError('Benutzer abgelehnt!')
+           print(complaint)
+
+.. FIXME: Patch pending, will be translated when accepted/refused
+
+Das Beispiel führt auch noch das Schlüsselwort :keyword:`in` ein. Dieses
+überprüft ob ein gegebener Wert in einer Sequenz gegeben ist.
+
+Die Standardwerte werden zum Zeitpunkt der Funktionsdefinition im *definierenden* Gültigkeitsbereich ausgewertet, so dass::
+
+    i = 5
+
+    def f(arg=i):
+       print(arg)
+
+    i = 6
+    f()
+
+``5`` ausgeben wird.
+
+**Wichtige Warnung**: Der Standardwert wird nur *einmal* ausgewertet. Das macht
+einen Unterschied, wenn der Standardwert veränderbares Objekt, wie
+beispielsweise eine Liste, ein Dictionary oder Instanzen der meisten Klassen,
+ist. Zum Beispiel häuft die folgende Funktion alle Argumente an, die ihr in
+aufeinanderfolgenden Aufrufen übergeben wurden::
+
+    def f(a, L=[]):
+       L.append(a)
+       return L
+
+    print(f(1))
+    print(f(2))
+    print(f(3))
+
+Und sie gibt folgendes aus::
+
+    [1]
+    [1, 2]
+    [1, 2, 3]
+
+Wenn man nicht will, dass der Standardwert von aufeinanderfolgenden Aufrufen
+gemeinsam benutzt wird, kann man die Funktion folgendermaßen umschreiben::
+
+    def f(a, L=None):
+        if L is None:
+            L = []
+        L.append(a)
+        return L
+
+
+.. _tut-keywordargs:
+
+Schlüsselwortargumente
+----------------------
+
 .. rubric:: Fußnoten
     
 .. [#] Eigentlich wäre *call by object reference* eine bessere Beschreibung,

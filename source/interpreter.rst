@@ -11,13 +11,14 @@ Aufrufen des Interpreters
 
 Sofern der Python-Interpreter auf einem Rechner installiert ist, findet man ihn normalerweise
 unter :file:`/usr/local/bin/python/python3.1`. Wenn man :file:`/usr/local/bin`
-in den Suchpfad der Unix-Shell setzt, kann man den Interpreter aufrufen durchi[#]_::
+in den Suchpfad der Unix-Shell setzt, kann man den Interpreter durch aufrufen [#]_::
     
     python3.1
 
-Die Auswahl des Installationspfades für den Interpreter ist eine Installationsoption, so dass auch
-eine Installation an anderer Stelle möglich ist. Das ist mit dem örtlichen Python-Guru oder
-dem Systemadministrator zu klären. (Eine populäre Alternative ist etwa :file:`/usr/local/python`)
+Die Auswahl des Installationspfades für den Interpreter ist eine
+Installationsoption, so dass auch eine Installation an anderer Stelle möglich
+ist. Das ist mit dem örtlichen Python-Guru oder dem Systemadministrator zu
+klären. (Eine populäre Alternative ist etwa :file:`/usr/local/python`)
 
 Auf Windows-Rechnern befindet sich die Pythoninstallation meist unter
 :file:`C:\\Python31`, auch wenn man das während des Installationsvorgangs ändern
@@ -26,48 +27,53 @@ Kommando in die DOS-Eingabeaufforderung eingeben::
 
     set path=%path%;C:\python31
 
-Durch Eingabe eines End-Of-File Zeichens (EOF; :kbd:`Strg-D` unter Unix, :kbd:`Strg-Z`
-unter Windows) in der Eingabeaufforderung des Interpreters wird der Interpreter mit
-dem Rückgabewert Null beendet. Falls er das nicht tut, kann man den Interpreter
-durch folgende Befehlszeile beenden: ``import sys; sys.exit(1)``.
+Durch Eingabe eines End-Of-File Zeichens (EOF; :kbd:`Strg-D` unter Unix,
+:kbd:`Strg-Z` unter Windows) in der Eingabeaufforderung des Interpreters wird
+der Interpreter mit dem Rückgabewert Null beendet. Falls er das nicht tut, kann
+man den Interpreter durch folgende Befehlszeile beenden: ``import sys;
+sys.exit(1)``.
 
 Die Möglichkeiten des Interpreters hinsichtlich des Editierens der Eingabe sind
 ziemlich beschränkt, lassen sich aber durch Einsatz der GNU readline Bibliothek
-erweitern. Ob diese erweiterten Möglichkeiten verfügbar sind, lässt sich überprüfen,
-indem man ein :kbd:`Strg-P` in die Eingabeaufforderung tippt. Wenn es piepst, ist die
-"readline"-Unterstützung vorhanden. In diesem Fall findet man im Anhang
-:ref:`tut-interacting` eine Einführung zu den einzelnen Tasten. Falls kein Piepton zu hören ist
-oder ``^P`` erscheint, ist keine "readline"-Unterstützung vorhanden und die einzige Möglichkeit
-zum Editiern ist die Verwendung der Rücktaste (Backspace), um Zeichen in der aktuellen
+erweitern. Ob diese erweiterten Möglichkeiten verfügbar sind, lässt sich
+überprüfen, indem man ein :kbd:`Strg-P` in die Eingabeaufforderung tippt. Wenn
+es piepst, ist die "readline"-Unterstützung vorhanden. In diesem Fall findet man
+im Anhang :ref:`tut-interacting` eine Einführung zu den einzelnen Tasten. Falls
+kein Piepton zu hören ist oder ``^P`` erscheint, ist keine
+"readline"-Unterstützung vorhanden und die einzige Möglichkeit zum Editiern ist
+die Verwendung der Rücktaste (Backspace), um Zeichen in der aktuellen
 Eingabezeile zu entfernen.
 
-Grundsätzlich ist der Interpreter ähnlich zu bedienen wie eine Unix-Shell: Wird er mit der Standardeingabe
-verbunden mit einem tty Gerät aufgerufen, liest und führt er interaktiv Befehle
-aus. Wird er mit einem Dateinamen als Argument oder mit einer Datei als
-Standardeingabe aufgerufen, liest und führt es ein *Skript* von dieser Datei
-aus.
+Grundsätzlich ist der Interpreter ähnlich zu bedienen wie eine Unix-Shell: Wird
+er mit der Standardeingabe verbunden mit einem tty Gerät aufgerufen, liest und
+führt er interaktiv Befehle aus. Wird er mit einem Dateinamen als Argument oder
+mit einer Datei als Standardeingabe aufgerufen, liest und führt es ein *Skript*
+von dieser Datei aus.
 
-Eine zweite Möglichkeit zum Starten des Python-Interpreters ist ``python -c Befehl [arg]
-...``, wodurch die Anweisung(en) in diesem *Befehl* ausgeführt werden, analog zur
-:option:`-c`-Option der Shell. Da Python-Anweisungen oft Leerzeichen oder sonstige Zeichen enthält, die von
-der Shell besonders behandelt werden, sollte man den kompletten *Befehl* in einfache
-Anführungszeichen setzen.
+Eine zweite Möglichkeit zum Starten des Python-Interpreters ist ``python -c
+Befehl [arg] ...``, wodurch die Anweisung(en) in diesem *Befehl* ausgeführt
+werden, analog zur :option:`-c`-Option der Shell. Da Python-Anweisungen oft
+Leerzeichen oder sonstige Zeichen enthält, die von der Shell besonders behandelt
+werden, sollte man den kompletten *Befehl* in einfache Anführungszeichen setzen.
 
 Einige Python-Module sind auch als Skripte nützlich und können mit ``python -m
-Modul [arg] ...`` aufgerufen werden. Dadurch wird der Quelltext von *Modul* ausgeführt,
-so als hätte man den vollständigen Namen in die Kommandozeile eingegeben.
+Modul [arg] ...`` aufgerufen werden. Dadurch wird der Quelltext von *Modul*
+ausgeführt, so als hätte man den vollständigen Namen in die Kommandozeile
+eingegeben.
 
 Achtung: Es gibt es einen Unterschied zwischen ``python Datei`` und ``python
 <Datei``! Im zweiten Fall werden Eingabeanfragen des Programms, wie
 beispielsweise der Aufruf ``sys.stdin.read()``, von *Datei* erledigt. Da diese
-Datei aber schon bis zum Ende vom Parser gelesen wurde, bevor mit der Ausführung begonnen wird,
-trifft das Programm sofort auf ein End-Of-File. In ersterem Fall passiert das, was man normalerweise erwartet:
-Die Eingabeanfragen werden durch diejenige Datei oder das Gerät erledigt, die bzw. das als Standardeingabe zur Verfügung steht.
+Datei aber schon vom Parser bis zum Ende gelesen wurde, bevor mit der Ausführung
+begonnen wird, trifft das Programm sofort auf ein End-Of-File. In ersterem Fall
+passiert das, was man normalerweise erwartet: Die Eingabeanfragen werden durch
+diejenige Datei oder das Gerät erledigt, die bzw. das als Standardeingabe zur
+Verfügung steht.
 
 Wenn eine Skriptdatei verwendet wird, ist es oft hilfreich, das Skript
-auszuführen und danach in den interaktiven Modus zu wechseln.
-Dies erreicht man durch die Option :option:`-i` vor dem Skript. Falls das Skript von der Standardeingabe
-gelesen wird, funktioniert dies - wie oben erläutert - nicht.
+auszuführen und danach in den interaktiven Modus zu wechseln.  Dies erreicht man
+durch die Option :option:`-i` vor dem Skript. Falls das Skript von der
+Standardeingabe gelesen wird, funktioniert dies - wie oben erläutert - nicht.
 
 
 .. _tut-argpassing:
@@ -75,26 +81,27 @@ gelesen wird, funktioniert dies - wie oben erläutert - nicht.
 Übergabe von Argumenten
 -----------------------
 
-Werden dem Interpreter ein Skriptname und zusätzliche Argumente übergeben, dann werden
-diese dem Skript in der Variablen ``sys.argv`` zur Verfügung gestellt. ``sys.argv`` ist eine Liste von
-Zeichenketten, die mindestens ein Element enthält. Wenn kein Skript und keine Argumente
-übergeben wurden, dann ist ``sys.argv[0]`` eine leere Zeichenkette.
-Wenn der Skriptname als ``'-'`` angegeben ist (das entspricht der Standardeingabe),
-dann wird ``sys.argv[0]`` auf ``'-'`` gesetzt. Wird :option:`-c` *Befehl* verwendet, dann
-erhält ``sys.argv[0]`` den Wert ``'-c'``, bei Verwendung von :option:`-m` *Modul* 
-den vollständigen Namen des gefundenen Moduls.
-Optionen, die nach :option:`-c` *Befehl* oder :option:`-m`
-*Modul* angegeben werden, werden nicht vom Python-Interpreter verarbeitet, sondern
-werden als Werte an ``sys.argv`` übergeben.
+Werden dem Interpreter ein Skriptname und zusätzliche Argumente übergeben, dann
+werden diese dem Skript in der Variablen ``sys.argv`` zur Verfügung gestellt.
+``sys.argv`` ist eine Liste von Zeichenketten, die mindestens ein Element
+enthält. Wenn kein Skript und keine Argumente übergeben wurden, dann ist
+``sys.argv[0]`` eine leere Zeichenkette.  Wenn der Skriptname als ``'-'``
+angegeben ist (das entspricht der Standardeingabe), dann wird ``sys.argv[0]``
+auf ``'-'`` gesetzt. Wird :option:`-c` *Befehl* verwendet, dann erhält
+``sys.argv[0]`` den Wert ``'-c'``, bei Verwendung von :option:`-m` *Modul* den
+vollständigen Namen des gefundenen Moduls.  Optionen, die nach :option:`-c`
+*Befehl* oder :option:`-m` *Modul* angegeben werden, werden nicht vom
+Python-Interpreter verarbeitet, sondern werden als Werte an ``sys.argv``
+übergeben.
 
 .. _tut-interactive:
 
 Interaktiver Modus
 ------------------
 
-Wenn Befehle von einem tty (in der Regel wird das die Tastatur sein) gelesen werden,
+Wenn Befehle von einem tty (in der Regel wird das eine Konsole sein) gelesen werden,
 spricht man vom *interaktiven Modus* des Interpreters. In diesem Modus
-wartet der Interpreter mit der *primärem Eingabeaufforderung*, die normalerweise
+wartet der Interpreter mit der *primären Eingabeaufforderung*, die normalerweise
 aus drei größer-als-Zeichen besteht (``>>>``), auf Eingaben des Anwenders.
 Nach Fortsetzungszeilen zeigt der Interpreter die *sekundäre
 Eingabeaufforderung*, das sind normalerweise drei Punkte (``...``).
