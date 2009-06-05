@@ -89,3 +89,4 @@ Möglichkeiten und Sprachelemente von Python vor. Dies beginnt mit einfachen
 Ausdrücken (Expressions), Anweisungen (Statements) und Datentypen und geht
 weiter mit Funktionen und Modulen. Danach werden fortgeschrittene Konzepte wie
 Ausnahmen (Exceptions) und benutzerdefinierte Klassen behandelt.
+
