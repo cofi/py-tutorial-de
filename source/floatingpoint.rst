@@ -7,7 +7,7 @@ Fließkomma-Arithmetik:  Probleme und Einschränkungen
 .. sectionauthor:: Tim Peters <tim_one@users.sourceforge.net>
 
 
-Fließkomma Zahlen werden in der Hardware des Computers als Brüche mit der 
+Fließkommazahlen werden in der Hardware des Computers als Brüche mit der 
 Basis 2 (binär) dargestellt.  Beispielsweise hat folgende Dezimalzahl ::
 
    0.125
@@ -20,11 +20,11 @@ hat den Wert 0/2 + 0/4 + 1/8.  Diese beiden Brüche haben einen identischen
 Wert, der einzige wirkliche Unterschied ist, dass der erste als Bruch zur
 Basis 10 und der zweite als Bruch zur Basis 2 geschrieben wurde.
 
-Leider können, die meisten Dezimalbrüche nicht exakt als Binärbruch
+Leider können die meisten Dezimalbrüche nicht exakt als Binärbruch
 dargestellt werden.  Eine Konsequenz daraus ist, dass im Allgemeinen die
-als dezimale Fließkommazahlen eingegebenen Zahlen, nur durch die binären 
-Fließkommazahlen, die eigentlich von dem Computer gespeichert werden, 
-angenähert werden können.
+als dezimale Fließkommazahlen eingegebenen Werte nur durch die binären 
+Fließkommazahlen angenähert werden können, die eigentlich von dem Computer
+gespeichert werden.
 
 Das Problem ist zunächst einfacher im Dezimalsystem zu verstehen.  Nehmen wir
 beispielsweise den Bruch 1/3.  Man kann ihn in Dezimaldarstellung 
@@ -53,9 +53,9 @@ Hält man nach einer endlichen Zahl Bits an, erhält man eine Annäherung.  In d
 meisten Rechner werden heute Fließkommazahlen als Binärbrüche, mit dem Zähler in
 den ersten 53 Bits, gefolgt von dem Nenner als Potenz von Zwei, dargestellt.
 Im Fall von 1/10 lautet der Binärbruch ``3602879701896397 / 2 ** 55``, was in
-etwa aber nicht exakt dem echten Wert von 1/10 entspricht.
+etwa, aber nicht exakt, dem echten Wert von 1/10 entspricht.
 
-Viele Benutzter sind sich durch die angezeigten Werte die Problematik nicht
+Viele Benutzter sind sich durch die angezeigten Werte der Problematik nicht
 bewusst.  Python zeigt nur eine dezimale Annäherung an den echten Dezimalwert
 an, der im Rechner gespeichert wird.  Wenn Python den echten Dezimalwert zur
 gespeicherten binären Annäherung an 0,1 anzeigen würde, müsste es folgendes
@@ -90,12 +90,12 @@ Darstellung zu wählen und einfach ``0.1`` anzuzeigen.
 
 Das Verhalten liegt im der Natur der Fließkommadarstellung im Binärsystem:
 es ist kein Fehler in Python und auch kein Fehler in deiner Software. Man sieht
-dieses Problem in allen Sprachen die die Fließkomma-Darstellung der Hardware
-unterstützen (obwohl manche Sprachen den Unterschied nicht standartmäßig oder
+dieses Problem in allen Sprachen, die die Fließkomma-Darstellung der Hardware
+unterstützen (obwohl manche Sprachen den Unterschied nicht standardmäßig oder
 in allen Anzeigemodi *anzeigen*).
 
 Pythons eingebaute Funktion :func:`str` erzeugt nur 12 signifikante Stellen
-Es ist selten das ``eval(str(x))`` den Wert *x* erzeugt, aber die Ausgabe 
+Es ist selten, dass ``eval(str(x))`` den Wert *x* erzeugt, aber die Ausgabe 
 sieht unter Umständen besser aus::
 
    >>> str(math.pi)
@@ -129,9 +129,9 @@ Runden, so das die ungenauen Ergebnisse vergleichbar zueinander werden::
     >>> round(.1 + .1 + .1, 1) == round(.3, 1)
     True
 
-Binäre Fließkomma-Arithmetik sorgt noch für einige Überraschungen wie diese.
+Binäre Fließkommaarithmetik sorgt noch für einige Überraschungen wie diese.
 Das Problem mit "0.1" ist im Abschnitt "Darstellungsfehler" weiter unten
-detailiert beschrieben.  Dazu sei auf `The Perils of Floating Point <http://www.lahey.com/float.htm>`_
+detailliert beschrieben.  Dazu sei auf `The Perils of Floating Point <http://www.lahey.com/float.htm>`_
 für eine umfassendere Liste von üblichen Problemen verwiesen.
 
 Wie schon dort gegen Ende des Textes gesagt wird: 
@@ -141,67 +141,67 @@ Python-Fließkommaoperationen ist der der Fließkomma-Hardware und der ist
 auf den meisten Maschinen liegt er in einem Bereich von nicht größer als 
 1 zu 2\*\*53 pro Operation.  Das ist mehr als ausreichend für die meisten
 Anwendungen, aber man muss sich in Erinnerung halten das es sich nicht um
-Dezimal-Arithmetik handelt und dass jede Operation mit einem float einen
+Dezimal-Arithmetik handelt und dass jede Operation mit einer Fließkommazahl einen
 neuen Rundungsfehler enthalten kann.
 
-Von einigen pathologigischen Fällen abgesehen, erhält man in den meisten
+Von einigen pathologischen Fällen abgesehen, erhält man in den meisten
 existierenden Fällen, für die gängigsten Anwendungen von Fließkommazahlen
-das erwartete Ergebnis wenn man einfach die Anzeige des Ergebnisses auf
-auf die Zahl der Dezimalstellen rundet die man erwartet.
+das erwartete Ergebnis, wenn man einfach die Anzeige des Ergebnisses auf
+auf die Zahl der Dezimalstellen rundet, die man erwartet.
 :func:`str` genügt meist, für eine feinere Kontrolle kann man sich
 :meth:`str.format` mit den Formatierungsoptionen in :ref:`formatstrings`
 anschauen.
 
-Für Anwendungsfälle die eine exakte dezimale Darstellung benötigen,
+Für Anwendungsfälle, die eine exakte dezimale Darstellung benötigen,
 kann das Modul :mod:`decimal` verwendet werden, welches Dezimalarithmetik
-implementiert die für Buchhaltung und Anwendungen, die eine hohe Präzision
+implementiert, die für Buchhaltung und Anwendungen, die eine hohe Präzision
 erfordern, geeignet ist.
 
 Eine andere Form exakter Arithmetik wird von dem Modul :mod:`fractions`
 bereitgestellt, welche eine Arithmetik implementiert die auf rationalen
-Zahlen basiert (so das Zahlen wie 1/3 exakt abgebildet werden können).
+Zahlen basiert (so dass Zahlen wie 1/3 exakt abgebildet werden können).
 
 Wenn man im größeren Umfang mit Fließkommazahlen zu tun hat, sollte man
 einen Blick auf Numerical Python und die vielen weitere Pakete für 
 mathematische und statistische Operationen die vom SciPy-Projekt 
 bereitgestellt werden anschauen. Siehe <http://scipy.org>.
 
-Python verfügt außerdem über eine Werkzeug, was in dem seltenen Fällen in
-den man *wirklich* den exakten Wert des floats wissen will. Die Methode
-:meth:`float.as_integer_ratio` gibt den Wert des floats als Bruch zurück::
+Python verfügt außerdem über ein Werkzeug für die seltenen Fälle, in
+denen man *wirklich* den exakten Wert des floats wissen will. Die Methode
+:meth:`float.as_integer_ratio` gibt den Wert der Fließkommazahl als Bruch zurück::
 
    >>> x = 3.14159
    >>> x.as_integer_ratio()
    (3537115888337719L, 1125899906842624L)
 
-Das dieser Bruch exakt ist, kann er benutzt werden um ohne Verluste den
+Da dieser Bruch exakt ist, kann er benutzt werden, um ohne Verluste den
 originalen Wert wiederherzustellen::
 
     >>> x == 3537115888337719 / 1125899906842624
     True
 
-Die Metode :meth:`float.hex` stellt den float hexadezimal (Basis 16) dar
+Die Metode :meth:`float.hex` stellt die Fließkommazahl hexadezimal (Basis 16) dar
 und gibt ebenfalls den exakten im Rechner gespeicherten Wert zuück::
 
    >>> x.hex()
    '0x1.921f9f01b866ep+1'
 
-Diese präzise hexadezimale Darstellung kann benutzt werden um den orginalen
+Diese präzise hexadezimale Darstellung kann benutzt werden um den originalen
 Wert exakt wiederherzustellen::
 
     >>> x == float.fromhex('0x1.921f9f01b866ep+1')
     True
 
 Da diese Darstellung exakt ist, kann sie genutzt werden um Daten zwischen
-verschiedenen Versionen von Python (patformunabhängig) und zwischen
+verschiedenen Versionen von Python (plattformunabhängig) und zwischen
 verschiedenen anderen Sprachen, die dieses Format unterstützen
-(wie z.B. Java und C99).
+(wie z.B. Java und C99), auszutauschen.
 
-Ein weiterer hilfreiches Werkzeug ist die Funktion :func:`math.fsum`, welche
+Ein weiteres hilfreiches Werkzeug ist die Funktion :func:`math.fsum`, welche
 den Genauigkeitsverlust beim Summieren verringert.  Sie registriert die
-"verlorenen Ziffern" als Werte die zu einer Summe addiert werden.  Dies kann
+"verlorenen Ziffern" als Werte, die zu einer Summe addiert werden.  Dies kann
 die Gesamtgenauigkeit dahingehend beeinflussen, dass die Fehler sich nicht
-zu einer Größe summieren die das Endergebnis beeinflusst:
+zu einer Größe summieren, die das Endergebnis beeinflusst:
 
    >>> sum([0.1] * 10) == 1.0
    False
@@ -225,9 +225,9 @@ C, C++, Java, Fortran, und viele andere) oft nicht das erwartete Ergebnis
 anzeigen.
 
 Warum ist das so?  1/10 ist nicht exakt als Binärbruch darstellbar. Fast alle
-heutigen Rechner (November 2000) benutzen die IEEE-754 Fließkomma-Arithmetik
-und fast alle Plattformen  bilden Python floats als IEEE-754 "double precision"
-ab.  754 doubles sind auf 53 Bits genau, so das sich der Computer bemüht 0.1
+heutigen Rechner (November 2000) benutzen die IEEE-754 Fließkommaarithmetik
+und wie fast alle Plattformen, bildet Python floats als IEEE-754 "double precision"
+ab.  IEEE-754 doubles sind auf 53 Bits genau, so dass sich der Computer bemüht, 0.1
 mit einem Bruch der Form *J*/2**\ *N* bestmöglich anzunähern, wobei *J* eine
 53 Bit breite Ganzzahl ist. Schreibt man::
 
@@ -247,7 +247,7 @@ und erinnert sich daran das *J* genau 53 Bit breit ist
    >>> 2**56/10
    7205759403792794.0
 
-Das heißt 56 ist der einzige Wert für *N*, wenn *J* auf 53 Bits beschränkt
+Das heißt, 56 ist der einzige Wert für *N*, wenn *J* auf 53 Bits beschränkt
 ist. Der bestmögliche Wert für *J* ist dann der gerundete Quotient::
 
    >>> q, r = divmod(2**56, 10)
@@ -260,12 +260,12 @@ aufrunden ermittelt::
    >>> q+1
    7205759403792794
 
-Aus diesem Grund ist die bestmögliche Approximation von 1/10 als 754 double 
+Aus diesem Grund ist die bestmögliche Approximation von 1/10 als IEEE-754 double 
 precision dieser Wert geteilt durch 2\*\*56, also::
 
    7205759403792794 / 72057594037927936
 
-Kürzt man Zähler und Nenner mit 2 ergibt sich folgende Bruch::
+Kürzt man Zähler und Nenner mit 2, ergibt sich folgender Bruch::
 
    3602879701896397 / 36028797018963968
 
@@ -274,12 +274,12 @@ ist als 1/10; hätte man nicht aufgerundet wäre der Bruch ein wenig kleiner als
 1/10.  Aber in keinen Fall wäre er *exakt* 1/10!
 
 Der Rechner bekommt also nie 1/10 zu *sehen*:  was er sieht, ist der exakte
-oben dargestellte Bruch, die beste 754 double Approximation die es gibt::
+oben dargestellte Bruch, die beste IEEE-754 double Approximation, die es gibt::
 
    >>> 0.1 * 2 ** 55
    3602879701896397.0
 
-Wenn dieser Bruch mit 10\*\*60 multipliziert wird, kann man sich dieser Wert
+Wenn dieser Bruch mit 10\*\*60 multipliziert wird, kann man sich diesen Wert
 bis auf 60 Dezimalstellen anzeigen lassen::
 
    >>> 3602879701896397 * 10 ** 60 // 2 ** 55
@@ -290,7 +290,7 @@ dem Dezimalwert 0.100000000000000005551115123125 entspricht.  Rundet man dies
 auf 17 Stellen ergeben sich die 0.10000000000000001 die Python darstellt.
 (das tut es zumindest auf einer 754-konformen Plattform, die die bestmögliche
 Eingabe- und Ausgabekonversation in seiner C library durchführt --- auf
-deiner vieleicht nicht!).
+deiner vielleicht nicht!).
 
 Das Modul :mod:`fractions` und das Modul :mod:`decimal` vereinfacht diese
 Rechnung::
