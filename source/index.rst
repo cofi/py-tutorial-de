@@ -7,43 +7,40 @@
 :Release: |version|
 :Date: |today|
 
-Python ist eine einfach zu lernende, aber mächtige Programmiersprache. Sie hat
-effiziente abstrakte Datenstrukturen und einen einfachen, aber effektiven Ansatz
-für objektorientierte Programmierung. Pythons elegante Syntax und dynamische
-Typisierung machen es, zusammen mit der Eigenschaft eine interpretierte Sprache
-zu sein, zur idealen Sprache für Skripte und Rapid Application Development in
-vielen Bereichen auf den meisten Plattformen.
+Python ist eine einfach zu lernende, aber mächtige Programmiersprache mit effizienten
+abstrakten Datenstrukturen und einem einfachen, aber effektiven Zugang zur 
+objektorientierten Programmierung. Durch die elegante Syntax und die dynamische
+Typisierung ist Python als interpretierte Sprache sowohl für Skripte als auch für schnelle Anwendungsentwicklung (Rapid Application Development) hervorragend geeignet.
 
-Der Python-Interpreter und die umfangreiche Standardbibliothek sind sowohl in
-Quelltext, als auch in binärer Form für alle großen Plattformen auf der Webseite
+Der Python-Interpreter und die umfangreiche Standardbibliothek sind als
+Quelltext und in binärer Form für alle wichtigen Plattformen auf der Webseite
 http://www.python.org frei verfügbar, und können frei weiterverbreitet
-werden. Auf der gleichen Seite finden sich Distributionen von Dritten
-frei bereitgestellte Modulen und Verweise auf solche, Programme und Werkzeuge,
-sowie zusätzliche Dokumentation.
+werden. Auf der gleichen Seite finden sich Distributionen von Drittanbietern, Verweise
+auf weitere freie Module, Programme und Werkzeuge, sowie zusätzliche Dokumentation.
 
-Der Python-Interpreter kann leicht mit neuen Funktionen und Datentypen, die in C
-oder C++ (oder andere Sprachen, die sich von C aus ausführen lassen)
-implementiert sind, erweitert werden. Python ist auch als Erweiterungssprache
-für anpassbare Applikationen geeignet.
+Der Python-Interpreter kann auf einfache Weise durch neue Funktionen und Datentypen
+erweitert werden, die in C oder C++ (oder andere Sprachen, die sich von C aus ausführen lassen)
+implementiert sind. Auch als Erweiterungssprache für anpassbare Applikationen ist Python
+hervorragend geeignet.
 
-Dieses Tutorial stellt dem Leser informell die Grundkonzepte und Eigenschaften
-der Sprache und des Systems Python vor. Es ist hilfreich, einen Python-Interpreter
-griffbereit zu haben, um praktische Erfahrungen zu machen, aber alle Beispiele
-sind eigenständig, sodass das Tutorial auch genausogut offline gelesen werden kann.
+Dieses Tutorial stellt die Grundkonzepte und Eigenschaften
+der Sprache und des Systems Python vor. Zwar ist es hilfreich, einen Python-Interpreter
+griffbereit zu haben, um praktische Erfahrungen zu sammeln, aber alle Beispiele
+sind eigenständig, so dass das Tutorial auch offline gelesen werden kann.
 
 Eine Beschreibung der Standardobjekte und -module ist in der Referenz der
 Pythonbibliothek (Python Library Reference) zu finden. Das Python
-Referenzhandbuch (Python Reference Manual) stellt eine formellere Definition der
-Sprache bereit. Um Erweiterungen in C oder C++ zu schreiben, lies Extending and
-Embedding the Python Interpreter sowie Python/C API Reference. Es gibt auch
-mehrere Bücher, die Python vertieft behandeln.
+Referenzhandbuch (Python Reference Manual) bietet eine formellere Definition der
+Sprache. Um Erweiterungen in C oder C++ zu schreiben, sollte man sich "Extending and
+Embedding the Python Interpreter" anschauen sowie die "Python/C API Reference". Es gibt auch
+zahlreiche Bücher, die Python tiefergehend behandeln.
 
-Dieses Tutorial versucht nicht umfangreich zu sein und jede einzelne Eigenschaft
-oder sogar jede oft benutzte Eigenschaft zu behandeln, sondern stellt Pythons
-nennenswertesten Eigenschaften vor und gibt dir einen guten Eindruck vom Geschmack
-und Stil der Sprache. Nachdem du es gelesen hast, wirst du in der Lage sein
-Python Module und Programme zu schreiben und du wirst bereit sein, mehr über die
-verschiedenen Module der Pythonbibliothek zu lernen die in der Python Library
+Ziel dieses Tutorials ist nicht die umfangreiche und vollständige Behandlung
+sämtlicher Sprachmerkmale von Python, sondern die Vermittlung der wichtigsten
+Eigenschaften, um einen Eindruck von dem zu bekommen, was Python ist.
+Nach der Lektüre sollte man in der Lage sein, Python Module und Programme
+zu schreiben. Außerdem verfügt man dann über die notwendigen Grundlagen, um sich
+mit weiteren Modulen der Standardbibliothek zu beschäftigen, die in der Python Library
 Reference beschrieben werden.
 
 Es lohnt sich ebenfalls das :ref:`glossary` durchzugehen.
