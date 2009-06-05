@@ -1,7 +1,7 @@
 .. _tut-using:
 
 ********************************
-Benutzung des Pythoninterpreters
+Verwendung des Python-Interpreters
 ********************************
 
 .. _tut-invoking:
@@ -9,73 +9,66 @@ Benutzung des Pythoninterpreters
 Aufrufen des Interpreters
 =========================
 
-Der Pythoninterpreter ist auf den Rechnern, auf denen er vorhanden ist,
-normalerweise unter :file:`/usr/local/bin/python/python3.1` installiert. Indem
-man :file:`/usr/local/bin` in den Suchpfad der Unixshell setzt, ermöglicht man
-der Shell den Interpreter durch folgendes Befehl aufzurufeni[#]_::
+Sofern der Python-Interpreter auf einem Rechner installiert ist, findet man ihn normalerweise
+unter :file:`/usr/local/bin/python/python3.1`. Wenn man :file:`/usr/local/bin`
+in den Suchpfad der Unix-Shell setzt, kann man den Interpreter aufrufen durchi[#]_::
     
     python3.1
 
-Da die Auswahl des Installationspfades des Interpreters eine Installationsoption
-ist, sind auch andere Orte möglich; das ist mit dem örtlichen Python-Guru oder
-dem Systemadministrator zu klären. (Zum Beispiel ist :file:`/usr/local/python`
-eine populäre Alternative.)
+Die Auswahl des Installationspfades für den Interpreter ist eine Installationsoption, so dass auch
+eine Installation an anderer Stelle möglich ist. Das ist mit dem örtlichen Python-Guru oder
+dem Systemadministrator zu klären. (Eine populäre Alternative ist etwa :file:`/usr/local/python`)
 
 Auf Windows-Rechnern befindet sich die Pythoninstallation meist unter
-:file:`C:\\Python31`, auch wenn man das während dem Installationsvorgang ändern
-kann. Um dieses Verzeichnis zu deinem Suchpfad hinzuzufügen, kannst du folgendes
+:file:`C:\\Python31`, auch wenn man das während des Installationsvorgangs ändern
+kann. Um dieses Verzeichnis zum Suchpfad hinzuzufügen, kann man folgendes
 Kommando in die DOS-Eingabeaufforderung eingeben::
 
     set path=%path%;C:\python31
 
-Indem man das End-Of-File Zeichen (EOF; :kbd:`Strg-D` unter Unix, :kbd:`Strg-Z`
-unter Windows) in der primären Eingabeaufforderung des Interpreters eingibt,
-bringt man den Interpreter dazu sich mit einem Rückgabewert von null zu
-beenden. Falls er das nicht tut, kannst du den Interpreter durch Eingabe der
-folgenden Befehlen beenden: ``import sys; sys.exit(1)``.
+Durch Eingabe eines End-Of-File Zeichens (EOF; :kbd:`Strg-D` unter Unix, :kbd:`Strg-Z`
+unter Windows) in der Eingabeaufforderung des Interpreters wird der Interpreter mit
+dem Rückgabewert Null beendet. Falls er das nicht tut, kann man den Interpreter
+durch folgende Befehlszeile beenden: ``import sys; sys.exit(1)``.
 
-Die Möglichkeiten des Interpreters was das Bearbeiten der Zeile angeht sind
-ziemlich beschränkt. Unter Unix könnte derjenige, der den Interpreter
-installiert hat, jedoch die Unterstützung für die GNU readline Bibliothek
-aktiviert haben, was umfangreichere, interaktive Bearbeitungsmöglichkeiten
-hinzufügt. Der vielleicht schnellste Weg zu überprüfen ob die Bearbeitung der
-Kommandozeile unterstütz wird ist, :kbd:`Strg-P` in die erste
-Eingabeaufforderung zu tippen, die du siehst. Piepst es, ist es unterstützt;
-siehe Anhang :ref:`tut-interacting` für eine Einführung zu den Tasten. Falls
-nichts zu passieren scheint oder ``^P`` wiedergegeben wird, wird es nicht
-unterstützt; du wirst nur die Möglichkeit haben die Rücktaste zu benutzen, um
-Zeichen der aktuellen Zeile zu entfernen.
+Die Möglichkeiten des Interpreters hinsichtlich des Editierens der Eingabe sind
+ziemlich beschränkt, lassen sich aber durch Einsatz der GNU readline Bibliothek
+erweitern. Ob diese erweiterten Möglichkeiten verfügbar sind, lässt sich überprüfen,
+indem man ein :kbd:`Strg-P` in die Eingabeaufforderung tippt. Wenn es piepst, ist die
+"readline"-Unterstützung vorhanden. In diesem Fall findet man im Anhang
+:ref:`tut-interacting` eine Einführung zu den einzelnen Tasten. Falls kein Piepton zu hören ist
+oder ``^P`` erscheint, ist keine "readline"-Unterstützung vorhanden und die einzige Möglichkeit
+zum Editiern ist die Verwendung der Rücktaste (Backspace), um Zeichen in der aktuellen
+Eingabezeile zu entfernen.
 
-Der Interpreter agiert ähnlich einer Unixshell: Wird er mit der Standardeingabe
+Grundsätzlich ist der Interpreter ähnlich zu bedienen wie eine Unix-Shell: Wird er mit der Standardeingabe
 verbunden mit einem tty Gerät aufgerufen, liest und führt er interaktiv Befehle
 aus. Wird er mit einem Dateinamen als Argument oder mit einer Datei als
 Standardeingabe aufgerufen, liest und führt es ein *Skript* von dieser Datei
 aus.
 
-Ein zweiter Weg den Pythoninterpreter zu starten ist ``python -c Befehl [arg]
-...``, was die Anweisung(en) in diesem *Befehl* ausführt, analog zur
-:option:`-c`-Option der Shell. Da Pythonanweisungen oft Leerzeichen oder andere
-Zeichen die die Shell speziell behandelt enthält, wird es normalerweise
-empfohlen den kompletten *Befehl* mit einfachen Anührungszeichen anzugeben. 
+Eine zweite Möglichkeit zum Starten des Python-Interpreters ist ``python -c Befehl [arg]
+...``, wodurch die Anweisung(en) in diesem *Befehl* ausgeführt werden, analog zur
+:option:`-c`-Option der Shell. Da Python-Anweisungen oft Leerzeichen oder sonstige Zeichen enthält, die von
+der Shell besonders behandelt werden, sollte man den kompletten *Befehl* in einfache
+Anführungszeichen setzen.
 
-Einige Pythonmodule sind auch als Skripte nützlich. Diese können mit ``python -m
-Modul [arg] ...`` aufgerufen werden, was den Quelltext von *Modul* ausführt, als
-ob du den kompletten Namen auf der Kommandozeile geschrieben hättest.
+Einige Python-Module sind auch als Skripte nützlich und können mit ``python -m
+Modul [arg] ...`` aufgerufen werden. Dadurch wird der Quelltext von *Modul* ausgeführt,
+so als hätte man den vollständigen Namen in die Kommandozeile eingegeben.
 
-Bemerke, dass es einen Unterschied zwischen ``python Datei`` und ``python
-<Datei`` gibt. Im zweiten Fall werden Eingabeanfragen des Programms, wie
-beispielsweise der Aufruf ``sys.stdin.read()``, von *Datei* befriedigt. Da diese
-Datei aber schon bis zum Ende vom Parser gelesen wurde, bevor das Programm
-beginnt ausgeführt zu werden, wird das Programm sofort auf ein end-of-file
-stossen. In ersterem Falle (was normalerweise das ist was man willst), werden sie
-durch egal welche Datei oder Gerät zufriedengestellt das dem Pythoninterpreter
-als Standardeingabe zur Verfügung steht.
+Achtung: Es gibt es einen Unterschied zwischen ``python Datei`` und ``python
+<Datei``! Im zweiten Fall werden Eingabeanfragen des Programms, wie
+beispielsweise der Aufruf ``sys.stdin.read()``, von *Datei* erledigt. Da diese
+Datei aber schon bis zum Ende vom Parser gelesen wurde, bevor mit der Ausführung begonnen wird,
+trifft das Programm sofort auf ein End-Of-File. In ersterem Fall passiert das, was man normalerweise erwartet:
+Die Eingabeanfragen werden durch diejenige Datei oder das Gerät erledigt, die bzw. das als Standardeingabe zur Verfügung steht.
 
-Wenn eine Skriptdatei benutzt wird, is es manchmal nützlich das Skript
-auszuführen und danach den interaktiven Modus zu betreten. Bewerkstelligt kann
-dies durch das übergeben der Option :option:`-i` vor dem Skript. (Dies
-funktioniert, aus dem im vorherigen Absatz genannten Grund, nicht, falls das
-Skript von der Standardeingabe gelesen wird.
+Wenn eine Skriptdatei verwendet wird, ist es oft hilfreich, das Skript
+auszuführen und danach in den interaktiven Modus zu wechseln.
+Dies erreicht man durch die Option :option:`-i` vor dem Skript. Falls das Skript von der Standardeingabe
+gelesen wird, funktioniert dies - wie oben erläutert - nicht.
+
 
 .. _tut-argpassing:
 
