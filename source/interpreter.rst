@@ -75,30 +75,32 @@ gelesen wird, funktioniert dies - wie oben erläutert - nicht.
 Übergabe von Argumenten
 -----------------------
 
-Wenn dem Interpreter Skriptname und zusätzliche Argumente bekannt sind, werden
-sie danach dem Skript in der Variablen ``sys.argv``, was eine Liste von Strings
-ist, zur Verfügung gestellt. Ihre Länge ist mindestens eins; wenn kein Skript
-und keine Argumente übergeben wurden, ist ``sys.argv[0]`` ein leerer String.
-Wenn der Skriptname als ``'-'`` (was die Standardeingabe darstellt) gegeben ist,
-so wird ``sys.argv[0]`` auf ``'-'`` gesetzt. Wird :option:`-c` *Befehl* benutzt,
-so wird ``sys.argv[0]`` auf ``'-c'`` gesetzt. Wird :option:`-m` *Modul* benutzt,
-so wird ``sys.argv[0]`` auf den vollqualifizierten Namen des gefundenen Moduls
-gesetzt. Optionen, die sich nach :option:`-c` *Befehl* oder :option:`-m`
-*Modul* befinden, werden nicht vom Pythoninterpreter aufgebraucht, sondern bleiben
-dem Befehl oder Modul in ``sys.argv`` zur Benutzung erhalten.
+Werden dem Interpreter ein Skriptname und zusätzliche Argumente übergeben, dann werden
+diese dem Skript in der Variablen ``sys.argv`` zur Verfügung gestellt. ``sys.argv`` ist eine Liste von
+Zeichenketten, die mindestens ein Element enthält. Wenn kein Skript und keine Argumente
+übergeben wurden, dann ist ``sys.argv[0]`` eine leere Zeichenkette.
+Wenn der Skriptname als ``'-'`` angegeben ist (das entspricht der Standardeingabe),
+dann wird ``sys.argv[0]`` auf ``'-'`` gesetzt. Wird :option:`-c` *Befehl* verwendet, dann
+erhält ``sys.argv[0]`` den Wert ``'-c'``, bei Verwendung von :option:`-m` *Modul* 
+den vollständigen Namen des gefundenen Moduls.
+Optionen, die nach :option:`-c` *Befehl* oder :option:`-m`
+*Modul* angegeben werden, werden nicht vom Python-Interpreter verarbeitet, sondern
+werden als Werte an ``sys.argv`` übergeben.
 
 .. _tut-interactive:
 
 Interaktiver Modus
 ------------------
 
-Werden Befehle von einem tty gelesen, sagt man, dass sich der Interpreter im
-*interaktiven Modus* befindet. In diesem Modus fragt er nach dem nächsten Befehl
-mit der *primären Eingabeaufforderung*, normalerweise drei größer-als Zeichen
-(``>>>``); nach Fortsetzungszeilen fragt er mit der *sekundären
-Eingabeaufforderung*, standardmäßig drei Punkte (``...``). Der Interpreter zeigt
-eine Willkommensbotschaft an, die seine Versionsnummer und einen
-Copyrighthinweis anzeigt, bevor die erste Eingabeaufforderung angezeigt wird::
+Wenn Befehle von einem tty (in der Regel wird das die Tastatur sein) gelesen werden,
+spricht man vom *interaktiven Modus* des Interpreters. In diesem Modus
+wartet der Interpreter mit der *primärem Eingabeaufforderung*, die normalerweise
+aus drei größer-als-Zeichen besteht (``>>>``), auf Eingaben des Anwenders.
+Nach Fortsetzungszeilen zeigt der Interpreter die *sekundäre
+Eingabeaufforderung*, das sind normalerweise drei Punkte (``...``).
+Außerdem zeigt der Interpreter nach dem Start zunächst einen kurzen Informationstext an,
+der unter anderem die Versionsnummer des Interpreters und einen Hinweis zum
+Urheberrecht enthält.
 
    $ python3.1
    Python 3.1a1 (py3k, Sep 12 2007, 12:21:02)
@@ -106,10 +108,10 @@ Copyrighthinweis anzeigt, bevor die erste Eingabeaufforderung angezeigt wird::
    Type "help", "copyright", "credits" or "license" for more information.
    >>>
 
-Fortsetzungszeilen sind nötig, wenn mehrzeilige Konstrukte eingegeben werden.
-Wirf zum Beispiel einen Blick auf diese :keyword:`if`-Anweisung::
+Fortsetzungszeilen ergeben sich, wenn mehrzeilige Konstrukte eingegeben werden, wie zum Beispiel
+bei der folgenden :keyword:`if`-Anweisung::
 
-   >>> the_world_is_flat = 1
+   >>> the_world_is_flat = True
    >>> if the_world_is_flat:
    ...     print("Be careful not to fall off!")
    ...
