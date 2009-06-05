@@ -4,12 +4,12 @@
 Um dich auf den Geschmack zu bringen
 ****************************************
 
-Wer viel am Computer arbeitet, kommt irgendwann zu dem Schluss, dass es 
-ein Aufgaben gibt, die er gern automatisieren würde. Beispielsweise 
-ein Suchen-und-Ersetzen für eine Vielzahl von Dateien oder eine
-Möglichkeit, einen Haufen Fotodateien auf komplizierte Art
-umzubenennen oder umzuräumen. Oder man hätte gerne eine kleine
-Datenbank nach Maß, eine spezialisierte GUI-Anwendung oder ein einfaches Spiel.
+Wer viel am Computer arbeitet, kommt irgendwann zu dem Schluss, dass es Aufgaben
+gibt, die er gern automatisieren würde. Beispielsweise ein Suchen-und-Ersetzen
+für eine Vielzahl von Dateien oder eine Möglichkeit, einen Haufen Fotodateien
+auf komplizierte Art umzubenennen oder umzuräumen. Oder man hätte gerne eine
+kleine Datenbank nach Maß, eine spezialisierte GUI-Anwendung oder ein einfaches
+Spiel.
 
 Als professioneller Softwareentwickler muss man vielleicht mit mehreren
 C/C++/Java Bibliotheken arbeiten, findet aber den üblichen
