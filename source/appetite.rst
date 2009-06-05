@@ -60,7 +60,7 @@ als C/C++/Java Äquivalente:
 * Die abstrakten Datentypen erlauben es, komplexe Operationen in einer einzigen
 Anweisung auszudrücken;
 * Anweisungen werden durch Einrückungen und nicht durch öffnende und
-schliessende Klammern gruppiert;
+schließende Klammern gruppiert;
 * Variablen- oder Argumentdeklarationen sind nicht nötig.
 
 Python ist *erweiterbar*: Wer in C programmieren kannst, kann einfach eine

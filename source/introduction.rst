@@ -11,7 +11,7 @@ Eingabeaufforderung folgende abtippen, wenn die Eingabeaufforderung erscheint.
 Zeilen die nicht mit einer Eingabeaufforderung anfangen, sind Ausgabe des
 Interpreters. Bemerke, dass die sekundäre Eingabeaufforderung auf einer eigenen
 Zeile bedeutet, dass du eine Leerzeile tippen musst. Dies wird benutzt um einen
-mehrzeiligen Befehl abzuschliessen.
+mehrzeiligen Befehl abzuschließen.
 
 Viele der Beispiele in diesem Handbuch, sogar die, die im interaktiven Modus
 eingegeben werden, enthalten Kommentare. Kommentare beginnen in Python mit einem
