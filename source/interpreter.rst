@@ -54,7 +54,7 @@ aus.
 
 Ein zweiter Weg den Pythoninterpreter zu starten ist ``python -c Befehl [arg]
 ...``, was die Anweisung(en) in diesem *Befehl* ausführt, analog zur
-:option:`-c` Option der Shell. Da Pythonanweisungen oft Leerzeichen oder andere
+:option:`-c`-Option der Shell. Da Pythonanweisungen oft Leerzeichen oder andere
 Zeichen die die Shell speziell behandelt enthält, wird es normalerweise
 empfohlen den kompletten *Befehl* mit einfachen Anührungszeichen anzugeben. 
 
@@ -114,7 +114,7 @@ Copyrighthinweis anzeigt, bevor die erste Eingabeaufforderung angezeigt wird::
    >>>
 
 Fortsetzungszeilen sind nötig, wenn mehrzeilige Konstrukte eingegeben werden.
-Wirf zum Beispiel einen Blick auf diese :keyword:`if` Anweisung::
+Wirf zum Beispiel einen Blick auf diese :keyword:`if`-Anweisung::
 
    >>> the_world_is_flat = 1
    >>> if the_world_is_flat:
@@ -136,19 +136,20 @@ Tritt ein Fehler auf, so zeigt der Interpreter eine Fehlermeldung und einen
 Stacktrace an. Im interaktiven Modus kehrt er dann zurück zur primären
 Eingabeaufforderung; kam die Eingabe von einer Datei, beendet er mit einem von
 null verschiedenen Rückgabewert, nachdem er den Stacktrace ausgegeben hat.
-(Ausnahmen die von einer :keyword:`except` Klausel in einer :keyword:`try`
-Anweisung behandelt werden, sind keine Ausnahmen in diesem Kontext.) Manche
-Fehler sind bedingungslos tödlich und veranlassen ein Beenden mit einem von null
-verschiedenen Rückgabewert; dies trifft bei internen Inkonsistenzen und manchmal
-in Fällen von Speichermangel zu. Alle Fehlermeldungen werden in den
-Standardfehlerausgabestrom geschrieben; gewöhnliche Ausgabe von ausgeführten
-Befehlen wird in die Standardausgabe geschrieben.
+(Ausnahmen die von einer :keyword:`except`-Klausel in einer
+:keyword:`try`-Anweisung behandelt werden, sind keine Ausnahmen in diesem
+Kontext.) Manche Fehler sind bedingungslos tödlich und veranlassen ein Beenden
+mit einem von null verschiedenen Rückgabewert; dies trifft bei internen
+Inkonsistenzen und manchmal in Fällen von Speichermangel zu. Alle
+Fehlermeldungen werden in den Standardfehlerausgabestrom geschrieben;
+gewöhnliche Ausgabe von ausgeführten Befehlen wird in die Standardausgabe
+geschrieben.
 
 Die Eingabe des Interruptzeichens (normalerweise :kbd:`Strg-C` oder ENTF) bei
 der primären oder sekundären Eingabeaufforderung bricht die Eingabe ab und kehrt
 zur primären Eingabeaufforderung zurück. [#]_ Ein Interrupt während ein Befehl
-ausgeführt wird, verursacht die :exc:`KeyboardInterrupt` Ausnahme, die durch
-eine :keyword:`try` Anweisung behandelt werden kann.
+ausgeführt wird, verursacht die :exc:`KeyboardInterrupt`-Ausnahme, die durch
+eine :keyword:`try`-Anweisung behandelt werden kann.
 
 
 .. _tut-scripts:
@@ -174,7 +175,7 @@ verliehen werden::
     $ chmod +x myscript.py
 
 Auf Windowssystemen gibt es keine Nennung von "Ausführungsrechten". Das
-Python-Installationsprogramm verknüpft automatisch ``.py`` Dateien mit
+Python-Installationsprogramm verknüpft automatisch ``.py``-Dateien mit
 ``python.exe``, sodass ein Doppelklick auf eine Pythondatei diese als Skript
 ausführen wird. Die Dateinamenserweiterung kann auch ``.pyw`` lauten, in diesem
 Fall wird das normalerweise auftauchende Konsolenfenster unterdrückt.
@@ -220,7 +221,7 @@ Wenn man Python interaktiv benutzt, ist es oft nützlich ein paar Standardbefehl
 auszuführen jedes Mal wenn der Interpreter gestartet wird. Das kannst du
 erreichen, indem du eine Umgebungsvariable namens :env:`PYTHONSTARTUP`
 erstellst, die auf eine Datei verweist, die deine Startupbefehle enthält.
-Dies ist der :file:`.profile` Fähigkeit von Unixshells ähnlich.
+Dies ist der :file:`.profile`-Fähigkeit von Unixshells ähnlich.
 
 Diese Datei wird nur in interaktiven Sitzungen gelesen und weder wenn Python
 Befehle aus einem Skript ausführt, noch wenn :file:`/dev/tty` explizit als die

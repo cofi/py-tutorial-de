@@ -46,7 +46,7 @@ Python Module und Programme zu schreiben und du wirst bereit sein, mehr über di
 verschiedenen Module der Pythonbibliothek zu lernen die in der Python Library
 Reference beschrieben werden.
 
-Das :ref: `glossary` ist es ebenfalls Wert es durchzugehen.
+Es lohnt sich ebenfalls das :ref: `glossary` durchzugehen.
 
 .. toctree::
    :numbered:

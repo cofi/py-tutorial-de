@@ -126,7 +126,7 @@ Fliesskommazahlen::
     >>> 7.0 / 2
     3.5
 
-Komplexe Zahlen werden ebenso unterstützt; der imaginäre Anteil wird mit dem Suffix ``j`` oder ``J`` angegeben. Komplexe Zahlen mit einem Realanteil, der von null verschieden ist, werden als ``(real+imagj)`` geschrieben oder können mit der ``complex(real, imag)`` Funktion erzeugt werden.
+Komplexe Zahlen werden ebenso unterstützt; der imaginäre Anteil wird mit dem Suffix ``j`` oder ``J`` angegeben. Komplexe Zahlen mit einem Realanteil, der von null verschieden ist, werden als ``(real+imagj)`` geschrieben oder können mit der Funktion ``complex(real, imag)`` erzeugt werden.
 ::
 
     >>> 1j * 1J
@@ -236,7 +236,7 @@ verworfen. Das Beispiel würde folgendes ausgeben::
     several lines of text just as you would do in C.
         Note that whitespace at the beginning of the line is significant.
 
-Wenn wir den Stringliteral zu einem "raw"-String machen, werden ``\n`` Sequenzen
+Wenn wir den Stringliteral zu einem "raw"-String machen, werden ``\n``-Sequenzen
 nicht zu Zeilenumbrüchen konvertiert, aber sowohl der Backslash am Ende der
 Zeile, als auch das Zeilenumbruch-Zeichen im Quellcode sind als Daten im String
 vorhanden. Deshalb würde das Beispiel::
@@ -251,7 +251,7 @@ folgendes anzeigen::
    This is a rather long string containing\n\
    several lines of text much as you would do in C.
 
-Strings können mit dem ``+`` Operator verknüpft (zusammengeklebt) und mit
+Strings können mit dem ``+``-Operator verknüpft (zusammengeklebt) und mit
 ``*`` wiederholt werden::
 
     >>> word = 'Help' + 'A'
@@ -408,7 +408,7 @@ Die eingebaute Funktion :func:`len` gibt die Länge eines Strings zurück::
 
     :ref:`old-string-formatting`
         Die alten Formatierungsoperationen, die aufgerufen werden, wenn Strings
-        und Unicodestrings die linken Operanden des ``%`` Operators sind, werden
+        und Unicodestrings die linken Operanden des ``%``-Operators sind, werden
         hier in detailliert beschrieben.
 
 
@@ -451,7 +451,7 @@ Neben diesen Standardkodierungen stellt Python eine ganze Reihe anderer
 Möglichkeiten bereit, Unicodestrings zu erstellen, sofern man die benutzte
 Kodierung kennt.
 
-Um einen String zu einer Bytesequenz zu konvertieren, halten Stringobjekte die
+Um einen String zu einer Bytesequenz zu konvertieren, stellen Stringobjekte die
 Methode :func:`encode` bereit, die ein Argument entgegennimmt: Den Namen der
 Kodierung. Kleingeschriebene Namen werden für Kodierungen bevorzugt. ::
 
