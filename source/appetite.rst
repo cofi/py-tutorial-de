@@ -56,10 +56,15 @@ praktischer Tischrechner.
 
 Python ermöglicht die Entwicklung von kompakten und lesbaren Programmen.
 Programme, die in Python geschrieben sind, sind aus mehreren Gründen viel kürzer
-als C/C++/Java Äquivalente: * Die abstrakten Datentypen erlauben es, komplexe
-Operationen in einer einzigen Anweisung auszudrücken; * Anweisungen werden durch
-Einrückungen und nicht durch öffnende und schließende Klammern gruppiert; *
-Variablen- oder Argumentdeklarationen sind nicht nötig.
+als C/C++/Java Äquivalente:
+
+* Die abstrakten Datentypen erlauben es, komplexe Operationen in einer einzigen
+  Anweisung auszudrücken;
+  
+* Anweisungen werden durch Einrückungen und nicht durch öffnende und schließende
+  Klammern gruppiert;
+  
+* Variablen- oder Argumentdeklarationen sind nicht nötig.
 
 Python ist *erweiterbar*: Wer in C programmieren kannst, kann einfach eine neue
 eingebaute Funktion oder ein Modul zum Interpreter hinzuzufügen. Entweder um
