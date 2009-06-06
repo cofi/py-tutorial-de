@@ -163,3 +163,29 @@ Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
    >>> server.quit()
 
 (Anmerkung: das zweite Beispiel benötigt einen Mailserver auf localhost.)
+
+
+.. _tut-dates-and-times:
+
+Datum und Uhrzeit
+=================
+
+Das Modul :mod:`datetime` stellt Klassen sowohl für einfache als auch
+kompliziertere Arbeiten mit Datum und Uhrzeit bereit. Während das Rechnen mit
+Datum und Uhrzeit zwar unterstützt wird, liegt das Hauptaugenmerk der
+Implementierung auf Attributszugriff für Ausgabeformatierung und -manipulation.
+Die Verwendung von Zeitzonen wird ebenfalls unterstützt. :: 
+
+   # dates are easily constructed and formatted
+   >>> from datetime import date
+   >>> now = date.today()
+   >>> now
+   datetime.date(2003, 12, 2)
+   >>> now.strftime("%m-%d-%y. %d %b %Y is a %A on the %d day of %B.")
+   '12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December.'
+
+   # dates support calendar arithmetic
+   >>> birthday = date(1964, 7, 31)
+   >>> age = now - birthday
+   >>> age.days
+   14368
