@@ -1,8 +1,8 @@
 .. _tut-modules:
 
-*******
-Modules
-*******
+******
+Module
+******
 
 Wenn du den Python-Interpreter beendest und erneut startest, gehen alle
 Definitionen (Funktionen und Variablen), die du gemacht hast, verloren. Deshalb
@@ -21,10 +21,10 @@ Gesamtheit aller Variablen, auf die man in einem Skript zugreifen kann).
 
 Ein Modul ist eine Datei, die Python Definitionen und Statements beinhaltet. Der
 Dateiname mit dem :file:`.py` Suffix entspricht dem Namen des Moduls. Innerhalb
-eines Moduls, ist der Modulname als ``__name__`` verfügbar (globale Variable als
-string). Als Beispiel öffnest du einen Editor deiner Wahl und erstellst eine
-Datei im aktuellen Verzeichnis mit dem Namen :file:`fibo.py` und dem folgenden
-Inhalt::
+eines Moduls, ist der Modulname als ``__name__`` verfügbar (globale Variable mit
+des Typs ``string``). Zum Beispiel: Öffne einen Editor deiner Wahl und
+erstelle eine Datei im aktuellen Verzeichnis mit dem Namen :file:`fibo.py` und
+folgendem Inhalt::
 
 	# Fibonacci Zahlen Modul
 
@@ -43,14 +43,14 @@ Inhalt::
 	        a, b = b, a+b
 	    return result
 	
-Jetzt öffne deinen Python-Interpreter und importiere das Modul mit folgendem
+Öffne danach deinen Python-Interpreter und importiere das Modul mit folgendem
 Befehl::
 
 	>>> import fibo
 	
-Dieser Befehl fügt die Funktionen, welche in der Datei fibo.py definiert sind,
-nicht automatisch in die Symbol-Tabelle ein; dort wird nur der Modulname fibo
-eingefügt. Um diese Funktionen anzusprechen, benutzt man den Modulnamen::
+Dieser Befehl fügt die, von :file:`fibo.py` definierten, Funktionen
+nicht automatisch in die globale Symboltabelle ein, sondern nur den Modulnamen ``fibo``
+ein. Um die Funktionen anzusprechen, benutzt man den Modulnamen::
 
 	>>> fibo.fib(1000)
 	1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
@@ -59,5 +59,5 @@ eingefügt. Um diese Funktionen anzusprechen, benutzt man den Modulnamen::
 	>>> fibo.__name__
 	'fibo'
 	
-Wenn man vorhat eine Funktion öfter zu verwenden, kann man diese an einen
+Wenn man plant eine Funktion öfter zu verwenden, kann man diese an einen
 lokalen Namen binden.
