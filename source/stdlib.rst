@@ -236,3 +236,48 @@ Geschwindigkeitsvorteil auf::
 Die Zeitmessung mit :mod:`timeit` bietet hohe Genauigkeit. Dahingegen lassen
 sich mit :mod:`profile` und :mod:`pstats` zeitkritische Bereiche in größeren
 Abschnitten von Programmcode auffinden.
+
+
+.. _tut-quality-control:
+
+Qualitätskontrolle
+==================
+
+Um hohe Qualität der entwickelten Software zu gewährleisten, kann man etwa
+Tests für jede Funktion schreiben, die regelmäßig während des
+Entwicklungsprozesses durchgeführ werden.
+
+Das Modul :mod:`doctest` durchsucht ein Modul nach Tests in seinen Docstrings
+und führt diese durch. Das Erstellen eines Tests ist sehr einfach, dazu muss
+lediglich ein typischer Aufruf der Funktion samt seiner Rückgaben in den
+Docstring der Funktion kopiert werden. Dadurch wird gleichzeitig die
+Dokumentation verbessert, da Benutzer direkt ein Beispiel mitgeliefert
+bekommen. Darüber hinaus lässt sich so sicherstellen, dass Code und
+Dokumentation auch nach Änderungen noch übereinstimmen::
+
+   def average(values):
+       """Computes the arithmetic mean of a list of numbers.
+
+       >>> print average([20, 30, 70])
+       40.0
+       """
+       return sum(values, 0.0) / len(values)
+
+   import doctest
+   doctest.testmod()   # automatically validate the embedded tests
+
+Etwas anspruchsvoller ist das Modul :mod:`unittest`, dafür lassen sich damit
+auch anspruchsvollere Tests erstellen, die in einer eigenen Datei verwaltet
+werden::
+
+   import unittest
+
+   class TestStatisticalFunctions(unittest.TestCase):
+
+       def test_average(self):
+           self.assertEqual(average([20, 30, 70]), 40.0)
+           self.assertEqual(round(average([1, 5, 7]), 1), 4.3)
+           self.assertRaises(ZeroDivisionError, average, [])
+           self.assertRaises(TypeError, average, 20, 30, 70)
+
+   unittest.main() # Calling from the command line invokes all tests
