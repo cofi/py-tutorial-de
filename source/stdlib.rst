@@ -66,7 +66,7 @@ one two three`` auf der Befehlszeile eingibt::
 
    >>> import sys
    >>> print sys.argv
-   ['demo.py', 'one', 'two', 'three']
+   ['demo.py', 'eins', 'zwei', 'drei']
 
 Das Modul 'mod'`getopt` verarbeitet *sys.argv* gemäß den üblichen Konventionen
 der aus Unix bekannten :func:`getopt`-Funktion. Erweiterte und flexiblere
@@ -81,8 +81,8 @@ Das Modul :mod:`sys` hat darüber hinaus auch Attribute für *stdin*, *stdout*
 und *stderr*. Letzteres ist vor allem bei der Ausgabe von Warnungen und
 Fehlermeldungen nützlich, etwa wenn *stdout* umgeleitet worden ist::
 
-   >>> sys.stderr.write('Warning, log file not found starting a new one\n')
-   Warning, log file not found starting a new one
+   >>> sys.stderr.write('Warnung, Log-Datei konnte nicht gefunden werden\n')
+   Warnung, Log-Datei konnte nicht gefunden werden
 
 Der direkteste Weg, ein Script zu beenden, führt über ``sys.exit()``.
 
@@ -96,17 +96,17 @@ expressions*) zur erweiterten Verarbeitung von Strings. Reguläre Ausdrücke
 eignen sich vor allem für komplizierte Suchen und Änderungen an Strings::
 
    >>> import re
-   >>> re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
-   ['foot', 'fell', 'fastest']
-   >>> re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')
-   'cat in the hat'
+   >>> re.findall(r'\bk[a-z]*', 'drei kleine katzen')
+   ['kleine', 'katzen']
+   >>> re.sub(r'(\b[a-z]+) \1', r'\1', 'Die Katze im im Hut')
+   'Die Katze im Hut'
 
 Solange Allerdings nur einfache Änderungen vorgenommen werden müssen, sollte
 man eher zu den normalen Methoden von Strings greifen, da diese einfacher zu
 lesen und korrigieren sind::
 
-   >>> 'tea for too'.replace('too', 'two')
-   'tea for two'
+   >>> 'Tee für zwo'.replace('zwo', 'zwei')
+   'Tee für zwei'
 
 
 .. _tut-mathematics:
@@ -126,13 +126,13 @@ für Fließkommaberechnungen verwenden::
 Mit dem Modul :mod:`random` lassen sich zufällige Auswahlen treffen::
 
    >>> import random
-   >>> random.choice(['apple', 'pear', 'banana'])
-   'apple'
-   >>> random.sample(xrange(100), 10)   # sampling without replacement
+   >>> random.choice(['Apfel', 'Birne', 'Banane'])
+   'Apfel'
+   >>> random.sample(xrange(100), 10)   # Stichprobe
    [30, 83, 16, 4, 8, 81, 41, 50, 18, 33]
-   >>> random.random()    # random float
+   >>> random.random()    # Zufällige Fließkommazahl
    0.17970987693706186
-   >>> random.randrange(6)    # random integer chosen from range(6)
+   >>> random.randrange(6)    # Zufällige Ganzzahl aus range(6)
    4
 
 
@@ -147,7 +147,7 @@ Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
 
    >>> import urllib2
    >>> for line in urllib2.urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl'):
-   ...     if 'EST' in line or 'EDT' in line:  # look for Eastern Time
+   ...     if 'EST' in line or 'EDT' in line:  # Nach Eastern Time suchen
    ...         print line
 
    <BR>Nov. 25, 09:43:32 PM EST
@@ -158,7 +158,7 @@ Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
    ... """To: jcaesar@example.org
    ... From: soothsayer@example.org
    ...
-   ... Beware the Ides of March.
+   ... Nimm dich in Acht vor den Iden des März!
    ... """)
    >>> server.quit()
 
@@ -178,16 +178,16 @@ Die Verwendung von Zeitzonen wird ebenfalls unterstützt. ::
 
    # dates are easily constructed and formatted
    >>> from datetime import date
-   >>> now = date.today()
-   >>> now
+   >>> jetzt = date.today()
+   >>> jetzt
    datetime.date(2003, 12, 2)
-   >>> now.strftime("%m-%d-%y. %d %b %Y is a %A on the %d day of %B.")
-   '12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December.'
+   >>> jetzt.strftime("%m-%d-%y. %d %b %Y ist ein %A am %d. Tag des %B.")
+   '12-02-03. 02 Dec 2003 ist ein Tuesday am 02. Tag des December.'
 
-   # dates support calendar arithmetic
-   >>> birthday = date(1964, 7, 31)
-   >>> age = now - birthday
-   >>> age.days
+   # Mit dem Datum lässt sich rechnen
+   >>> geburtstag = date(1964, 7, 31)
+   >>> alter = jetzt - geburtstag
+   >>> alter.days
    14368
 
 .. _tut-data-compression:
@@ -200,16 +200,16 @@ eigenen Modulen unterstützt. Darunter: :mod:`zlib`, :mod:`gzip`, :mod:`bz2`,
 :mod:`zipfile` und :mod:`tarfile`. ::
 
    >>> import zlib
-   >>> s = 'witch which has which witches wrist watch'
+   >>> s = 'Wenn Fliegen hinter Fliegen fliegen'
    >>> len(s)
-   41
+   35
    >>> t = zlib.compress(s)
    >>> len(t)
-   37
+   31
    >>> zlib.decompress(t)
-   'witch which has which witches wrist watch'
+   'Wenn Fliegen hinter Fliegen fliegen'
    >>> zlib.crc32(s)
-   226805979
+   1048664767
 
 
 .. _tut-performance-measurement:
@@ -255,16 +255,16 @@ Dokumentation verbessert, da Benutzer direkt ein Beispiel mitgeliefert
 bekommen. Darüber hinaus lässt sich so sicherstellen, dass Code und
 Dokumentation auch nach Änderungen noch übereinstimmen::
 
-   def average(values):
-       """Computes the arithmetic mean of a list of numbers.
+   def durchschnitt(values):
+       """Berechnet das arithmetische Mittel aus einer Liste von Zahlen
 
-       >>> print average([20, 30, 70])
+       >>> print durchschnitt([20, 30, 70])
        40.0
        """
        return sum(values, 0.0) / len(values)
 
    import doctest
-   doctest.testmod()   # automatically validate the embedded tests
+   doctest.testmod()   # Führt den Test automatisch durch
 
 Etwas anspruchsvoller ist das Modul :mod:`unittest`, dafür lassen sich damit
 auch anspruchsvollere Tests erstellen, die in einer eigenen Datei verwaltet
@@ -274,11 +274,11 @@ werden::
 
    class TestStatisticalFunctions(unittest.TestCase):
 
-       def test_average(self):
-           self.assertEqual(average([20, 30, 70]), 40.0)
-           self.assertEqual(round(average([1, 5, 7]), 1), 4.3)
-           self.assertRaises(ZeroDivisionError, average, [])
-           self.assertRaises(TypeError, average, 20, 30, 70)
+       def test_durchschnitt(self):
+           self.assertEqual(durchschnitt([20, 30, 70]), 40.0)
+           self.assertEqual(round(durchschnitt([1, 5, 7]), 1), 4.3)
+           self.assertRaises(ZeroDivisionError, durchschnitt, [])
+           self.assertRaises(TypeError, durchschnitt, 20, 30, 70)
 
    unittest.main() # Calling from the command line invokes all tests
 
