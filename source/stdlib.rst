@@ -55,5 +55,14 @@ Verzeichnisnamen verwendet werden::
    >>> glob.glob('*.py')
    ['primes.py', 'random.py', 'quote.py']
 
+Argumente in der Befehlszeile
+=============================
 
+Die meisten Scripts müssen auf Argumente in der Befehlszeile eingehen. Diese Argumente werden im Attribut *argv* des Moduls 'mod'`sys` als Liste gespeichert. Die folgende Ausgabe etwas erhält man, wenn man ``python demo.py one two three`` auf der Befehlszeile eingibt::
+
+   >>> import sys
+   >>> print sys.argv
+   ['demo.py', 'one', 'two', 'three']
+
+Das Modul 'mod'`getopt` verarbeitet *sys.argv* gemäß den üblichen Konventionen der aus Unix bekannten :func:`getopt`-Funktion. Erweiterte und flexiblere Möglichkeiten bietet das Modul :mod:`optparse`.
 
