@@ -210,3 +210,29 @@ eigenen Modulen unterstützt. Darunter: :mod:`zlib`, :mod:`gzip`, :mod:`bz2`,
    'witch which has which witches wrist watch'
    >>> zlib.crc32(s)
    226805979
+
+
+.. _tut-performance-measurement:
+
+Performancemessung
+==================
+
+Viele Benutzer von Python interessieren sich sehr für die jeweiligen
+Geschwindigkeitsunterschiede verschiedener Herangehensweisen an ein Problem.
+Python stellt hier ein Messinstrument zur Verfügung, mit dem diese Fragen
+beantwortet werden können.
+
+Es könnte etwa verlockend sein, statt Argumente einfach gegeneinander
+auszutauschen, Tuple und ihr Verhalten beim *Packing*/*Unpacking* zu verwenden.
+Das Modul :mod:`timeit` zeigt schnell einen eher bescheidenen
+Geschwindigkeitsvorteil auf::
+
+   >>> from timeit import Timer
+   >>> Timer('t=a; a=b; b=t', 'a=1; b=2').timeit()
+   0.57535828626024577
+   >>> Timer('a,b = b,a', 'a=1; b=2').timeit()
+   0.54962537085770791
+
+Die Zeitmessung mit :mod:`timeit` bietet hohe Genauigkeit. Dahingegen lassen
+sich mit :mod:`profile` und :mod:`pstats` zeitkritische Bereiche in größeren
+Abschnitten von Programmcode auffinden.
