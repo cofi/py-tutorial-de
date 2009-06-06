@@ -4,10 +4,8 @@
 Module
 ******
 
-Wenn man den Python-Interpreter beendet und erneut startest, gehen alle
+Wenn man den Python-Interpreter beendet und erneut startet, gehen alle
 vorgenommenen Definitionen (Funktionen und Variablen) verloren. Deshalb
-Wenn du den Python-Interpreter beendest und erneut startest, gehen alle
-Definitionen (Funktionen und Variablen), die du gemacht hast, verloren. Deshalb
 benutzt man vorzugsweise einen Text-Editor, um längere und komplexere Programme
 zu schreiben und verwendet eine Datei als Input für den Interpreter. Diese Datei
 wird auch als Skript bezeichnet. Wird ein Programm länger, teilt man es
