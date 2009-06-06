@@ -491,6 +491,36 @@ Man beachte, dass die Liste der Schlüsselwortargumente erzeugt wird, indem das
 Ergebnis der Methode :meth:`keys` sortiert wird, bevor dessen Inhalt ausgegeben
 wird. Tut man das nicht, ist die Reihenfolge der Ausgabe undefiniert.
 
+.. _tut-arbitraryargs;
+
+Beliebig lange Argumentlisten
+-----------------------------
+
+.. index::
+   statement: *
+
+Zuletzt noch die am wenigsten gebräuchliche Möglichkeit ist, festzulegen, dass
+eine Funktion mit einer beliebigen Zahl von Argumenten aufgerufen werden kann,
+die dann in ein Tupel (siehe :ref:`tut-tuples`) verpackt werden. Bevor diesem
+speziellen Argument, kann eine beliebige Menge normaler Argumente vorkommen. ::
+
+    def write_multiple_items(file, separator, *args):
+        file.write(separator.join(args))
+
+Normalerweise wird dieses spezielle Argument an das Ende der Argumentliste
+gesetzt, weil es alle verbleibenden Argumente, mit denen die Funktion
+aufgerufen wird, aufnimmt. Alle Argumente, die in der Definition auf ein
+``*args`` folgen, sind nur durch Schlüsselwortargumente zu übergeben
+(*'keyword-only'*) und nicht durch positionsabhängige. ::
+
+    >>> def concat(*args, sep="/"):
+    ...    return sep.join(args)
+    ...
+    >>> concat("Erde", "Mars", "Venus")
+    'Erde/Mars/Venus'
+    >>> concat("Erde", "Mars", "Venus", sep=".")
+    'Erde.Mars.Venus'
+
 .. rubric:: Fußnoten
 
 .. [#] Eigentlich wäre *call by object reference* eine bessere Beschreibung,
