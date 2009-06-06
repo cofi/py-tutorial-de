@@ -96,17 +96,29 @@ expressions*) zur erweiterten Verarbeitung von Strings. Reguläre Ausdrücke
 eignen sich vor allem für komplizierte Suchen und Änderungen an Strings::
 
    >>> import re
+<<<<<<< local
+   >>> re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
+   ['foot', 'fell', 'fastest']
+   >>> re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')
+   'cat in the hat'
+=======
    >>> re.findall(r'\bk[a-z]*', 'drei kleine katzen')
    ['kleine', 'katzen']
    >>> re.sub(r'(\b[a-z]+) \1', r'\1', 'Die Katze im im Hut')
    'Die Katze im Hut'
+>>>>>>> other
 
 Solange Allerdings nur einfache Änderungen vorgenommen werden müssen, sollte
 man eher zu den normalen Methoden von Strings greifen, da diese einfacher zu
 lesen und korrigieren sind::
 
+<<<<<<< local
+   >>> 'tea for too'.replace('too', 'two')
+   'tea for two'
+=======
    >>> 'Tee für zwo'.replace('zwo', 'zwei')
    'Tee für zwei'
+>>>>>>> other
 
 
 .. _tut-mathematics:
@@ -114,7 +126,11 @@ lesen und korrigieren sind::
 Mathematik
 ==========
 
+<<<<<<< local
+Mit dem Modul :mod:`math` kann man tieferliegende Funktionen der C-Bibliothek
+=======
 Mit dem Modul :mod:`math` kann man tiefer liegende Funktionen der C-Bibliothek
+>>>>>>> other
 für Fließkommaberechnungen verwenden::
 
    >>> import math
@@ -126,13 +142,27 @@ für Fließkommaberechnungen verwenden::
 Mit dem Modul :mod:`random` lassen sich zufällige Auswahlen treffen::
 
    >>> import random
+<<<<<<< local
+   >>> random.choice(['apple', 'pear', 'banana'])
+   'apple'
+   >>> random.sample(xrange(100), 10)   # sampling without replacement
+=======
    >>> random.choice(['Apfel', 'Birne', 'Banane'])
    'Apfel'
    >>> random.sample(xrange(100), 10)   # Stichprobe
+>>>>>>> other
    [30, 83, 16, 4, 8, 81, 41, 50, 18, 33]
+<<<<<<< local
+   >>> random.random()    # random float
+=======
    >>> random.random()    # Zufällige Fließkommazahl
+>>>>>>> other
    0.17970987693706186
+<<<<<<< local
+   >>> random.randrange(6)    # random integer chosen from range(6)
+=======
    >>> random.randrange(6)    # Zufällige Ganzzahl aus range(6)
+>>>>>>> other
    4
 
 
@@ -147,7 +177,11 @@ Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
 
    >>> import urllib2
    >>> for line in urllib2.urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl'):
+<<<<<<< local
+   ...     if 'EST' in line or 'EDT' in line:  # look for Eastern Time
+=======
    ...     if 'EST' in line or 'EDT' in line:  # Nach Eastern Time suchen
+>>>>>>> other
    ...         print line
 
    <BR>Nov. 25, 09:43:32 PM EST
@@ -158,7 +192,11 @@ Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
    ... """To: jcaesar@example.org
    ... From: soothsayer@example.org
    ...
+<<<<<<< local
+   ... Beware the Ides of March.
+=======
    ... Nimm dich in Acht vor den Iden des März!
+>>>>>>> other
    ... """)
    >>> server.quit()
 
@@ -176,18 +214,39 @@ Datum und Uhrzeit zwar unterstützt wird, liegt das Hauptaugenmerk der
 Implementierung auf Attributszugriff für Ausgabeformatierung und -manipulation.
 Die Verwendung von Zeitzonen wird ebenfalls unterstützt. :: 
 
+<<<<<<< local
+   # dates are easily constructed and formatted
+=======
    # Ein Datum lässt sich leicht aufbauen
+>>>>>>> other
    >>> from datetime import date
+<<<<<<< local
+   >>> now = date.today()
+   >>> now
+=======
    >>> jetzt = date.today()
    >>> jetzt
+>>>>>>> other
    datetime.date(2003, 12, 2)
+<<<<<<< local
+   >>> now.strftime("%m-%d-%y. %d %b %Y is a %A on the %d day of %B.")
+   '12-02-03. 02 Dec 2003 is a Tuesday on the 02 day of December.'
+=======
    >>> jetzt.strftime("%m-%d-%y. %d %b %Y ist ein %A am %d. Tag des %B.")
    '12-02-03. 02 Dec 2003 ist ein Tuesday am 02. Tag des December.'
+>>>>>>> other
 
+<<<<<<< local
+   # dates support calendar arithmetic
+   >>> birthday = date(1964, 7, 31)
+   >>> age = now - birthday
+   >>> age.days
+=======
    # Mit dem Datum lässt sich rechnen
    >>> geburtstag = date(1964, 7, 31)
    >>> alter = jetzt - geburtstag
    >>> alter.days
+>>>>>>> other
    14368
 
 .. _tut-data-compression:
@@ -200,16 +259,36 @@ eigenen Modulen unterstützt. Darunter: :mod:`zlib`, :mod:`gzip`, :mod:`bz2`,
 :mod:`zipfile` und :mod:`tarfile`. ::
 
    >>> import zlib
+<<<<<<< local
+   >>> s = 'witch which has which witches wrist watch'
+=======
    >>> s = 'Wenn Fliegen hinter Fliegen fliegen'
+>>>>>>> other
    >>> len(s)
+<<<<<<< local
+   41
+=======
    35
+>>>>>>> other
    >>> t = zlib.compress(s)
    >>> len(t)
+<<<<<<< local
+   37
+=======
    31
+>>>>>>> other
    >>> zlib.decompress(t)
+<<<<<<< local
+   'witch which has which witches wrist watch'
+=======
    'Wenn Fliegen hinter Fliegen fliegen'
+>>>>>>> other
    >>> zlib.crc32(s)
+<<<<<<< local
+   226805979
+=======
    1048664767
+>>>>>>> other
 
 
 .. _tut-performance-measurement:
