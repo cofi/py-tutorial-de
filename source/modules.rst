@@ -129,13 +129,18 @@ Wenn man ein Python Modul folgendermaßen aufruft::
 
 	python fibo.py <arguments>
 	
-wird der Code im Modul ausgeführt, genauso als hätte man das Modul importiert mit dem einzigen Unterschied, dass ``__name__`` jetzt ``"__main__"`` ist und nicht der Name des Moduls. Wenn man nun folgende Zeilen an das Ende des Moduls anfügt::
+wird der Code im Modul ausgeführt, genauso als hätte man das Modul importiert
+mit dem einzigen Unterschied, dass ``__name__`` jetzt ``"__main__"`` ist und
+nicht der Name des Moduls. Wenn man nun folgende Zeilen an das Ende des Moduls
+anfügt::
 
 	if __name__ == "__main__":
 	    import sys
 	    fib(int(sys.argv[1]))
 	
-so kann man die Datei sowohl als Skript als auch als importierbares Modul verwenden, da der Code, der die Kommandozeile parst, nur ausgeführt wird, wenn das Modul als "Haupt"-Datei ausgeführt wird::
+so kann man die Datei sowohl als Skript als auch als importierbares Modul
+verwenden, da der Code, der die Kommandozeile parst, nur ausgeführt wird, wenn
+das Modul als "Haupt"-Datei ausgeführt wird::
 
 	$ python fibo.py 50
 	1 1 2 3 5 8 13 21 34
@@ -145,7 +150,9 @@ Wenn das Modul import wird, wird der Code nicht ausgeführt::
 	>>> import fibo
 	>>>
 	
-Dies wird oft dazu verwendet, um entweder ein praktisches User Interface bereitzustellen oder zu Testzwecken (wenn das Modul als Skript ausgeführt wird, wird eine Testsuite gestartet).
+Dies wird oft dazu verwendet, um entweder ein praktisches User Interface
+bereitzustellen oder zu Testzwecken (wenn das Modul als Skript ausgeführt wird,
+wird eine Testsuite gestartet).
 
 .. _tut-searchpath:
 
@@ -154,7 +161,77 @@ Der Modul Such Pfad
 
 .. index:: triple: module; search; path
 
-Wenn ein Modul mit dem Namen :mod:`spam` importiert wird, sucht der Interpreter im aktuellen Verzeichnis nach einer Datei mit dem Namen :file:`spam.py` und dann in der Verzeichnisliste, die in der Umgebungsvariable :envvar:`PYTHONPATH` gesetzt ist. Diese hat die gleiche Syntax wie die Shell Variable :envvar:`PATH`, welche auch eine Verzeichnisliste ist. Falls :envvar:`PYTHONPATH` nicht gesetzt ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem installationsabhängigen Pfad fortgesetzt; unter Unix ist das normalerweise: :file:`.:/usr/local/lib/python`.
+Wenn ein Modul mit dem Namen :mod:`spam` importiert wird, sucht der Interpreter
+im aktuellen Verzeichnis nach einer Datei mit dem Namen :file:`spam.py` und dann
+in der Verzeichnisliste, die in der Umgebungsvariable :envvar:`PYTHONPATH`
+gesetzt ist. Diese hat die gleiche Syntax wie die Shell Variable :envvar:`PATH`,
+welche auch eine Verzeichnisliste ist. Falls :envvar:`PYTHONPATH` nicht gesetzt ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem
+installationsabhängigen Pfad fortgesetzt; unter Unix ist das normalerweise:
+:file:`.:/usr/local/lib/python`.
 
-Eigentlich werden Module in der Reihenfolge gesucht, in der sie in der Variable sys.path aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich auch das Skript befindet beginnt, gefolgt von :envvar:`PYTHONPATH` und dem installationsabhängigen default-Pfad. Dies erlaubt Python Programmen, die Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu Beachten ist, dass das Skript nicht den gleichen Namen hat wie eines der Standardmodule, da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist. In diesem Fall versucht Python das Skript als Modul zu importieren, was normalerweise zu einem Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
+Eigentlich werden Module in der Reihenfolge gesucht, in der sie in der Variable
+sys.path aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich auch
+das Skript befindet beginnt, gefolgt von :envvar:`PYTHONPATH` und dem
+installationsabhängigen default-Pfad. Dies erlaubt Python Programmen, die
+Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu Beachten
+ist, dass das Skript nicht den gleichen Namen hat wie eines der Standardmodule,
+da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist. In diesem Fall
+versucht Python das Skript als Modul zu importieren, was normalerweise zu einem
+Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
+
+"Compiled" Python Dateien
+-------------------------
+
+Um den Start von kurzen Programmen, die viele Standard Module verwenden,
+schneller zu machen, werden Dateien erstellt, welche bereits "byte-kompiliert"
+sind. Existiert eine Datei mit dem Namen :file:`spam.pyc`, so ist das eine
+"byte-kompilierte" Version der Datei :file:`spam.py` und des Moduls :mod:`spam`.
+Der Zeitpunkt an dem die Datei :file:`spam.py` zuletzt geändert wurde, wird in
+:file:`spam.pyc` festgehalten. Falls die Zeiten nicht übereinstimmen, wird die
+:file:`.pyc` ignoriert.
+
+Normalerweise muss man nichts tun, damit die :file:`spam.pyc` Datei erstellt
+wird. Immer wenn :file:`spam.py` erfolgreich komipiliert wird, wird auch
+versucht die kompilierte Version in :file:`spam.pyc` zu schreiben. Es wird kein
+Fehler geworfen, wenn der Vorgang scheitert; wenn aus irgendeinem Grund die
+Datei nicht vollständig geschrieben sein sollte, wird die daraus resultierende
+:file:`spam.pyc` automatisch als fehlerhaft erkannt und damit später ignoriert.
+Der Inhalt der :file:`spam.pyc` ist plattformunabhängig, wodurch man ein Modul
+Verzeichnis mit anderen Maschinen ohne Rücksicht auf ihre Architektur teilen
+kann.
+
+Einige Tipps für Experten:
+
+* Wenn der Python Interpreter mit dem :option:`-O` Flag gestartet wird, so
+  so wird der optimierte Code in :file:`.pyo` Dateien gespeichert. Optimierter
+  Code Hilft momentan nicht viel, da er lediglich :keyword:`assert` Statements
+  entfernt. Wenn man :option:`-O` verwendet, wird der *komplette*
+  :term:`Bytecode` optimiert; :file:`.pyc` werden ignoriert und :file:`.py`
+  Dateien werden zu optimiertem Bytecode kompiliert.
+
+* Wenn man dem Python Interpreter zwei :option:`-O` Flags übergibt, werden
+  durch den Bytecode Compiler Optimierungen vollzogen, welche zu einer
+  Fehlfunktion des Programms führen können. Momentan werden nur ``__doc__``
+  Strings aus dem Bytecode entfernt, was in kleineren :file:`.pyo` Dateien
+  resultiert. Da einige Programm sich darauf verlassen, dass diese verfügbar
+  sind, sollte man diese Option nur aktivieren, wenn man weiß, was man tut.
+
+* Ein Programm wird in keinster Weise schneller ausgeführt, wenn es aus einer
+  :file:`.pyc` oder :file:`.pyo` anstatt aus einer :file:`.py` Datei gelesen
+  wird; der einzige Geschwindigkeitsvorteil ist beim Starten der Dateien.
+
+* Wenn ein Skript durch das Aufrufen über die Kommandozeile ausgeführt wird,
+  wird der Bytecode nie in eine :file:`.pyc` oder :file:`.pyo` Datei
+  geschrieben. Deshalb kann die Startzeit eines Skripts durch das Auslagern des
+  Codes in ein Modul reduziert werden. Es ist auch möglich eine :file:`.pyc`
+  oder :file:`.pyo` Datei direkt in der Kommandozeile auszuführen.
+
+* Es ist auch möglich, eine :file:`.pyc` oder :file:`.pyo` Datei zu haben, ohne
+  dass eine Datei mit dem Namen :file:`spam.py` für selbiges Modul existiert.
+  Dies kann dazu genutzt werden, Python Code auszuliefern, der relativ schwer
+  rekonstruiert werden kann.
+
+* Das Modul :mod:`compileall` kann :file:`.pyc` Dateien (oder auch :file:`.pyo`,
+  wenn :option:`-O` genutzt wird) für alle Module in einem Verzeichnis
+  erstellen.
 
