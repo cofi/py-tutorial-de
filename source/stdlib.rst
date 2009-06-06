@@ -66,3 +66,14 @@ Die meisten Scripts müssen auf Argumente in der Befehlszeile eingehen. Diese Ar
 
 Das Modul 'mod'`getopt` verarbeitet *sys.argv* gemäß den üblichen Konventionen der aus Unix bekannten :func:`getopt`-Funktion. Erweiterte und flexiblere Möglichkeiten bietet das Modul :mod:`optparse`.
 
+.. _tut-stderr:
+
+Umleitung von Fehlermeldungen und Programmabbruch
+=================================================
+
+Das Modul :mod:`sys` hat darüber hinaus auch Attribute für *stdin*, *stdout* und *stderr*. Letzteres ist vor allem bei der Ausgabe von Warnungen und Fehlermeldungen nützlich, etwa wenn *stdout* umgeleitet worden ist::
+
+   >>> sys.stderr.write('Warning, log file not found starting a new one\n')
+   Warning, log file not found starting a new one
+
+Der direkteste Weg, ein Script zu beenden, führt über ``sys.exit()``.
