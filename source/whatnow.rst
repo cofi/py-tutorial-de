@@ -13,14 +13,14 @@ davon sind:
 
 * :ref:`library-index`:
 
-  Dieses Handbuch enthält eine vollständige (aber kompakte) Referenz
-  zu den Typen, Funktionen und Modulen die die Standardbibliothek enthält.
-  Die Standard-Python-Distribution enthält eine große Zahl zusätzlicher Module.
-  So gibt es beispielsweise Module zum Lesen von Unix-Mailboxen, 
-  Herunterladen von Dokumenten über HTTP, Erzeugen von Zufallszahlen, Verarbeiten 
-  von Kommandozeilen-Optionen, Schreiben von CGI-Programmen, Komprimieren von
-  Daten und für viele weitere Dinge. Das Überfliegen der Library-Referenz
-  gibt einen Überblick über die verfügbaren Module.
+  Dieses Handbuch enthält eine vollständige (aber kompakte) Referenz zu den
+  Typen, Funktionen und Modulen, die die Standardbibliothek enthält und die
+  enthält *eine Menge* zusätzlichen Quelltextes.  So gibt es beispielsweise
+  Module zum Lesen von Unix-Mailboxen, Herunterladen von Dokumenten über HTTP,
+  Erzeugen von Zufallszahlen, Verarbeiten von Kommandozeilen-Optionen, Schreiben
+  von CGI-Programmen, Komprimieren von Daten und für viele weitere Dinge. Das
+  Überfliegen der Referenz zur Standardbibliothek gibt einen Überblick über die
+  verfügbaren Module.
 
 * :ref:`install-index` erklärt wie man externe Module installiert.
 
@@ -28,14 +28,14 @@ davon sind:
   und Semantik von Python.  Dies ist eher schwerer Stoff, aber als komplette
   Referenz der Sprache als solche sinnvoll.
 
-More Python resources:
+Mehr Quellen zu Python:
 
-* http://www.python.org:  Die eigentliche Python-Internet-Präsenz.  Hier 
-  findet man den Quelltext, die Dokumentation und Verweise zu weiteren Python-bezogenen
-  Webseiten.  Diese Webseite wurde für einige Regionen dieser Welt,
-  wie beispielsweise Europa, Japan, und Australien gespiegelt; ein Spiegelserver
-  ist unter Umständen schneller als die Hauptseite --- abhängig von der
-  geografischen Lage.
+* http://www.python.org:  Die eigentliche Python-Internet-Präsenz.  Hier findet
+  man den Quelltext, die Dokumentation und Verweise zu weiteren Webseiten mit
+  einen Bezug zu Python habe.  Diese Webseite wurde für einige Regionen dieser
+  Welt, wie beispielsweise Europa, Japan, und Australien gespiegelt; ein
+  Spiegelserver ist unter Umständen schneller als die Hauptseite --- abhängig
+  von der geografischen Lage.
 
 * http://docs.python.org:  schneller Zugriff auf die Python-Dokumentation.
 
@@ -45,11 +45,10 @@ More Python resources:
   veröffentlichen wollen, kann man sich hier registrieren, damit andere
   Benutzer diesen leichter finden können.
 
-* http://aspn.activestate.com/ASPN/Python/Cookbook/: Das Python Cookbook ist 
-  eine umfangreiche Sammlung von Code-Beispielen, größeren Modulen und
-  nützlichen Scripts.  Besonders bemerkenswerte Beiträge wurden in einem
-  Buch mit dem Titel Python Cookbook (O'Reilly & Associates, ISBN 0-596-00797-3.)
-  veröffentlicht.
+* http://aspn.activestate.com/ASPN/Python/Cookbook/: Das Python Cookbook ist
+  eine umfangreiche Sammlung von Code-Beispielen, größeren Modulen und nützlichen
+  Scripts.  Besonders bemerkenswerte Beiträge wurden in einem Buch mit dem Titel
+  Python Cookbook (O'Reilly & Associates, ISBN 0-596-00797-3.) veröffentlicht.
 
 Bei Fragen und Problemen zu Python, kann man sich an das deutschsprachige 
 Python-Forum auf http://www.python-forum.de/ oder die englischsprachige

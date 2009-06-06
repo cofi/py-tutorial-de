@@ -67,6 +67,8 @@ lokalen Namen binden.
 	>>> fib(500)
 	1 1 2 3 5 8 13 21 34 55 89 144 233 377
 
+.. _tut-moremodules:
+
 Mehr zum Thema Module
 =====================
 
@@ -75,21 +77,22 @@ Funktion enthalten. Diese Anweisungen sind dazu gedacht, das Modul zu
 initialisieren, und werden nur ausgeführt, wenn das Modul zum ersten Mal
 importiert wird.
 
-Jedes Modul hat seine eigene, private Symboltabelle, welche wiederum als
-globale Symboltabelle von allen Funktion in diesem Modul verwendet wird. Daher
-kann der Verfasser eines Moduls ohne Bedenken globale Variablen in seinem Modul
+Jedes Modul hat seine eigene, private Symboltabelle, welche wiederum als globale
+Symboltabelle von allen Funktion in diesem Modul verwendet wird. Daher kann der
+Verfasser eines Moduls ohne Bedenken globale Variablen in seinem Modul
 verwenden, da sie sich nicht mit den globalen Variablen des Benutzers
 überschneiden können. Andererseits kann man (wenn man weiß, was man tut) auch
 die globalen Variablen eines Moduls verändern, indem man die gleiche
 Schreibweise verwendet, um auch dessen Funktionen anzusprechen,
 ``modname.itemname``.
 
-Module können andere Module importieren. Es ist üblich, aber nicht
-zwingend notwendig, dass man alle :keyword:`import`-Anweisungen an den Anfangs eines Moduls
-setzt (oder in diesem Fall Skripts). Die Namen der importierten Module werden in die Symboltabelle des importierenden Moduls eingefügt.
+Module können andere Module importieren. Es ist üblich, aber nicht zwingend
+notwendig, dass man alle :keyword:`import`-Anweisungen an den Anfangs eines
+Moduls setzt (oder in diesem Fall Skripts). Die Namen der importierten Module
+werden in die Symboltabelle des importierenden Moduls eingefügt.
 
-Es gibt eine Variante der :keyword:`import`-Anweisung, welche bestimme Namen
-aus einem Modul direkt in die Symboltabelle des importierenden Moduls einfügt.
+Es gibt eine Variante der :keyword:`import`-Anweisung, welche bestimme Namen aus
+einem Modul direkt in die Symboltabelle des importierenden Moduls einfügt.
 Beispielsweise::
 
 	>>> from fibo import fib, fib2
@@ -97,28 +100,28 @@ Beispielsweise::
 	1 1 2 3 5 8 13 21 34 55 89 144 233 377
 	
 Diese Variante fügt allerdings nicht den Modulnamen, aus dem die Namen
-importiert werden, in die lokale Symboltabelle ein (in diesem Beispiel wird
-``fibo`` als nicht eingefügt).
+importiert werden, in die lokale Symboltabelle ein, sondern nur die
+aufgeführten. In diesem Beispiel wird ``fibo`` also nicht eingefügt.
 
-Zusätzlich gibt es eine Variante um alle Namen in einem Modul zu importieren:
+Zusätzlich gibt es eine Variante um alle Namen eines Moduls zu importieren:
 
 	>>> from fibo import *
 	>>> fib(500)
 	1 1 2 3 5 8 13 21 34 55 89 144 233 37
 	
-Hiermit werden alle Namen außer diejenigen, die mit einem Unterstrich beginnen
-(`_`), importiert. In den meisten Fällen wird diese Variante nicht verwendet.
-Dadurch werden unbekannte Namen in den Interpreter importiert und damit kann es
+Hiermit werden alle Namen, außer denen, die mit einem Unterstrich beginnen
+(`_`), importiert. In den meisten Fällen wird diese Variante nicht verwendet,
+denn dadurch werden unbekannte Namen in den Interpreter importiert und so kann es
 vorkommen, dass einige Namen überschrieben werden, die bereits definiert worden
 sind.
 
 .. note::
 
-	Aus Effizientsgründen wird jedes Modul nur einmal durch eine Interpreter
-	Session importiert. Deshalb muss man den Interpreter bei Änderung der Module
-	neustarten - oder man benutzt :func:`reload`, beispielsweise
-	``reload(modulename)``, falls es nur ein Modul ist, welches man interaktiv
-	testen will.
+    Aus Effizienzgründen wird jedes Modul nur einmal durch eine
+    Interpreter-Sizung importiert. Deshalb muss man den Interpreter bei
+    Veränderung der Module neustarten - oder man benutzt :func:`reload`,
+    beispielsweise ``reload(modulename)``, falls es nur ein Modul ist, welches
+    man interaktiv testen will.
 	
 .. _tut-modulesasscripts:
 	
@@ -127,25 +130,32 @@ Module als Skript aufrufen
 
 Wenn man ein Python-Modul folgendermaßen aufruft::
 
-	python fibo.py <arguments>
+	python fibo.py <Argumente>
 	
-wird der Code im Modul genauso ausgeführt, als hätte man das Modul importiert. Der einzige Unterschied ist, dass ``__name__`` jetzt ``"__main__"`` ist und nicht mehr der Name des Moduls. Wenn man nun folgende Zeilen an das Ende des Moduls anfügt::
+wird der Code im Modul genauso ausgeführt, als hätte man das Modul importiert.
+Der einzige Unterschied ist, dass ``__name__`` jetzt ``"__main__"`` ist und
+nicht mehr der Name des Moduls. Wenn man nun folgende Zeilen an das Ende des
+Moduls anfügt::
 
 	if __name__ == "__main__":
 	    import sys
 	    fib(int(sys.argv[1]))
 	
-kann man die Datei sowohl als Skript als auch als importierbares Modul verwenden, da der Code, der die Kommandozeile auswertet, nur ausgeführt wird, wenn das Modul als "Haupt"-Datei ausgeführt wird::
+kann man die Datei sowohl als Skript als auch als importierbares Modul
+nutzbar, da der Code, der die Kommandozeile auswertet, nur ausgeführt wird,
+wenn das Modul direkt als *Hauptdatei* ausgeführt wird::
 
 	$ python fibo.py 50
 	1 1 2 3 5 8 13 21 34
 	
-Wenn das Modul importiert wird, wird dieser Code nicht ausgeführt::
+Beim Import des Moduls wird dieser Code nicht ausgeführt::
 
 	>>> import fibo
 	>>>
 	
-Dies wird oft dazu verwendet, um entweder eine Benutzerschnittstelle bereitzustellen oder zu Testzwecken (wenn das Modul als Skript ausgeführt wird, wird eine Testsuite gestartet).
+Dies wird oft dazu verwendet, um entweder eine bequeme Benutzerschnittstelle zum
+Modul bereitzustellen oder zu Testzwecken (wenn das Modul als Skript ausgeführt wird,
+wird eine Testsuite gestartet).
 
 .. _tut-searchpath:
 
