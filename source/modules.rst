@@ -122,3 +122,41 @@ sind.
 	``reload(modulename)``, falls es nur ein Modul ist, welches man interaktiv
 	testen will.
 	
+.. _tut-modulesasscripts:
+	
+Module als Skript aufrufen
+--------------------------
+
+Wenn man ein Python Modul folgendermaßen aufruft::
+
+	python fibo.py <arguments>
+	
+wird der Code im Modul ausgeführt, genauso als hätte man das Modul importiert mit dem einzigen Unterschied, dass ``__name__`` jetzt ``"__main__"`` ist und nicht der Name des Moduls. Wenn man nun folgende Zeilen an das Ende des Moduls anfügt::
+
+	if __name__ == "__main__":
+	    import sys
+	    fib(int(sys.argv[1]))
+	
+so kann man die Datei sowohl als Skript als auch als importierbares Modul verwenden, da der Code, der die Kommandozeile parst, nur ausgeführt wird, wenn das Modul als "Haupt"-Datei ausgeführt wird::
+
+	$ python fibo.py 50
+	1 1 2 3 5 8 13 21 34
+	
+Wenn das Modul import wird, wird der Code nicht ausgeführt::
+
+	>>> import fibo
+	>>>
+	
+Dies wird oft dazu verwendet, um entweder ein praktisches User Interface bereitzustellen oder zu Testzwecken (wenn das Modul als Skript ausgeführt wird, wird eine Testsuite gestartet).
+
+.. _tut-searchpath:
+
+Der Modul Such Pfad
+-------------------
+
+.. index:: triple: module; search; path
+
+Wenn ein Modul mit dem Namen :mod:`spam` importiert wird, sucht der Interpreter im aktuellen Verzeichnis nach einer Datei mit dem Namen :file:`spam.py` und dann in der Verzeichnisliste, die in der Umgebungsvariable :envvar:`PYTHONPATH` gesetzt ist. Diese hat die gleiche Syntax wie die Shell Variable :envvar:`PATH`, welche auch eine Verzeichnisliste ist. Falls :envvar:`PYTHONPATH` nicht gesetzt ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem installationsabhängigen Pfad fortgesetzt; unter Unix ist das normalerweise: :file:`.:/usr/local/lib/python`.
+
+Eigentlich werden Module in der Reihenfolge gesucht, in der sie in der Variable sys.path aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich auch das Skript befindet beginnt, gefolgt von :envvar:`PYTHONPATH` und dem installationsabhängigen default-Pfad. Dies erlaubt Python Programmen, die Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu Beachten ist, dass das Skript nicht den gleichen Namen hat wie eines der Standardmodule, da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist. In diesem Fall versucht Python das Skript als Modul zu importieren, was normalerweise zu einem Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
+
