@@ -60,4 +60,42 @@ eingefügt. Um diese Funktionen anzusprechen, benutzt man den Modulnamen::
 	'fibo'
 	
 Wenn man vorhat eine Funktion öfter zu verwenden, kann man diese an einen
-lokalen Namen binden.
+lokalen Namen binden::
+
+	>>> fib = fibo.fib
+	>>> fib(500)
+	1 1 2 3 5 8 13 21 34 55 89 144 233 377
+
+Mehr zum Thema Module
+=====================
+
+Ein Modul kann sowohl ausführbare Statements als auch Definitionen einer Funktion enthalten. Diese Statements sind dazu gedacht, das Modul zu initialisieren, und werden nur ausgeführt, wenn das Modul zum ersten Mal importiert wird.
+
+Jedes Modul hat seine eigene, private Symbol-Tabelle, welche wiederum als globale Symbol-Tabelle von allen Funktion in diesem Modul verwendet wird. Daher kann der Verfasser eines Moduls ohne Bedenken globale Variablen in seinem Modul verwenden, da sie sich nicht mit den globalen Variablen des Benutzers überschneiden können. Andererseits kann man (wenn man weißt, was man tut) auch die globalen Variablen eines Moduls verändern, indem man die gleiche Schreibweise verwendet, um auch dessen Funktionen anzusprechen, ``modname.itemname``.
+
+Module können andere Module importieren. Es ist gebräuchlich, aber nicht zwingend, dass man alle :keyword:`import` Statements an den Anfangs eines Moduls setzt (oder in diesem Fall Skript). Die Namen der importierten Module werden in die Symbol-Tabelle des importierenden Moduls eingefügt.
+
+Es gibt eine Variante des :keyword:`import` Statements, welche bestimme Namen aus einem Modul direkt in die Symbol-Tabelle des importierenden Moduls einfügt. Beispielsweise::
+
+	>>> from fibo import fib, fib2
+	>>> fib(500)
+	1 1 2 3 5 8 13 21 34 55 89 144 233 377
+	
+Diese Variante fügt allerdings nicht den Modulnamen, aus dem die Namen importiert werden, in die lokale Symbol-Tabelle ein (in diesem Beispiel wird ``fibo`` als nicht eingefügt).
+
+Zusätzlich gibt es eine Variante um alle Namen in einem Modul zu importieren:
+
+	>>> from fibo import *
+	>>> fib(500)
+	1 1 2 3 5 8 13 21 34 55 89 144 233 37
+	
+Hiermit werden alle Namen außer diejenigen, die mit einem Unterstrich beginnen (_), importiert. In den meisten Fällen wird diese Variante nicht verwendet. Dadurch werden unbekannte Namen in den Interpreter importiert und damit kann es vorkommen, dass einige Namen überschrieben werden, die bereits definiert worden sind.
+
+.. note::
+
+	Aus Effizientsgründen wird jedes Modul nur einmal durch eine Interpreter
+	Session importiert. Deshalb muss man den Interpreter bei Änderung der Module
+	neustarten - oder man benutzt :func:`reload`, beispielsweise
+	``reload(modulename)``, falls es nur ein Modul ist, welches man interaktiv
+	testen will.
+	
