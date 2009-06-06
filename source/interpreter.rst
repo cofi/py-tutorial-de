@@ -11,7 +11,7 @@ Aufrufen des Interpreters
 
 Sofern der Python-Interpreter auf einem Rechner installiert ist, findet man ihn normalerweise
 unter :file:`/usr/local/bin/python/python3.1`. Wenn man :file:`/usr/local/bin`
-in den Suchpfad der Unix-Shell setzt, kann man den Interpreter durch aufrufen [#]_::
+in den Suchpfad der Unix-Shell setzt, kann man den Interpreter aufrufen durch [#]_::
     
     python3.1
 
@@ -134,23 +134,21 @@ Der Interpreter und seine Umgebung
 Fehlerbehandlung
 ----------------
 
-Tritt ein Fehler auf, so zeigt der Interpreter eine Fehlermeldung und einen
-Stacktrace an. Im interaktiven Modus kehrt er dann zurück zur primären
-Eingabeaufforderung; kam die Eingabe von einer Datei, beendet er mit einem von
-null verschiedenen Rückgabewert, nachdem er den Stacktrace ausgegeben hat.
-(Ausnahmen die von einer :keyword:`except`-Klausel in einer
-:keyword:`try`-Anweisung behandelt werden, sind keine Ausnahmen in diesem
-Kontext.) Manche Fehler sind bedingungslos tödlich und veranlassen ein Beenden
-mit einem von null verschiedenen Rückgabewert; dies trifft bei internen
-Inkonsistenzen und manchmal in Fällen von Speichermangel zu. Alle
-Fehlermeldungen werden in den Standardfehlerausgabestrom geschrieben;
-gewöhnliche Ausgabe von ausgeführten Befehlen wird in die Standardausgabe
-geschrieben.
+Tritt ein Fehler auf, dann zeigt der Interpreter eine Fehlermeldung mit einem Verlaufsbericht
+(Stacktrace) an. Im interaktiven Modus kehrt er dann zurück zur primären
+Eingabeaufforderung. Wenn die Eingabe von einer Datei kam, beendet er sich
+nach der Ausgabe des Fehlerberichts mit einem Rückgabewert ungleich Null.
+Ausnahmen (Exceptions), die in einem :keyword:`try-except`-Block verarbeitet werden, gelten
+in diesem Zusammenhang nicht als Ausnahmen.
+Manche Fehler führen zum sofortigen Abbruch des Interpreters mit einem Rückgabewert ungleich Null.
+Dies gilt etwa bei internen Inkonsistenzen oder Speichermangel. Alle
+Fehlermeldungen werden in den Standardfehlerausgabestrom geschrieben, 
+gewöhnliche Ausgabe von ausgeführten Befehlen wird in die Standardausgabe.
 
 Die Eingabe des Interruptzeichens (normalerweise :kbd:`Strg-C` oder ENTF) bei
 der primären oder sekundären Eingabeaufforderung bricht die Eingabe ab und kehrt
-zur primären Eingabeaufforderung zurück. [#]_ Ein Interrupt während ein Befehl
-ausgeführt wird, verursacht die :exc:`KeyboardInterrupt`-Ausnahme, die durch
+zur primären Eingabeaufforderung zurück. [#]_ Ein Interrupt während einer Befehlsausführung
+verursacht eine :exc:`KeyboardInterrupt`-Ausnahme, die durch
 eine :keyword:`try`-Anweisung behandelt werden kann.
 
 
@@ -159,19 +157,18 @@ eine :keyword:`try`-Anweisung behandelt werden kann.
 Ausführbare Pythonskripte
 -------------------------
 
-Auf BSD-ähnlichen Unixsystemen können Pythonskripte direkt ausführbar, ähnlich
-Shellskripten, indem man die Zeile ::
+Auf BSD-ähnlichen Unixsystemen kann ein Pythonskript - ähnlich einem Shellskript -
+direkt ausführbar gemacht werden, indem man folgende Zeile (shebang) an den Anfang des Skripts schreibt ::
 
     #!/usr/bin/env python3.1
 
-(unter der Annahme, dass der Interpreter im :envvar:`PATH` des Benutzers ist) an
-den Anfang des Skripts schreibt und der Datei Ausführungsrechte gibt. Die ``#!``
-müssen die ersten zwei Zeichen der Datei sein. Auf manchen Plattformen muss
+Dabei wird vorausgesetzt, dass sich der Pfad zum Interpreter im :envvar:`PATH` des Benutzers
+befindet. Die ``#!`` müssen die ersten zwei Zeichen der Datei sein. Auf manchen Plattformen muss
 diese erste Zeile mit einem unixoiden Zeilenende (``'\n'``) enden und nicht mit
-einem Windows (``'\r\n'``) Zeilenende. Bemerke, dass das Hashzeichen, oder
-Raute, ``'#'``, benutzt wird um einen Kommentar in Python zu beginnen.
+einem Windows-Zeilenende (``'\r\n'``). Hinweis: Die Raute ``'#'`` dient in Python dazu, einen Kommentar zu
+beginnen.
 
-Dem Skript können Ausführungsrechte mit Hilfe des Befehls :program:`chmod`
+Einem solchen Skript können dann Ausführungsrechte mit Hilfe des Befehls :program:`chmod`
 verliehen werden::
 
     $ chmod +x myscript.py
@@ -179,65 +176,63 @@ verliehen werden::
 Auf Windowssystemen gibt es keine Nennung von "Ausführungsrechten". Das
 Python-Installationsprogramm verknüpft automatisch ``.py``-Dateien mit
 ``python.exe``, sodass ein Doppelklick auf eine Pythondatei diese als Skript
-ausführen wird. Die Dateinamenserweiterung kann auch ``.pyw`` lauten, in diesem
+ausführt. Die Dateinamenserweiterung kann auch ``.pyw`` lauten, in diesem
 Fall wird das normalerweise auftauchende Konsolenfenster unterdrückt.
 
 Kodierung von Quellcode
 -----------------------
 
-Standardmäßig werden Pythonquellcode-Dateien als in UTF-8 kodiert behandelt. In
-dieser Kodierung können die Zeichen der meisten Sprachen der Welt gleichzeitig
-in Stringliteralen, Bezeichnern und Kommentaren benutzt werden --- jedoch
-benutzt die Standardbibliothek nur ASCII-Zeichen für Bezeichner, eine Konvention
+Standardmäßig werden Python-Quelltextdateien als in UTF-8 kodiert behandelt. In
+dieser Kodierung können die Zeichen der meisten Sprachen gleichzeitig
+in Stringliteralen, Bezeichnern und Kommentaren verwendet werden.
+Die Standardbibliothek verwendet allerdings nur ASCII-Zeichen für Bezeichner - eine Konvention,
 der jeder portable Code folgen sollte. Um alle diese Zeichen korrekt
-darzustellen, muss dein Editor erkennen, dass die Datei UTF-8 kodiert ist und
+darzustellen, muss ein Editor erkennen, dass die Datei UTF-8 kodiert ist und
 einen Font benutzen, der alle Zeichen der Datei unterstützt.
 
-Es ist auch möglich eine andere Kodierung für Quellcode-Dateien festzulegen. Um
-das zu tun, muss man noch eine andere spezielle Kommentarzeile gleich hinter der
-``#!`` Zeile einfügen, um die Kodierung der Datei festzulegen::
+Will man eine andere Kodierung als UTF-8 für eine Quelltextdatei verwenden, dann
+muss unmittelbar unterhalb der ``#!`` Zeile eine weitere, spezielle Kommentarzeile eingefügt werden,
+durch die die Kodierung festgelegt wird ::
 
     # -*- coding: Kodierung -*-
 
-Mit dieser Angabe wird alles in der Quellcode-Datei so behandelt, als hätte es
-die Kodierung *Kodierung* anstatt UTF-8. Die Liste der möglichen Kodierungen
-kann in der Python Library Reference, in der Sektion zu :mod:`codecs`, gefunden
-werden.
+Mit dieser Angabe wird alles in der Quelltextdatei so behandelt, als hätte es
+die Kodierung *Kodierung* an Stelle von UTF-8. Die Liste der möglichen Kodierungen
+findet man in der Python Library Reference, in der Sektion zu :mod:`codecs`.
 
-Wenn dein Lieblingseditor beispielsweise keine UTF-8 kodierten Dateien
+Wenn ein Editor beispielsweise keine UTF-8 kodierten Dateien
 unterstützt und auf die Benutzung einer anderen Kodierung besteht, sagen wir mal
-Windows-1252, kannst du folgendes schreiben::
+Windows-1252, kann man durch folgende Kodierungszeile 
 
     # -*- coding: cp-1252 -*-
 
-und immernoch alle Zeichen des Windows-1252 Zeichensatzes in den
-Quellcode-Dateien benutzen. Dieser spezielle Kodierungskommentar muss in der
-*ersten oder zweiten* Zeile der Datei stehen.
+immernoch alle Zeichen des Windows-1252 Zeichensatzes im Quelltext verwenden.
+Dieser spezielle Kodierungskommentar muss in der *ersten oder zweiten* Zeile der Datei stehen.
 
 .. _tut-startup:
 
 Die interaktive Startup-Datei
 -----------------------------------
 
-Wenn man Python interaktiv benutzt, ist es oft nützlich ein paar Standardbefehle
-auszuführen jedes Mal wenn der Interpreter gestartet wird. Das kannst du
-erreichen, indem du eine Umgebungsvariable namens :env:`PYTHONSTARTUP`
-erstellst, die auf eine Datei verweist, die deine Startupbefehle enthält.
-Dies ist der :file:`.profile`-Fähigkeit von Unixshells ähnlich.
+Wenn Python interaktiv genutzt wird, ist es gelegentlich hilfreich, bei jedem Start des
+Interpreters einige Standardbefehle automatisch auszuführen. Das lässt sich erreichen, indem
+man eine Umgebungsvariable namens :env:`PYTHONSTARTUP`
+erstellt, die auf eine Datei mit den Startup-Befehlen verweist. Dies ist vergleichbar mit der 
+:file:`.profile`-Datei von Unixshells.
 
-Diese Datei wird nur in interaktiven Sitzungen gelesen und weder wenn Python
-Befehle aus einem Skript ausführt, noch wenn :file:`/dev/tty` explizit als die
-Quelle von Befehlen angegeben wird (was sich ansonsten wie eine interaktive
-Sitzung verhält). Sie wird im selben Namensraum wie interaktive Befehle
-ausgeführt, so dass Objekte die sie definiert oder importiert ohne
-Qualifizierung in der interaktiven Sitzung genutzt werden können. Du kannst auch
-die Eingabeaufforderungen ``sys.ps1`` und ``sys.ps2`` in dieser Datei ändern.
+Diese Datei wird nur in interaktiven Sitzungen gelesen.
+Wenn der Interpreter ein Skript ausführt oder :file:`/dev/tty` explizit als
+Quelle angegeben wird - was ansonsten einer interaktiven Sitzung entspricht -, wird
+die Startup-Datei nicht berücksichtigt.
+Ausgeführt wird sie im selben Namensraum wie interaktive Befehle, so dass Objekte,
+die in der Startup-Datei definiert oder importiert werden, ohne Qualifizierung
+in der interaktiven Sitzung genutzt werden können.
+Auch die Eingabeaufforderungen ``sys.ps1`` und ``sys.ps2`` lassen sich in dieser Datei festlegen.
 
-Falls du noch eine weitere Startup-Datei aus dem aktuellen Verzeichnis
-lesen willst, kannst du dies in der globalen Datei mit Code wie ``if
-os.path.isfile('.pythonrc.py'): exec(open('.pythonrc.py').read())``
-programmieren. Falls du die Startup-Datei in einem Skript benutzen willst,
-musst du das explizit in dem Skript tun::
+Sollen noch weitere Startup-Dateien aus dem aktuellen Verzeichnis gelesen werden,
+dann lässt sich dies durch Code wie
+``if os.path.isfile('.pythonrc.py'): exec(open('.pythonrc.py').read())`` in der globalen Datei erreichen.
+Soll die Startup-Datei in einem Skript verwendet werden, muss das explizit in diesem Skript geschehen::
 
     import os
     filename = os.environ.get('PYTHONSTARTUP')
@@ -246,8 +241,6 @@ musst du das explizit in dem Skript tun::
 
 .. rubric:: Fußnoten
 
-.. [#] Unter Unix wird der 3.1 Interpreter nicht standardmäßig als die
-   ausführbare Datei namens ``python`` installiert, damit es nicht mit einer
-   gleichzeitig installierten Python 2.x Version kollidiert
+.. [#] Unter Unix wird der Python 3.1 Interpreter nicht standardmäßig als ausführbare Datei namens ``python`` installiert, damit es nicht zu einer Kollision mit einer gleichzeitig installierten Python 2.x Version kommt.
 
 .. [#] Ein Problem mit dem GNU readline Paket kann dies verhindern.
