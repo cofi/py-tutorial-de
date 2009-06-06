@@ -107,3 +107,30 @@ lesen und korrigieren sind::
 
    >>> 'tea for too'.replace('too', 'two')
    'tea for two'
+
+
+.. _tut-mathematics:
+
+Mathematik
+==========
+
+Mit dem Modul :mod:`math` kann man tieferliegende Funktionen der C-Bibliothek
+für Fließkommaberechnungen verwenden::
+
+   >>> import math
+   >>> math.cos(math.pi / 4.0)
+   0.70710678118654757
+   >>> math.log(1024, 2)
+   10.0
+
+Mit dem Modul :mod:`random` lassen sich zufällige Auswahlen treffen::
+
+   >>> import random
+   >>> random.choice(['apple', 'pear', 'banana'])
+   'apple'
+   >>> random.sample(xrange(100), 10)   # sampling without replacement
+   [30, 83, 16, 4, 8, 81, 41, 50, 18, 33]
+   >>> random.random()    # random float
+   0.17970987693706186
+   >>> random.randrange(6)    # random integer chosen from range(6)
+   4
