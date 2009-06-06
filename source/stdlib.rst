@@ -281,3 +281,30 @@ werden::
            self.assertRaises(TypeError, average, 20, 30, 70)
 
    unittest.main() # Calling from the command line invokes all tests
+
+
+.. _tut-batteries-included:
+
+Batteries Includeed
+===================
+
+Bei Python gilt der Slogan "Batteries Included". Am besten lässt sich das anhand seiner größeren Pakete aufzeigen. Beispiele:
+
+* Die Module :mod:`xmlrpclib` and :mod:`SimpleXMLRPCServer` erleichtern RPC
+  enorm. Trotz ihrer Namen ist übrigens keine Kenntnis von XML notwendig
+
+* Das Modul :mod:`email` ist eine Bibliothek zur Arbeit mit E-Mails, auch mit
+  MIME und anderen RFC 2822-basierten Nachrichten. Anders als :mod:`smtplib`
+  und :mod:`poplib`, mit denen Nachrichten versandt und empfangen werden
+  können, ist :mod:`email` dafür zuständig, komplizierte Nachrichten
+  (einschließlich Anhänge) zu konstruieren oder zu analysieren. Weiterhin
+  erleichtert es den Umgang mit im Internet verwendeten Encodings und den
+  Headern.
+
+* :mod:`xml.dom` und :mod:`xml.sax` dienen dem Umgang mit XML. Mit :mod:`csv`
+  lässt sich in ein allgemein gebräuchliches Datenbankformat schreiben und
+  daraus lesen. Diese Module erleichtern den Austausch von Daten zwischen
+  Python und anderen Werkzeugen ernorm. 
+
+* Zur Internationalisierung von Anwendungen stehen unter anderem die Module
+  :mod:`gettext`, :mod'`locale` und :mod:`codecs` zur Verfügung.
