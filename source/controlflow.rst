@@ -411,9 +411,89 @@ gemeinsam benutzt wird, kann man die Funktion folgendermaßen umschreiben::
 Schlüsselwortargumente
 ----------------------
 
-.. rubric:: Fußnoten
+Funktionen können auch mit Schlüsselwortargumenten in der Form ``Schlüsselwort =
+Wert`` aufgeruden werden. Zum Beispiel könnte folgende Funktion::
+
+    def parrot(voltage, state='steif',
+        action='fliegen', type='norwegische Blauling'):
+        print("-- Der Vogel würde selbst dann nicht", action, end=' ')
+        print("selbst wenn Sie ihm ", voltage, "Volt durch den Schnabel jagen täten")
+        print("-- Ganz erstaunlicher Vogel, der", type, "! Wunderhübsche Federn!")
+        print("-- Er is völlig", state, "!")
+
+in allen folgenden Variationen aufgerufen werden::
+
+    parrot(4000)
+    parrot(action = 'VOOOOOM', voltage = 1000000)
+    parrot('Viertausend', state = 'an den Gänseblümchen riechen')
+    parrot('eine Million', 'keine Spur leben', 'springen')
+
+die folgenden Aufrufe wären allerdings alle ungültig::
+
+    parrot()                     # das benötigte Argument fehlt
+    parrot(voltage=5.0, 'tot')   # auf ein Schlüsselwortargument folgt ein normales
+    parrot(110, voltage=220)     # doppelter Wert für ein Argument
+    parrot(actor='John Cleese')  # unbekanntes Schlüsselwort
+
+Üblicherweise kommen zuerst positionsabhängige Argumente und danach
+Schlüsselwortargumente - von beiden ist eine beliebige Anzahl zulässig. Die
+Schlüsselworte müssen jedoch in der Funktionsdefinition enthalten sein, das
+heisst der Funktion bekannt sein. Es ist unwichtig, ob sie einen Standardwert
+haben oder nicht. Kein Parameter darf mehr als einen Wert bekommen ---
+positionsabhängige Argumente können nicht als Schlüsselworte im selben Aufruf
+benutzt werden. Hier ein Beispiel, das wegen dieser Einschränkung scheitert::
+
+    >>> def function(a):
+    ...     pass
+    ...
+    >>> function(0, a=0)
+    Traceback (most recent call last):
+     File "<stdin>", line 1, in ?
+    TypeError: function() got multiple values for keyword argument 'a'
+
+Ist ein Parameter der Form ``**name`` in der Definition enthalten, bekommt
+dieser ein Dictionary (siehe :ref:`typesmapping`) das alle
+Schlüsselwortargumente enthält, bis auf die, die in der Definition vorkommen.
+Dies kann mit einem Parameter der Form ``*name``, der im nächsten Unterabschnitt
+beschrieben wird, kombiniert werden. Dieser bekommt ein Tupel, das alle
+positionsabhängigen Argumente enthält, die über die Anzahl der definierten
+hinausgehe. (``*name`` muss aber vor ``**name`` kommen.) Wenn wir zum Beispiel
+eine Funktion wie diese definieren::
+
+    def cheeseshop(kind, *arguments, **keywords):
+        print("-- Haben sie", kind, "?")
+        print("-- Tut mir leid,", kind, "ist leider gerade aus.")
+        for arg in arguments: print(arg)
+        print("-" * 40)
+        keys = sorted(keywords.keys())
+        for kw in keys: print(kw, ":", keywords[kw])
+
+könnte sie so aufgerufen werden::
+
+    cheeseshop("Limburger", "Der ist sehr flüssig, mein Herr.",
+              "Der ist wirklich sehr, SEHR flüssig, mein Herr.",
+              shopkeeper="Michael Palin",
+              client="John Cleese",
+              sketch="Cheese Shop Sketch")
+
+und natürlich würde sie folgendes ausgeben::
     
+    -- Haben sie Limburger ?
+    -- Tut mir leid, Limburger ist leider gerade aus.
+    Der ist sehr flüssig, mein Herr.
+    Der ist wirklich sehr, SEHR flüssig, mein Herr.
+    ----------------------------------------
+    client : John Cleese
+    shopkeeper : Michael Palin
+    sketch : Cheese Shop Sketch
+
+Man beachte, dass die Liste der Schlüsselwortargumente erzeugt wird, indem das
+Ergebnis der Methode :meth:`keys` sortiert wird, bevor dessen Inhalt ausgegeben
+wird. Tut man das nicht, ist die Reihenfolge der Ausgabe undefiniert.
+
+.. rubric:: Fußnoten
+
 .. [#] Eigentlich wäre *call by object reference* eine bessere Beschreibung,
-   denn wird ein veränderbares Objekt übergeben, sieht der Aufrufende jegliche
-   Veränderungen, die der Aufgerufene am Objekt vornimmt (beispielsweise
-   Elemente in eine Liste einfügt)
+denn wird ein veränderbares Objekt übergeben, sieht der Aufrufende jegliche
+Veränderungen, die der Aufgerufene am Objekt vornimmt (beispielsweise
+Elemente in eine Liste einfügt)
