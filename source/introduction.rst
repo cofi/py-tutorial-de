@@ -4,19 +4,21 @@
 Eine informelle Einführung in Python
 ************************************
 
-Zum Ausprobieren der folgenden Beispiele muss alles eingetippt werden, was auf die
-Eingabeaufforderung (``>>>`` oder ``...``) folgt.
-Zeilen die nicht mit einer solchen Eingabeaufforderung beginnen, sind Ausgaben des
-Interpreters. Steht die sekundäre Eingabeaufforderung ``...`` allein in einer Zeile,
-dann muss eine Leerzeile eingegeben werden. Dadurch werden mehrzeilige Befehle abgeschlossen.
+Zum Ausprobieren der folgenden Beispiele muss alles eingetippt werden, was auf
+die Eingabeaufforderung (``>>>`` oder ``...``) folgt.  Zeilen die nicht mit
+einer solchen Eingabeaufforderung beginnen, sind Ausgaben des Interpreters.
+Steht die sekundäre Eingabeaufforderung ``...`` allein in einer Zeile, dann muss
+eine Leerzeile eingegeben werden. Dadurch werden mehrzeilige Befehle
+abgeschlossen.
 
-Viele Beispiele in diesem Tutorial enthalten Kommentare - auch solche, die im interaktiven Modus
-eingegeben werden. Kommentare beginnen in Python mit einer
-Raute ``#`` und gelten bis zum Ende der physikalischen Zeile.
-Ein Kommentar kann am Anfang einer Zeile beginnen oder im weiteren Verlauf einer Zeile, allerdings
-nicht innerhalb eines Stringliterals. Eine Raute innerhalb eines Stringliterals ist einfach nur eine Raute.
-Da Kommentare dazu dienen, Code zu erklären und von Python nicht interpretiert werden, können sie
-beim Abtippen weggelassen werden.
+Viele Beispiele in diesem Tutorial enthalten Kommentare - auch solche, die im
+interaktiven Modus eingegeben werden. Kommentare beginnen in Python mit einer
+Raute ``#`` und gelten bis zum Ende der physikalischen Zeile.  Ein Kommentar
+kann am Anfang einer Zeile beginnen oder im weiteren Verlauf einer Zeile,
+allerdings nicht innerhalb eines Stringliterals. Eine Raute innerhalb eines
+Stringliterals ist einfach nur eine Raute.  Da Kommentare dazu dienen, Code zu
+erklären und von Python nicht interpretiert werden, können sie beim Abtippen
+weggelassen werden.
 
 Ein paar Beispiele::
 
@@ -31,7 +33,7 @@ Ein paar Beispiele::
 Benutzung von Python als Taschenrechner
 =======================================
 
-Wir wollen ein paar einfache Pythonbefehle ausprobieren. Starte den Interpreter
+Wir wollen ein paar einfache Pythonbefehle ausprobieren: Starte den Interpreter
 und warte auf die primäre Eingabeaufforderung, ``>>>``. 
 
 
@@ -41,10 +43,10 @@ Zahlen
 -------
 
 Der Interpreter kann wie ein Taschenrechner eingesetzt werden: Man kann einen
-Ausdruck eingeben und der Interpreter berechnet das Ergebnis. Die Syntax für solche Ausdrücke ist
-einfach: Die Operatoren ``+``,  ``-``, ``*`` und ``/`` wirken genauso wie in den
-meisten anderen Sprachen (beispielsweise Pascal oder C); Klammern können zur
-Gruppierung benutzt werden. Zum Beispiel::
+Ausdruck eingeben und der Interpreter berechnet das Ergebnis. Die Syntax für
+solche Ausdrücke ist einfach: Die Operatoren ``+``,  ``-``, ``*`` und ``/``
+wirken genauso wie in den meisten anderen Sprachen (beispielsweise Pascal oder
+C); Klammern können zur Gruppierung benutzt werden. Zum Beispiel::
 
     >>> 2 + 2
     4
@@ -100,8 +102,8 @@ Ein Wert kann mehreren Variablen gleichzeitig zugewiesen werden::
     >>> z
     0
 
-Variablen müssen "definiert" sein, bevor sie benutzt werden können, sonst tritt ein Fehler auf.
-Diese Definition geschieht durch eine Zuweisung::
+Variablen müssen "definiert" sein, bevor sie benutzt werden können, sonst tritt
+ein Fehler auf.  Diese Definition geschieht durch eine Zuweisung::
 
     >>> # Versuche eine undefinierte Variable abzurufen
     ... n
@@ -109,19 +111,19 @@ Diese Definition geschieht durch eine Zuweisung::
      File "<stdin>", line 1, in <module>
     NameError: name 'n' is not defined
 
-There is full support for floating point; operators with mixed type operands convert the integer operand to floating point:
-
-Python bietet volle Unterstützung für Fließkommazahlen. Werden Operanden verschiedener Zahlentypen
-durch einen Operator verknüpft, dann werden ganzzahlige Operanden in Fließkommazahlen umgewandelt::
+Python bietet volle Unterstützung für Fließkommazahlen. Werden Operanden
+verschiedener Zahlentypen durch einen Operator verknüpft, dann werden
+ganzzahlige Operanden in Fließkommazahlen umgewandelt::
 
     >>> 3 * 3.75 / 1.5
     7.5
     >>> 7.0 / 2
     3.5
 
-Auch komplexe Zahlen werden unterstützt. Der  Imaginärteil wird mit dem Suffix ``j`` oder ``J`` angegeben.
-Komplexe Zahlen mit einem Realanteil, der von Null verschieden ist, werden als ``(real+imagj)`` geschrieben
-oder können mit der Funktion ``complex(real, imag)`` erzeugt werden. ::
+Auch komplexe Zahlen werden unterstützt. Der  Imaginärteil wird mit dem Suffix
+``j`` oder ``J`` angegeben.  Komplexe Zahlen mit einem Realanteil, der von Null
+verschieden ist, werden als ``(real+imagj)`` geschrieben oder können mit der
+Funktion ``complex(real, imag)`` erzeugt werden. ::
 
     >>> 1j * 1J
     (-1+0j)
@@ -134,8 +136,8 @@ oder können mit der Funktion ``complex(real, imag)`` erzeugt werden. ::
     >>> (1 + 2j) / (1 + 1j)
     (1.5+0.5j)
 
-Komplexe Zahlen werden immer durch zwei Fließkommazahlen repräsentiert, dem Realteil
-und dem Imaginärteil. Um diese Anteile einer komplexen Zahl *z*
+Komplexe Zahlen werden immer durch zwei Fließkommazahlen repräsentiert, dem
+Realteil und dem Imaginärteil. Um diese Anteile einer komplexen Zahl *z*
 auszuwählen, stehen ``z.real`` und ``z.imag`` zur Verfügung. ::
 
     >>> a = 1.5 + 0.5j
@@ -144,10 +146,10 @@ auszuwählen, stehen ``z.real`` und ``z.imag`` zur Verfügung. ::
     >>> a.imag
     0.5
 
-Die Konvertierungsfunktionen in Fließkommazahlen und Ganzzahlen
-(:func:`float`, :func:`int`) stehen für komplexe Zahlen nicht zur Verfügung.
-Man kann ``abs(z)`` verwenden, um den Betrag einer komplexen Zahl (als Fließkommazahl)
-zu berechnen, oder ``z.real``, um den Realteil zu erhalten::
+Die Konvertierungsfunktionen in Fließkommazahlen und Ganzzahlen (:func:`float`,
+:func:`int`) stehen für komplexe Zahlen nicht zur Verfügung.  Man kann
+``abs(z)`` verwenden, um den Betrag einer komplexen Zahl (als Fließkommazahl) zu
+berechnen, oder ``z.real``, um den Realteil zu erhalten::
 
     >>> a = 3.0 + 4.0j
     >>> float(a)
@@ -162,8 +164,9 @@ zu berechnen, oder ``z.real``, um den Realteil zu erhalten::
     5.0
     >>>
 
-Im interaktiven Modus wird der zuletzt ausgegebene Ausdruck der Variablen ``_`` zugewiesen.
-Die ist besonders hilfreich, wenn man den Python-Interpreter als Taschenrechner einsetzt ::
+Im interaktiven Modus wird der zuletzt ausgegebene Ausdruck der Variablen ``_``
+zugewiesen.  Die ist besonders hilfreich, wenn man den Python-Interpreter als
+Taschenrechner einsetzt ::
 
     >>> tax = 12.5 / 100
     >>> price = 100.50
@@ -175,18 +178,18 @@ Die ist besonders hilfreich, wenn man den Python-Interpreter als Taschenrechner 
     113.06
     >>>
 
-Die Variable ``_`` sollte man so behandeln, als wäre sie schreibgeschützt und ihr
-nicht explizit einen Wert zuweisen. Dadurch würde eine unabhängige lokale
-Variable mit demselben Namen erzeugt, die die eingebaute Variable ``_`` mit ihrem
-speziellen Verhalten verdeckt.
+Die Variable ``_`` sollte man so behandeln, als wäre sie schreibgeschützt und
+ihr nicht explizit einen Wert zuweisen. Dadurch würde eine unabhängige lokale
+Variable mit demselben Namen erzeugt, die die eingebaute Variable ``_`` mit
+ihrem speziellen Verhalten verdeckt.
 
 .. _tut-strings:
 
 Strings
 -------
 
-Außer mit Zahlen kann Python auch mit Zeichenketten umgehen, die auf unterschiedliche
-Weise darstellbar sind. Sie können in einfache oder doppelte
+Außer mit Zahlen kann Python auch mit Zeichenketten umgehen, die auf
+unterschiedliche Weise darstellbar sind. Sie können in einfache oder doppelte
 Anführungszeichen eingeschlossen werden::
 
     >>> 'spam eggs'
@@ -195,12 +198,12 @@ Anführungszeichen eingeschlossen werden::
     "doesn't"
     >>> "doesn't"
     "doesn't"
-    >>> '"Yes," he said.'
-    '"Yes," he said.'
-    >>> "\"Yes,\" he said."
-    '"Yes," he said.'
-    >>> '"Isn\'t," she said.'
-    '"Isn\'t," she said.
+    >>> '"Ja,", hat er gesagt.'
+    '"Ja,", hat er gesagt.'
+    >>> "\"Ja,\", hat er gesagt."
+    '"Ja,", hat er gesagt.'
+    >>> '"Isses nich\',", sagte sie.'
+    '"Isses nich\',", sagte sue.
 
 Der Interpreter gibt das Ergebnis von String-Operationen auf die gleiche Weise
 aus, wie sie eingegeben werden: Innerhalb von Anführungszeichen und mit
@@ -211,39 +214,40 @@ keine doppelten enthält, sonst wird er von einfachen Anführungszeichen
 eingeschlossen. Auch hier produziert die Funktion :func:`print` eine
 lesbarere Ausgabe.
 
-Es gibt mehrere Möglichkeiten, mehrzeilige Stringliterale zu erzeugen, zum Beispiel
-durch Fortsetzungszeilen, die mit einem Backslash am Ende der
-physikalischen Zeile anzeigen, dass die nächste Zeile die logische Fortsetzung der aktuellen
-ist::
+Es gibt mehrere Möglichkeiten, mehrzeilige Stringliterale zu erzeugen, zum
+Beispiel durch Fortsetzungszeilen, die mit einem Backslash am Ende der
+physikalischen Zeile anzeigen, dass die nächste Zeile die logische Fortsetzung
+der aktuellen ist::
 
-    hello = "This is a rather long string containing\n\
-    several lines of text just as you would do in C.\n\
-        Note that whitespace at the beginning of the line is\
-    significant."
+    hello = "Dies ist eine ziemlich lange Zeichenkette,\n\
+    die mehrere Zeilen Text enthält und wie man sie auch in C schreiben würde.\n\
+        Achtung: Leerzeichen am Anfang haben eine Bedeutung\
+    für die Darstellung."
 
     print(hello)
 
-Zu beachten ist, dass Zeilenumbrüche immer noch in den String mit Hilfe von ``\n``
-eingebettet werden müssen. Der auf den Backslash folgende Zeilenumbruch gehört allerdings
-nicht mit zur Zeichenkette. Die vom Beispiel erzeugte Ausgabe sieht so aus ::
+Zu beachten ist, dass Zeilenumbrüche immer noch in den String mit Hilfe von
+``\n`` eingebettet werden müssen. Der auf den Backslash folgende Zeilenumbruch
+gehört allerdings nicht mit zur Zeichenkette. Die vom Beispiel erzeugte Ausgabe
+sieht so aus ::
 
-    This is a rather long string containing
-    several lines of text just as you would do in C.
-        Note that whitespace at the beginning of the line is significant.
+    Dies ist eine ziemlich lange Zeichenkette,
+    die mehrere Zeilen Text enthält und wie man sie auch in C schreiben würde.
+        Achtung: Leerzeichen am Anfang haben eine Bedeutung für die Darstellung.
 
-Wenn wir den Stringliteral zu einem "raw"-String machen, wird ``\n`` nicht in einen Zeilenumbruch
-umgewandelt; auch der Backslash am Ende und das Zeilenumbruch-Zeichen im Quellcode sind Teil
-der Zeichenkette. Das Beispiel::
+Wenn wir den Stringliteral zu einem "raw"-String machen, wird ``\n`` nicht in
+einen Zeilenumbruch umgewandelt; auch der Backslash am Ende und das
+Zeilenumbruch-Zeichen im Quellcode sind Teil der Zeichenkette. Das Beispiel::
 
-    hello = r"This is a rather long string containing\n\
-    several lines of text much as you would do in C."
+    hello = r"Dies ist eine ziemlich lange Zeichenkette,\n\
+    die mehrere Zeilen Text enthält und wie man sie auch in C schreiben würde."
 
     print(hello)
 
 führt zu folgender Ausgabe::
 
-   This is a rather long string containing\n\
-   several lines of text much as you would do in C.
+    Dies ist eine ziemlich lange Zeichenkette,\n\
+    die mehrere Zeilen Text enthält und wie man sie auch in C schreiben würde.
 
 Strings können mit dem ``+``-Operator verkettet und mit
 ``*`` wiederholt werden::
@@ -256,22 +260,25 @@ Strings können mit dem ``+``-Operator verkettet und mit
 
 Zwei Stringliterale nebeneinander werden automatisch miteinander verknüpft. Die
 erste Zeile im obigen Beispiel hätte also auch ``word = 'Help' 'A'`` lauten
-können. Das funktioniert allerdings nur mit zwei Literalen, nicht mit beliebigen String-Ausdrücken::
-    >>> 'str' 'ing'                   #  <-  Das ist ok
+können. Das funktioniert allerdings nur mit zwei Literalen, nicht mit beliebigen
+String-Ausdrücken::
+
+    >>> 'str' 'ing'             #Das ist ok
     'string'
-    >>> 'str'.strip() + 'ing'   #  <-  Das ist ok
+    >>> 'str'.strip() + 'ing'   #Das ist ok
     'string'
-    >>> 'str'.strip() 'ing'     #  <-  Das ist ungültig
+    >>> 'str'.strip() 'ing'     #Das ist ungültig
      File "<stdin>", line 1, in ?
        'str'.strip() 'ing'
                          ^
     SyntaxError: invalid syntax
 
-Zeichenketten  können indiziert werden, wobei das erste Zeichen eines Strings wie in C den
-Index 0 hat ("nullbasierte Zählung"). Es gibt keinen speziellen Zeichentyp (wie ``char`` in C) --- ein Zeichen
-ist einfach ein String der Länge eins. Wie in der Programmiersprache Icon können
-Teile einer Zeichenkette mittels Ausschnittschreibweise (*Slice-Notation*) festgelegt werden. Angegeben
-werden zwei Indizes getrennt durch einen Doppelpunkt (``:``). ::
+Zeichenketten  können indiziert werden, wobei das erste Zeichen eines Strings
+wie in C den Index 0 hat ("nullbasierte Zählung"). Es gibt keinen speziellen
+Zeichentyp (wie ``char`` in C) --- ein Zeichen ist einfach ein String der Länge
+eins. Wie in der Programmiersprache Icon können Teile einer Zeichenkette mittels
+Ausschnittschreibweise (*Slice-Notation*) festgelegt werden. Angegeben werden
+zwei Indizes getrennt durch einen Doppelpunkt (``:``). ::
 
     >>> word[4]
     'A'
@@ -280,27 +287,29 @@ werden zwei Indizes getrennt durch einen Doppelpunkt (``:``). ::
     >>> word[2:4]
     'lp'
 
-Slice-Indizes haben nützliche Standardwerte: Wird der erste Index ausgelassen, beginnt der Ausschnitt
-mit dem ersten Zeichen der Zeichenkette (Index 0), wird der zweite Index ausgelassen, reicht der
-Ausschnitt bis zum Ende der Zeichenkette ::
+Slice-Indizes haben nützliche Standardwerte: Wird der erste Index ausgelassen,
+beginnt der Ausschnitt mit dem ersten Zeichen der Zeichenkette (Index 0), wird
+der zweite Index ausgelassen, reicht der Ausschnitt bis zum Ende der
+Zeichenkette ::
 
     >>> word[:2]    # Die ersten beiden Zeichen
     'He'
     >>> word[2:]    # Alles außer den ersten beiden Zeichen
     'lpA'
 
-Im Unterschied zu einem C-String kann ein Python-String nicht verändert werden --- Zeichenketten
-sind *unveränderbar* (*immutable*). Der Versuch, einer indizierten Position eines Strings
-etwas zuzuweisen, führt zu einer Fehlermeldung ::
+Im Unterschied zu einem C-String kann ein Python-String nicht verändert werden
+--- Zeichenketten sind *unveränderbar* (*immutable*). Der Versuch, einer
+indizierten Position eines Strings etwas zuzuweisen, führt zu einer
+Fehlermeldung ::
  
     >>> word[0] = 'x'
-   Traceback (most recent call last):
+    Traceback (most recent call last):
      File "<stdin>", line 1, in ?
-   TypeError: 'str' object does not support item assignment
-   >>> word[:1] = 'Splat'
-   Traceback (most recent call last):
+    TypeError: 'str' object does not support item assignment
+    >>> word[:1] = 'Splat'
+    Traceback (most recent call last):
      File "<stdin>", line 1, in ?
-   TypeError: 'str' object does not support slice assignment
+    TypeError: 'str' object does not support slice assignment
 
 Stattdessen erzeugt man einfach einen neuen String mit dem kombinierten Inhalt ::
 
@@ -317,9 +326,10 @@ Noch ein Beispiel: ``s[:i] + s[i:]`` entspricht ``s``. ::
     'HelpA'
 
 Werden bei der Ausschnittschreibweise Indizes angegeben, die die tatsächliche
-Länge einer Zeichenkette überschreiten, führt dies nicht zu einer Fehlermeldung: 
-Ein zu großer zweiter Index wird durch die Länge des Strings ersetzt und Ausschnitte, die
-keine Zeichen enthalten, liefern eine leere Zeichenkette zurück. ::
+Länge einer Zeichenkette überschreiten, führt dies nicht zu einer Fehlermeldung:
+Ein zu großer zweiter Index wird durch die Länge des Strings ersetzt und
+Ausschnitte, die keine Zeichen enthalten, liefern eine leere Zeichenkette
+zurück. ::
 
     >>> word[1:100]
     'elpA'
@@ -328,8 +338,8 @@ keine Zeichen enthalten, liefern eine leere Zeichenkette zurück. ::
     >>> word[2:1]
     ''
 
-Indizes können auch negative Zahlen sein --- dann wird von rechts nach links gezählt. Zum
-Beispiel::
+Indizes können auch negative Zahlen sein --- dann wird von rechts nach links
+gezählt. Zum Beispiel::
 
     >>> word[-1]     # Das letzte Zeichen
     'A'
@@ -341,12 +351,14 @@ Beispiel::
     'Hel'
 
 Achtung: -0 ist dasselbe wie 0. Das heißt, die Zählung beginnt ganz normal von links! ::
+
     >>> word[-0]     # (da -0 gleich 0)
     'H'
 
-Das automatische Kürzen bei Verwendung von Indizes, die außerhalb der tatsächlichen Länge der
-Zeichenkette liegen, funktioniert allerdings nur bei der Ausschnittschreibweise, nicht beim Zugriff auf ein
-einzelnes Zeichen mittels Indexschreibweise::
+Das automatische Kürzen bei Verwendung von Indizes, die außerhalb der
+tatsächlichen Länge der Zeichenkette liegen, funktioniert allerdings nur bei der
+Ausschnittschreibweise, nicht beim Zugriff auf ein einzelnes Zeichen mittels
+Indexschreibweise::
 
     >>> word[-100:]
     'HelpA'
@@ -356,7 +368,9 @@ einzelnes Zeichen mittels Indexschreibweise::
     IndexError: string index out of range
 
 Man kann sich die Indizes beim Slicing so vorstellt, als würden sie *zwischen*
-den Zeichen liegen --- wobei die linke Ecke des ersten Zeichens den Index 0 hat und die rechte Ecke des letzten Zeichens  eines *n* Zeichen langen Strings den Index *n*. Ein Beispiel ::
+den Zeichen liegen --- wobei die linke Ecke des ersten Zeichens den Index 0 hat
+und die rechte Ecke des letzten Zeichens  eines *n* Zeichen langen Strings den
+Index *n*. Ein Beispiel ::
 
     +---+---+---+---+---+
     | H | e | l | p | A |
@@ -364,14 +378,15 @@ den Zeichen liegen --- wobei die linke Ecke des ersten Zeichens den Index 0 hat 
     0   1   2   3   4   5
    -5  -4  -3  -2  -1
 
-Die erste Zahlenreihe gibt die Position der Indizes 0...5 im String an, 
-die zweite Reihe die entsprechenden negativen Indizes. Der Ausschnitt von *i* bis *j*
-besteht aus allen Zeichen zwischen den Positionen, die durch *i* beziehungsweise *j*
-gekennzeichnet werden.
+Die erste Zahlenreihe gibt die Position der Indizes 0...5 im String an, die
+zweite Reihe die entsprechenden negativen Indizes. Der Ausschnitt von *i* bis
+*j* besteht aus allen Zeichen zwischen den Positionen, die durch *i*
+beziehungsweise *j* gekennzeichnet werden.
 
-Bei Verwendung von nicht-negativen Indizes entspricht die Länge des dadurch festgelegten
-Ausschnitts der Differenz der beiden Indizes, sofern beide innerhalb der tatsächlichen Grenzen
-der Zeichenkette liegen. Die Länge von ``word[1:3]`` ist zum Beispiel 2.
+Bei Verwendung von nicht-negativen Indizes entspricht die Länge des dadurch
+festgelegten Ausschnitts der Differenz der beiden Indizes, sofern beide
+innerhalb der tatsächlichen Grenzen der Zeichenkette liegen. Die Länge von
+``word[1:3]`` ist zum Beispiel 2.
 
 Die eingebaute Funktion :func:`len` gibt die Länge eines Strings zurück::
 
@@ -413,12 +428,13 @@ Schriftstück bereitstellt, das in modernen und antiken Texten benutzt wird.
 Davor waren nur 256 Ordnungszahlen für Schriftzeichen möglich. Texte waren
 typischerweise an eine Codepage gebunden, die die Ordnungszahlen den
 Schriftzeichen zugeordnet hat. Das führte zu großer Verwirrung, vor allem im
-Hinblick auf Internationalisierung von Software (üblicherweise ``i18n`` --- ``'i'`` + 18
-Zeichen + ``'n'``) . Unicode löst diese Probleme, indem es eine
+Hinblick auf Internationalisierung von Software (üblicherweise ``i18n`` ---
+``'i'`` + 18 Zeichen + ``'n'``) . Unicode löst diese Probleme, indem es eine
 Codepage für alle Schriftstücke definiert.
 
 Will man spezielle Zeichen in einen String einbinden, erreicht man das durch die
-Verwendung von Pythons *Unicode-Escape* Kodierung. Das folgende Beispiel zeigt wie::
+Verwendung von Pythons *Unicode-Escape* Kodierung. Das folgende Beispiel zeigt
+wie::
 
     >>> 'Hello\u0020World !'
     'Hello World !'
@@ -429,16 +445,17 @@ soll.
 
 Andere Zeichen werden interpretiert, indem ihre jeweiligen Ordnungszahlen direkt
 als Unicode-Ordnungszahlen benutzt werden. Hat man Stringliterale in der
-normalen Latin-1 Kodierung, die in vielen westlichen Ländern benutzt wird,
-dann entsprechen die ersten 256 Zeichen von Unicode denselben Zeichen der Latin-1 Kodierung.
+normalen Latin-1 Kodierung, die in vielen westlichen Ländern benutzt wird, dann
+entsprechen die ersten 256 Zeichen von Unicode denselben Zeichen der Latin-1
+Kodierung.
 
 Neben diesen Standardkodierungen stellt Python eine ganze Reihe anderer
 Möglichkeiten bereit, Unicodestrings zu erstellen, sofern man die verwendete
 Kodierung kennt.
 
-Zur Konvertierung von Strings in Bytefolgen stellen Stringobjekte die
-Methode :func:`encode` bereit, die den Namen der Kodierung als Argument entgegennimmt, und
-und zwar möglichst in Kleinbuchstaben. ::
+Zur Konvertierung von Strings in Bytefolgen stellen Stringobjekte die Methode
+:func:`encode` bereit, die den Namen der Kodierung als Argument entgegennimmt,
+und und zwar möglichst in Kleinbuchstaben. ::
 
     >>> "Ã„pfel".encode('utf-8')
     b'\xc3\x84pfel'
@@ -448,19 +465,20 @@ und zwar möglichst in Kleinbuchstaben. ::
 Listen
 ------
 
-Python kennt viele zusammengesetzte Datentypen (*compound data types*), die zur Gruppierung
-unterschiedlicher Werte verwendet werden können. Die flexibelste davon
-ist die Liste (*list*): Eine Liste von Werten (Elemente), die durch
-Kommas getrennt und von eckigen Klammern eingeschlossen werden. Listenelemente
-müssen nicht alle denselben Typ haben. ::
+Python kennt viele zusammengesetzte Datentypen (*compound data types*), die zur
+Gruppierung unterschiedlicher Werte verwendet werden können. Die flexibelste
+davon ist die Liste (*list*): Eine Liste von Werten (Elemente), die durch Kommas
+getrennt und von eckigen Klammern eingeschlossen werden. Listenelemente müssen
+nicht alle denselben Typ haben. ::
 
     >>> a = ['spam', 'eggs', 100, 1234]
     >>> a
     ['spam', 'eggs', 100, 1234]
 
-Ebenso wie die Indizierung bei Zeichenketten ist auch die Listenindizierung nullbasiert --- das erste
-Element hat also den Index 0. Auch das von Zeichenketten bekannte Slicing sowie die Verkettung
-und Vervielfachung ``+`` bzw. ``*`` sind mit Listen möglich ::
+Ebenso wie die Indizierung bei Zeichenketten ist auch die Listenindizierung
+nullbasiert --- das erste Element hat also den Index 0. Auch das von
+Zeichenketten bekannte Slicing sowie die Verkettung und Vervielfachung ``+``
+bzw. ``*`` sind mit Listen möglich ::
 
     >>> a[0]
     'spam'
@@ -475,8 +493,9 @@ und Vervielfachung ``+`` bzw. ``*`` sind mit Listen möglich ::
     >>> 3*a[:3] + ['Boo!']
     ['spam', 'eggs', 100, 'spam', 'eggs', 100, 'spam', 'eggs', 100, 'Boo!']
 
-Im Unterschied zu Zeichenketten sind Listen allerdings *veränderbar* (*mutable*), so
-dass es möglich ist, innerhalb einer Liste Veränderungen vorzunehmen ::
+Im Unterschied zu Zeichenketten sind Listen allerdings *veränderbar*
+(*mutable*), so dass es möglich ist, innerhalb einer Liste Veränderungen
+vorzunehmen ::
 
     >>> a
     ['spam', 'eggs', 100, 1234]
@@ -514,8 +533,8 @@ Die eingebaute Funktion :func:`len` lässt sich auch auf Listen anwenden::
     >>> len(a)
     4
 
-Es ist auch möglich Listen zu verschalten (*nest*), das heißt, Listen zu erzeugen, die andere Listen
-enthalten. Ein Beispiel::
+Es ist auch möglich Listen zu verschalten (*nest*), das heißt, Listen zu
+erzeugen, die andere Listen enthalten. Ein Beispiel::
 
     >>> q = [2, 3]
     >>> p = [1, q, 4]
@@ -534,16 +553,16 @@ Man kann auch etwas ans Ende einer Liste hängen::
     >>> q
     [2, 3, 'xtra']
 
-Beachte, dass im letzten Beispiel ``p[1]`` und ``q`` wirklich auf dasselbe Objekt
-zeigen! Wir kommen später zur *Objektsemantik* zurück.
+Beachte, dass im letzten Beispiel ``p[1]`` und ``q`` wirklich auf dasselbe
+Objekt zeigen! Wir kommen später zur *Objektsemantik* zurück.
 
 .. _tut-firststeps:
 
 Erste Schritte zur Programmierung
 =================================
 
-Natürlich kann man Python für kompliziertere Aufgaben verwenden, als nur zwei und
-zwei zu addieren. Beispielsweise lassen sich die ersten Glieder der
+Natürlich kann man Python für kompliziertere Aufgaben verwenden, als nur zwei
+und zwei zu addieren. Beispielsweise lassen sich die ersten Glieder der
 *Fibonacci-Folge* folgendermaßen erzeugen::
 
     >>> # Fibonacci-Folge:
@@ -563,49 +582,50 @@ zwei zu addieren. Beispielsweise lassen sich die ersten Glieder der
 Dieses Beispiel stellt ein paar neue Eigenschaften vor.
 
 * Die erste Zeile enthält eine *Mehrfachzuweisung* (*multiple assignment*): Die
-Variablen ``a`` und ``b`` bekommen gleichzeitig die neuen Werte 0 und 1. In der
-letzten Zeile wird sie erneut eingesetzt, um zu zeigen, dass zuerst alle
-Ausdrücke auf der rechten Seite ausgewertet werden, bevor
-irgendeine Zuweisung vorgenommen wird! Die Ausdrücke auf der rechten Seite werden von
-links nach rechts ausgewertet.
+  Variablen ``a`` und ``b`` bekommen gleichzeitig die neuen Werte 0 und 1. In der
+  letzten Zeile wird sie erneut eingesetzt, um zu zeigen, dass zuerst alle
+  Ausdrücke auf der rechten Seite ausgewertet werden, bevor irgendeine Zuweisung
+  vorgenommen wird! Die Ausdrücke auf der rechten Seite werden von links nach
+  rechts ausgewertet.
 
 * Die :keyword:`while` Schleife wird solange ausgeführt, wie die Bedingung
-(hier: ``b < 10``) wahr ist. In Python wie in C ist jede von Null
-verschiedene Zahl wahr (*True*), Null ist unwahr (*False*). Die Bedingung kann
-auch ein String- oder Listenwert sein, eigentlich sogar jede Sequenz. Alles mit
-einer von Null verschiedenen Länge ist wahr, leere Sequenzen sind unwahr. Die Bedingung
-im Beispiel ist ein einfacher Vergleich. Die normalen Vergleichsoperatoren
-werden wie in C geschrieben: ``<`` (kleiner als), ``>`` (größer als), ``==``
-(gleich), ``<=`` (kleiner oder gleich), ``>=`` (größer oder gleich) und ``!=``
-(ungleich).
+  (hier: ``b < 10``) wahr ist. In Python wie in C ist jede von Null
+  verschiedene Zahl wahr (*True*), Null ist unwahr (*False*). Die Bedingung kann
+  auch ein String- oder Listenwert sein, eigentlich sogar jede Sequenz. Alles mit
+  einer von Null verschiedenen Länge ist wahr, leere Sequenzen sind unwahr. Die Bedingung
+  im Beispiel ist ein einfacher Vergleich. Die normalen Vergleichsoperatoren
+  werden wie in C geschrieben: ``<`` (kleiner als), ``>`` (größer als), ``==``
+  (gleich), ``<=`` (kleiner oder gleich), ``>=`` (größer oder gleich) und ``!=``
+  (ungleich).
 
 * Der *Schleifenrumpf* ist *eingerückt* (*indented*):
-Durch Einrückung wird in Python eine Gruppierung vorgenommen.
-Leider unterstützt Python (noch!) keine intelligente Zeilenbearbeitungshilfe,
-deshalb muss man selbst für jede eingerückte Zeile ein Tab oder Leerzeichen eingeben.
-In der Praxis bereitet man kompliziertere Eingaben in einem Texteditor vor, und
-die meisten Texteditoren verfügen über eine automatisch Einrückung.
-Wird eine zusammengesetzte Anweisung
-(*compound statement*) interaktiv eingegegeben, muss eine Leerzeile darauf
-folgen, um anzuzeigen, dass sie abgeschlossen ist (da der Interpreter nicht
-erahnen kann, wann man die letzte Zeile eingegeben hat).
-Zu beachten ist, dass jede
-Zeile innerhalb eines Hauptblocks um den selben Betrag eingerückt sein muss!
+  Durch Einrückung wird in Python eine Gruppierung vorgenommen.
+  Leider unterstützt Python (noch!) keine intelligente Zeilenbearbeitungshilfe,
+  deshalb muss man selbst für jede eingerückte Zeile ein Tab oder Leerzeichen 
+  eingeben.  In der Praxis bereitet man kompliziertere Eingaben in einem 
+  Texteditor vor, und die meisten Texteditoren verfügen über eine automatisch 
+  Einrückung.  Wird eine zusammengesetzte Anweisung
+  (*compound statement*) interaktiv eingegegeben, muss eine Leerzeile darauf
+  folgen, um anzuzeigen, dass sie abgeschlossen ist (da der Interpreter nicht
+  erahnen kann, wann man die letzte Zeile eingegeben hat).
+  Zu beachten ist, dass jede
+  Zeile innerhalb eines Hauptblocks um den selben Betrag eingerückt sein muss!
 
 * Die Funktion :func:`print` gibt den Wert des Ausdrucks aus, der ihr übergeben
-wurde. Die Ausgabe unterscheidet sich bei Mehrfachausdrücken, Fließkommazahlen und
-Zeichenketten von der Ausgabe, die man erhält, wenn man
-die Ausdrücke einfach so eingibt (wie wir es vorher in den Taschenrechnerbeispielen
-gemacht haben). Zeichenketten werden ohne Anführungszeichen ausgegeben, und
-bei Angabe mehrere Argumente wird zwischen je zwei Argumenten ein Leerzeichen eingefügt.
-So lassen sich einfache Formatierungen vornehmen, wie das Beispiel zeigt ::
+  wurde. Die Ausgabe unterscheidet sich bei Mehrfachausdrücken, Fließkommazahlen und
+  Zeichenketten von der Ausgabe, die man erhält, wenn man
+  die Ausdrücke einfach so eingibt (wie wir es vorher in den Taschenrechnerbeispielen
+  gemacht haben). Zeichenketten werden ohne Anführungszeichen ausgegeben, und
+  bei Angabe mehrere Argumente wird zwischen je zwei Argumenten ein Leerzeichen eingefügt.
+  So lassen sich einfache Formatierungen vornehmen, wie das Beispiel zeigt ::
 
     >>> i = 256 * 256
-    >>> print('The value of i is', i)
-    The value of i is 65536
+    >>> print('Der Wert von i ist', i)
+    Der Wert von i ist 65536
 
 Durch Verwendung des Schlüsselwortarguments *end* kann der Zeilenumbruch nach
-der Ausgabe verhindert oder die Ausgabe mit einem anderen String zu beendet werden. ::
+der Ausgabe verhindert oder die Ausgabe mit einem anderen String zu beendet
+werden. ::
 
     >>> a, b = 0, 1
     >>> while b < 1000:
