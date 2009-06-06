@@ -38,7 +38,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Tutorial-de'
-copyright = u'2009, Michael Markert'
+copyright = u'2009, Michael Markert et al'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -173,7 +173,7 @@ htmlhelp_basename = 'Tutorial-dedoc'
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'Tutorial-de.tex', u'Tutorial-de Documentation',
-   u'Michael Markert', 'manual'),
+   u'Michael Markert et al', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
