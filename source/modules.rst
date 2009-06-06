@@ -102,4 +102,3 @@ Hiermit werden alle Namen außer diejenigen, die mit einem Unterstrich beginnen 
 	``reload(modulename)``, falls es nur ein Modul ist, welches man interaktiv
 	testen will.
 	
->>>>>>> other
