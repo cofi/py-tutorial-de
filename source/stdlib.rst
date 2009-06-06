@@ -7,11 +7,11 @@ Eine kurze Einführung in die Standardbibliothek
 
 .. _tut-os-interface:
 
-Interface zum Betriebssystem
-============================
+Schnittstelle zum Betriebssystem
+================================
 
-Im Modul :mod:`os` findet man dutzende von Funktionen, um mit dem
-Betriebssystem zu arbeiten::
+Im Modul :mod:`os` findet man Dutzende von Funktionen, um mit dem
+Betriebssystem zu interagieren::
 
    >>> import os
    >>> os.system('time 0:02')
@@ -27,7 +27,7 @@ Dabei sollte unbedingt beachtet werden, ``import os`` statt ``from os import
 .. index:: builtin: help
 
 Die eingebauten Funktionen :func:`dir` und :func:`help` sind gerade beim
-Gebrauch der interaktiven Python-Shell nützlich, wenn man mit großen Modulen,
+Gebrauch der interaktiven Python-Shell nützlich, wenn man mit großen Modulen
 wie :mod:`os` arbeitet::
 
    >>> import os
@@ -36,8 +36,8 @@ wie :mod:`os` arbeitet::
    >>> help(os)
    <eine ausführliche Anleitung, erstellt aus den Docstrings des Moduls>
 
-Alltägliche Arbeiten mit Dateien und Verzeichnissen erleichtert das Modul
-:mod:`shutil`, das etwas allgemeiner gehalten ist.::
+Typische Arbeiten mit Dateien und Verzeichnissen erleichtert das Modul
+:mod:`shutil`, das eine einfachere Schnittstelle bereitstellt.::
 
    >>> import shutil
    >>> shutil.copyfile('data.db', 'archive.db')
@@ -59,16 +59,16 @@ Verzeichnisnamen verwendet werden::
 Argumente in der Befehlszeile
 =============================
 
-Die meisten Scripts müssen auf Argumente in der Befehlszeile eingehen. Diese
-Argumente werden im Attribut *argv* des Moduls 'mod'`sys` als Liste
-gespeichert. Die folgende Ausgabe etwas erhält man, wenn man ``python demo.py
-one two three`` auf der Befehlszeile eingibt::
+Die meisten Scripts müssen Argumente aus der Befehlszeile verarbeiten. Diese
+Argumente werden als Liste im Attribut *argv* des Moduls 'mod'`sys`
+gespeichert. Die folgende Ausgabe erhält man, wenn man ``python demo.py
+one two three`` in der Eingabeaufforderung des Betriebssystems eingibt::
 
    >>> import sys
    >>> print sys.argv
    ['demo.py', 'eins', 'zwei', 'drei']
 
-Das Modul 'mod'`getopt` verarbeitet *sys.argv* gemäß den üblichen Konventionen
+Das Modul 'mod'`getopt` verarbeitet *sys.argv* gemäß der üblichen Konventionen
 der aus Unix bekannten :func:`getopt`-Funktion. Erweiterte und flexiblere
 Möglichkeiten bietet das Modul :mod:`optparse`.
 
@@ -91,8 +91,8 @@ Der direkteste Weg, ein Script zu beenden, führt über ``sys.exit()``.
 Muster in Strings
 =================
 
-Das Modul :mod:`re` ermöglicht die Arbeit mit regulären Ausdrücken (*regular
-expressions*) zur erweiterten Verarbeitung von Strings. Reguläre Ausdrücke
+Das Modul :mod:`re` erlaubt die Arbeit mit regulären Ausdrücken (*regular
+expressions*) für komplexe String-Operationen. Reguläre Ausdrücke
 eignen sich vor allem für komplizierte Suchen und Änderungen an Strings::
 
    >>> import re
@@ -101,9 +101,9 @@ eignen sich vor allem für komplizierte Suchen und Änderungen an Strings::
    >>> re.sub(r'(\b[a-z]+) \1', r'\1', 'Die Katze im im Hut')
    'Die Katze im Hut'
 
-Solange Allerdings nur einfache Änderungen vorgenommen werden müssen, sollte
-man eher zu den normalen Methoden von Strings greifen, da diese einfacher zu
-lesen und korrigieren sind::
+Solange allerdings nur einfache Änderungen vorgenommen werden müssen, sollte
+man eher zu den normalen Methoden von `String` greifen, da diese einfacher zu
+lesen und zu verstehen sind::
 
    >>> 'Tee für zwo'.replace('zwo', 'zwei')
    'Tee für zwei'
@@ -173,7 +173,7 @@ Datum und Uhrzeit
 Das Modul :mod:`datetime` stellt Klassen sowohl für einfache als auch
 kompliziertere Arbeiten mit Datum und Uhrzeit bereit. Während das Rechnen mit
 Datum und Uhrzeit zwar unterstützt wird, liegt das Hauptaugenmerk der
-Implementierung auf Attributszugriff für Ausgabeformatierung und -manipulation.
+Implementierung auf Attributzugriffen für Ausgabeformatierung und -manipulation.
 Die Verwendung von Zeitzonen wird ebenfalls unterstützt. :: 
 
    # Ein Datum lässt sich leicht aufbauen
@@ -243,12 +243,12 @@ Abschnitten von Programmcode auffinden.
 Qualitätskontrolle
 ==================
 
-Um hohe Qualität der entwickelten Software zu gewährleisten, kann man etwa
-Tests für jede Funktion schreiben, die regelmäßig während des
-Entwicklungsprozesses durchgeführt werden.
+Um hohe eine Qualität der entwickelten Software zu gewährleisten, sollte man
+Tests für jede Funktion schreiben, die dann regelmäßig während des
+Entwicklungsprozesses ausgeführt werden.
 
 Das Modul :mod:`doctest` durchsucht ein Modul nach Tests in seinen Docstrings
-und führt diese durch. Das Erstellen eines Tests ist sehr einfach, dazu muss
+und führt diese aus. Das Erstellen eines Tests ist sehr einfach, dazu muss
 lediglich ein typischer Aufruf der Funktion samt seiner Rückgaben in den
 Docstring der Funktion kopiert werden. Dadurch wird gleichzeitig die
 Dokumentation verbessert, da Benutzer direkt ein Beispiel mitgeliefert
@@ -266,8 +266,8 @@ Dokumentation auch nach Änderungen noch übereinstimmen::
    import doctest
    doctest.testmod()   # Führt den Test automatisch durch
 
-Etwas anspruchsvoller ist das Modul :mod:`unittest`, dafür lassen sich damit
-auch anspruchsvollere Tests erstellen, die in einer eigenen Datei verwaltet
+Das Modul :mod:`unittest` funktioniert nicht ganz so einfach, dafür lassen sich damit
+auch umfangreichere Tests erstellen, die in einer eigenen Datei verwaltet
 werden::
 
    import unittest
@@ -291,7 +291,7 @@ Batteries Includeed
 Bei Python gilt der Slogan "Batteries Included". Am besten lässt sich das anhand seiner größeren Pakete aufzeigen. Beispiele:
 
 * Die Module :mod:`xmlrpclib` and :mod:`SimpleXMLRPCServer` erleichtern RPC
-  enorm. Trotz ihrer Namen ist übrigens keine Kenntnis von XML notwendig
+  enorm. Trotz ihrer Namen ist übrigens keine Kenntnis von XML notwendig.
 
 * Das Modul :mod:`email` ist eine Bibliothek zur Arbeit mit E-Mails, auch mit
   MIME und anderen RFC 2822-basierten Nachrichten. Anders als :mod:`smtplib`
@@ -304,7 +304,7 @@ Bei Python gilt der Slogan "Batteries Included". Am besten lässt sich das anhan
 * :mod:`xml.dom` und :mod:`xml.sax` dienen dem Umgang mit XML. Mit :mod:`csv`
   lässt sich in ein allgemein gebräuchliches Datenbankformat schreiben und
   daraus lesen. Diese Module erleichtern den Austausch von Daten zwischen
-  Python und anderen Werkzeugen ernorm. 
+  Python und anderen Werkzeugen enorm. 
 
 * Zur Internationalisierung von Anwendungen stehen unter anderem die Module
   :mod:`gettext`, :mod'`locale` und :mod:`codecs` zur Verfügung.
