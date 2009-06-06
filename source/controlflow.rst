@@ -5,18 +5,16 @@
 Mehr Werkzeuge zur Ablaufsteuerung
 **********************************
 
-Neben der :keyword:`while`-Anweisung, die gerade vorgestellt wurde, kennt Python
-die üblichen Anweisungen zur Ablaufsteuerung, die von anderen Sprachen bekannt
-sind, mit ein paar Veränderungen.
-
+Neben der :keyword:`while`-Anweisung, die gerade vorgestellt wurde, kennt Python -- abgesehen von
+wenigen Abweichungen --- die üblichen Anweisungen zur Ablaufsteuerung, die von anderen
+Sprachen bekannt sind.
 
 .. _tut-if:
 
 :keyword:`if`-Anweisungen
 =========================
 
-Der vielleicht bekannteste Anweisungstyp ist die :keyword:`if`-Anweisung. Zum
-Beispiel::
+Ein Beispiel zur :keyword:`if`-Anweisung :: 
 
     >>> x = int(input("Please enter an integer: "))
     Please enter an integer: 42
@@ -32,16 +30,13 @@ Beispiel::
     ...
     More
 
-Es können null oder mehr :keyword:`elif`-Zweige vorhanden sein und der
-:keyword:`else`-Zweig ist optional. Das Schlüsselwort ':keyword:`elif`' ist eine
-Abkürzung für 'else if' und ist nützlich um exzessive Einrückungen zu vermeiden.
-Eine Abfolge von :keyword:`if` ... :keyword:`elif` ... :keyword:`elif` ...  ist die
-Ersetzung für ``switch``- oder ``case``-Anweisungen, die es in anderen Sprachen
-gibt.
-
+:keyword:`else`-Zweig oder :keyword:`elif`-Zweige sind optional. Im Unterschied zum
+:keyword:`else`-Zweig, der nur einmal vorkommen kann, ist eine Abfolge von mehreren
+:keyword:`elif`-Zweigen möglich; dadurch lassen sich verschachtelte Einrückungen vermeiden.
+Eine Abfolge von :keyword:`if` ... :keyword:`elif` ... :keyword:`elif`-Zweigen ersetzt die
+``switch``- oder ``case``-Konstrukte anderer Programmiersprachen.
 
 .. _tut-for:
-
 
 :keyword:`for`-Anweisungen
 ==========================
@@ -49,17 +44,14 @@ gibt.
 .. index::
    statement: for
 
-Die :keyword:`for`-Anweisung in Python unterscheidet sich ein bisschen von der,
-die man von C oder Pascal her kennt. Anders als immer nur über einen
-arithmetische Abfolge von Nummern (wie in Pascal) zu iterieren, oder dem Benutzer die
-Möglichkeit zu geben, sowohl Schrittweite als auch Abbruchbedingung zu
-definieren (wie in C), iteriert Pythons :keyword:`for`-Anweisung über die
-Elemente einer Sequenz (eine Liste oder ein String), in der Reihenfolge, wie sie
-in der Sequenz auftauchen. Zum Beispiel:
-
+Die :keyword:`for`-Anweisung in Python unterscheidet sich ein wenig von der,
+die man von C oder Pascal her kennt. Man kann nicht nur über eine Zahlenfolge iterieren
+(wie in Pascal) oder lediglich Schrittweite und Abbruchbedingung festlegen (wie in C),
+sondern über eine beliebige Sequenz (also z. B. eine Liste oder Zeichenkette) iterieren,
+und zwar in der Reihenfolge, in der die Elemente in der Sequenz vorkommen. Zum Beispiel:
 ::
 
-    >>> # Ein paar Strings messen:
+    >>> # Die Längen einiger Zeichenketten ermitteln:
     ... a = ['Katze', 'Fenster', 'rauswerfen']
     >>> for x in a:
     ...     print(x, len(x))
@@ -68,11 +60,12 @@ in der Sequenz auftauchen. Zum Beispiel:
     Fenster 7
     rauswerfen 10
 
-Es ist nicht ungefährlich, die Sequenz zu verändern, über die gerade in der
-Schleife iteriert wird (was nur im Falle von veränderbaren Sequenztypen, wie bei
-Listen, passieren kann). Wenn man die Liste verändern will, über die man
-iteriert (zum Beispiel, um ausgewählte Elemente zu duplizieren), muss man über
-eine Kopie iterieren. Die Slice-Notation macht dies sehr einfach::
+Vorsicht ist geboten, wenn man versucht, Veränderungen an einer Sequenz
+vorzunehmen, über die gerade iteriert wird (was natürlich nur bei veränderbaren
+Sequenztypen, wie etwa Listen, passieren kann).
+Will man eine Liste verändern, über die man iteriert, (zum Beispiel, um ausgewählte
+Elemente zu duplizieren), muss man über eine Kopie iterieren.
+Die Slice-Notation macht dies sehr einfach::
 
     >>> for x in a[:]: # benutze eine Kopie der gesamten Liste
     ...    if len(x) > 7: a.insert(0, x)
@@ -85,9 +78,8 @@ eine Kopie iterieren. Die Slice-Notation macht dies sehr einfach::
 Die Funktion :func:`range`
 ==========================
 
-Wenn man wirklich über eine Abfolge von Nummern iterieren muss, kommt einem die
-eingebaute Funktion :func:`range` gelegen. Sie generiert arithmetische
-Abfolgen::
+Wenn man wirklich über eine Zahlenfolge iterieren muss, bietet sich die
+eingebaute Funktion :func:`range` an, die arithmetische Folgen erzeugt. ::
 
     >>> for i in range(5):
     ...     print(i)
@@ -98,11 +90,12 @@ Abfolgen::
     3
     4
 
-Der gegebene Endpunkt ist nie Teil der generierten Liste; ``range(10)``
-generiert 10 Werte, die gültigen Indices einer Sequenz mit zehn Elementen. Es
-ist auch möglich, den Bereich bei einer anderen Nummer zu beginnen,
-oder eine andere Schrittweite festzulegen (sogar negative; manchmal wird dies
-*step* gennant)::
+Wird nur ein Argument angegeben, so beginnt der erzeugte Bereich bei Null und endet
+mit dem um 1 kleineren Wert des angegebenen Arguments. ``range(10)``
+erzeugt die Zahlen von 0 bis einschließlich 9. Das entspricht den gültigen Indizes
+einer Sequenz mit zehn Elementen. Es ist ebenfalls möglich, den Bereich
+mit einem anderem Wert als Null zu beginnen oder auch eine bestimmte Schrittweite
+(*step*) festzulegen --- sogar negative Schrittweiten sind möglich. ::
 
     range(5, 10)
        5 bis 9
@@ -113,7 +106,7 @@ oder eine andere Schrittweite festzulegen (sogar negative; manchmal wird dies
     range(-10, -100, -30)
       -10, -40, -70
 
-Um über die Indices einer Sequenz zu iterieren, kann man :func:`range` und
+Will man über die Indizes einer Sequenz iterieren, kann man :func:`range` und
 :func:`len` wie folgt kombinieren::
 
     >>> a = ['Mary', 'hatte', 'ein', 'kleines', 'Lamm']
@@ -126,7 +119,7 @@ Um über die Indices einer Sequenz zu iterieren, kann man :func:`range` und
     3 kleines
     4 Lamm
 
-Meistens ist es jedoch geeigneter die Funktion :func:`enumerate` zu benutzen,
+Eleganter ist es jedoch, in solchen Fällen die Funktion :func:`enumerate` zu benutzen,
 siehe :ref:`tut-loopidioms`.
 
 Etwas Seltsames passiert, wenn man einfach ein `range`-Objekt ausgeben will::
@@ -134,41 +127,39 @@ Etwas Seltsames passiert, wenn man einfach ein `range`-Objekt ausgeben will::
     >>> print(range(10))
     range(0, 10)
 
-In vielen Fällen verhält sich das von :func:`range` zurückgegebene Objekt, als
-wäre es eine Liste, ist es aber in den meisten Fällen nicht. Es ist ein Objekt,
-das aufeinander folgende Elemente der gewünschten Abfolge zurückgibt, wenn man
-darüber iteriert, aber es erzeugt diese Liste nicht wirklich, einfach um Platz zu
-sparen.
+Zwar verhält sich das von :func:`range` zurückgegebene Objekt in etwa wie eine Liste,
+es ist jedoch in Wahrheit keine Liste. :func:`range` liefert ein Objekt zurück,
+das der Reihe nach die einzelnen Zahlen der Folge zurückliefert, die durch die an :func:`range`
+übergebenen Argumente festgelegt wurde. Dadurch lässt sich gegenüber der Erzeugung
+einer Liste Speicherplatz sparen.
 
-Wir nennen solch ein Objekt *Iterable*, das heißt, es ist geeignet als Ziel
-einer Funktion oder sonstigen Konstruktes, die etwas erwarten, von dem man
-sukzessive Elemente erhält bis der Vorrat ausgeschöpft ist. Wir haben gesehen,
-dass die :keyword:`for`-Anweisung ein solcher *Iterator* ist. Die
-Funktion:func:`list` ist ein anderer; sie erstellt Listen aus Iterables::
-
+Wir nennen solch ein Objekt *Iterable*, und es kann überall da eingesetzt werden,
+wo ein Objekt erwartet wird, das eine Folge von Elementen der Reihe nach "produziert",
+bis sein Vorrat erschöpft ist. Beispielsweise fungiert die :keyword:`for`-Anweisung
+als ein solcher *Iterator* ist. Auch die Funktion :func:`list` ist ein solcher Iterator, die
+als Argument ein Iterable erwartet und eine Liste daraus macht ::
+ 
     >>> list(range(5))
     [0, 1, 2, 3, 4]
 
-Später sehen wir weitere Funktionen, die Iterables zurückgeben und Iterables als
+Später werden noch weitere Funktionen behandelt, die Iterables zurückgeben und Iterables als
 Argument aufnehmen.
-
 
 .. _tut-break:
 
 :keyword:`break`- und :keyword:`continue`-Anweisungen und der :keyword:`else`-Zweig bei Schleifen
 ================================================================================================
 
-Die :keyword:`break`-Anweisung bricht, wie in C, aus der sie umgebenden
-:keyword:`for`- oder :keyword:`while`-Schleife aus und beendet sie.
+Eine  :keyword:`break`-Anweisung in einem Schleifenrumpf bewirkt --- wie in C ---
+dass an dieser Stelle mit sofortiger Wirkung die sie unmittelbar umgebende Schleife verlassen wird.
 
-Die :keyword:`continue`-Anweisung, ebenso von C geliehen, beginnt die nächste
-Iteration der Schleife.
+Entsprechend bewirkt die :keyword:`continue`-Anweisung --- ebenso von C entliehen --- , dass
+an dieser Stelle wieder in den Schleifenkopf "gesprungen" und die nächste Iteration ausgeführt wird.
+Der noch folgende Teil des Schleifenrumpfs wird nicht mehr ausgeführt.
 
-Schleifen-Anweisungen können einen :keyword:`else`-Zweig haben. Dieser wird
-ausgeführt, wenn Sequenz erschöpft (mit :keyword:`for`) oder wenn die Bedingung
-unwahr wird (mit :keyword:`while`), nicht jedoch, wenn die Schleife durch eine
-:keyword:`break`-Anweisung abgebrochen wird. Dies wird von folgender Schleife, die
-Primzahlen sucht, veranschaulicht::
+Auch Schleifen-Anweisungen können einen :keyword:`else`-Zweig haben. Dieser wird genau dann
+ausgeführt, wenn die Schleife *nicht* durch eine :keyword:`break`-Anweisung abgebrochen
+wurde. Das folgende Beispiel zur Berechnung von Primzahlen veranschaulicht das. ::
 
     >>> for n in range(2, 10):
     ...     for x in range(2, n):
@@ -193,22 +184,23 @@ Primzahlen sucht, veranschaulicht::
 :keyword:`pass`-Anweisungen
 ===========================
 
-Die :keyword:`pass`-Anweisung tut nichts. Sie kann benutzt werden, wenn
-syntaktisch eine Anweisung benötigt wird, das Programm jedoch nichts tun
-soll. Zum Beispiel::
+Die :keyword:`pass`-Anweisung tut nichts. Sie wird eingesetzt,
+wenn syntaktisch eine Anweisung benötigt wird, das Programm jedoch nichts tun
+soll. Ein Beispiel::
 
     >>> while True:
-    ...     pass  # geschäftiges Warten auf den Tastatur Interrupt (:kbd:`Strg+C`)
+    ...     pass  # geschäftiges Warten auf den Tastatur-Interrupt (:kbd:`Strg+C`)
     ...
 
-So etwas wird üblicherweise benutzt, um minimale Klassen zu erzeugen::
+Auch bei der Erzeugung einer minimalen Klasse kann :keyword:`pass` zum Einsatz kommen::
 
    >>> class MyEmptyClass:
    ...     pass
    ...
 
-Eine andere Stelle, an der :keyword:`pass` benutzt werden kann, ist als Platzhalter für eine Funktion oder einen Zweigkörper, wenn man an neuem Code arbeitet, und einem so erlaubt auf einer abstrakteren Ebene zu denken.
-Das :keyword:`pass` wird einfach ignoriert::
+:keyword:`pass` lässt sich auch sinnvoll einsetzen als Platzhalter für den Rumpf einer Funktionen
+oder Schleife bei der "Top-Down"-Programmierung, um so zunächst auf einer 
+abstrakteren Ebene zu denken ::
 
    >>> def initlog(*args):
    ...     pass   # Nicht vergessen das zu implementieren!
@@ -219,10 +211,10 @@ Das :keyword:`pass` wird einfach ignoriert::
 Funktionen definieren
 =====================
 
-Wir können eine Funktion erstellen, die die Fibonacci-Folge bis zu einer
+Im folgenden Beispiel wird eine Funktion definiert, die die Fibonacci-Folge bis zu einer
 beliebigen Grenze ausgibt::
 
-    >>> def fib(n):    # die Fibonacci-Folge bis zu n ausgeben
+    >>> def fib(n):    # die Fibonacci-Folge bis n ausgeben
     ...     """Print the Fibonacci series up to n."""
     ...     a, b = 0, 1
     ...     while b < n:
@@ -240,43 +232,47 @@ beliebigen Grenze ausgibt::
    single: strings, documentation
 
 Das Schlüsselwort :keyword:`def` leitet die *Definition* einer Funktion ein.
-Danach muss der Funktionsname und parameterisierte Liste der formalen Parameter
-folgen. Die Anweisungen, die den Funktionskörper darstellen, beginnen in der
+Danach folgt der Funktionsname und eine Auflistung der formalen Parameter, die allerdings
+auch leer sein kann. Die Anweisungen, die den Funktionskörper bilden, beginnen in der
 nächsten Zeile und müssen eingerückt sein.
 
-Die erste Anweisung des Funktionskörpers kann auch wahlweise ein String-Literal
-sein; dieses String-Literal ist der Dokumentationsstring der Funktion, auch
+Die erste Anweisung des Funktionskörpers kann auch ein Stringliteral
+sein, ein so genannter Dokumentationsstring der Funktion, auch
 :dfn:`docstring` genannt. (Mehr zu docstrings kann im Abschnitt
 :ref`tut-docstrings` nachgelesen werden.) Es gibt Werkzeuge, die docstrings
-benutzen, um automatisch Online-Dokumentation oder gedruckte Dokumentation zu erzeugen
-beziehungsweise es dem Nutzer erlauben, interaktiv den Code zu durchsuchen; es
-ist bewährte Praxis, docstrings in den Code, den man schreibt, einzubauen, also
-sollte man es sich angewöhnen.
+verwenden, um automatisch Online-Dokumentation oder gedruckte Dokumentation zu erzeugen
+oder es dem Anwender ermöglichen, interaktiv den Code zu durchsuchen.
+Die Verwendung von docstrings ist eine gute Konvention, an die man sich
+bei der Programmierung nach Möglichkeit halten sollte.
 
-Die *Ausführung* einer Funktion führt eine neue Symboltabelle ein, die für
-lokale Variablen der Funktion benutzt wird. Genauer: alle Zuweisungen an eine
-Variable innerhalb der Funktion legen den Wert in der lokalen Symboltabelle ab;
-wohingegen Referenzen auf eine Variable zuerst in der lokalen Symboltabelle
-nachgeschaut werden, dann in den den lokalen Symboltabellen der umgebenden
+Beim *Aufruf* einer Funktion kommt es zur Bildung eines lokalen Namensraums, der sich
+auf alle Bezeichner erstreckt, die im Funktionsrumpf (durch Zuweisung oder als
+Elemente der Parameterliste) neu definiert werden. Diese Bezeichner werden mit den ihnen
+zugeordneten Objekten in einer lokalen Symboltabelle abgelegt.
+
+Wenn im Funktionsrumpf ein Bezeichner vorkommt, wird der Name zunächst
+in der lokalen Symboltabelle gesucht, danach in den lokalen Symboltabellen der umgebenden
 Funktionen, dann in der globalen Symboltabelle und schließlich in der
-Symboltabelle der eingebauten Namen. Deshalb können globalen Variablen nicht
-direkt Werte innerhalb einer Funktion zugewiesen werden (es sei denn sie werden
-in einer :keyword:`global`-Anweisung erwähnt), jedoch kann man ihre Werte
-lesen.
+Symboltabelle der eingebauten Namen. Darum ist es ohne weiteres nicht möglich,
+einer globalen Variablen innerhalb des lokalen Namensraums einer Funktion einen Wert zuzuweisen.
+Dadurch würde stattdessen eine neue, namensgleiche lokale Variable definiert, die die
+namensgleiche globale Variable überdeckt und dadurch auch den lesenden Zugriff auf diese
+globale Variable verhindert. Ein lesender Zugriff auf globale Variablen ist ansonsten immer
+möglich, ein schreibender Zugriff nur unter Verwendung der :keyword:`global`-Anweisung.
 
-Die konkreten Parameter (Argumente), die einem Funktionsaufruf übergeben werden,
-werden beim Funktionsaufruf in die Symboltabelle der aufgerufenen Funktion
-eingeführt. Das heißt, Argumente werden über *call by value* übergeben (wobei
+Die aktuellen Parameter (Argumente), die beim Funktionsaufruf übergeben werden,
+werden den formalen Parametern der Parameterliste zugeordnet und gehören damit
+zur lokalen Symboltabelle der Funktion. Das heißt, Argumente werden
+über *call by value* übergeben (wobei
 der *Wert* allerdings immer eine *Referenz* auf ein Objekt ist, nicht der Wert
-des Objektes) [#]_. Wenn eine Funktion eine andere Funktion aufruft, wird eine
-neue lokale Symboltabelle für diesen Aufruf generiert.
-
+des Objektes selbst) [#]_. Wenn eine Funktion eine andere Funktion aufruft, wird eine
+neue lokale Symboltabelle für diesen Aufruf erzeugt.
 
 Eine Funktionsdefinition fügt den Funktionsnamen in die lokale Symboltabelle
-ein. Der Wert des Funktionsnamens hat einen Typ, der vom Interpreter als eine
+ein. Der Wert des Funktionsnamens hat einen Typ, der vom Interpreter als 
 benutzerdefinierte Funktion erkannt wird. Dieser Wert kann einem anderen Namen
-zugewiesen werden, der dann ebenfalls als Funktion genutzt werden kann. Dies
-dient als ein genereller Umbenennungsmechanismus::
+zugewiesen werden, der dann ebenfalls als Funktion genutzt werden kann.
+Damit sind verschiedene Möglichkeiten der Umbenennung gegeben. ::
 
     >>> fib
     <function fib at 10042ed0>
@@ -284,23 +280,22 @@ dient als ein genereller Umbenennungsmechanismus::
     >>> f(100)
     1 1 2 3 5 8 13 21 34 55 89
 
-Wenn du von einer anderen Sprache kommst, könntest du einwenden, dass ``fib``
-gar keine Funktion, sondern eine Prozedur ist, da sie keinen Wert zurückgibt.
-Tatsächlich geben auch Funktionen ohne eine :keyword:`return`-Anweisung einen
-Wert zurück, wenn auch einen eher langweiligen. Dieser Wert wird ``None``
-genannt (es ist ein eingebauter Name). Die Ausgabe des Wertes ``None`` wird
+Wer Erfahrung mit anderen Programmiersprachen hat, wird vielleicht einwenden,
+dass ``fib`` gar keine Funktion, sondern eine Prozedur ist, da sie keinen Wert zurückgibt.
+Tatsächlich geben aber auch Funktionen *ohne* eine :keyword:`return`-Anweisung einen
+Wert zurück, wenn auch einen eher langweiligen, nämlich den eingebauten
+Namen ``None`` ("nichts").  Die Ausgabe des Wertes ``None`` wird
 normalerweise vom Interpreter unterdrückt, wenn es der einzige Wert wäre, der
-ausgegeben wird. Wenn du ihn wirklich sehen willst, kannst du :func:`print`
-benutzen::
+ausgegeben wird. Möchte man ihn sehen, kann man ihn mittels :func:`print` sichtbar machen.::
 
     >>> fib(0)
     >>> print(fib(0))
     None
 
-Es ist einfach, eine Funktion zu schreiben, die eine Liste der Nummern
-zurückgibt, anstatt sie auszugeben::
+Statt eine Abfolge von Zahlen in einer Funktion auszugeben, kann man auch eine Liste
+dieser Zahlen als Objekt zurückliefern. ::
 
-    >>> def fib2(n): # gib die Fibonacci-Folge bis zu n zurück
+    >>> def fib2(n): # gibt die Fibonacci-Folge bis  n zurück
     ...     """Return a list containing the Fibonacci series up to n."""
     ...     result = []
     ...     a, b = 0, 1
@@ -313,21 +308,19 @@ zurückgibt, anstatt sie auszugeben::
     >>> f100                # gib das Ergebnis aus
     [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
-Dieses Beispiel demonstriert, wie gewöhnlich, ein paar neue Eigenschaften von
-Python:
+Dieses Beispiel zeigt einige neue Eigenschaften von Python:
 
-*   Die :keyword:`return`-Anweisung gibt einen Wert von einer Funktion
+*   Die :keyword:`return`-Anweisung gibt einen Wert einer Funktion
     zurück. Ohne einen Ausdruck als Argument gibt :keyword:`return` ``None``
-    zurück. Wenn eine Funktion kein :keyword:`return` hat, wird ebenso ``None``
-    zurückgegeben.
+    zurück; das gleiche gilt, wenn eine :keyword:`return`-Anweisung fehlt.
 
 *   Die Anweisung ``result.append(b)`` ruft eine *Methode* des Listenobjektes in
     ``result`` auf. Eine Methode ist eine Funktion, die zu einem Objekt 'gehört'
-    und wird ``obj.methodname`` bennant, wobei ``obj`` irgendein Objekt ist (das
-    kann auch ein Ausdruck sein) und ``methodname`` der Name einer Methode ist,
+    und wird mittels Punktnotation (``obj.methodname``) dargestellt. Dabei ist ``obj`` irgendein Objekt
+	(es kann auch ein Ausdruck sein) und ``methodname`` der Name einer Methode,
     die vom Typ des Objektes definiert wird. Unterschiedliche Typen definieren
     verschiedene Methoden. Methoden verschiedener Typen können denselben Namen
-    haben ohne doppeldeutig zu sein. (Es ist möglich, eigene Objekttypen zu
+    haben ohne doppeldeutig zu sein. (Es ist auch möglich, eigene Objekttypen zu
     erstellen, indem man *Klassen* benutzt, siehe :ref:`tut-classes`.) Die
     Methode :meth:`append`, die im Beispiel gezeigt wird, ist für Listenobjekte
     definiert. Sie hängt ein neues Element an das Ende der Liste an. Im Beispiel
@@ -336,9 +329,8 @@ Python:
 Mehr zum Definieren von Funktion
 ================================
 
-Es ist auch möglich Funktionen mit einer variablen Anzahl von Argumenten zu
-definieren. Es gibt dabei drei Varianten, die auch kombiniert werden können.
-
+Funktionen lassen sich auch mit einer variablen Anzahl von Argumenten definieren.
+Dabei sind drei Varianten zu unterscheiden, die auch kombiniert werden können.
 
 .. _tut-defaultargs:
 
