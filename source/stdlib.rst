@@ -134,3 +134,32 @@ Mit dem Modul :mod:`random` lassen sich zufällige Auswahlen treffen::
    0.17970987693706186
    >>> random.randrange(6)    # random integer chosen from range(6)
    4
+
+
+.. _tut-internet-access:
+
+Zugriff auf das Internet
+========================
+
+Zum Zugriff auf das Internet und für die Arbeit mit Internetprotokollen stehen
+verschiedene Module bereit. Zwei der einfachsten sind :mod:`urllib2` zum
+Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
+
+   >>> import urllib2
+   >>> for line in urllib2.urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl'):
+   ...     if 'EST' in line or 'EDT' in line:  # look for Eastern Time
+   ...         print line
+
+   <BR>Nov. 25, 09:43:32 PM EST
+
+   >>> import smtplib
+   >>> server = smtplib.SMTP('localhost')
+   >>> server.sendmail('soothsayer@example.org', 'jcaesar@example.org',
+   ... """To: jcaesar@example.org
+   ... From: soothsayer@example.org
+   ...
+   ... Beware the Ides of March.
+   ... """)
+   >>> server.quit()
+
+(Anmerkung: das zweite Beispiel benötigt einen Mailserver auf localhost.)
