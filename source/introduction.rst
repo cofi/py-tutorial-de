@@ -367,7 +367,7 @@ Indexschreibweise::
      File "<stdin>", line 1, in ?
     IndexError: string index out of range
 
-Man kann sich die Indizes beim Slicing so vorstellt, als würden sie *zwischen*
+Man kann sich die Indizes beim Slicing so vorstellen, dass sie *zwischen*
 den Zeichen liegen --- wobei die linke Ecke des ersten Zeichens den Index 0 hat
 und die rechte Ecke des letzten Zeichens  eines *n* Zeichen langen Strings den
 Index *n*. Ein Beispiel ::
@@ -455,7 +455,7 @@ Kodierung kennt.
 
 Zur Konvertierung von Strings in Bytefolgen stellen Stringobjekte die Methode
 :func:`encode` bereit, die den Namen der Kodierung als Argument entgegennimmt,
-und und zwar möglichst in Kleinbuchstaben. ::
+und zwar möglichst in Kleinbuchstaben. ::
 
     >>> "Ã„pfel".encode('utf-8')
     b'\xc3\x84pfel'
@@ -533,7 +533,7 @@ Die eingebaute Funktion :func:`len` lässt sich auch auf Listen anwenden::
     >>> len(a)
     4
 
-Es ist auch möglich Listen zu verschalten (*nest*), das heißt, Listen zu
+Es ist auch möglich Listen zu verschachteln (*nest*), das heißt, Listen zu
 erzeugen, die andere Listen enthalten. Ein Beispiel::
 
     >>> q = [2, 3]
