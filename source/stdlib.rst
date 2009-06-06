@@ -22,7 +22,7 @@ Betriebssystem zu arbeiten::
 
 Dabei sollte unbedingt beachtet werden, ``import os`` statt ``from os import
 *`` zu verwenden, da ansonsten :func:`os.open` die eingebaute Funktion
-:func:`open` überschreit, die sich vollkommen anders verhält.
+:func:`open` überschreibt, die sich vollkommen anders verhält.
 
 .. index:: builtin: help
 
@@ -114,7 +114,7 @@ lesen und korrigieren sind::
 Mathematik
 ==========
 
-Mit dem Modul :mod:`math` kann man tieferliegende Funktionen der C-Bibliothek
+Mit dem Modul :mod:`math` kann man tiefer liegende Funktionen der C-Bibliothek
 für Fließkommaberechnungen verwenden::
 
    >>> import math
@@ -176,7 +176,7 @@ Datum und Uhrzeit zwar unterstützt wird, liegt das Hauptaugenmerk der
 Implementierung auf Attributszugriff für Ausgabeformatierung und -manipulation.
 Die Verwendung von Zeitzonen wird ebenfalls unterstützt. :: 
 
-   # dates are easily constructed and formatted
+   # Ein Datum lässt sich leicht aufbauen
    >>> from datetime import date
    >>> jetzt = date.today()
    >>> jetzt
@@ -245,7 +245,7 @@ Qualitätskontrolle
 
 Um hohe Qualität der entwickelten Software zu gewährleisten, kann man etwa
 Tests für jede Funktion schreiben, die regelmäßig während des
-Entwicklungsprozesses durchgeführ werden.
+Entwicklungsprozesses durchgeführt werden.
 
 Das Modul :mod:`doctest` durchsucht ein Modul nach Tests in seinen Docstrings
 und führt diese durch. Das Erstellen eines Tests ist sehr einfach, dazu muss
