@@ -43,4 +43,17 @@ Alltägliche Arbeiten mit Dateien und Verzeichnissen erleichtert das Modul :mod:
    >>> shutil.move('/build/executables', 'installdir')
 
 
+.. _tut-file-wildcards:
+
+Platzhalter in Dateinamen
+=========================
+
+Mit dem Modul :mod:`glob` können Platzhalter bei der Suche nach Datei- oder
+Verzeichnisnamen verwendet werden::
+
+   >>> import glob
+   >>> glob.glob('*.py')
+   ['primes.py', 'random.py', 'quote.py']
+
+
 
