@@ -189,3 +189,24 @@ Die Verwendung von Zeitzonen wird ebenfalls unterstützt. ::
    >>> age = now - birthday
    >>> age.days
    14368
+
+.. _tut-data-compression:
+
+Datenkompression
+================
+
+Die üblichen Dateiformate zur Archivierung und Kompression werden direkt in
+eigenen Modulen unterstützt. Darunter: :mod:`zlib`, :mod:`gzip`, :mod:`bz2`,
+:mod:`zipfile` und :mod:`tarfile`. ::
+
+   >>> import zlib
+   >>> s = 'witch which has which witches wrist watch'
+   >>> len(s)
+   41
+   >>> t = zlib.compress(s)
+   >>> len(t)
+   37
+   >>> zlib.decompress(t)
+   'witch which has which witches wrist watch'
+   >>> zlib.crc32(s)
+   226805979
