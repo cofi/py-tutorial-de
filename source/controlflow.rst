@@ -412,7 +412,7 @@ Schlüsselwortargumente
 ----------------------
 
 Funktionen können auch mit Schlüsselwortargumenten in der Form ``Schlüsselwort =
-Wert`` aufgeruden werden. Zum Beispiel könnte folgende Funktion::
+Wert`` aufgerufen werden. Zum Beispiel könnte folgende Funktion::
 
     def parrot(voltage, state='steif',
         action='fliegen', type='norwegische Blauling'):
@@ -438,7 +438,7 @@ die folgenden Aufrufe wären allerdings alle ungültig::
 Üblicherweise kommen zuerst positionsabhängige Argumente und danach
 Schlüsselwortargumente - von beiden ist eine beliebige Anzahl zulässig. Die
 Schlüsselworte müssen jedoch in der Funktionsdefinition enthalten sein, das
-heisst der Funktion bekannt sein. Es ist unwichtig, ob sie einen Standardwert
+heißt, der Funktion bekannt sein. Es ist unwichtig, ob sie einen Standardwert
 haben oder nicht. Kein Parameter darf mehr als einen Wert bekommen ---
 positionsabhängige Argumente können nicht als Schlüsselworte im selben Aufruf
 benutzt werden. Hier ein Beispiel, das wegen dieser Einschränkung scheitert::
@@ -452,7 +452,7 @@ benutzt werden. Hier ein Beispiel, das wegen dieser Einschränkung scheitert::
     TypeError: function() got multiple values for keyword argument 'a'
 
 Ist ein Parameter der Form ``**name`` in der Definition enthalten, bekommt
-dieser ein Dictionary (siehe :ref:`typesmapping`) das alle
+dieser ein Dictionary (siehe :ref:`typesmapping`), das alle
 Schlüsselwortargumente enthält, bis auf die, die in der Definition vorkommen.
 Dies kann mit einem Parameter der Form ``*name``, der im nächsten Unterabschnitt
 beschrieben wird, kombiniert werden. Dieser bekommt ein Tupel, das alle
@@ -499,10 +499,10 @@ Beliebig lange Argumentlisten
 .. index::
    statement: *
 
-Zuletzt noch die am wenigsten gebräuchliche Möglichkeit ist, festzulegen, dass
+Die am wenigsten gebräuchliche Möglichkeit ist schließlich, festzulegen, dass
 eine Funktion mit einer beliebigen Zahl von Argumenten aufgerufen werden kann,
-die dann in ein Tupel (siehe :ref:`tut-tuples`) verpackt werden. Bevor diesem
-speziellen Argument, kann eine beliebige Menge normaler Argumente vorkommen. ::
+die dann in ein Tupel (siehe :ref:`tut-tuples`) verpackt werden. Vor diesem
+speziellen Argument kann eine beliebige Menge normaler Argumente vorkommen. ::
 
     def write_multiple_items(file, separator, *args):
         file.write(separator.join(args))
