@@ -289,12 +289,13 @@ als Möglichkeit zur Umbenennung dient. ::
     1 1 2 3 5 8 13 21 34 55 89
 
 Wer Erfahrung mit anderen Programmiersprachen hat, wird vielleicht einwenden,
-dass ``fib`` gar keine Funktion, sondern eine Prozedur ist, da sie keinen Wert zurückgibt.
-Tatsächlich geben aber auch Funktionen *ohne* eine :keyword:`return`-Anweisung einen
-Wert zurück, wenn auch einen eher langweiligen, nämlich den eingebauten
-Namen ``None`` ("nichts").  Die Ausgabe des Wertes ``None`` wird
-normalerweise vom Interpreter unterdrückt, wenn es der einzige Wert wäre, der
-ausgegeben wird. Möchte man ihn sehen, kann man ihn mittels :func:`print` sichtbar machen.::
+dass ``fib`` gar keine Funktion, sondern eine Prozedur ist, da sie keinen Wert
+zurückgibt.  Tatsächlich geben aber auch Funktionen *ohne* eine
+:keyword:`return`-Anweisung einen Wert zurück, wenn auch einen eher
+langweiligen, nämlich den eingebauten Namen ``None`` ("nichts").  Die Ausgabe
+des Wertes ``None`` wird normalerweise vom Interpreter unterdrückt, wenn es der
+einzige Wert wäre, der ausgegeben wird. Möchte man ihn sehen, kann man ihn
+mittels :func:`print` sichtbar machen.::
 
     >>> fib(0)
     >>> print(fib(0))
@@ -365,7 +366,8 @@ werden kann, als sie definitionsgemäß erlaubt. Zum Beispiel::
 Das Beispiel führt auch noch das Schlüsselwort :keyword:`in` ein. Dieses
 überprüft ob ein gegebener Wert in einer Sequenz gegeben ist.
 
-Die Standardwerte werden zum Zeitpunkt der Funktionsdefinition im *definierenden* Gültigkeitsbereich ausgewertet, so dass::
+Die Standardwerte werden zum Zeitpunkt der Funktionsdefinition im
+*definierenden* Gültigkeitsbereich ausgewertet, so dass::
 
     i = 5
 
@@ -563,4 +565,30 @@ bereitstellen::
    >>> parrot(**d)
    -- Der Vogel würde selbst dann nicht FLIEGEN selbst wenn sie ihm vier Millionen Volt durch den Schnabel jagen täten.
    -- Er is verdammt nochmal tot!
+
+
+.. _tut-lambda:
+
+Lambda-Form - anonyme Funktion
+-------------------------
+
+Aufgrund der hohen Nachfrage, haben ein paar Merkmale, die in funktionalen
+Programmiersprachen wie Lisp üblich sind, Einzug in Python gehalten. Mit dem
+Schlüsselwort :keyword:`lambda` können kleine anonyme Funktionen erstellt
+werden. Hier eine Funktion, die die Summe seiner zwei Argumente zurückgibt:
+``lambda a, b: a + b``. :keyword:`lambda` kann überall genutzt werden, wo ein
+Funktionsobjekt benötigt wird. Semantisch sind sie nur syntaktischer Zucker für
+eine normale Funktionsdefinition. Wie verschachtelte Funktionsdefinitionen,
+können in einer :keyword:`lamdba`-Form Variablen der umgebenden Namensräume
+referenziert werden::
+
+
+    >>> def make_incrementor(n):
+    ...     return lambda x: x + n
+    ...
+    >>> f = make_incrementor(42)
+    >>> f(0)
+    42
+    >>> f(1)
+    43
 

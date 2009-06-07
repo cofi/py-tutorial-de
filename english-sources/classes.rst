@@ -14,7 +14,8 @@ multiple base classes, a derived class can override any methods of its base
 class or classes, and a method can call the method of a base class with the same
 name.  Objects can contain an arbitrary amount of private data.
 
-In C++ terminology, all class members (including the data members) are *public*,
+In C++ terminology, normally class members (including the data members) are
+*public* (except see below :ref:`tut-private`),
 and all member functions are *virtual*.  There are no special constructors or
 destructors.  As in Modula-3, there are no shorthands for referencing the
 object's members from its methods: the method function is declared with an
@@ -97,7 +98,7 @@ until the interpreter quits.  The statements executed by the top-level
 invocation of the interpreter, either read from a script file or interactively,
 are considered part of a module called :mod:`__main__`, so they have their own
 global namespace.  (The built-in names actually also live in a module; this is
-called :mod:`__builtin__`.)
+called :mod:`builtins`.)
 
 The local namespace for a function is created when the function is called, and
 deleted when the function returns or raises an exception that is not handled
@@ -118,10 +119,11 @@ contains the current module's global names; and the outermost scope (searched
 last) is the namespace containing built-in names.
 
 If a name is declared global, then all references and assignments go directly to
-the middle scope containing the module's global names. Otherwise, all variables
-found outside of the innermost scope are read-only (an attempt to write to such
-a variable will simply create a *new* local variable in the innermost scope,
-leaving the identically named outer variable unchanged).
+the middle scope containing the module's global names.  To rebind variables
+found outside of the innermost scope, the :keyword:`nonlocal` statement can be
+used; if not declared nonlocal, those variable are read-only (an attempt to
+write to such a variable will simply create a *new* local variable in the
+innermost scope, leaving the identically named outer variable unchanged).
 
 Usually, the local scope references the local names of the (textually) current
 function.  Outside functions, the local scope references the same namespace as
@@ -136,8 +138,8 @@ language definition is evolving towards static name resolution, at "compile"
 time, so don't rely on dynamic name resolution!  (In fact, local variables are
 already determined statically.)
 
-A special quirk of Python is that -- if no :keyword:`global`
-statement is in effect -- assignments to names always go
+A special quirk of Python is that -- if no :keyword:`global` or
+:keyword:`nonlocal` statement is in effect -- assignments to names always go
 into the innermost scope.  Assignments do not copy data --- they just bind names
 to objects.  The same is true for deletions: the statement ``del x`` removes the
 binding of ``x`` from the namespace referenced by the local scope.  In fact, all
@@ -145,6 +147,56 @@ operations that introduce new names use the local scope: in particular, import
 statements and function definitions bind the module or function name in the
 local scope.  (The :keyword:`global` statement can be used to indicate that
 particular variables live in the global scope.)
+
+The :keyword:`global` statement can be used to indicate that particular
+variables live in the global scope and should be rebound there; the
+:keyword:`nonlocal` statement indicates that particular variables live in
+an enclosing scope and should be rebound there.
+
+.. _tut-scopeexample:
+
+Scopes and Namespaces Example
+-----------------------------
+
+This is an example demonstrating how to reference the different scopes and
+namespaces, and how :keyword:`global` and :keyword:`nonlocal` affect variable
+binding::
+
+   def scope_test():
+       def do_local():
+           spam = "local spam"
+       def do_nonlocal():
+           nonlocal spam
+           spam = "nonlocal spam"
+       def do_global():
+           global spam
+           spam = "global spam"
+
+       spam = "test spam"
+       do_local()
+       print("After local assignment:", spam)
+       do_nonlocal()
+       print("After nonlocal assignment:", spam)
+       do_global()
+       print("After global assignment:", spam)
+
+   scope_test()
+   print("In global scope:", spam)
+
+The output of the example code is::
+
+   After local assignment: test spam
+   After nonlocal assignment: nonlocal spam
+   After global assignment: nonlocal spam
+   In global scope: global spam
+
+Note how the *local* assignment (which is default) didn't change *scope_test*\'s
+binding of *spam*.  The :keyword:`nonlocal` assignment changed *scope_test*\'s
+binding of *spam*, and the :keyword:`global` assignment changed the module-level
+binding.
+
+You can also see that there was no previous binding for *spam* before the
+:keyword:`global` assignment.
 
 
 .. _tut-firstclasses:
@@ -274,7 +326,7 @@ code will print the value ``16``, without leaving a trace::
    x.counter = 1
    while x.counter < 10:
        x.counter = x.counter * 2
-   print x.counter
+   print(x.counter)
    del x.counter
 
 The other kind of instance attribute reference is a *method*. A method is a
@@ -309,7 +361,7 @@ object, and can be stored away and called at a later time.  For example::
 
    xf = x.f
    while True:
-       print xf()
+       print(xf())
 
 will continue to print ``hello world`` until the end of time.
 
@@ -478,9 +530,8 @@ Python has two built-in functions that work with inheritance:
 
 * Use :func:`issubclass` to check class inheritance: ``issubclass(bool, int)``
   is ``True`` since :class:`bool` is a subclass of :class:`int`.  However,
-  ``issubclass(unicode, str)`` is ``False`` since :class:`unicode` is not a
-  subclass of :class:`str` (they only share a common ancestor,
-  :class:`basestring`).
+  ``issubclass(float, int)`` is ``False`` since :class:`float` is not a
+  subclass of :class:`int`.
 
 
 
@@ -489,8 +540,8 @@ Python has two built-in functions that work with inheritance:
 Multiple Inheritance
 --------------------
 
-Python supports a limited form of multiple inheritance as well.  A class
-definition with multiple base classes looks like this::
+Python supports a form of multiple inheritance as well.  A class definition with
+multiple base classes looks like this::
 
    class DerivedClassName(Base1, Base2, Base3):
        <statement-1>
@@ -499,36 +550,30 @@ definition with multiple base classes looks like this::
        .
        <statement-N>
 
-For old-style classes, the only rule is depth-first, left-to-right.  Thus, if an
-attribute is not found in :class:`DerivedClassName`, it is searched in
-:class:`Base1`, then (recursively) in the base classes of :class:`Base1`, and
-only if it is not found there, it is searched in :class:`Base2`, and so on.
+For most purposes, in the simplest cases, you can think of the search for
+attributes inherited from a parent class as depth-first, left-to-right, not
+searching twice in the same class where there is an overlap in the hierarchy.
+Thus, if an attribute is not found in :class:`DerivedClassName`, it is searched
+for in :class:`Base1`, then (recursively) in the base classes of :class:`Base1`,
+and if it was not found there, it was searched for in :class:`Base2`, and so on.
 
-(To some people breadth first --- searching :class:`Base2` and :class:`Base3`
-before the base classes of :class:`Base1` --- looks more natural.  However, this
-would require you to know whether a particular attribute of :class:`Base1` is
-actually defined in :class:`Base1` or in one of its base classes before you can
-figure out the consequences of a name conflict with an attribute of
-:class:`Base2`.  The depth-first rule makes no differences between direct and
-inherited attributes of :class:`Base1`.)
+In fact, it is slightly more complex than that; the method resolution order
+changes dynamically to support cooperative calls to :func:`super`.  This
+approach is known in some other multiple-inheritance languages as
+call-next-method and is more powerful than the super call found in
+single-inheritance languages.
 
-For :term:`new-style class`\es, the method resolution order changes dynamically
-to support cooperative calls to :func:`super`.  This approach is known in some
-other multiple-inheritance languages as call-next-method and is more powerful
-than the super call found in single-inheritance languages.
-
-With new-style classes, dynamic ordering is necessary because all  cases of
-multiple inheritance exhibit one or more diamond relationships (where one at
-least one of the parent classes can be accessed through multiple paths from the
-bottommost class).  For example, all new-style classes inherit from
-:class:`object`, so any case of multiple inheritance provides more than one path
-to reach :class:`object`.  To keep the base classes from being accessed more
-than once, the dynamic algorithm linearizes the search order in a way that
-preserves the left-to-right ordering specified in each class, that calls each
-parent only once, and that is monotonic (meaning that a class can be subclassed
-without affecting the precedence order of its parents).  Taken together, these
-properties make it possible to design reliable and extensible classes with
-multiple inheritance.  For more detail, see
+Dynamic ordering is necessary because all cases of multiple inheritance exhibit
+one or more diamond relationships (where at least one of the parent classes
+can be accessed through multiple paths from the bottommost class).  For example,
+all classes inherit from :class:`object`, so any case of multiple inheritance
+provides more than one path to reach :class:`object`.  To keep the base classes
+from being accessed more than once, the dynamic algorithm linearizes the search
+order in a way that preserves the left-to-right ordering specified in each
+class, that calls each parent only once, and that is monotonic (meaning that a
+class can be subclassed without affecting the precedence order of its parents).
+Taken together, these properties make it possible to design reliable and
+extensible classes with multiple inheritance.  For more detail, see
 http://www.python.org/download/releases/2.3/mro/.
 
 
@@ -558,7 +603,7 @@ as in the debugger, and that's one reason why this loophole is not closed.
 (Buglet: derivation of a class with the same name as the base class makes use of
 private variables of the base class possible.)
 
-Notice that code passed to ``exec``, ``eval()`` or ``execfile()`` does not
+Notice that code passed to ``exec()`` or ``eval()`` does not
 consider the classname of the invoking  class to be the current class; this is
 similar to the effect of the  ``global`` statement, the effect of which is
 likewise restricted to  code that is byte-compiled together.  The same
@@ -596,8 +641,8 @@ data from a string buffer instead, and pass it as an argument.
    or arithmetic operators, and assigning such a "pseudo-file" to sys.stdin will
    not cause the interpreter to read further input from it.)
 
-Instance method objects have attributes, too: ``m.im_self`` is the instance
-object with the method :meth:`m`, and ``m.im_func`` is the function object
+Instance method objects have attributes, too: ``m.__self__`` is the instance
+object with the method :meth:`m`, and ``m.__func__`` is the function object
 corresponding to the method.
 
 
@@ -609,23 +654,23 @@ Exceptions Are Classes Too
 User-defined exceptions are identified by classes as well.  Using this mechanism
 it is possible to create extensible hierarchies of exceptions.
 
-There are two new valid (semantic) forms for the raise statement::
+There are two valid (semantic) forms for the raise statement::
 
-   raise Class, instance
+   raise Class
 
-   raise instance
+   raise Instance
 
-In the first form, ``instance`` must be an instance of :class:`Class` or of a
-class derived from it.  The second form is a shorthand for::
+In the first form, ``Class`` must be an instance of :class:`type` or of a
+class derived from it.  The first form is a shorthand for::
 
-   raise instance.__class__, instance
+   raise Class()
 
 A class in an except clause is compatible with an exception if it is the same
 class or a base class thereof (but not the other way around --- an except clause
 listing a derived class is not compatible with a base class).  For example, the
 following code will print B, C, D in that order::
 
-   class B:
+   class B(Exception):
        pass
    class C(B):
        pass
@@ -636,11 +681,11 @@ following code will print B, C, D in that order::
        try:
            raise c()
        except D:
-           print "D"
+           print("D")
        except C:
-           print "C"
+           print("C")
        except B:
-           print "B"
+           print("B")
 
 Note that if the except clauses were reversed (with ``except B`` first), it
 would have printed B, B, B --- the first matching except clause is triggered.
@@ -659,45 +704,46 @@ By now you have probably noticed that most container objects can be looped over
 using a :keyword:`for` statement::
 
    for element in [1, 2, 3]:
-       print element
+       print(element)
    for element in (1, 2, 3):
-       print element
+       print(element)
    for key in {'one':1, 'two':2}:
-       print key
+       print(key)
    for char in "123":
-       print char
+       print(char)
    for line in open("myfile.txt"):
-       print line
+       print(line)
 
 This style of access is clear, concise, and convenient.  The use of iterators
 pervades and unifies Python.  Behind the scenes, the :keyword:`for` statement
 calls :func:`iter` on the container object.  The function returns an iterator
-object that defines the method :meth:`next` which accesses elements in the
-container one at a time.  When there are no more elements, :meth:`next` raises a
-:exc:`StopIteration` exception which tells the :keyword:`for` loop to terminate.
-This example shows how it all works::
+object that defines the method :meth:`__next__` which accesses elements in the
+container one at a time.  When there are no more elements, :meth:`__next__`
+raises a :exc:`StopIteration` exception which tells the :keyword:`for` loop to
+terminate.  You can call the :meth:`__next__` method using the :func:`next`
+builtin; this example shows how it all works::
 
    >>> s = 'abc'
    >>> it = iter(s)
    >>> it
    <iterator object at 0x00A1DB50>
-   >>> it.next()
+   >>> next(it)
    'a'
-   >>> it.next()
+   >>> next(it)
    'b'
-   >>> it.next()
+   >>> next(it)
    'c'
-   >>> it.next()
+   >>> next(it)
 
    Traceback (most recent call last):
      File "<stdin>", line 1, in ?
-       it.next()
+       next(it)
    StopIteration
 
 Having seen the mechanics behind the iterator protocol, it is easy to add
 iterator behavior to your classes.  Define a :meth:`__iter__` method which
-returns an object with a :meth:`next` method.  If the class defines
-:meth:`next`, then :meth:`__iter__` can just return ``self``::
+returns an object with a :meth:`__next__` method.  If the class defines
+:meth:`__next__`, then :meth:`__iter__` can just return ``self``::
 
    class Reverse:
        "Iterator for looping over a sequence backwards"
@@ -706,14 +752,14 @@ returns an object with a :meth:`next` method.  If the class defines
            self.index = len(data)
        def __iter__(self):
            return self
-       def next(self):
+       def __next__(self):
            if self.index == 0:
                raise StopIteration
            self.index = self.index - 1
            return self.data[self.index]
 
    >>> for char in Reverse('spam'):
-   ...     print char
+   ...     print(char)
    ...
    m
    a
@@ -728,7 +774,7 @@ Generators
 
 :term:`Generator`\s are a simple and powerful tool for creating iterators.  They
 are written like regular functions but use the :keyword:`yield` statement
-whenever they want to return data.  Each time :meth:`next` is called, the
+whenever they want to return data.  Each time :func:`next` is called on it, the
 generator resumes where it left-off (it remembers all the data values and which
 statement was last executed).  An example shows that generators can be trivially
 easy to create::
@@ -738,7 +784,7 @@ easy to create::
            yield data[index]
 
    >>> for char in reverse('golf'):
-   ...     print char
+   ...     print(char)
    ...
    f
    l
@@ -747,7 +793,7 @@ easy to create::
 
 Anything that can be done with generators can also be done with class based
 iterators as described in the previous section.  What makes generators so
-compact is that the :meth:`__iter__` and :meth:`next` methods are created
+compact is that the :meth:`__iter__` and :meth:`__next__` methods are created
 automatically.
 
 Another key feature is that the local variables and execution state are
@@ -784,14 +830,14 @@ Examples::
    260
 
    >>> from math import pi, sin
-   >>> sine_table = dict((x, sin(x*pi/180)) for x in range(0, 91))
+   >>> sine_table = {x: sin(x*pi/180) for x in range(0, 91)}
 
    >>> unique_words = set(word  for line in page  for word in line.split())
 
    >>> valedictorian = max((student.gpa, student.name) for student in graduates)
 
    >>> data = 'golf'
-   >>> list(data[i] for i in range(len(data)-1,-1,-1))
+   >>> list(data[i] for i in range(len(data)-1, -1, -1))
    ['f', 'l', 'o', 'g']
 
 
