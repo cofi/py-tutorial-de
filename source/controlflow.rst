@@ -524,13 +524,6 @@ aufgerufen wird, aufnimmt. Alle Argumente, die in der Definition auf ein
     >>> concat("Erde", "Mars", "Venus", sep=".")
     'Erde.Mars.Venus'
 
-.. rubric:: Fußnoten
-
-.. [#] Eigentlich wäre *call by object reference* eine bessere Beschreibung,
-denn wird ein veränderbares Objekt übergeben, sieht der Aufrufende jegliche
-Veränderungen, die der Aufgerufene am Objekt vornimmt (beispielsweise
-Elemente in eine Liste einfügt)
-
 .. _tut-unpacking-arguments:
 
 Argumentlisten auspacken
@@ -577,11 +570,10 @@ Programmiersprachen wie Lisp üblich sind, Einzug in Python gehalten. Mit dem
 Schlüsselwort :keyword:`lambda` können kleine anonyme Funktionen erstellt
 werden. Hier eine Funktion, die die Summe seiner zwei Argumente zurückgibt:
 ``lambda a, b: a + b``. :keyword:`lambda` kann überall genutzt werden, wo ein
-Funktionsobjekt benötigt wird. Semantisch sind sie nur syntaktischer Zucker für
+Funktionsobjekt benötigt wird. Semantisch ist es nur syntaktischer Zucker für
 eine normale Funktionsdefinition. Wie verschachtelte Funktionsdefinitionen,
 können in einer :keyword:`lamdba`-Form Variablen der umgebenden Namensräume
 referenziert werden::
-
 
     >>> def make_incrementor(n):
     ...     return lambda x: x + n
@@ -591,4 +583,116 @@ referenziert werden::
     42
     >>> f(1)
     43
+
+.. _tut-docstrings:
+
+Dokumentationsstrings
+---------------------
+
+.. index::
+   single: docstrings
+   single: documentation strings
+   single: strings, documentation
+
+Hier nun ein paar Konventionen zum Inhalt und Formatieren von
+Dokumentationsstrings.
+
+Die erste Zeile sollte immer eine kurze, prägnante Zusammenfassung des Zwecks
+des Objekts sein. Wegen der Kürze, sollte es nicht explizit auf den Namen oder
+den Typ des Objekts hinweisen, da diese durch andere Wege verfügbar sind (es sei
+denn, wenn der Name ein Verb ist, das den Ablauf der Funktion beschreibt).
+Dieser Zeile sollte mit einem Großbuchstaben anfangen und mit einem Punkt enden.
+
+Enthält der Dokumentationsstring mehrere Zeilen, dann sollte die zweite Zeile
+leer sein, um die Zusammenfassung visuell vom Rest der Beschreibung zu trennen.
+Die folgenden Zeilen sollten aus einem oder mehrere Absätzen bestehen, die die
+Konventionen zum Aufruf des Objektes erläutern, seine Nebeneffekte etc.
+
+Der Python-Parser entfernt die Einrückung von mehrzeiligen
+Zeichenkettenliteralen nicht, sodass Werkzeuge, die die Dokumentation
+verarbeiten, die Einrückung entfernen müssen, sofern das gewünscht ist. Dies
+geschieht aufgrund folgender Konvention: Die erste nicht-leere Zeile *nach* der
+ersten Zeile bestimmt den Umfang der Einrückung für den gesamten
+Dokumentationsstring. (Die erste Zeile kann man dafür nicht benutzen, da sie
+normalerweise neben dem öffnenden Anführungszeichen des Zeichenkettenliterals,
+sodass die Einrückung im Literal nicht erscheint.) Entsprechend dieser
+Einrückung werden vom Anfang jeder Zeile der Zeichenkette Leerzeichen entfernt.
+Zeilen, die weniger eingerückt sind, sollten nicht auftauchen, falls doch
+sollten alle führenden Leerzeichen der Zeile entfernt werden. Die Entsprechung
+der Leerzeichen sollte nach der Expansion von Tabs (üblicherweise zu 8
+Leerzeichen) überprüft werden.
+
+Hier ein Beispiel eines mehrzeiligen Docstrings::
+
+    >>> def my_function():
+    ...     """Do nothing, but document it.
+    ...
+    ...     No, really, it doesn't do anything.
+    ...     """
+    ...     pass
+    ...
+    >>> print(my_function.__doc__)
+    Do nothing, but document it.
+
+       No, really, it doesn't do anything.
+
+
+.. _tut-codingstyle:
+
+Intermezzo: Schreibstil
+=======================
+
+.. index:: pair: coding; style
+
+Jetzt da du längere, komplexere Stücke in Python schreibst, ist es an der Zeit
+mal über den Schreibstil (*coding style*) zu sprechen. Viele Sprachen können in
+verschiedenen Stilen geschrieben (präziser: *formatiert*) werden; davon sind
+manche lesbarer als andere. Es anderen leichter zu machen deinen Code zu lesen
+ist immer eine gute Idee und einen schönen Schreibstil anzugewöhnen hilft dabei
+ungemein.
+
+Für Python hat sich :pep:`8` als der Styleguide herauskristallisiert, dem die
+meisten Projekte folgen. Es fördert einen sehr lesbaren Schreibstil, der
+angenehm anzuschauen ist. Jeder Pythonentwickler sollte es irgendwann einmal
+lesen, hier jedoch die wichtigsten Punkte:
+
+* Benutze eine Einrückung von 4 Leerzeichen, keine Tabs.
+
+  4 Leerzeichen sind ein guter Kompromiss zwischen geringer Einrückung, die eine
+  größere Verschachtelungstiefe ermöglicht, und größerer Einrückung, die den
+  Code leichter lesbar macht. Tabs führen zu Unordnung und sollten deshalb
+  vermieden werden.
+
+* Breche Zeilen so um, dass sie nicht über 79 Zeichen hinausgehen.
+
+  Das ist hilfreich für Benutzer mit kleinen Bildschirmen und macht es auf
+  größeren möglich mehrere Dateien nebeneinander zu betrachten.
+
+* Benutze Leerzeilen, um Funktion und Klassen, sowie größere Codeblöcke
+  innerhalb von Funktionen zu trennen.
+
+* Verwende eine eigene Zeile für Kommentare, sofern das möglich ist.
+
+* Schreibe Docstrings.
+
+* Benutze Leerzeichen um Operatoren herum und nach Kommas, jedoch nicht direkt
+  innerhalb von Klammerkonstrukten: ``a = f(1,2,) + g(3, 4)``.
+
+* Benenne deine Klassen und Funktionen konsistent: Die Konvention schlägt
+  ``CamelCase`` für Klassen und ``klein_geschrieben_mit_unterstrichen`` für
+  Funktionen und Methoden vor. Benutze immer ``self`` als Namen für das erste
+  Methoden Argument (mehr zu Klassen und Methoden, siehe
+  :ref:`tut-firstclasses`)
+
+* Benutze keine ausgefallenen Dateikodierungen, wenn dein Code für ein
+  internationales Publikum vorgesehen ist. Einfaches ASCII ist in allen Fällen
+  am Besten.
+
+
+.. rubric:: Fußnoten
+
+.. [#] Eigentlich wäre *call by object reference* eine bessere Beschreibung,
+       denn wird ein veränderbares Objekt übergeben, sieht der Aufrufende
+       jegliche Veränderungen, die der Aufgerufene am Objekt vornimmt
+       (beispielsweise Elemente in eine Liste einfügt)
 
