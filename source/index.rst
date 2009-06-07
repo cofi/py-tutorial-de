@@ -55,7 +55,7 @@ Es lohnt sich ebenfalls das :ref:`glossary` durchzugehen.
    interpreter.rst
    introduction.rst
    controlflow.rst
-   datastructures,rst
+   datastructures.rst
    modules.rst
    inputoutput.rst
    errors.rst
