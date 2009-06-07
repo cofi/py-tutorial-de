@@ -182,7 +182,7 @@ da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist. In diesem Fall
 versucht Python das Skript als Modul zu importieren, was normalerweise zu einem
 Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
 
-Kompilierte Python-Dateien
+"Kompilierte" Python-Dateien
 --------------------------
 
 Um den Start von kurzen Programmen, die viele Standard Module verwenden,
