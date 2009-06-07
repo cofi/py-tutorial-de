@@ -86,7 +86,8 @@ Schreibweise verwendet, um auch dessen Funktionen anzusprechen,
 
 Module können andere Module importieren. Es ist gebräuchlich, aber nicht
 zwingend, dass man alle :keyword:`import` Statements an den Anfangs eines Moduls
-setzt (oder in diesem Fall Skript). Die Namen der importierten Module werden in die Symbol-Tabelle des importierenden Moduls eingefügt.
+setzt (oder in diesem Fall Skript). Die Namen der importierten Module werden in
+die Symbol-Tabelle des importierenden Moduls eingefügt.
 
 Es gibt eine Variante des :keyword:`import` Statements, welche bestimme Namen
 aus einem Modul direkt in die Symbol-Tabelle des importierenden Moduls einfügt.
@@ -165,7 +166,8 @@ Wenn ein Modul mit dem Namen :mod:`spam` importiert wird, sucht der Interpreter
 im aktuellen Verzeichnis nach einer Datei mit dem Namen :file:`spam.py` und dann
 in der Verzeichnisliste, die in der Umgebungsvariable :envvar:`PYTHONPATH`
 gesetzt ist. Diese hat die gleiche Syntax wie die Shell Variable :envvar:`PATH`,
-welche auch eine Verzeichnisliste ist. Falls :envvar:`PYTHONPATH` nicht gesetzt ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem
+welche auch eine Verzeichnisliste ist. Falls :envvar:`PYTHONPATH` nicht gesetzt
+ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem
 installationsabhängigen Pfad fortgesetzt; unter Unix ist das normalerweise:
 :file:`.:/usr/local/lib/python`.
 
@@ -235,3 +237,25 @@ Einige Tipps für Experten:
   wenn :option:`-O` genutzt wird) für alle Module in einem Verzeichnis
   erstellen.
 
+Standard Module
+===============
+
+Python wird mit einer Bibliothek von Standard Modulen ausgeliefert, welche in der Python Bibliothek Referenz beschrieben werden. Einige Module sind in den Interpreter eingebaut; diese bieten Zugang zu Operationen, die nicht Teil des Sprachkerns sind, aber nichtsdestotrotz entweder dafür eingebaut sind, um Zugang zu Systemoperationen (wie z.B. Systemaufrufe) bereitzustellen oder aus Effizientsgründen. Die Zusammenstellung dieser Module ist eine Option in der Konfiguration, welche auch von der verwendeten Plattform abhängig ist. Beispielsweise ist das :mod:`winreg` Modul nur unter Windows Systemen verfügbar. Ein bestimmtes Modul verdient besondere Aufmerksamkeit: :mod:`sys`, welches in jeden Python Interpreter eingebaut ist. Die Variablen ``sys.ps1`` und ``sys.ps2`` definieren die primären und sekundären Strings, die in der Kommandozeile verwendet werden::
+
+	>>> import sys
+	>>> sys.ps1
+	'>>> '
+	>>> sys.ps2
+	'... '
+	>>> sys.ps1 = 'C> '
+	C> print('Yuck!')
+	Yuck!
+	C>
+	
+Diese beiden Variablen werden nur definiert, wenn der Interpreter im interaktiven Modus ist.
+
+Die Variable ``sys.path`` ist eine Stringliste, die den Suchpfad des Interpreters vorgibt. Sie ist mit einem Standardpfad voreingestellt, der aus der Umgebungsvariable :envvar:`PYTHONPATH` entnommen wird oder aus einem eingebauten Standardwert, falls :envvar:`PYTHONPATH` nicht gesetzt ist. Man diese Variable mit normalen Listenoperationen verändern::
+
+	>>> import sys
+	>>> sys.path.append('/ufs/guido/lib/python')
+	
