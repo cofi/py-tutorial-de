@@ -153,8 +153,8 @@ Beim Import des Moduls wird dieser Code nicht ausgeführt::
 	>>>
 	
 Dies wird oft dazu verwendet, um entweder eine bequeme Benutzerschnittstelle zum
-Modul bereitzustellen oder zu Testzwecken (wenn das Modul als Skript ausgeführt wird,
-wird eine Testsuite gestartet).
+Modul bereitzustellen oder zu Testzwecken (wenn das Modul als Skript ausgeführt
+wird, wird eine Testsuite gestartet).
 
 .. _tut-searchpath:
 
@@ -172,10 +172,18 @@ ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem
 installationsabhängigen Pfad fortgesetzt; unter Unix ist das normalerweise:
 :file:`.:/usr/local/lib/python`.
 
-Tatsächlich werden Module in der Reihenfolge gesucht, in der sie in der Variable `sys.path` aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich auch das Skript befindet beginnt, gefolgt von :envvar:`PYTHONPATH` und dem installationsabhängigen default-Pfad. Dies erlaubt Python-Programmen, die Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu Beachten ist, dass das Skript nicht den selben Namen haben wie eines der Standardmodule, da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist. In diesem Fall versucht Python das Skript als Modul zu importieren, was normalerweise zu einem Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
+Tatsächlich werden Module in der Reihenfolge gesucht, in der sie in der Variable
+`sys.path` aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich
+auch das Skript befindet beginnt, gefolgt von :envvar:`PYTHONPATH` und dem
+installationsabhängigen default-Pfad. Dies erlaubt Python-Programmen, die
+Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu Beachten
+ist, dass das Skript nicht den selben Namen haben wie eines der Standardmodule,
+da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist. In diesem Fall
+versucht Python das Skript als Modul zu importieren, was normalerweise zu einem
+Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
 
-"Compiled" Python Dateien
--------------------------
+Kompilierte Python-Dateien
+--------------------------
 
 Um den Start von kurzen Programmen, die viele Standard Module verwenden,
 schneller zu machen, werden Dateien erstellt, welche bereits "byte-kompiliert"
@@ -186,7 +194,7 @@ Der Zeitpunkt an dem die Datei :file:`spam.py` zuletzt geändert wurde, wird in
 :file:`.pyc` ignoriert.
 
 Normalerweise muss man nichts tun, damit die :file:`spam.pyc` Datei erstellt
-wird. Immer wenn :file:`spam.py` erfolgreich komipiliert wird, wird auch
+wird. Immer wenn :file:`spam.py` erfolgreich kompiliert wird, wird auch
 versucht die kompilierte Version in :file:`spam.pyc` zu schreiben. Es wird kein
 Fehler geworfen, wenn der Vorgang scheitert; wenn aus irgendeinem Grund die
 Datei nicht vollständig geschrieben sein sollte, wird die daraus resultierende
@@ -197,18 +205,18 @@ kann.
 
 Einige Tipps für Experten:
 
-* Wenn der Python Interpreter mit dem :option:`-O` Flag gestartet wird, so
+* Wird der Python Interpreter mit dem :option:`-O` Flag gestartet, so
   so wird der optimierte Code in :file:`.pyo` Dateien gespeichert. Optimierter
-  Code Hilft momentan nicht viel, da er lediglich :keyword:`assert` Statements
-  entfernt. Wenn man :option:`-O` verwendet, wird der *komplette*
+  Code hilft momentan nicht viel, da er lediglich :keyword:`assert`-Anweisungen
+  entfernt. Wird :option:`-O` verwendet, wird der *komplette*
   :term:`Bytecode` optimiert; :file:`.pyc` werden ignoriert und :file:`.py`
   Dateien werden zu optimiertem Bytecode kompiliert.
 
-* Wenn man dem Python Interpreter zwei :option:`-O` Flags übergibt, werden
-  durch den Bytecode Compiler Optimierungen vollzogen, welche zu einer
+* Werden dem Python Interpreter zwei :option:`-O` Flags übergiben, vollzieht
+  der Bytecode-Compiler Optimierungen, die zu einer
   Fehlfunktion des Programms führen können. Momentan werden nur ``__doc__``
-  Strings aus dem Bytecode entfernt, was in kleineren :file:`.pyo` Dateien
-  resultiert. Da einige Programm sich darauf verlassen, dass diese verfügbar
+  Strings aus dem Bytecode entfernt, was zu kleineren :file:`.pyo` Dateien
+  führt. Da einige Programm sich darauf verlassen, dass sie verfügbar
   sind, sollte man diese Option nur aktivieren, wenn man weiß, was man tut.
 
 * Ein Programm wird in keinster Weise schneller ausgeführt, wenn es aus einer
@@ -218,32 +226,31 @@ Einige Tipps für Experten:
 * Wenn ein Skript durch das Aufrufen über die Kommandozeile ausgeführt wird,
   wird der Bytecode nie in eine :file:`.pyc` oder :file:`.pyo` Datei
   geschrieben. Deshalb kann die Startzeit eines Skripts durch das Auslagern des
-  Codes in ein Modul reduziert werden. Es ist auch möglich eine :file:`.pyc`
-  oder :file:`.pyo` Datei direkt in der Kommandozeile auszuführen.
+  Codes in ein Modul reduziert werden. Es ist auch möglich eine :file:`.pyc`-
+  oder :file:`.pyo`-Datei direkt in der Kommandozeile auszuführen.
 
-* Es ist auch möglich, eine :file:`.pyc` oder :file:`.pyo` Datei zu haben, ohne
+* Es ist möglich, eine :file:`.pyc` oder :file:`.pyo` Datei zu haben, ohne
   dass eine Datei mit dem Namen :file:`spam.py` für selbiges Modul existiert.
-  Dies kann dazu genutzt werden, Python Code auszuliefern, der relativ schwer
+  Dies kann dazu genutzt werden, Python-Code auszuliefern, der relativ schwer
   rekonstruiert werden kann.
 
 * Das Modul :mod:`compileall` kann :file:`.pyc` Dateien (oder auch :file:`.pyo`,
-  wenn :option:`-O` genutzt wird) für alle Module in einem Verzeichnis
-  erstellen.
+  wenn :option:`-O` genutzt wird) aus allen Module eines Verzeichnis erzeugen.
 
 Standard Module
 ===============
 
 Python wird mit einer Bibliothek von Standard Modulen ausgeliefert, welche in
-der Python Bibliothek Referenz beschrieben werden. Einige Module sind in den
+der Python Library Reference beschrieben werden. Einige Module sind in den
 Interpreter eingebaut; diese bieten Zugang zu Operationen, die nicht Teil des
-Sprachkerns sind, aber nichtsdestotrotz entweder dafür eingebaut sind, um Zugang
+Sprachkerns sind, aber trotzdem eingebaut sind. Entweder, um Zugang
 zu Systemoperationen (wie z.B. Systemaufrufe) bereitzustellen oder aus
-Effizientsgründen. Die Zusammenstellung dieser Module ist eine Option in der
+Effizienzgründen. Die Zusammenstellung dieser Module ist eine Option in der
 Konfiguration, welche auch von der verwendeten Plattform abhängig ist.
 Beispielsweise ist das :mod:`winreg` Modul nur unter Windows Systemen verfügbar.
 Ein bestimmtes Modul verdient besondere Aufmerksamkeit: :mod:`sys`, welches in
 jeden Python Interpreter eingebaut ist. Die Variablen ``sys.ps1`` und
-``sys.ps2`` definieren die primären und sekundären Strings, die in der
+``sys.ps2`` definieren die primären und sekundären Eingabeaufforderungen, die in der
 Kommandozeile verwendet werden::
 
 	>>> import sys
@@ -259,7 +266,7 @@ Kommandozeile verwendet werden::
 Diese beiden Variablen werden nur definiert, wenn der Interpreter im
 interaktiven Modus ist.
 
-Die Variable ``sys.path`` ist eine Stringliste, die den Suchpfad des
+Die Variable ``sys.path`` ist eine Liste von Zeichenketten, die den Suchpfad des
 Interpreters vorgibt. Sie ist mit einem Standardpfad voreingestellt, der aus der
 Umgebungsvariable :envvar:`PYTHONPATH` entnommen wird oder aus einem eingebauten
 Standardwert, falls :envvar:`PYTHONPATH` nicht gesetzt ist. Man diese Variable
