@@ -10,11 +10,10 @@ benutzt man vorzugsweise einen Text-Editor, um längere und komplexere Programme
 zu schreiben und verwendet eine Datei als Input für den Interpreter. Diese Datei
 wird auch als Skript bezeichnet. Wird ein Programm länger, teilt man es
 besser in mehrere Dateien auf, um es leichter warten zu können. Außerdem ist es
-von Vorteil, nützliche Funktion in mehreren Programmen verwenden zu können, ohne
-sie in jedem Programm erneut definieren zu müssen.
+von Vorteil, nützliche Funktionen in mehreren Programmen verwenden zu können, ohne sie in jedem Programm erneut definieren zu müssen.
 
 Hierfür bietet Python die Möglichkeit etwas in einer Datei zu definieren und
-diese in einer anderen Datei oder in der interaktiven Konsole wieder zu
+dieses in einer anderen Datei oder in der interaktiven Konsole wieder zu
 verwenden. So eine Datei wird als *Modul* bezeichnet. Definitionen eines Moduls
 können in anderen Modulen oder in das *Hauptmodul* *importiert* werden 
 .. FIXME: der folgende Satz ist komplett unverständlich
@@ -240,7 +239,18 @@ Einige Tipps für Experten:
 Standard Module
 ===============
 
-Python wird mit einer Bibliothek von Standard Modulen ausgeliefert, welche in der Python Bibliothek Referenz beschrieben werden. Einige Module sind in den Interpreter eingebaut; diese bieten Zugang zu Operationen, die nicht Teil des Sprachkerns sind, aber nichtsdestotrotz entweder dafür eingebaut sind, um Zugang zu Systemoperationen (wie z.B. Systemaufrufe) bereitzustellen oder aus Effizientsgründen. Die Zusammenstellung dieser Module ist eine Option in der Konfiguration, welche auch von der verwendeten Plattform abhängig ist. Beispielsweise ist das :mod:`winreg` Modul nur unter Windows Systemen verfügbar. Ein bestimmtes Modul verdient besondere Aufmerksamkeit: :mod:`sys`, welches in jeden Python Interpreter eingebaut ist. Die Variablen ``sys.ps1`` und ``sys.ps2`` definieren die primären und sekundären Strings, die in der Kommandozeile verwendet werden::
+Python wird mit einer Bibliothek von Standard Modulen ausgeliefert, welche in
+der Python Bibliothek Referenz beschrieben werden. Einige Module sind in den
+Interpreter eingebaut; diese bieten Zugang zu Operationen, die nicht Teil des
+Sprachkerns sind, aber nichtsdestotrotz entweder dafür eingebaut sind, um Zugang
+zu Systemoperationen (wie z.B. Systemaufrufe) bereitzustellen oder aus
+Effizientsgründen. Die Zusammenstellung dieser Module ist eine Option in der
+Konfiguration, welche auch von der verwendeten Plattform abhängig ist.
+Beispielsweise ist das :mod:`winreg` Modul nur unter Windows Systemen verfügbar.
+Ein bestimmtes Modul verdient besondere Aufmerksamkeit: :mod:`sys`, welches in
+jeden Python Interpreter eingebaut ist. Die Variablen ``sys.ps1`` und
+``sys.ps2`` definieren die primären und sekundären Strings, die in der
+Kommandozeile verwendet werden::
 
 	>>> import sys
 	>>> sys.ps1
@@ -252,9 +262,14 @@ Python wird mit einer Bibliothek von Standard Modulen ausgeliefert, welche in de
 	Yuck!
 	C>
 	
-Diese beiden Variablen werden nur definiert, wenn der Interpreter im interaktiven Modus ist.
+Diese beiden Variablen werden nur definiert, wenn der Interpreter im
+interaktiven Modus ist.
 
-Die Variable ``sys.path`` ist eine Stringliste, die den Suchpfad des Interpreters vorgibt. Sie ist mit einem Standardpfad voreingestellt, der aus der Umgebungsvariable :envvar:`PYTHONPATH` entnommen wird oder aus einem eingebauten Standardwert, falls :envvar:`PYTHONPATH` nicht gesetzt ist. Man diese Variable mit normalen Listenoperationen verändern::
+Die Variable ``sys.path`` ist eine Stringliste, die den Suchpfad des
+Interpreters vorgibt. Sie ist mit einem Standardpfad voreingestellt, der aus der
+Umgebungsvariable :envvar:`PYTHONPATH` entnommen wird oder aus einem eingebauten
+Standardwert, falls :envvar:`PYTHONPATH` nicht gesetzt ist. Man diese Variable
+mit normalen Listenoperationen verändern::
 
 	>>> import sys
 	>>> sys.path.append('/ufs/guido/lib/python')
