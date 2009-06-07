@@ -151,3 +151,73 @@ Schlange abzurufen, benutzt man :meth:`pop` mit dem Index ``0``. Zum Beispiel::
     ['Michael', 'Terry', 'Graham']
 
 
+List Comprehensions
+-------------------
+
+List Comprehensions bieten einen prägnanten Weg Listen aus Sequenzen zu
+erzeugen. Übliche Anwendungen sind solche, in denen man Listen erstellt, in
+denen jedes Element das Ergebnis eines Verfahrens ist, das auf jedes Mitglied
+einer Sequenz angewendet wird oder solche, in denen eine Teilfolge von
+Elementen, die eine bestimmte Bedingung erfüllen, erstellt wird.
+
+Jede List Comprehension besteht aus einem Ausdruck auf den eine
+:keyword:`for`-Klausel folgt. Danach sind beliebig viele :keyword:`for`- oder
+:keyword:`if`-Klauseln zulässig. Das Ergebnis ist eine Liste, deren Elemente
+durch das Auswerten des Ausdrucks im Kontext der :keyword:`for`- und
+:keyword:`if`-Klauseln, die darauf folgen, erzeugt werden. Würde der Ausdruck
+ein Tupel ergeben, muss er in Klammern stehen.
+
+Hier nehmen wir eine Liste von Nummern und erzeugen eine, die das Dreifache
+jeder Nummer enthält::
+
+    >>> vec = [2, 4, 6]
+    >>> [3*x for x in vec]
+    [6, 12, 18]
+
+Jetzt wird's ein wenig ausgefallener::
+
+    >>> [[x, x**2] for x in vec]
+    [[2, 4], [4, 16], [6, 36]]
+
+Hier wenden wir einen Methodenaufruf auf jedes Objekt in der Sequenz an::
+
+
+    >>> freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
+    >>> [weapon.strip() for weapon in freshfruit]
+    ['banana', 'loganberry', 'passion fruit']
+
+Indem wir eine :keyword:`if`-Klausel anwenden können wir die Elemente filtern::
+
+   >>> [3*x for x in vec if x > 3]
+   [12, 18]
+   >>> [3*x for x in vec if x < 2]
+   []
+
+Tupel können oft ohne ihre Klammern erstellt werden, bei List Comprehensions
+jedoch nicht::
+
+   >>> [x, x**2 for x in vec]  # Fehler - Klammern für das Tupel benötigt
+     File "<stdin>", line 1, in ?
+       [x, x**2 for x in vec]
+                  ^
+   SyntaxError: invalid syntax
+   >>> [(x, x**2) for x in vec]
+   [(2, 4), (4, 16), (6, 36)]
+
+Hier sind ein paar verschachtelte :keyword:`for`-Schleifen und anderes
+ausgefallenes Verhalten::
+
+   >>> vec1 = [2, 4, 6]
+   >>> vec2 = [4, 3, -9]
+   >>> [x*y for x in vec1 for y in vec2]
+   [8, 6, -18, 16, 12, -36, 24, 18, -54]
+   >>> [x+y for x in vec1 for y in vec2]
+   [6, 5, -7, 8, 7, -5, 10, 9, -3]
+   >>> [vec1[i]*vec2[i] for i in range(len(vec1))]
+   [8, 12, -54]
+
+List Comprehensions können auf auf komplexe Ausdrücke und verschachtelte
+Funktionen angewendet werden::
+
+   >>> [str(round(355/113, i)) for i in range(1, 6)]
+   ['3.1', '3.14', '3.142', '3.1416', '3.14159']
