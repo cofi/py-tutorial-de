@@ -415,12 +415,12 @@ Schlüsselwortargumente
 Funktionen können auch mit Schlüsselwortargumenten in der Form ``Schlüsselwort =
 Wert`` aufgerufen werden. Zum Beispiel könnte folgende Funktion::
 
-    def parrot(voltage, state='steif',
+    def parrot(voltage, state='völlig steif',
         action='fliegen', type='norwegische Blauling'):
         print("-- Der Vogel würde selbst dann nicht", action, end=' ')
         print("selbst wenn Sie ihm ", voltage, "Volt durch den Schnabel jagen täten")
         print("-- Ganz erstaunlicher Vogel, der", type, "! Wunderhübsche Federn!")
-        print("-- Er is völlig", state, "!")
+        print("-- Er is", state, "!")
 
 in allen folgenden Variationen aufgerufen werden::
 
@@ -528,3 +528,39 @@ aufgerufen wird, aufnimmt. Alle Argumente, die in der Definition auf ein
 denn wird ein veränderbares Objekt übergeben, sieht der Aufrufende jegliche
 Veränderungen, die der Aufgerufene am Objekt vornimmt (beispielsweise
 Elemente in eine Liste einfügt)
+
+.. _tut-unpacking-arguments:
+
+Argumentlisten auspacken
+------------------------
+
+Die umgekehrte Situation ereignet sich, wenn die Argumente schon in einer Liste
+oder einem Tupel stecken, aber für einen Funktionsaufruf ausgepackt werden
+müssen, der separate positionsabhängige Argumente erfordert. Zum Beispiel
+erwartet die eingebaute Funktion :func:`range` getrennte Argumente für *Start*
+und *Stop*. Wenn sie aber nicht getrennt vorhanden sind, kann man im
+Funktionsaufruf den ``*``-Operator benutzen, um die Argumente aus einer Liste
+oder einem Tupel auszupacken.
+
+    >>> list(range(3, 6))   # normaler Aufruf mit getrennten Argumenten
+    [3, 4, 5]
+    >>> args = [3, 6]
+    >>> list(range(*args))  # Aufruf mit Argumenten, die aus einer Liste ausgepackt werden
+    [3, 4, 5]
+
+.. index:: statement: **
+
+Analog können Dictionaries Schlüsselwortargumente mit dem ``**``-Operator
+bereitstellen::
+
+    >>> def parrot(voltage, state=' völlig steif',
+    ...    action='fliegen', type='norwegische Blauling'):
+    ...    print("-- Der Vogel würde selbst dann nicht", action, end=' ')
+    ...    print("selbst wenn Sie ihm ", voltage, "Volt durch den Schnabel jagen täten.")
+    ...    print("-- Er is", state, "!")
+
+   >>> d = {"voltage": "vier Millionen", "state": "verdammt nochmal tot!", "action": "FLIEGEN"}
+   >>> parrot(**d)
+   -- Der Vogel würde selbst dann nicht FLIEGEN selbst wenn sie ihm vier Millionen Volt durch den Schnabel jagen täten.
+   -- Er is verdammt nochmal tot!
+

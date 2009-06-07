@@ -59,10 +59,10 @@ Verzeichnisnamen verwendet werden::
 Argumente in der Befehlszeile
 =============================
 
-Die meisten Scripts müssen Argumente aus der Befehlszeile verarbeiten. Diese
+Die meisten Skripte müssen Argumente aus der Befehlszeile verarbeiten. Diese
 Argumente werden als Liste im Attribut *argv* des Moduls 'mod'`sys`
 gespeichert. Die folgende Ausgabe erhält man, wenn man ``python demo.py
-one two three`` in der Eingabeaufforderung des Betriebssystems eingibt::
+eins zwei drei`` in der Eingabeaufforderung des Betriebssystems eingibt::
 
    >>> import sys
    >>> print sys.argv
@@ -84,7 +84,7 @@ Fehlermeldungen nützlich, etwa wenn *stdout* umgeleitet worden ist::
    >>> sys.stderr.write('Warnung, Log-Datei konnte nicht gefunden werden\n')
    Warnung, Log-Datei konnte nicht gefunden werden
 
-Der direkteste Weg, ein Script zu beenden, führt über ``sys.exit()``.
+Der direkteste Weg, ein Skript zu beenden, führt über ``sys.exit()``.
 
 .. _tut-string-pattern-matching:
 
@@ -101,8 +101,8 @@ eignen sich vor allem für komplizierte Suchen und Änderungen an Strings::
    >>> re.sub(r'(\b[a-z]+) \1', r'\1', 'Die Katze im im Hut')
    'Die Katze im Hut'
 
-Solange allerdings nur einfache Änderungen vorgenommen werden müssen, sollte
-man eher zu den normalen Methoden von `String` greifen, da diese einfacher zu
+Solange allerdings nur einfache Änderungen vorgenommen werden müssen, sollte man
+eher zu den normalen Methoden der Zeichenketten greifen, da diese einfacher zu
 lesen und zu verstehen sind::
 
    >>> 'Tee für zwo'.replace('zwo', 'zwei')
