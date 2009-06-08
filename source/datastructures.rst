@@ -221,3 +221,47 @@ Funktionen angewendet werden::
 
    >>> [str(round(355/113, i)) for i in range(1, 6)]
    ['3.1', '3.14', '3.142', '3.1416', '3.14159']
+
+Verschachtelte List Comprehensions
+----------------------------------
+
+Man kann List Comprehensions auch verschachteln, sofern man sich das traut. Sie
+sind ein mächtiges Werkzeug, aber, wie alle mächtigen Werkzeuge, sollten sie,
+wenn überhaupt, mit Bedacht benutzt werden.
+
+Denk mal über das folgende Beispiel einer 3x3-Matrix nach, die über eine Liste
+von 3 Listen realisiert wird, wobei eine Liste eine Zeile darstellt::
+
+    >>> mat = [
+    ...        [1, 2, 3],
+    ...        [4, 5, 6],
+    ...        [7, 8, 9],
+    ...       ]
+
+Wenn man jetzt die Zeilen und Spalten vertauschen wollte, könnte man eine List
+Comprehension benutzen::
+
+    >>> print([[row[i] for row in mat] for i in [0, 1, 2]])
+    [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+
+
+Bei *verschachtelten* List Comprehension muss man besonders sorgfältig vorgehen:
+
+    Damit du dich nicht beim verschachteln von List Comprehensions verzettelst,
+    lese sie von rechts nach links.
+
+Eine ausführlichere Version dieses Schnipsels zeigt den Ablauf deutlich::
+
+    for i in [0, 1, 2]:
+        for row in mat:
+            print(row[i], end="")
+        print()
+
+Im echten Leben sollte man aber eingebaute Funktionen komplexen Anweisungen
+vorziehen. Die Funktion :func:`zip` würde in diesem Fall gute Dienste leisten::
+
+    >>> list(zip(*mat))
+    [(1, 4, 7), (2, 5, 8), (3, 6, 9)]
+
+Für eine genaue Beschreibung für was das Sternchen ist, siehe
+:ref:`tut-unpacking-arguments`.
