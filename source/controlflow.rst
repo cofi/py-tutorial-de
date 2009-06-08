@@ -676,7 +676,7 @@ lesen, hier jedoch die wichtigsten Punkte:
 * Schreibe Docstrings.
 
 * Benutze Leerzeichen um Operatoren herum und nach Kommas, jedoch nicht direkt
-  innerhalb von Klammerkonstrukten: ``a = f(1,2,) + g(3, 4)``.
+  innerhalb von Klammerkonstrukten: ``a = f(1, 2) + g(3, 4)``.
 
 * Benenne deine Klassen und Funktionen konsistent: Die Konvention schlägt
   ``CamelCase`` für Klassen und ``klein_geschrieben_mit_unterstrichen`` für
