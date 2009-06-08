@@ -699,8 +699,8 @@ lesen, hier jedoch die wichtigsten Punkte:
   oder sogar einfaches ASCII ist in jedem Fall am Besten.
 
 * Benutze auch keine nicht-ASCII-Zeichen in Bezeichnern, wenn es auch nur den
-Hauch einer Chance gibt, dass der Code von Menschen gelesen oder gewartet
-wird, die eine andere Sprache sprechen.
+  Hauch einer Chance gibt, dass der Code von Menschen gelesen oder gewartet
+  wird, die eine andere Sprache sprechen.
 
 .. rubric:: Fußnoten
 
