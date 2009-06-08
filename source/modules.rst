@@ -183,7 +183,7 @@ versucht Python das Skript als Modul zu importieren, was normalerweise zu einem
 Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
 
 "Kompilierte" Python-Dateien
---------------------------
+----------------------------
 
 Um den Start von kurzen Programmen, die viele Standard Module verwenden,
 schneller zu machen, werden Dateien erstellt, welche bereits "byte-kompiliert"
@@ -237,8 +237,12 @@ Einige Tipps für Experten:
 * Das Modul :mod:`compileall` kann :file:`.pyc` Dateien (oder auch :file:`.pyo`,
   wenn :option:`-O` genutzt wird) aus allen Module eines Verzeichnis erzeugen.
 
+.. _tut-standardmodules:
+
 Standard Module
 ===============
+
+.. index:: module: sys
 
 Python wird mit einer Bibliothek von Standard Modulen ausgeliefert, welche in
 der Python Library Reference beschrieben werden. Einige Module sind in den
@@ -274,4 +278,64 @@ mit normalen Listenoperationen verändern::
 
 	>>> import sys
 	>>> sys.path.append('/ufs/guido/lib/python')
+	
+.. _tut-dir:
+
+Die :func:`dir` Funktion
+========================
+
+Die eingebaute Funktion :func:`dir` wird benutzt, um herauszufinden, welche Namen in einem Modul definiert sind. Es wird eine sortierte Liste von Strings zurückgegeben::
+
+	>>> import fibo, sys
+	>>> dir(fibo)
+	['__name__', 'fib', 'fib2']
+	>>> dir(sys)
+	['__displayhook__', '__doc__', '__excepthook__', '__name__', '__stderr__',
+	 '__stdin__', '__stdout__', '_getframe', 'api_version', 'argv',
+	 'builtin_module_names', 'byteorder', 'callstats', 'copyright',
+	 'displayhook', 'exc_info', 'excepthook',
+	 'exec_prefix', 'executable', 'exit', 'getdefaultencoding', 'getdlopenflags',
+	 'getrecursionlimit', 'getrefcount', 'hexversion', 'maxint', 'maxunicode',
+	 'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache',
+	 'platform', 'prefix', 'ps1', 'ps2', 'setcheckinterval', 'setdlopenflags',
+	 'setprofile', 'setrecursionlimit', 'settrace', 'stderr', 'stdin', 'stdout',
+	 'version', 'version_info', 'warnoptions']
+	
+Wenn man keine Parameter übergibt, liefert :func:`dir` eine Liste der aktuell definierten Namen::
+
+	>>> a = [1, 2, 3, 4, 5]
+	>>> import fibo
+	>>> fib = fibo.fib
+	>>> dir()
+	['__builtins__', '__doc__', '__file__', '__name__', 'a', 'fib', 'fibo', 'sys']
+	
+Zu Beachten ist, dass alle Typen von Namen ausgegeben werden: Variablen, Module, Funktionen, etc.
+
+.. index:: module: builtins
+
+:func:`dir` listet allerdings nicht die Namen der eingebauten Funktionen und Variablen auf. Falls man diese auflisten will, muss man das Standardmodul :mod:`builtins` verwenden::
+
+	>>> import builtins
+	>>> dir(builtins)
+
+	['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'Buffer
+	Error', 'BytesWarning', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'Environme
+	ntError', 'Exception', 'False', 'FloatingPointError', 'FutureWarning', 'Generato
+	rExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexErr
+	or', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError',
+	 'None', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'P
+	endingDeprecationWarning', 'ReferenceError', 'RuntimeError', 'RuntimeWarning', '
+	StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'Ta
+	bError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'Unicod
+	eEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserW
+	arning', 'ValueError', 'Warning', 'ZeroDivisionError', '__build_class__', '__deb
+	ug__', '__doc__', '__import__', '__name__', '__package__', 'abs', 'all', 'any',
+	'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'chr', 'classmethod', 'compile', '
+	complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate
+	', 'eval', 'exec', 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr',
+	'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance',
+	 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memory
+	view', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property'
+	, 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sort
+	ed', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
 	
