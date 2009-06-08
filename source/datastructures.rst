@@ -265,3 +265,32 @@ vorziehen. Die Funktion :func:`zip` würde in diesem Fall gute Dienste leisten::
 
 Für eine genaue Beschreibung für was das Sternchen ist, siehe
 :ref:`tut-unpacking-arguments`.
+
+Die :keyword:`del`-Anweisung
+============================
+
+Es gibt einen Weg ein Listenelement durch seinen Index, statt durch seinen Wert
+zu löschen: Die :keyword:`del`-Anweisung. Sie unterscheidet sich von der
+:meth:`pop`-Methode, da sie keinen Wert zurückgibt. Die :keyword:`del`-Anweisung
+kann auch dazu benutzt werden Abschnitte einer Liste zu löschen oder sie ganz zu
+leeren (was wir vorhin durch die Zuweisung einer leeren Liste an einen Abschnitt
+getan haben). Zum Beispiel::
+
+    >>> a = [-1, 1, 66.25, 333, 333, 1234.5]
+    >>> del a[0]
+    >>> a
+    [1, 66.25, 333, 333, 1234.5]
+    >>> del a[2:4]
+    >>> a
+    [1, 66.25, 1234.5]
+    >>> del a[:]
+    >>> a
+    []
+
+:keyword:`del` kann auch dazu benutzt werden ganze Variablen zu löschen::
+
+   >>> del a
+
+Danach den Namen ``a`` zu referenzieren führt zu einer Fehlermeldung (zumindest
+bis dem Namen ein anderer Wert zugewiesen wird). Später werden werden wir noch
+andere Einsatzmöglichkeiten besprechen.
