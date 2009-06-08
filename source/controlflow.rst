@@ -361,7 +361,17 @@ werden kann, als sie definitionsgemäß erlaubt. Zum Beispiel::
                raise IOError('Benutzer abgelehnt!')
            print(complaint)
 
-.. FIXME: Patch pending, will be translated when accepted/refused
+Diese Funktion könnte auf mehrere Arten aufgerufen werden:
+
+* Indem man nur das vorgeschriebene Argument übergibt:
+  ``ask_ok("Willst du wirklich aufhören?")``
+
+* Indem man zusätzlich ein optionales Argument übergibt:
+  ``ask_ok("Willst du die Datei überschreiben?", 2)``
+
+* Oder indem man sogar alle übergibt:
+  ``ask_ok("Willst du die Datei überschreiben?", 2, "Komm schon, nur Ja oder
+  Nein")`` 
 
 Das Beispiel führt auch noch das Schlüsselwort :keyword:`in` ein. Dieses
 überprüft ob ein gegebener Wert in einer Sequenz gegeben ist.
