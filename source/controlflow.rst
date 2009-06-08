@@ -695,9 +695,12 @@ lesen, hier jedoch die wichtigsten Punkte:
   :ref:`tut-firstclasses`)
 
 * Benutze keine ausgefallenen Dateikodierungen, wenn dein Code für ein
-  internationales Publikum vorgesehen ist. Einfaches ASCII ist in allen Fällen
-  am Besten.
+  internationales Publikum vorgesehen ist. Pythons Standardkodierung -- UTF-8 --
+  oder sogar einfaches ASCII ist in jedem Fall am Besten.
 
+* Benutze auch keine nicht-ASCII-Zeichen in Bezeichnern, wenn es auch nur den
+Hauch einer Chance gibt, dass der Code von Menschen gelesen oder gewartet
+wird, die eine andere Sprache sprechen.
 
 .. rubric:: Fußnoten
 

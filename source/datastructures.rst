@@ -160,12 +160,12 @@ denen jedes Element das Ergebnis eines Verfahrens ist, das auf jedes Mitglied
 einer Sequenz angewendet wird oder solche, in denen eine Teilfolge von
 Elementen, die eine bestimmte Bedingung erfüllen, erstellt wird.
 
-Jede List Comprehension besteht aus einem Ausdruck auf den eine
-:keyword:`for`-Klausel folgt. Danach sind beliebig viele :keyword:`for`- oder
-:keyword:`if`-Klauseln zulässig. Das Ergebnis ist eine Liste, deren Elemente
-durch das Auswerten des Ausdrucks im Kontext der :keyword:`for`- und
-:keyword:`if`-Klauseln, die darauf folgen, erzeugt werden. Würde der Ausdruck
-ein Tupel ergeben, muss er in Klammern stehen.
+Jede List Comprehension besteht aus eckigen Klammern, die einen Ausdruck gefolgt
+von einer :keyword:`for`-Klausel, enthalten. Danach sind beliebig viele
+:keyword:`for`- oder :keyword:`if`-Klauseln zulässig. Das Ergebnis ist eine
+Liste, deren Elemente durch das Auswerten des Ausdrucks im Kontext der
+:keyword:`for`- und :keyword:`if`-Klauseln, die darauf folgen, erzeugt werden.
+Würde der Ausdruck ein Tupel ergeben, muss er in Klammern stehen.
 
 Hier nehmen wir eine Liste von Nummern und erzeugen eine, die das Dreifache
 jeder Nummer enthält::
@@ -361,3 +361,57 @@ funktioniert mit jeder Sequenz auf der rechten Seite der Zuweisung. Die Anzahl
 der Namen auf der linken Seite muss genauso groß sein, wie die Länge der
 Sequenz. Eine Mehrfachzuweisung ist eigentlich nur eine Kombination von Tupel
 packen und und dem Auspacken der Sequenz.
+
+
+.. _tut-sets:
+
+Mengen
+======
+
+Python enthält auch einen Datentyp für Mengen (*sets*). Eine Menge ist eine
+ungeordnete Sammlung ohne doppelte Elemente. Sie werden vor allem dazu benutzt,
+um zu testen, ob ein Element in der Menge vertreten ist und doppelte Einträge zu
+beseitigen. Mengenobjekte unterstützen ebenfalls mathematische Operationen wie
+Vereinigungsmenge, Schnittmenge, Differenz und symmetrische Differenz.
+
+Geschweifte Klammern oder die Funktion :func:`set` können dazu genutzt werden
+Mengen zu erzeugen. Wichtig: Um eine leere Menge zu erzeugen muss man ``set()``
+benutzen, ``{}`` ist dagegen nicht möglich. Letzteres erzeugt ein leeres
+Dictionary, eine Datenstruktur die wir im nächsten Abschnitt besprechen.
+
+Hier eine kurze Demonstration::
+
+   >>> basket = {'Apfel', 'Orange', 'Apfel', 'Birne', 'Orange', 'Banane'}
+   >>> print(basket)
+   {'Orange', 'Banane', 'Birne', 'Apfel'}
+   >>> fruit = ['Apfel', 'Orange', 'Apfel', 'Birne', 'Orange', 'Banane']
+   >>> fruit = set(basket)               # eine Menge ohne Dublikate erstellen
+   >>> fruit
+   {'Orange', 'Birne', 'Apfel', 'Banane'}
+   >>> fruit = {'Orange', 'Apfel'}       # {}-Syntax analog der [] von Listen
+   >>> fruit
+   {'Orange', 'Apfel'}
+   >>> 'Orange' in fruit                 # schnelles Testen auf Mitgliedschaft
+   True
+   >>> 'Fingerhirse' in fruit
+   False
+
+   >>> a = set('abracadabra')
+   >>> b = set('alacazam')
+   >>> a                                  # einzelne Buchstaben in a
+   {'a', 'r', 'b', 'c', 'd'}
+   >>> a - b                              # in a aber nicht in b
+   {'r', 'd', 'b'}
+   >>> a | b                              # in a oder b
+   {'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}
+   >>> a & b                              # sowohl in a, als auch in b
+   {'a', 'c'}
+   >>> a ^ b                              # entweder in a oder b
+   {'r', 'd', 'b', 'm', 'z', 'l'}
+
+Wie für Listen gibt es auch eine Set Comprehension Syntax::
+
+   >>> a = {x for x in 'abracadabra' if x not in 'abc'}
+   >>> a
+   {'r', 'd'}
+
