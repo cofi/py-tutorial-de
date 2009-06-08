@@ -294,3 +294,70 @@ getan haben). Zum Beispiel::
 Danach den Namen ``a`` zu referenzieren führt zu einer Fehlermeldung (zumindest
 bis dem Namen ein anderer Wert zugewiesen wird). Später werden werden wir noch
 andere Einsatzmöglichkeiten besprechen.
+
+
+.. _tut-tuples:
+
+Tupel und Sequenzen
+===================
+
+Wir haben gesehen, dass Listen und Zeichenketten viele Eigenschaften, wie
+Slicing und Indizierung, gemein haben. Beide sind Exemplare von
+*Sequenzdatentypen* (siehe :ref:`typesseq`). Da sich Python weiterentwickelt
+können auch noch andere Sequenzdatentypen hinzukommen. Es gibt aber noch einen
+weiteren standardmäßigen Sequenzdatentyp: Das Tupel.
+
+Ein Tupel besteht aus mehreren Werten, die durch Kommas von einander getrennt
+sind, beispielsweise::
+
+
+    >>> t = 12345, 54321, 'Hallo!'
+    >>> t[0]
+    12345
+    >>> t
+    (12345, 54321, 'Hallo!')
+    >>> # Tupel können verschachtelt werden:
+    ... u = t, (1, 2, 3, 4, 5)
+    >>> u
+    ((12345, 54321, 'Hallo!'), (1, 2, 3, 4, 5))
+
+Wie man sehen kann, werden die ausgegebenen Tupel immer von Klammern umgeben,
+sodass verschachtelte Tupel richtig interpretiert werden. Sie können mit oder
+ohne Klammern eingegeben werden, obwohl Klammern trotzdem sehr oft benötigt
+werden (wenn das Tupel Teil eines größeren Ausdrucks ist).
+
+Tupel lassen sich vielfach einsetzen, beispielsweise (x, y)-Koordinatenpaare,
+Unterlagen über die Angestellten von der Datenbank, usw.  Wie Strings sind auch
+Tupel unveränderbar: Es ist nicht möglich einzelnen Elementen eines Tupels einen
+Wert zuzuweisen (das Verhalten kann man jedoch mit Slicing und Verkettung
+simulieren). Es ist auch möglich Tupel, die veränderbare Objekte wie Listen
+enthalten, zu erstellen.
+
+Ein spezielles Problem ergibt sich in der Darstellung von Tupeln, die 0 oder 1
+Elemente haben: Die Syntax hat ein paar Eigenheiten um das Problem zu lösen.
+Leere Tupel lassen sich mit einem leeren Klammerpaar darstellen und ein Tupel
+mit einem Element wird erstellt, indem dem Wert ein Komma nachgestellt wird, es
+reicht jedoch nicht, das Element nur in Klammern zu schreiben. Hässlich aber
+effektiv. Zum Beispiel::
+
+
+    >>> empty = ()
+    >>> singleton = 'Hallo',    # <-- das angehängte Komma nicht vergessen
+    >>> len(empty)
+    0
+    >>> len(singleton)
+    1
+    >>> singleton
+    ('Hallo',)
+
+Die Anweisung ``t = 12345, 54321, 'Hallo!'`` ist ein Beispiel für das *Tupel
+packen* (*tuple packing*): Die Werte ``12345``, ``54321``, ``'Hallo!'`` werden
+zusammen in ein Tupel gepackt. Das Gegenteil ist ebenso möglich::
+
+   >>> x, y, z = t
+
+Das wird passenderweise *Sequenz auspacken* (*sequence unpacking*) genannt und
+funktioniert mit jeder Sequenz auf der rechten Seite der Zuweisung. Die Anzahl
+der Namen auf der linken Seite muss genauso groß sein, wie die Länge der
+Sequenz. Eine Mehrfachzuweisung ist eigentlich nur eine Kombination von Tupel
+packen und und dem Auspacken der Sequenz.
