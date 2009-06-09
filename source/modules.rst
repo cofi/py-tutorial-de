@@ -49,8 +49,9 @@ Befehl::
 	>>> import fibo
 	
 Dieser Befehl fügt die von :file:`fibo.py` definierten Funktionen nicht
-automatisch in die globale Symboltabelle ein, sondern nur den Modulnamen
-``fibo``. Um die Funktionen anzusprechen, benutzt man den Modulnamen::
+automatisch in die globale Symboltabelle (symbol table) ein, sondern nur den
+Modulnamen ``fibo``. Um die Funktionen anzusprechen, benutzt man den
+Modulnamen::
 
 	>>> fibo.fib(1000)
 	1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
@@ -158,7 +159,7 @@ wird, wird eine Testsuite gestartet).
 
 .. _tut-searchpath:
 
-Der Modul Suchpfad
+Das Modul Suchpfad
 ------------------
 
 .. index:: triple: module; search; path
