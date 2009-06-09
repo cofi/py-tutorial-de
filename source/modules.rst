@@ -254,8 +254,8 @@ Konfiguration, welche auch von der verwendeten Plattform abhängig ist.
 Beispielsweise ist das :mod:`winreg` Modul nur unter Windows Systemen verfügbar.
 Ein bestimmtes Modul verdient besondere Aufmerksamkeit: :mod:`sys`, welches in
 jeden Python Interpreter eingebaut ist. Die Variablen ``sys.ps1`` und
-``sys.ps2`` definieren die primären und sekundären Eingabeaufforderungen, die in der
-Kommandozeile verwendet werden::
+``sys.ps2`` definieren die primären und sekundären Eingabeaufforderungen, die in
+der Kommandozeile verwendet werden::
 
 	>>> import sys
 	>>> sys.ps1
@@ -284,7 +284,9 @@ mit normalen Listenoperationen verändern::
 Die :func:`dir` Funktion
 ========================
 
-Die eingebaute Funktion :func:`dir` wird benutzt, um herauszufinden, welche Namen in einem Modul definiert sind. Es wird eine sortierte Liste von Strings zurückgegeben::
+Die eingebaute Funktion :func:`dir` wird benutzt, um herauszufinden, welche
+Namen in einem Modul definiert sind. Es wird eine sortierte Liste von Strings
+zurückgegeben::
 
 	>>> import fibo, sys
 	>>> dir(fibo)
@@ -301,7 +303,8 @@ Die eingebaute Funktion :func:`dir` wird benutzt, um herauszufinden, welche Name
 	 'setprofile', 'setrecursionlimit', 'settrace', 'stderr', 'stdin', 'stdout',
 	 'version', 'version_info', 'warnoptions']
 	
-Wenn man keine Parameter übergibt, liefert :func:`dir` eine Liste der aktuell definierten Namen::
+Wenn man keine Parameter übergibt, liefert :func:`dir` eine Liste der aktuell
+definierten Namen::
 
 	>>> a = [1, 2, 3, 4, 5]
 	>>> import fibo
@@ -309,11 +312,14 @@ Wenn man keine Parameter übergibt, liefert :func:`dir` eine Liste der aktuell d
 	>>> dir()
 	['__builtins__', '__doc__', '__file__', '__name__', 'a', 'fib', 'fibo', 'sys']
 	
-Zu Beachten ist, dass alle Typen von Namen ausgegeben werden: Variablen, Module, Funktionen, etc.
+Zu Beachten ist, dass alle Typen von Namen ausgegeben werden: Variablen, Module,
+Funktionen, etc.
 
 .. index:: module: builtins
 
-:func:`dir` listet allerdings nicht die Namen der eingebauten Funktionen und Variablen auf. Falls man diese auflisten will, muss man das Standardmodul :mod:`builtins` verwenden::
+:func:`dir` listet allerdings nicht die Namen der eingebauten Funktionen und
+Variablen auf. Falls man diese auflisten will, muss man das Standardmodul
+:mod:`builtins` verwenden::
 
 	>>> import builtins
 	>>> dir(builtins)
@@ -339,3 +345,99 @@ Zu Beachten ist, dass alle Typen von Namen ausgegeben werden: Variablen, Module,
 	, 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sort
 	ed', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
 	
+.. _tut-packages:
+
+Pakete
+======
+
+Pakete werden dazu verwendet, den Modul-Namensraum von Python zu strukturieren,
+indem man Modulnamen durch Punkte trennt. Zum Beispiel verweist :mod:`A.B` auf
+ein Untermodul ``B`` im Paket ``A``. Genauso wie die Verwendung von Modulen den
+Autor von Modulen davor bewahrt, sich Sorgen um andere globale Variablennamen zu
+machen, so bewahrt die Verwendung von Modulen, die durch mehrere Punkte getrennt
+sind, den Autor davor, sich Sorgen um andere Modulnamen machen zu müssen.
+
+Angenommen man will eine Sammlung von Modulen (ein "Paket") erstellen, um
+Audiodateien und -daten einheitlich zu bearbeiten. Es gibt unzählige
+verschiedene Audioformate (gewöhnlicherweise erkennt man diese an Ihrer
+Dateiendung, z.B. :file:`.wav`, :file:`.aiff`, :file:`.au`), sodass man eine
+ständig wachsende Sammlung von Modulen erstellen und warten muss. Außerdem will
+man auch verschiedene Arbeiten an den Audiodaten verrichten (wie zum Beispiel
+Mixen, Echo hinzufügen, etc.), also wird man immer wieder Module schreiben, die
+diese Arbeiten ausführen. Hier eine mögliche Struktur für so ein Paket
+(ausgedrückt in der Form eines hierarchisches Dateisystems)::
+
+	sound/                          Top-level package
+	         __init__.py               Initialize the sound package
+	         formats/                  Subpackage for file format conversions
+	                 __init__.py
+	                 wavread.py
+	                 wavwrite.py
+	                 aiffread.py
+	                 aiffwrite.py
+	                 auread.py
+	                 auwrite.py
+	                 ...
+	         effects/                  Subpackage for sound effects
+	                 __init__.py
+	                 echo.py
+	                 surround.py
+	                 reverse.py
+	                 ...
+	         filters/                  Subpackage for filters
+	                 __init__.py
+	                 equalizer.py
+	                 vocoder.py
+	                 karaoke.py
+	                 ...
+	
+Wenn man das Paket importiert, sucht Python durch die Verzeichnisse im
+``sys.path``, um nach dem Paket in einem Unterverzeichnis zu suchen.
+
+Die :file:`__init__.py` Datei wird benötigt, damit Python das Verzeichnis als
+Pakete behandelt; dies wurde gemacht, damit Verzeichnisse mit einem normalen
+Namen, wie z.B. ``string``, nicht unbeabsichtigt Module verstecken, die weiter
+hinten im Suchpfad erscheinen. Im einfachsten Fall ist :file:`__init__.py` eine
+leere Datei, sie kann allerdings auch Initialisierungscode für das Paket
+enthalten oder die ``__all__`` Variable setzen, welche später genauer
+beschrieben wird.
+
+Benutzer eines Pakets können individuelle Module aus dem Paket importieren::
+
+	import sound.effects.echo
+
+Dieser Vorgang lädt das Untermodul :mod:`sound.effects.echo`. Es muss mit seinem
+kompletten Namen referenziert werden::
+
+	sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
+	
+Eine alternative Methode, um dieses Untermodul zu importieren::
+
+	from sound.effects import echo
+	
+Diese Variante lädt auch das Untermodul :mod:`echo`, macht es aber ohne seinen
+Paket-Präfix verfügbar. Man verwendet es folgendermaßen::
+
+	echo.echofilter(input, output, delay=0.7, atten=4)
+	
+Eine weitere Möglichkeit ist, die beschriebene Funktion oder Variable direkt zu
+importieren::
+
+	from sound.effects.echo import echofilter
+	
+Genau wie in den anderen Beispielen, lädt dies das Untermodul :mod:`echo`. In
+diesem Fall wird aber die :func:`echofilter` Funktion direkt verfügbar gemacht::
+
+	echofilter(input, output, delay=0.7, atten=4)
+	
+Wenn man ``from package import item`` verwendet, kann das ``item`` entweder ein
+Untermodul und -paket sein oder eine Name, der in diesem Paket definiert ist
+(z.B. eine Funktion, eine Klasse oder Variable). Das ``import`` Statement
+überprüft zuerst, ob das ``item`` in diesem Paket definiert ist; falls nicht,
+wird von einem Modul ausgegangen und versucht es zu laden. Wenn nichts gefunden
+wird, wird eine :exc:`ImportError`-Ausnahme geworfen.
+
+Im Gegensatz dazu, muss bei Verwendung von ``import item.subitem.subsubitem``
+jedes ``item`` eine Paket sein; das letzte ``item`` kann ein Modul oder ein
+Paket sein, aber es darf keine Klasse, Funktion oder Variable im darüber
+geordneten ``item`` sein.
