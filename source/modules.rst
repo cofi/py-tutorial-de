@@ -49,8 +49,9 @@ Befehl::
 	>>> import fibo
 	
 Dieser Befehl fügt die von :file:`fibo.py` definierten Funktionen nicht
-automatisch in die globale Symboltabelle ein, sondern nur den Modulnamen
-``fibo``. Um die Funktionen anzusprechen, benutzt man den Modulnamen::
+automatisch in die globale Symboltabelle (symbol table) ein, sondern nur den
+Modulnamen ``fibo``. Um die Funktionen anzusprechen, benutzt man den
+Modulnamen::
 
 	>>> fibo.fib(1000)
 	1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
@@ -158,7 +159,7 @@ wird, wird eine Testsuite gestartet).
 
 .. _tut-searchpath:
 
-Der Modul Suchpfad
+Das Modul Suchpfad
 ------------------
 
 .. index:: triple: module; search; path
@@ -183,7 +184,7 @@ versucht Python das Skript als Modul zu importieren, was normalerweise zu einem
 Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
 
 "Kompilierte" Python-Dateien
---------------------------
+----------------------------
 
 Um den Start von kurzen Programmen, die viele Standard Module verwenden,
 schneller zu machen, werden Dateien erstellt, welche bereits "byte-kompiliert"
@@ -237,8 +238,12 @@ Einige Tipps für Experten:
 * Das Modul :mod:`compileall` kann :file:`.pyc` Dateien (oder auch :file:`.pyo`,
   wenn :option:`-O` genutzt wird) aus allen Module eines Verzeichnis erzeugen.
 
+.. _tut-standardmodules:
+
 Standard Module
 ===============
+
+.. index:: module: sys
 
 Python wird mit einer Bibliothek von Standard Modulen ausgeliefert, welche in
 der Python Library Reference beschrieben werden. Einige Module sind in den
@@ -250,8 +255,8 @@ Konfiguration, welche auch von der verwendeten Plattform abhängig ist.
 Beispielsweise ist das :mod:`winreg` Modul nur unter Windows Systemen verfügbar.
 Ein bestimmtes Modul verdient besondere Aufmerksamkeit: :mod:`sys`, welches in
 jeden Python Interpreter eingebaut ist. Die Variablen ``sys.ps1`` und
-``sys.ps2`` definieren die primären und sekundären Eingabeaufforderungen, die in der
-Kommandozeile verwendet werden::
+``sys.ps2`` definieren die primären und sekundären Eingabeaufforderungen, die in
+der Kommandozeile verwendet werden::
 
 	>>> import sys
 	>>> sys.ps1
@@ -275,3 +280,165 @@ mit normalen Listenoperationen verändern::
 	>>> import sys
 	>>> sys.path.append('/ufs/guido/lib/python')
 	
+.. _tut-dir:
+
+Die :func:`dir` Funktion
+========================
+
+Die eingebaute Funktion :func:`dir` wird benutzt, um herauszufinden, welche
+Namen in einem Modul definiert sind. Es wird eine sortierte Liste von Strings
+zurückgegeben::
+
+	>>> import fibo, sys
+	>>> dir(fibo)
+	['__name__', 'fib', 'fib2']
+	>>> dir(sys)
+	['__displayhook__', '__doc__', '__excepthook__', '__name__', '__stderr__',
+	 '__stdin__', '__stdout__', '_getframe', 'api_version', 'argv',
+	 'builtin_module_names', 'byteorder', 'callstats', 'copyright',
+	 'displayhook', 'exc_info', 'excepthook',
+	 'exec_prefix', 'executable', 'exit', 'getdefaultencoding', 'getdlopenflags',
+	 'getrecursionlimit', 'getrefcount', 'hexversion', 'maxint', 'maxunicode',
+	 'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache',
+	 'platform', 'prefix', 'ps1', 'ps2', 'setcheckinterval', 'setdlopenflags',
+	 'setprofile', 'setrecursionlimit', 'settrace', 'stderr', 'stdin', 'stdout',
+	 'version', 'version_info', 'warnoptions']
+	
+Wenn man keine Parameter übergibt, liefert :func:`dir` eine Liste der aktuell
+definierten Namen::
+
+	>>> a = [1, 2, 3, 4, 5]
+	>>> import fibo
+	>>> fib = fibo.fib
+	>>> dir()
+	['__builtins__', '__doc__', '__file__', '__name__', 'a', 'fib', 'fibo', 'sys']
+	
+Zu Beachten ist, dass alle Typen von Namen ausgegeben werden: Variablen, Module,
+Funktionen, etc.
+
+.. index:: module: builtins
+
+:func:`dir` listet allerdings nicht die Namen der eingebauten Funktionen und
+Variablen auf. Falls man diese auflisten will, muss man das Standardmodul
+:mod:`builtins` verwenden::
+
+	>>> import builtins
+	>>> dir(builtins)
+
+	['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'Buffer
+	Error', 'BytesWarning', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'Environme
+	ntError', 'Exception', 'False', 'FloatingPointError', 'FutureWarning', 'Generato
+	rExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexErr
+	or', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError',
+	 'None', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'P
+	endingDeprecationWarning', 'ReferenceError', 'RuntimeError', 'RuntimeWarning', '
+	StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'Ta
+	bError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'Unicod
+	eEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserW
+	arning', 'ValueError', 'Warning', 'ZeroDivisionError', '__build_class__', '__deb
+	ug__', '__doc__', '__import__', '__name__', '__package__', 'abs', 'all', 'any',
+	'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'chr', 'classmethod', 'compile', '
+	complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate
+	', 'eval', 'exec', 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr',
+	'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance',
+	 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memory
+	view', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property'
+	, 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sort
+	ed', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
+	
+.. _tut-packages:
+
+Pakete
+======
+
+Pakete werden dazu verwendet, den Modul-Namensraum von Python zu strukturieren,
+indem man Modulnamen durch Punkte trennt. Zum Beispiel verweist :mod:`A.B` auf
+ein Untermodul ``B`` im Paket ``A``. Genauso wie die Verwendung von Modulen den
+Autor von Modulen davor bewahrt, sich Sorgen um andere globale Variablennamen zu
+machen, so bewahrt die Verwendung von Modulen, die durch mehrere Punkte getrennt
+sind, den Autor davor, sich Sorgen um andere Modulnamen machen zu müssen.
+
+Angenommen man will eine Sammlung von Modulen (ein "Paket") erstellen, um
+Audiodateien und -daten einheitlich zu bearbeiten. Es gibt unzählige
+verschiedene Audioformate (gewöhnlicherweise erkennt man diese an Ihrer
+Dateiendung, z.B. :file:`.wav`, :file:`.aiff`, :file:`.au`), sodass man eine
+ständig wachsende Sammlung von Modulen erstellen und warten muss. Außerdem will
+man auch verschiedene Arbeiten an den Audiodaten verrichten (wie zum Beispiel
+Mixen, Echo hinzufügen, etc.), also wird man immer wieder Module schreiben, die
+diese Arbeiten ausführen. Hier eine mögliche Struktur für so ein Paket
+(ausgedrückt in der Form eines hierarchisches Dateisystems)::
+
+	sound/                          Top-level package
+	         __init__.py               Initialize the sound package
+	         formats/                  Subpackage for file format conversions
+	                 __init__.py
+	                 wavread.py
+	                 wavwrite.py
+	                 aiffread.py
+	                 aiffwrite.py
+	                 auread.py
+	                 auwrite.py
+	                 ...
+	         effects/                  Subpackage for sound effects
+	                 __init__.py
+	                 echo.py
+	                 surround.py
+	                 reverse.py
+	                 ...
+	         filters/                  Subpackage for filters
+	                 __init__.py
+	                 equalizer.py
+	                 vocoder.py
+	                 karaoke.py
+	                 ...
+	
+Wenn man das Paket importiert, sucht Python durch die Verzeichnisse im
+``sys.path``, um nach dem Paket in einem Unterverzeichnis zu suchen.
+
+Die :file:`__init__.py` Datei wird benötigt, damit Python das Verzeichnis als
+Pakete behandelt; dies wurde gemacht, damit Verzeichnisse mit einem normalen
+Namen, wie z.B. ``string``, nicht unbeabsichtigt Module verstecken, die weiter
+hinten im Suchpfad erscheinen. Im einfachsten Fall ist :file:`__init__.py` eine
+leere Datei, sie kann allerdings auch Initialisierungscode für das Paket
+enthalten oder die ``__all__`` Variable setzen, welche später genauer
+beschrieben wird.
+
+Benutzer eines Pakets können individuelle Module aus dem Paket importieren::
+
+	import sound.effects.echo
+
+Dieser Vorgang lädt das Untermodul :mod:`sound.effects.echo`. Es muss mit seinem
+kompletten Namen referenziert werden::
+
+	sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
+	
+Eine alternative Methode, um dieses Untermodul zu importieren::
+
+	from sound.effects import echo
+	
+Diese Variante lädt auch das Untermodul :mod:`echo`, macht es aber ohne seinen
+Paket-Präfix verfügbar. Man verwendet es folgendermaßen::
+
+	echo.echofilter(input, output, delay=0.7, atten=4)
+	
+Eine weitere Möglichkeit ist, die beschriebene Funktion oder Variable direkt zu
+importieren::
+
+	from sound.effects.echo import echofilter
+	
+Genau wie in den anderen Beispielen, lädt dies das Untermodul :mod:`echo`. In
+diesem Fall wird aber die :func:`echofilter` Funktion direkt verfügbar gemacht::
+
+	echofilter(input, output, delay=0.7, atten=4)
+	
+Wenn man ``from package import item`` verwendet, kann das ``item`` entweder ein
+Untermodul und -paket sein oder eine Name, der in diesem Paket definiert ist
+(z.B. eine Funktion, eine Klasse oder Variable). Das ``import`` Statement
+überprüft zuerst, ob das ``item`` in diesem Paket definiert ist; falls nicht,
+wird von einem Modul ausgegangen und versucht es zu laden. Wenn nichts gefunden
+wird, wird eine :exc:`ImportError`-Ausnahme geworfen.
+
+Im Gegensatz dazu, muss bei Verwendung von ``import item.subitem.subsubitem``
+jedes ``item`` eine Paket sein; das letzte ``item`` kann ein Modul oder ein
+Paket sein, aber es darf keine Klasse, Funktion oder Variable im darüber
+geordneten ``item`` sein.
