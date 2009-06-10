@@ -605,3 +605,35 @@ Wichtig ist, dass in Python, anders als in C, Zuweisungen nicht innerhalb eines
 Ausdrucks vorkommen können. C-Programmierer mögen darüber murren, aber diese
 Einschränkung vermeidet eine in C übliche Fehlerklasse, in einem Ausdruck ``=``
 , statt des beabsichtigten ``==``, zu schreiben.
+
+.. _tut-comparing:
+
+Vergleich von Sequenzen mit anderen Typen
+=========================================
+
+Sequenzobjekte können mit anderen Objekten desselben Sequenztyps verglichen
+werden. Der Vergleich benutzt eine *lexikographische* Ordnung: Zuerst werden die
+ersten beiden Elemente verglichen, unterscheiden sie sich, bestimmt das das
+Ergebnis des Vergleiches. Sind sie gleich, werden die nächsten zwei Elemente
+verglichen, und so weiter, bis sich eine der beiden erschöpft. Sind zwei
+Elemente, die verglichen werden sollen wiederum Sequenzen desselben Sequenztyps,
+wird der lexikographische Vergleich rekursiv durchgeführt. Sind alle Elemente
+zweier Sequenzen gleich, werden die Sequenzen für gleich befunden. Ist eine
+Sequenz eine anfängliche Teilfolge der anderen, so ist die kürzere die kleinere
+(geringere). Die Lexikographische Ordnung von Strings benutzt die
+ASCII-Reihenfolge für einzelne Zeichen. Ein paar Beispiele für Vergleiche
+zwischen Sequenzen des gleichen Typs::
+
+    (1, 2, 3)              < (1, 2, 4)
+    [1, 2, 3]              < [1, 2, 4]
+    'ABC' < 'C' < 'Pascal' < 'Python'
+    (1, 2, 3, 4)           < (1, 2, 4)
+    (1, 2)                 < (1, 2, -1)
+    (1, 2, 3)             == (1.0, 2.0, 3.0)
+    (1, 2, ('aa', 'ab'))   < (1, 2, ('abc', 'a'), 4)
+
+Das Vergleichen von Objekten verschiedenen Typs durch ``<`` oder ``>`` ist
+erlaubt, sofern die Objekte passende Vergleichsmethoden haben. Zum Beispiel
+werden numerische Typen anhand ihres numerischen Wertes verglichen, sodass 0 0.0
+gleicht, usw. Andernfalls wird der Interpreter eine :exc:`TypeError`-Ausnahme
+verursachen, statt eine willkürliche Ordnung bereitzustellen.
