@@ -415,3 +415,84 @@ Wie für Listen gibt es auch eine Set Comprehension Syntax::
    >>> a
    {'r', 'd'}
 
+
+.. _tut-dictionaries:
+
+Dictionaries
+============
+
+Ein weiterer nützlicher Datentyp, der in Python eingebaut ist, ist das
+*Dictionary* (siehe :ref:`typesmapping`). Dictionaries sind in manch anderen
+Sprachen als "assoziativer Speicher" oder "assoziative Arrays" zu finden. Anders
+als Sequenzen, die über Zahlen indizierbar sind, sind Dictionaries durch
+*Schlüssel* (*keys*), als die jeder unveränderbare Typ dienen kann, indizierbar;
+aus Zeichenketten und Zahlen kann immer solch ein Schlüssel gebildet werden.
+Tupel können als Schlüssel benutzt werden, wenn sie nur aus Zeichenketten,
+Zahlen oder Tupel bestehen; enthält ein Tupel direkt oder indirekt ein
+veränderbares Objekt, kann es nicht als Schlüssel genutzt werden. Listen können
+nicht als Schlüssel benutzt werden, da sie direkt veränderbar sind, sei es durch
+Indexzuweisung, Abschnittszuweisung oder Methoden wie :meth:`append` and
+:meth:`extend`.
+
+Am Besten stellt man sich Dictionaries als ungeordnete Menge von *Schlüssel:
+Wert*-Paaren vor, mit der Anforderung, dass die Schlüssel eindeutig sind
+(innerhalb eines Dictionaries). Ein Paar von geschweiften Klammern erstellt ein
+leeres Dictionary: ``{}``. Schreibt man eine Reihe von Komma-getrennten
+Schlüssel-Wert-Paaren in die Klammern, fügt man diese als Anfangspaare dem
+Dictionary hinzu; dies ist ebenfalls die Art und Weise, wie Dictionaries
+ausgegeben werden.
+
+Die Hauptoperationen, die an einem Dictionary durchgeführt werden, sind die
+Ablage eines Wertes unter einem Schlüssel und der Abruf eines Wertes mit dem
+gebenen Schlüssel. Es ist auch möglich ein Schlüssel-Wert-Paar per ``del`` zu
+löschen. Legt man einen Wert unter einem Schlüssel ab, der schon benutzt wird,
+überschreibt man den alten Wert, der vorher mit diesem Schlüssel verknüpft war.
+Einen Wert mit einem nicht-existenten Schlüssel abrufen zu wollen, erzeugt eine
+Fehlermeldung.
+
+Der Aufruf ``list(d.keys())`` auf ein Dictionary gibt eine Liste aller Schlüssel
+in zufälliger Reihenfolge zurück (Will man sie sortiert haben, wendet man
+einfach die Funktion :func:`sorted` statt :func:`list` an). Um zu überprüfen ob
+ein einzelner Schlüssel im Dictionary ist, lässt sich das Schlüsselwort
+:keyword:`in` benutzen.
+
+Hier ein kleines Beispiel wie man Dictionaries benutzt::
+
+
+    >>> tel = {'jack': 4098, 'sape': 4139}
+    >>> tel['guido'] = 4127
+    >>> tel
+    {'sape': 4139, 'guido': 4127, 'jack': 4098}
+    >>> tel['jack']
+    4098
+    >>> del tel['sape']
+    >>> tel['irv'] = 4127
+    >>> tel
+    {'guido': 4127, 'irv': 4127, 'jack': 4098}
+    >>> list(tel.keys())
+    ['irv', 'guido', 'jack']
+    >>> sorted(tel.keys())
+    ['guido', 'irv', 'jack']
+    >>> 'guido' in tel
+    True
+    >>> 'jack' not in tel
+    False
+
+Der :func:`dict`-Konstruktor erstellt Dictionaries direkt von Listen, die die
+Schlüssel-Wert-Paare als Tupel enthalten. Bilden die Paare ein Muster, können
+List Comprehensions die Schlüssel-Wert Liste kompakt beschreiben. ::
+
+    >>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
+    {'sape': 4139, 'jack': 4098, 'guido': 4127}
+
+Außerdem können Dict Comprehensions benutzt werden, um Dictionaries von
+willkürlichen Schlüssel und Wert Ausdrücken zu erstellen::
+
+    >>> {x: x**2 for x in (2, 4, 6)}
+    {2: 4, 4: 16, 6: 36}
+
+Sind die Schlüssel einfache Zeichenketten, ist es manchmal einfacher die Paare
+als Schlüsselwort-Argumente anzugeben::
+
+   >>> dict(sape=4139, guido=4127, jack=4098)
+   {'sape': 4139, 'jack': 4098, 'guido': 4127}
