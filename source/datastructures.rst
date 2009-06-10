@@ -496,3 +496,68 @@ als Schlüsselwort-Argumente anzugeben::
 
    >>> dict(sape=4139, guido=4127, jack=4098)
    {'sape': 4139, 'jack': 4098, 'guido': 4127}
+
+
+.. _tut-loopidioms:
+
+Schleifentechniken
+==================
+
+Wenn man über Dictionaries iteriert, lassen sich der Schlüssel und der
+entsprechende Wert gleichzeitig durch die Methode :meth:`items` abrufen. ::
+
+
+    >>> knights = {'Gallahad': 'der Reine', 'Robin': 'der Mutige'}
+    >>> for k, v in knights.items():
+    ...     print(k, v)
+    ...
+    Gallahad der Reine
+    Robin der Mutige
+
+Iteriert man über eine Sequenz, lassen sich der Index und das entsprechende
+Objekt gleichzeitig über die Funktion :func:`enumerate` abrufen. ::
+
+    >>> for i, v in enumerate(['tic', 'tac', 'toe']):
+    ...     print(i, v)
+    ...
+    0 tic
+    1 tac
+    2 toe
+
+Um über mehrere Sequenzen gleichzeitig zu iterieren, können die Einträge mit
+Hilfe der :func:`zip`-Funktion gruppiert werden. ::
+
+
+    >>> questions = ['Name', 'Auftrag']
+    >>> answers = ['Lancelot', 'die Suche nach dem Heiligen Gral']
+    >>> for q, a in zip(questions, answers):
+    ...     print('Was ist dein {0}?  Er ist {1}.'.format(q, a))
+    ...
+    Was ist dein Name?  Er ist Lancelot.
+    Was ist dein Auftrag?  Er ist die Suche nach dem Heiligen Gral.
+
+Um über eine Sequenz in umgekehrter Reihenfolge zu iterieren, gibt man die
+Sequenz zuerst in richtiger Reihenfolge an und ruft dann die Funktion
+:func:`reversed` auf. ::
+
+    >>> for i in reversed(range(1, 10, 2)):
+    ...     print(i)
+    ...
+    9
+    7
+    5
+    3
+    1
+
+Um über eine Sequenz in sortierter Reihenfolge zu iterieren, gibt es die
+Funktion :func:`sorted`, die eine neue, sortierte Liste zurückgibt, die
+ursprüngliche Sequenz, aber nicht anrührt. ::
+
+    >>> basket = ['Apfel', 'Orange', 'Apfel', 'Birne', 'Orange', 'Banane']
+    >>> for f in sorted(set(basket)):
+    ...     print(f)
+    ...
+    Apfel
+    Banane
+    Orange
+    Birne
