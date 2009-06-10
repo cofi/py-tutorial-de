@@ -561,3 +561,47 @@ ursprüngliche Sequenz, aber nicht anrührt. ::
     Banane
     Orange
     Birne
+
+Mehr zu Bedingungen
+===================
+
+Die Bedingungen, die in ``while``- und ``if``-Anweisungen benutzt werden, können
+jegliche Operatoren enthalten, nicht nur Vergleiche.
+
+Die Vergleichsoperatoren ``in`` und ``not in`` überprüfen, ob ein Wert in einer
+Sequenz (nicht) vorkommt. Sie überprüfen dabei auf Objektidentität, d.h. ob zwei
+Objekte dieselben sind; dies ist aber nur wichtig für veränderbare Objekte wie
+Listen. Alle Vergleichsoperatoren haben dieselbe Priorität, die geringer als die
+von numerischen Operatoren ist.
+
+Vergleiche können aneinandergereiht werden. Zum Beispiel überprüft ``a < b ==
+c``, ob ``a`` kleiner als ``b`` ist und darüberhinaus ``b`` gleich ``c`` ist.
+
+Vergleiche können kombiniert werden, indem man die boolschen Operatoren ``and``
+und ``or`` benutzt. Das Ergebnis des Vergleiches (oder jedes anderen boolschen
+Ausdrucks) kann mit ``not`` negiert werden. Sie haben eine geringere Priorität
+als Vergleichsoperatoren; von ihnen hat ``not`` die höchste und ``or`` die
+niedrigste Priorität, sodass ``A and not B or C`` äquivalent zu ``(A and (not
+B)) or C`` ist. Wie üblich können auch hier Klammern benutzt werden, um die
+gewünschte Gruppierung auszudrücken.
+
+Die boolschen Operatoren ``and`` und ``or`` sind sogenannte *Kurzschluss*-
+(*short-circuit*) Operatoren: Ihre Argumente werden von links nach rechts
+ausgewertet und die Auswertung wird abgebrochen, sobald das Ergebnis feststeht.
+Zum Beispiel, wenn ``A`` und ``C`` wahr, aber ``B`` unwahr ist, wird ``C`` von
+``A and B and C`` nicht ausgewertet. Werden sie als genereller Wert und nicht
+als Boolean benutzt, ist der Rückgabewert eines Kurzschluss-Operators das
+zuletzt ausgewertete Argument.
+
+Es ist möglich das Ergebnis eines Vergleiches oder eines anderen boolschen
+Ausdruck einer Variablen zuzuweisen. Zum Beispiel::
+
+    >>> string1, string2, string3 = '', 'Trondheim', 'Hammer Tanz'
+    >>> non_null = string1 or string2 or string3
+    >>> non_null
+    'Trondheim'
+
+Wichtig ist, dass in Python, anders als in C, Zuweisungen nicht innerhalb eines
+Ausdrucks vorkommen können. C-Programmierer mögen darüber murren, aber diese
+Einschränkung vermeidet eine in C übliche Fehlerklasse, in einem Ausdruck ``=``
+, statt des beabsichtigten ``==``, zu schreiben.
