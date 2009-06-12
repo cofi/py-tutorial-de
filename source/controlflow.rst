@@ -95,7 +95,7 @@ Wird nur ein Argument angegeben, so beginnt der erzeugte Bereich bei Null und
 endet mit dem um 1 kleineren Wert des angegebenen Arguments. ``range(10)``
 erzeugt die Zahlen von 0 bis einschließlich 9. Das entspricht den gültigen
 Indizes einer Sequenz mit zehn Elementen. Es ist ebenfalls möglich, den Bereich
-mit einem anderem Wert als Null zu beginnen oder auch eine bestimmte
+mit einem anderen Wert als Null zu beginnen oder auch eine bestimmte
 Schrittweite (*step*) festzulegen --- sogar negative Schrittweiten sind möglich.
 ::
 
@@ -138,7 +138,7 @@ sich gegenüber der Erzeugung einer Liste Speicherplatz sparen.
 Wir nennen solch ein Objekt *Iterable*, und es kann überall da eingesetzt
 werden, wo ein Objekt erwartet wird, das eine Folge von Elementen der Reihe nach
 "produziert", bis sein Vorrat erschöpft ist. Beispielsweise fungiert die
-:keyword:`for`-Anweisung als ein solcher *Iterator* ist. Auch die Funktion
+:keyword:`for`-Anweisung als ein solcher *Iterator*. Auch die Funktion
 :func:`list` ist ein solcher Iterator, die als Argument ein Iterable erwartet
 und eine Liste daraus macht ::
  
