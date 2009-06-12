@@ -390,3 +390,48 @@ Dateiobjekte haben noch ein paar zusätzliche Methoden, wie :meth:`isatty` und
 :meth:`truncate`, die weniger häufig genutzt werden. Ein komplettes Handbuch zu
 Dateiobjekten kann in der Bibliotheksreferenz gefunden werden.
 
+
+.. _tut-pickle:
+
+Das :mod:`pickle`-Modul
+-----------------------
+
+.. index:: module: pickle
+
+Zeichenketten können einfach in eine Datei geschrieben und aus ihr gelesen
+werden. Zahlen sind ein bisschen aufwändiger, da die :meth:`read`-Methode nur
+Zeichenketten zurückgibt, das an eine Funktion wie :func:`int` übergeben werden
+muss, die eine Zeichenkette wie ``'123'`` nimmt und deren numerischen Wert 123
+zurückgibt. Wenn jedoch man komplexere Datentypen wie Listen, Dictionaries oder
+Klasseninstanzen speichern will, wird die Angelegenheit viel komplizierter.
+
+Anstatt die Benutzer ständig Code schreiben und Debuggen zu lassen, um
+komplexere Datentypen zu speichern, stellt Python ein Standardmodul namens
+:mod:`pickle` bereit. Dies ist ein fantastisches Modul, das fast jedes
+Pythonobjekt (sogar ein paar Formen von Pythoncode!) nehmen kann und es in eine
+Zeichenkettenrepräsentation konvertieren kann; dieser Prozess wird
+:dfn:`pickling` genannt. Das Objekt aus der Zeichenkettenrepräsentation zu
+rekonstruieren wird :dfn:`unpickling` genannt. Zwischen pickling und unpickling,
+kann die Zeichenkettenrepräsentation in Daten oder Dateien gespeichert werden
+oder über ein Netzwerk an eine entfernte Maschine geschickt werden.
+
+Hat man ein Objekt ``x`` und ein Dateiobjekt ``f``, das zum Schreiben geöffnet
+wurde, benötigt der einfachste Weg das Objekt zu picklen nur eine Zeile Code::
+
+    pickle.dump(x, f)
+
+Um das Objekt wieder zu unpicklen reicht, wenn ``f`` ein Dateiobjekt ist, das
+zum Lesen geöffnet wurde::
+
+    x = pickle.load(f)
+
+(Es gibt auch andere Varianten, die benutzt werden, wenn man viele Objekte
+pickled oder falls man gepicklete Daten nicht in einer Datei speichern will;
+siehe :mod:`pickle` in der Python Bibliotheksreferenz.)
+
+:mod:`pickle` ist der normale Weg ein Pythonobjekt zu erzeugen, das gespeichert
+und von anderen Programmen oder demselben Programm wiederbenutzt werden kann;
+der Fachbegriff für so etwas ist ein :dfn:`persistentes` Objekt. Weil
+:mod:`pickle` so weitläufig benutzt wird, stellen viele Programmierer, die
+Pythonerweiterungen schreiben sicher, dass neue Datentypen, wie Matrizen,
+richtig gepickled und unpickled werden können.
