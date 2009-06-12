@@ -135,7 +135,7 @@ Beispiel::
 Benutzung von Listen als Queue
 ------------------------------
 
-Listen lassen sich auch bequem als Schlage (*Queue*) benutzen, wo das als Erste
+Listen lassen sich auch bequem als Schlange (*Queue*) benutzen, wo das zuerst
 hinzugekommene Element auch zuerst abgerufen wird ("firs-in, first-out"). Um ein
 Element anzuhängen, benutzt man :meth:`append`. Um ein Element vom Anfang der
 Schlange abzurufen, benutzt man :meth:`pop` mit dem Index ``0``. Zum Beispiel::
@@ -216,7 +216,7 @@ ausgefallenes Verhalten::
    >>> [vec1[i]*vec2[i] for i in range(len(vec1))]
    [8, 12, -54]
 
-List Comprehensions können auf auf komplexe Ausdrücke und verschachtelte
+List Comprehensions können auf komplexe Ausdrücke und verschachtelte
 Funktionen angewendet werden::
 
    >>> [str(round(355/113, i)) for i in range(1, 6)]
@@ -360,7 +360,7 @@ Das wird passenderweise *Sequenz auspacken* (*sequence unpacking*) genannt und
 funktioniert mit jeder Sequenz auf der rechten Seite der Zuweisung. Die Anzahl
 der Namen auf der linken Seite muss genauso groß sein, wie die Länge der
 Sequenz. Eine Mehrfachzuweisung ist eigentlich nur eine Kombination von Tupel
-packen und und dem Auspacken der Sequenz.
+packen und dem Auspacken der Sequenz.
 
 
 .. _tut-sets:
@@ -444,7 +444,7 @@ ausgegeben werden.
 
 Die Hauptoperationen, die an einem Dictionary durchgeführt werden, sind die
 Ablage eines Wertes unter einem Schlüssel und der Abruf eines Wertes mit dem
-gebenen Schlüssel. Es ist auch möglich ein Schlüssel-Wert-Paar per ``del`` zu
+gegebenen Schlüssel. Es ist auch möglich ein Schlüssel-Wert-Paar per ``del`` zu
 löschen. Legt man einen Wert unter einem Schlüssel ab, der schon benutzt wird,
 überschreibt man den alten Wert, der vorher mit diesem Schlüssel verknüpft war.
 Einen Wert mit einem nicht-existenten Schlüssel abrufen zu wollen, erzeugt eine
