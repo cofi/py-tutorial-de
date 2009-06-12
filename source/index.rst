@@ -9,7 +9,7 @@
 
 Python ist eine einfach zu lernende, aber mächtige Programmiersprache mit
 effizienten abstrakten Datenstrukturen und einem einfachen, aber effektiven
-Ansatz für objektorientierten Programmierung. Durch die elegante Syntax und die
+Ansatz zur objektorientierten Programmierung. Durch die elegante Syntax und die
 dynamische Typisierung ist Python als interpretierte Sprache sowohl für Skripte
 als auch für schnelle Anwendungsentwicklung (Rapid Application Development)
 hervorragend geeignet.

@@ -60,22 +60,24 @@ C); Klammern können zur Gruppierung benutzt werden. Zum Beispiel::
     >>> 8 / 5 # Brüche gehen nicht verloren, wenn man Ganzzahlen teilt
     1.6000000000000001
 
-Anmerkung: Möglicherweise liefert die letzte Berechnung auf bei dir nicht genau das gleiche
-Ergebnis, weil sich Ergebnisse von Fließkommaberechnungen von Computer zu Computer
-unterscheiden können. Im weiteren Verlauf wird noch darauf eingegangen, wie man die Darstellung
-bei der Ausgabe von Fließkommazahlen festlegen kann. Die Anzeige in diesem Beispiel ist die
-mit dem größten Informationsgehalt, ist aber nicht so angenehm zu lesen wie die folgende::
+Anmerkung: Möglicherweise liefert die letzte Berechnung bei dir nicht genau
+das gleiche Ergebnis, weil sich Ergebnisse von Fließkommaberechnungen von
+Computer zu Computer unterscheiden können. Im weiteren Verlauf wird noch darauf
+eingegangen, wie man die Darstellung bei der Ausgabe von Fließkommazahlen
+festlegen kann. Die Anzeige in diesem Beispiel ist die mit dem größten
+Informationsgehalt, ist aber nicht so angenehm zu lesen wie die folgende::
 
     >>> print(8 / 5)
     1.6
 
-Der Übersichtlichkeit wegen wird in diesem Tutorial diese Darstellung von Fließkommazahlen verwendet,
-sofern nicht ausdrücklich die Ausgabeformatierung behandelt wird.
-Später wird noch erklärt, wie es zu diesen zwei Arten der Ausgabe von Fließkommazahlen
-kommt und warum sie unterschiedlich sind. Siehe :ref:`tut-fp-issues` für eine vollständige Abhandlung.
+Der Übersichtlichkeit wegen wird in diesem Tutorial diese Darstellung von
+Fließkommazahlen verwendet, sofern nicht ausdrücklich die Ausgabeformatierung
+behandelt wird.  Später wird noch erklärt, wie es zu diesen zwei Arten der
+Ausgabe von Fließkommazahlen kommt und warum sie unterschiedlich sind. Siehe
+:ref:`tut-fp-issues` für eine vollständige Abhandlung.
 
-Um eine Ganzzahldivision auszuführen, die ein ganzzahliges Ergebnis liefert und den Bruchteil
-des Ergebnisses vernachlässigt, gibt es den Operator ``//``::
+Um eine Ganzzahldivision auszuführen, die ein ganzzahliges Ergebnis liefert und
+den Bruchteil des Ergebnisses vernachlässigt, gibt es den Operator ``//``::
 
     >>> # Ganzzahldivision gibt ein abgerundetes Ergebnis zurück:
     ... 7 // 3
@@ -589,34 +591,33 @@ Dieses Beispiel stellt ein paar neue Eigenschaften vor.
   rechts ausgewertet.
 
 * Die :keyword:`while` Schleife wird solange ausgeführt, wie die Bedingung
-  (hier: ``b < 10``) wahr ist. In Python wie in C ist jede von Null
-  verschiedene Zahl wahr (*True*), Null ist unwahr (*False*). Die Bedingung kann
-  auch ein String- oder Listenwert sein, eigentlich sogar jede Sequenz. Alles mit
-  einer von Null verschiedenen Länge ist wahr, leere Sequenzen sind unwahr. Die Bedingung
-  im Beispiel ist ein einfacher Vergleich. Die normalen Vergleichsoperatoren
-  werden wie in C geschrieben: ``<`` (kleiner als), ``>`` (größer als), ``==``
-  (gleich), ``<=`` (kleiner oder gleich), ``>=`` (größer oder gleich) und ``!=``
-  (ungleich).
+  (hier: ``b < 10``) wahr ist. In Python wie in C ist jede von Null verschiedene
+  Zahl wahr (*True*), Null ist unwahr (*False*). Die Bedingung kann auch ein
+  String- oder Listenwert sein, eigentlich sogar jede Sequenz. Alles mit einer
+  von Null verschiedenen Länge ist wahr, leere Sequenzen sind unwahr. Die
+  Bedingung im Beispiel ist ein einfacher Vergleich. Die normalen
+  Vergleichsoperatoren werden wie in C geschrieben: ``<`` (kleiner als), ``>``
+  (größer als), ``==`` (gleich), ``<=`` (kleiner oder gleich), ``>=`` (größer
+  oder gleich) und ``!=`` (ungleich).
 
 * Der *Schleifenrumpf* ist *eingerückt* (*indented*):
-  Durch Einrückung wird in Python eine Gruppierung vorgenommen.
-  Leider unterstützt Python (noch!) keine intelligente Zeilenbearbeitungshilfe,
-  deshalb muss man selbst für jede eingerückte Zeile ein Tab oder Leerzeichen 
-  eingeben.  In der Praxis bereitet man kompliziertere Eingaben in einem 
-  Texteditor vor, und die meisten Texteditoren verfügen über eine automatisch 
-  Einrückung.  Wird eine zusammengesetzte Anweisung
-  (*compound statement*) interaktiv eingegegeben, muss eine Leerzeile darauf
-  folgen, um anzuzeigen, dass sie abgeschlossen ist (da der Interpreter nicht
-  erahnen kann, wann man die letzte Zeile eingegeben hat).
-  Zu beachten ist, dass jede
-  Zeile innerhalb eines Hauptblocks um den selben Betrag eingerückt sein muss!
+  Durch Einrückung wird in Python eine Gruppierung vorgenommen. Leider
+  unterstützt Python (noch!) keine intelligente Zeilenbearbeitungshilfe, deshalb
+  muss man selbst für jede eingerückte Zeile ein Tab oder Leerzeichen eingeben.
+  In der Praxis bereitet man kompliziertere Eingaben in einem Texteditor vor,
+  und die meisten Texteditoren verfügen über eine automatisch Einrückung.  Wird
+  eine zusammengesetzte Anweisung (*compound statement*) interaktiv
+  eingegegeben, muss eine Leerzeile darauf folgen, um anzuzeigen, dass sie
+  abgeschlossen ist (da der Interpreter nicht erahnen kann, wann man die letzte
+  Zeile eingegeben hat).  Zu beachten ist, dass jede Zeile innerhalb eines
+  Hauptblocks um den selben Betrag eingerückt sein muss!
 
 * Die Funktion :func:`print` gibt den Wert des Ausdrucks aus, der ihr übergeben
-  wurde. Die Ausgabe unterscheidet sich bei Mehrfachausdrücken, Fließkommazahlen und
-  Zeichenketten von der Ausgabe, die man erhält, wenn man
-  die Ausdrücke einfach so eingibt (wie wir es vorher in den Taschenrechnerbeispielen
-  gemacht haben). Zeichenketten werden ohne Anführungszeichen ausgegeben, und
-  bei Angabe mehrere Argumente wird zwischen je zwei Argumenten ein Leerzeichen eingefügt.
+  wurde. Die Ausgabe unterscheidet sich bei Mehrfachausdrücken, Fließkommazahlen
+  und Zeichenketten von der Ausgabe, die man erhält, wenn man die Ausdrücke
+  einfach so eingibt (wie wir es vorher in den Taschenrechnerbeispielen gemacht
+  haben). Zeichenketten werden ohne Anführungszeichen ausgegeben, und bei Angabe
+  mehrere Argumente wird zwischen je zwei Argumenten ein Leerzeichen eingefügt.
   So lassen sich einfache Formatierungen vornehmen, wie das Beispiel zeigt ::
 
     >>> i = 256 * 256
@@ -624,7 +625,7 @@ Dieses Beispiel stellt ein paar neue Eigenschaften vor.
     Der Wert von i ist 65536
 
 Durch Verwendung des Schlüsselwortarguments *end* kann der Zeilenumbruch nach
-der Ausgabe verhindert oder die Ausgabe mit einem anderen String zu beendet
+der Ausgabe verhindert oder die Ausgabe mit einem anderen String beendet
 werden. ::
 
     >>> a, b = 0, 1

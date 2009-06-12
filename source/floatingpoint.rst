@@ -43,19 +43,19 @@ oder, besser, ::
 und so weiter.  Egal wie viele Stellen man schreibt, dass Resultat wird niemals
 exakt 1/3, aber es wird sich stetig 1/3 annähern.
 
-Äquivalent kann, egal wie viele Stellen mit der Basis 2 man verwendet, der
+Äquivalent kann, egal wie viele Stellen mit der Basis 2 man verwendet, die
 Dezimalzahl 0.1 niemals exakt als Binärbruch dargestellt werden.  Im Binärsystem
 ist 1/10 die periodische Binärzahl::
 
    0.0001100110011001100110011001100110011001100110011...
 
 Hält man nach einer endlichen Zahl Bits an, erhält man eine Annäherung.  In den
-meisten Rechner werden heute Fließkommazahlen als Binärbrüche, mit dem Zähler in
+meisten Rechnern werden heute Fließkommazahlen als Binärbrüche, mit dem Zähler in
 den ersten 53 Bits, gefolgt von dem Nenner als Potenz von Zwei, dargestellt.
 Im Fall von 1/10 lautet der Binärbruch ``3602879701896397 / 2 ** 55``, was in
 etwa, aber nicht exakt, dem echten Wert von 1/10 entspricht.
 
-Viele Benutzter sind sich durch die angezeigten Werte der Problematik nicht
+Viele Benutzer sind sich durch die angezeigten Werte der Problematik nicht
 bewusst.  Python zeigt nur eine dezimale Annäherung an den echten Dezimalwert
 an, der im Rechner gespeichert wird.  Wenn Python den echten Dezimalwert zur
 gespeicherten binären Annäherung an 0,1 anzeigen würde, müsste es folgendes
@@ -88,7 +88,7 @@ In der Vergangenheit wählten der Python-Prompt und die eingebaute Funktion
 seit Python 3.1 ist Python (auf den meisten Systemen) fähig, die kürzeste
 Darstellung zu wählen und einfach ``0.1`` anzuzeigen.
 
-Das Verhalten liegt im der Natur der Fließkommadarstellung im Binärsystem:
+Das Verhalten liegt in der Natur der Fließkommadarstellung im Binärsystem:
 es ist kein Fehler in Python und auch kein Fehler in deiner Software. Man sieht
 dieses Problem in allen Sprachen, die die Fließkomma-Darstellung der Hardware
 unterstützen (obwohl manche Sprachen den Unterschied nicht standardmäßig oder
@@ -131,23 +131,23 @@ Runden, so das die ungenauen Ergebnisse vergleichbar zueinander werden::
 
 Binäre Fließkommaarithmetik sorgt noch für einige Überraschungen wie diese.
 Das Problem mit "0.1" ist im Abschnitt "Darstellungsfehler" weiter unten
-detailliert beschrieben.  Dazu sei auf `The Perils of Floating Point <http://www.lahey.com/float.htm>`_
-für eine umfassendere Liste von üblichen Problemen verwiesen.
+detailliert beschrieben.  Dazu sei auf `The Perils of Floating Point
+<http://www.lahey.com/float.htm>`_ für eine umfassendere Liste von üblichen
+Problemen verwiesen.
 
-Wie schon dort gegen Ende des Textes gesagt wird: 
-"Es gibt keine einfachen Antworten.". Trotzdem sollte man nicht zögerlich
-bei dem Einsatz von Fließkommazahlen sein!  Der Fehler in 
-Python-Fließkommaoperationen ist der der Fließkomma-Hardware und der ist
-auf den meisten Maschinen liegt er in einem Bereich von nicht größer als 
-1 zu 2\*\*53 pro Operation.  Das ist mehr als ausreichend für die meisten
-Anwendungen, aber man muss sich in Erinnerung halten das es sich nicht um
-Dezimal-Arithmetik handelt und dass jede Operation mit einer Fließkommazahl einen
-neuen Rundungsfehler enthalten kann.
+Wie schon dort gegen Ende des Textes gesagt wird: "Es gibt keine einfachen
+Antworten.". Trotzdem sollte man nicht zögerlich bei dem Einsatz von
+Fließkommazahlen sein!  Die Fehler in Python-Fließkommaoperationen sind
+Folgefehler der Fließkomma-Hardware und liegt auf den meisten Maschinen in einem
+Bereich der geringer als 1 zu 2\*\*53 pro Operation ist.  Das ist mehr als
+ausreichend für die meisten Anwendungen, aber man muss sich in Erinnerung halten
+das es sich nicht um Dezimal-Arithmetik handelt und dass jede Operation mit
+einer Fließkommazahl einen neuen Rundungsfehler enthalten kann.
 
 Von einigen pathologischen Fällen abgesehen, erhält man in den meisten
 existierenden Fällen, für die gängigsten Anwendungen von Fließkommazahlen
 das erwartete Ergebnis, wenn man einfach die Anzeige des Ergebnisses auf
-auf die Zahl der Dezimalstellen rundet, die man erwartet.
+die Zahl der Dezimalstellen rundet, die man erwartet.
 :func:`str` genügt meist, für eine feinere Kontrolle kann man sich
 :meth:`str.format` mit den Formatierungsoptionen in :ref:`formatstrings`
 anschauen.
@@ -215,7 +215,7 @@ Darstellungsfehler
 
 Dieser Abschnitt erklärt das "0.1" Beispiel im Detail und zeigt wie man 
 selbstständig eine exakte Analyse dieser Fälle durchführen kann.  Ein
-grundlegendes Verständnis der der binären Fließkomma-Darstellung wird
+grundlegendes Verständnis der binären Fließkomma-Darstellung wird
 vorausgesetzt.
 
 Der Begriff :dfn:`Darstellungsfehler` verweist auf den Umstand das manche
