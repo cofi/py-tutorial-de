@@ -199,3 +199,21 @@ Das ist besonders nützlich in Verbindung mit der neuen eingebauten Funktion
 
 Siehe :ref:`formatstrings` für eine komplette Übersicht zu
 Zeichenkettenformatierung mit :meth:`str.format`.
+
+Alte Zeichenkettenformatierung
+------------------------------
+
+Der ``%``-Operator kann auch zur Zeichenkettenformatierung genutzt werden. Er
+interpretiert das linke Argument genauso wie die einen :cfunc:`sprintf`-artigen
+Formatstring, der auf das rechte Argument angewendet werden soll und gibt die
+resultierende Zeichenkette dieser Formatierungsoperation zurück. Zum Beispiel::
+
+    >>> import math
+    >>> print('Der Wert von Pi ist ungefähr %5.3f.' % math.pi)
+    Der Wert von Pi ist ungefähr 3.142.
+
+Da :meth:`str.format` ziemlich neu ist, benutzt viel Pythoncode noch den
+``%``-Operator. Jedoch sollte :meth:`str.format` hauptsächlich benutzt werden,
+da diese alte Art der Formatierung irgendwann aus der Sprache entfernt wird.
+
+Mehr Informationen dazu gibt es in dem Abschnitt :ref:`old-string-formatting`
