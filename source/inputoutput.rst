@@ -262,3 +262,131 @@ Zeilenende. Diese versteckte Modifikation ist klasse für Textdateien, wird aber
 binäre Dateiformate, wie :file:`JPEG`- oder :file:`EXE`-Dateien,  beschädigen.
 Achte sehr sorgfältig darauf, dass du den Binärmodus benutzt, wenn du solche
 Dateien schreibst oder liest.
+
+
+.. _tut-filemethods:
+
+Methoden von Dateiobjekten
+--------------------------
+
+Die übrigen Beispiele in diesem Abschnitt nehmen an, dass ein Dateiobjekt namens
+``f`` schon erstellt wurde.
+
+Um den Inhalt einer Datei zu lesen, kann man ``f.read(size)`` aufrufen, was
+einen Teil der Daten ausliest und diese als Zeichenketten- oder Byteobjekt
+zurückgibt. *size* ist ein optionales, numerisches Argument, wird es ausgelassen
+oder ist es negativ, so wird der gesamte Inhalt der Datei ausgelesen und
+zurückgegeben, falls die Datei doppelt so groß wie der Speicher deiner Maschine
+ist, so ist das dein Problem. Andernfalls werden höchstens *size* Byte
+ausgelesen und zurückgegeben. Ist das Ende der Datei erreicht, so gibt
+``f.read()`` eine leere Zeichenkette (``''``) zurück. ::
+
+    >>> f.read()
+    'Das ist die ganze Datei.\n'
+    >>> f.read()
+    ''
+
+``f.readline()`` liest eine einzelne Zeile aus einer Datei; ein
+Zeilenumbruchszeichen (``\n``) bleibt am Ende der Zeichenkette und wird nur
+ausgelassen, falls die letzte Zeile nicht in einem Zeilenumbruch endet. Dies
+macht den Rückgabewert eindeutig: Falls ``f.readline()`` eine leere Zeichenkette
+zurückgibt, so ist das Ende der Datei erreicht, während eine Leerzeile durch
+``'\n'``, eine Zeichenkette, die nur einen einzelnen Zeilenumbruch enthält,
+dargestellt wird. ::
+
+    >>> f.readline()
+    'Dies ist die erste Zeile der Datei\n'
+    >>> f.readline()
+    'Zweite Zeile der Datei\n'
+    >>> f.readline()
+    ''
+
+``f.readlines()`` gibt eine Liste zurück die alle Zeilen der Datei enthält. Wird
+ein optionaler Paramenter *sizehint* übergeben, liest es mindestens so viele
+Bytes aus der Datei und zusätzlich noch so viele, dass die nächste Zeile
+komplett ist und gibt diese Zeilen zurück. Dies wird oft benutzt, um ein
+effizientes Einlesen der Datei anhand der Zeilen zu ermöglichen, ohne die
+gesamte Datei in den Speicher laden zu müssen. Nur komplette Zeilen werden
+zurückgegeben. ::
+
+    >>> f.readlines()
+    ['Dies ist die erste Zeile der Datei\n', 'Zweite Zeile der Datei\n']
+
+Ein alternativer Ansatz Zeilen auszulesen, ist über das Dateiobjekt zu iterieren. Das ist speichereffizient, schnell und führt zu einfacherem Code::
+
+    >>> for line in f:
+    ...     print(line, end='')
+    ...
+    Dies ist die erste Zeile der Datei.
+    Zweite Zeile der Datei
+
+Der alternative Ansatz ist einfacher, bietet aber keine feinkörnige Kontrolle.
+Da beide Ansätze die Pufferung von Zeilen unterschiedlich handhaben, sollten sie
+nicht vermischt werden.
+
+``f.write(string)`` schreibt den Inhalt von *string* in die Datei und gibt die
+Anzahl der Zeichen, die geschrieben wurden, zurück. ::
+
+    >>> f.write('Dies ist ein Test\n')
+    18
+
+Um etwas anderes als eine Zeichenkette zu schreiben, muss es erst in eine
+Zeichenkette konvertiert werden::
+
+    >>> value = ('Die Antwort', 42)
+    >>> s = str(value)
+    >>> f.write(s)
+    19
+
+``f.tell()`` gibt eine Ganzzahl zurück, die die aktuelle Position des
+Dateiobjektes innerhalb der Datei angibt, gemessen in Bytes vom Anfang der
+Datei. Um die Position des Dateiobjektes zu ändern, gibt es ``f.seek(offset,
+from_what)``. Die Position wird berechnet indem *offset* zu einem Referenzpunkt
+addiert wird, dieser wird durch das Argument *from_what* festgelegt. Bei einem
+*from_what* des Wertes 0, wird von Beginn der Datei gemessen, bei 1 von der
+aktuellen Position, bei 2 vom Ende der Datei. *from_what* kann ausgelassen
+werden und hat den Standardwert 0, das den Anfang der Datei als Referenzpunkt
+benutzt. ::
+
+   >>> f = open('/tmp/workfile', 'rb+')
+   >>> f.write(b'0123456789abcdef')
+   16
+   >>> f.seek(5)     # Gehe zum 6. Byte der Datei
+   5
+   >>> f.read(1)
+   b'5'
+   >>> f.seek(-3, 2) # Gehe zum drittletzten Byte
+   13
+   >>> f.read(1)
+   b'd'
+
+In Textdateien (die, die ohne ein ``b`` im Modus geöffnet werden) sind nur
+Positionierungen vom Anfang der Datei aus erlaubt (mit der Ausnahme, dass mit
+``f.seek(0, 2)`` zum Ende der Datei gesprungen werden kann).
+
+Wenn man mit einer Datei fertig ist, ruft man ``f.close()`` auf, um sie zu
+schliessen und jegliche Systemressource freizugeben, die von der offenen Datei
+belegt wird. Nach dem Aufruf von ``f.close()`` schlägt automatisch jeder Versuch
+fehl das Objekt zu benutzen. ::
+
+    >>> f.close()
+    >>> f.read()
+    Traceback (most recent call last):
+     File "<stdin>", line 1, in ?
+    ValueError: I/O operation on closed file
+
+Die optimale Vorgehensweise ist es, das Schlüsselwort :keyword:`with` zu
+benutzen, wenn man mit Dateiobjekten arbeitet. Das hat den Vorteil, dass die
+Datei richtig geschlossen wird, sobald deren Befehle abgearbeitet sind, auch
+wenn unterwegs eine Ausnahme verursacht wird. Das ist auch viel kürzer als einen
+äquivalenten :keyword:`try`-:keyword:`finally`-Block zu schreiben::
+
+    >>> with open('/tmp/workfile', 'r') as f:
+    ...     read_data = f.read()
+    >>> f.closed
+    True
+
+Dateiobjekte haben noch ein paar zusätzliche Methoden, wie :meth:`isatty` und
+:meth:`truncate`, die weniger häufig genutzt werden. Ein komplettes Handbuch zu
+Dateiobjekten kann in der Bibliotheksreferenz gefunden werden.
+
