@@ -216,4 +216,49 @@ Da :meth:`str.format` ziemlich neu ist, benutzt viel Pythoncode noch den
 ``%``-Operator. Jedoch sollte :meth:`str.format` hauptsächlich benutzt werden,
 da diese alte Art der Formatierung irgendwann aus der Sprache entfernt wird.
 
-Mehr Informationen dazu gibt es in dem Abschnitt :ref:`old-string-formatting`
+Mehr Informationen dazu gibt es in dem Abschnitt :ref:`old-string-formatting`.
+
+.. _tut-files:
+
+Lesen und Schreiben von Dateien
+===============================
+
+.. index:
+   builtin: open
+   object: file
+
+:func:`open` gibt ein Dateiobjekt zurück und wird meistens mit zwei Argumenten
+aufgerufen: ``open(filename, mode)``
+
+::
+
+    >>> f = open('/tmp/workfile', 'w')
+
+
+    >>> print(f)
+    <open file '/tmp/workfile', mode 'w' at 80a0960>
+
+Das erste Argument ist eine Zeichenkette, die den Dateinamen enthält. Das zweite
+Argument ist eine andere Zeichenkette mit ein paar Zeichen, die die Art
+der Benutzung der Datei beschreibt. *mode* kann ``'r'`` sein, wenn die Datei nur
+gelesen wird, ``'w'``, wenn sie nur geschrieben wird (eine existierende Datei
+mit demselben Namen wird gelöscht) und ``'a'`` öffnet die Datei zum Anhängen;
+alle Daten, die in die Datei geschrieben werden, werden automatisch ans Ende
+angehängt. ``'r+'`` öffnet die Datei zum Lesen und Schreiben. Das
+*mode*-Argument ist optional, fehlt es, so wird ``'r'`` angenommen.
+
+Normalerweise werden Dateien im :defn:`Textmodus` (*text mode*) geöffnet, das
+heisst, dass man Zeichenketten von ihr liest beziehungsweise in sie schreibt,
+die in einer bestimmten Kodierung kodiert werden (der Standard ist UTF-8).
+Wird ``'b'`` an das *mode*-Argument angehängt, so öffnet man die Datei im
+:dfn:`Binärmodus` (*binary mode*); in ihm werden Daten als Byteobjekte gelesen
+und geschrieben. Dieser Modus sollte für alle Dateien genutzt werden, die keinen
+Text enthalten.
+
+Im Textmodus wird beim Lesen standardmäßig das plattformspezifische Zeilenende
+(``\n`` unter Unixen, ``\r\n`` unter Windows) zu einem einfachen ``\n``
+konvertiert und beim Schreiben ``\n`` zurück zum plattformspezifischen
+Zeilenende. Diese versteckte Modifikation ist klasse für Textdateien, wird aber
+binäre Dateiformate, wie :file:`JPEG`- oder :file:`EXE`-Dateien,  beschädigen.
+Achte sehr sorgfältig darauf, dass du den Binärmodus benutzt, wenn du solche
+Dateien schreibst oder liest.
