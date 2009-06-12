@@ -91,9 +91,9 @@ Ausnahmen behandeln
 
 Es ist möglich, Programme zu schreiben, welche ausgewählte Ausnahmen
 behandeln. Schau dir das folgende Beispiel an, welches den Benutzer
-solange um Eingabe bittet, bis ein eine gültige Ganzzahl eingegeben
+solange um Eingabe bittet, bis eine gültige Ganzzahl eingegeben
 wird, es dem Benutzer aber ermöglicht, das Programm abzubrechen (mit
-:kbd:`Control-C` oder was das Betriebssystem sonst unterstützt); ein
+:kbd:`Strg-C` oder was das Betriebssystem sonst unterstützt); ein
 solcher vom Benutzer erzeugter Abbruch löst eine
 :exc:`KeyboardInterrupt`-Ausnahme aus::
 
@@ -132,7 +132,7 @@ enthalten, um somit verschiedene Aktionen für verschiedene Ausnahmen
 festzulegen. Es wird höchstens ein except-Block ausgeführt. Ein Block
 kann nur die Ausnahmen behandeln, welche in dem zugehörigen try-Block
 aufgetreten sind, nicht jedoch solche, welche in einem anderen
-except-Block des gleichen try-Anweisung auftreten. Ein except-Block
+except-Block der gleichen try-Anweisung auftreten. Ein except-Block
 kann mehrere Exceptions gleichzeitig behandeln, dies wird in einem
 Tupel in runden Klammern angegeben:
 
@@ -200,7 +200,7 @@ auslöst, um weitere Attribute nach Bedarf hinzuzufügen::
    ...    print(type(inst))    # Die Ausnahmeinstanz
    ...    print(inst.args)     # Argumente gespeichert in .args
    ...    print(inst)          # __str__ erlaubt direkte Ausgabe von .args,
-   ...                         # kann aber in Subklassen überschriegen werden
+   ...                         # kann aber in Subklassen überschrieben werden
    ...    x, y = inst.args     # args auspacken
    ...    print('x =', x)
    ...    print('y =', y)
@@ -300,7 +300,7 @@ Definition von Klassen zur Verfügung stehen, werden jedoch meist recht
 einfach gehalten; oft bieten sie nur eine Reihe von Attributen,
 welche genauere Informationen über den Fehler bereitstellen. Beim
 Erstellen von Modulen, welche verschiedene Fehler auslösen können,
-wird oft eine Basisklasse für Ausnahmen diese Moduls definiert, und
+wird oft eine Basisklasse für Ausnahmen dieses Moduls definiert und
 alle anderen Ausnahmen für spezielle Fehlerfälle erben dann von dieser
 Basisklasse::
 
@@ -413,7 +413,7 @@ unabhängig davon, ob die Ressource erfolgreich benutzt wurde oder nicht.
 Vordefinierte Aufräumaktionen
 =============================
 
-Einige Objekte definierten Standard-Aufräumaktionen, die ausgeführte
+Einige Objekte definieren Standard-Aufräumaktionen, die ausgeführte
 werden, wenn das Objekt nicht länger gebraucht wird, egal ob die
 Operation, die das Objekt benutzte, erfolgreich war oder nicht. Schau
 dir das folgende Beispiel an, welches versucht, eine Datei zu öffnen
@@ -424,7 +424,7 @@ und ihren Inhalt auf dem Bildschirm auszugeben.::
 
 Das Problem dieses Codes ist, dass er die Datei, nachdem der Code
 ausgeführt wurde, für unbestimmte Zeit geöffnet lässt. In einfachen
-Skripten ist das kein Thema, aber in großen Anwendungen kann es
+Skripten ist das kein Thema, aber in großen Anwendungen kann es zu
 einem Problem werden. Die :keyword:`with`-Anweisung erlaubt es
 Objekten wie Dateien, auf eine Weise benutzt zu werden, dass sie stets
 korrekt und sofort aufgeräumt werden. ::
