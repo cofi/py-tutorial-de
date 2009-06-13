@@ -31,13 +31,13 @@ davon sind:
 Mehr Quellen zu Python:
 
 * http://www.python.org:  Die eigentliche Python-Internet-Präsenz.  Hier findet
-  man den Quelltext, die Dokumentation und Verweise zu weiteren Webseiten mit
-  einen Bezug zu Python habe.  Diese Webseite wurde für einige Regionen dieser
+  man den Quelltext, die Dokumentation und Verweise zu weiteren Webseiten, die
+  einen Bezug zu Python haben. Diese Webseite wurde für einige Regionen dieser
   Welt, wie beispielsweise Europa, Japan, und Australien gespiegelt; ein
   Spiegelserver ist unter Umständen schneller als die Hauptseite --- abhängig
   von der geografischen Lage.
 
-* http://docs.python.org:  schneller Zugriff auf die Python-Dokumentation.
+* http://docs.python.org:  Schneller Zugriff auf die Python-Dokumentation.
 
 * http://pypi.python.org: Der *Py*thon *P*ackage *I*ndex, früher auch als Cheese
   Shop bezeichnet, ist ein Index für Python-Module, die von anderen Benutzern
@@ -46,22 +46,22 @@ Mehr Quellen zu Python:
   Benutzer diesen leichter finden können.
 
 * http://aspn.activestate.com/ASPN/Python/Cookbook/: Das Python Cookbook ist
-  eine umfangreiche Sammlung von Code-Beispielen, größeren Modulen und nützlichen
-  Scripts.  Besonders bemerkenswerte Beiträge wurden in einem Buch mit dem Titel
-  Python Cookbook (O'Reilly & Associates, ISBN 0-596-00797-3.) veröffentlicht.
+  eine umfangreiche Sammlung von Code-Beispielen, größeren Modulen und
+  nützlichen Scripts.  Besonders bemerkenswerte Beiträge wurden in einem Buch
+  mit dem Titel Python Cookbook (O'Reilly & Associates, ISBN 0-596-00797-3.)
+  veröffentlicht.
 
-Bei Fragen und Problemen zu Python, kann man sich an das deutschsprachige 
+Bei Fragen und Problemen zu Python, kann man sich an das deutschsprachige
 Python-Forum auf http://www.python-forum.de/ oder die englischsprachige
-Newsgroup :newsgroup:`comp.lang.python` oder Mailingliste 
-python-list@python.org wenden.  Es existiert ein Gateway zwischen der 
-Newsgroup und der Mailingliste, so dass Nachrichten, die an die eine Adresse 
-geschickt werden, automatisch zu der anderen weitergeleitet werden.  In
-der Newsgroup gibt es jeden Tag um die 120 Beiträge (zu Spitzenzeiten einige 
-Hundert) an Fragen (und Antworten), Vorschlägen für neue Features und
-und Ankündigungen von neuen Modulen. Vor der Posten sollte man sich jedoch
-die `Frequently Asked Questions <http://www.python.org/doc/faq/>`_ 
-(auch FAQ genannt) durchlesen oder in das Verzeichnis :file:`Misc/` der
-Python Quelltext-Distribution schauen.  Archive für die Mailingliste findet
-man unter http://mail.python.org/pipermail/. Die FAQ beantwortet viele
-Fragen, die immer wieder aufkommen.
+Newsgroup :newsgroup:`comp.lang.python` oder Mailingliste python-list@python.org
+wenden.  Es existiert ein Gateway zwischen der Newsgroup und der Mailingliste,
+so dass Nachrichten, die an die eine Adresse geschickt werden, automatisch zu
+der anderen weitergeleitet werden.  In der Newsgroup gibt es jeden Tag um die
+120 Beiträge (zu Spitzenzeiten einige Hundert) an Fragen (und Antworten),
+Vorschlägen für neue Features und Ankündigungen von neuen Modulen. Vor dem
+Posten sollte man sich jedoch die `Frequently Asked Questions
+<http://www.python.org/doc/faq/>`_ (auch FAQ genannt) durchlesen oder in das
+Verzeichnis :file:`Misc/` der Python Quelltext-Distribution schauen.  Archive
+für die Mailingliste findet man unter http://mail.python.org/pipermail/. Die FAQ
+beantwortet viele Fragen, die immer wieder aufkommen.
 

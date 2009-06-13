@@ -218,9 +218,9 @@ Performancemessung
 ==================
 
 Viele Benutzer von Python interessieren sich sehr für die jeweiligen
-Geschwindigkeitsunterschiede verschiedener Herangehensweisen an ein Problem.
-Python stellt hier ein Messinstrument zur Verfügung, mit dem diese Fragen
-beantwortet werden können.
+Geschwindigkeitsunterschiede verschiedener Lösungen für ein Problem. Python
+stellt hier ein Messinstrument zur Verfügung, mit dem diese Fragen beantwortet
+werden können.
 
 Es könnte etwa verlockend sein, statt Argumente einfach gegeneinander
 auszutauschen, Tuple und ihr Verhalten beim *Packing*/*Unpacking* zu verwenden.
@@ -243,7 +243,7 @@ Abschnitten von Programmcode auffinden.
 Qualitätskontrolle
 ==================
 
-Um hohe eine Qualität der entwickelten Software zu gewährleisten, sollte man
+Um eine hohe Qualität der entwickelten Software zu gewährleisten, sollte man
 Tests für jede Funktion schreiben, die dann regelmäßig während des
 Entwicklungsprozesses ausgeführt werden.
 
@@ -266,8 +266,8 @@ Dokumentation auch nach Änderungen noch übereinstimmen::
    import doctest
    doctest.testmod()   # Führt den Test automatisch durch
 
-Das Modul :mod:`unittest` funktioniert nicht ganz so einfach, dafür lassen sich damit
-auch umfangreichere Tests erstellen, die in einer eigenen Datei verwaltet
+Das Modul :mod:`unittest` funktioniert nicht ganz so einfach, dafür lassen sich
+damit auch umfangreichere Tests erstellen, die in einer eigenen Datei verwaltet
 werden::
 
    import unittest
@@ -285,10 +285,11 @@ werden::
 
 .. _tut-batteries-included:
 
-Batteries Includeed
+Batteries Included
 ===================
 
-Bei Python gilt der Slogan "Batteries Included". Am besten lässt sich das anhand seiner größeren Pakete aufzeigen. Beispiele:
+Bei Python gilt das Motto "Batteries Included". Am besten lässt sich das anhand
+seiner größeren Pakete aufzeigen. Beispiele:
 
 * Die Module :mod:`xmlrpclib` and :mod:`SimpleXMLRPCServer` erleichtern RPC
   enorm. Trotz ihrer Namen ist übrigens keine Kenntnis von XML notwendig.

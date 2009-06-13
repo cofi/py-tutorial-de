@@ -17,7 +17,7 @@ diese in einer anderen Datei oder in der interaktiven Konsole wieder zu
 verwenden. So eine Datei wird als *Modul* bezeichnet. Definitionen eines Moduls
 können in anderen Modulen oder in das *Hauptmodul* *importiert* werden, welches
 die Gesamtheit aller Funktionen und Variablen enthält, auf die man in einem Skript
-zugreifen kann).
+zugreifen kann.
  
 Ein Modul ist eine Datei, die Python-Definitionen und -Anweisungen beinhaltet.
 Der Dateiname mit dem :file:`.py` Suffix entspricht dem Namen des Moduls.
@@ -87,11 +87,11 @@ Schreibweise verwendet, um auch dessen Funktionen anzusprechen,
 ``modname.itemname``.
 
 Module können andere Module importieren. Es ist üblich, aber nicht zwingend
-notwendig, dass man alle :keyword:`import`-Anweisungen an den Anfangs eines
+notwendig, dass man alle :keyword:`import`-Anweisungen an den Anfang eines
 Moduls setzt (oder in diesem Fall Skripts). Die Namen der importierten Module
 werden in die Symboltabelle des importierenden Moduls eingefügt.
 
-Es gibt eine Variante der :keyword:`import`-Anweisung, welche bestimme Namen aus
+Es gibt eine Variante der :keyword:`import`-Anweisung, welche bestimmte Namen aus
 einem Modul direkt in die Symboltabelle des importierenden Moduls einfügt.
 Beispielsweise::
 
@@ -142,7 +142,7 @@ Moduls anfügt::
 	    fib(int(sys.argv[1]))
 	
 kann man die Datei sowohl als Skript als auch als importierbares Modul
-nutzbar, da der Code, der die Kommandozeile auswertet, nur ausgeführt wird,
+nutzen, da der Code, der die Kommandozeile auswertet, nur ausgeführt wird,
 wenn das Modul direkt als *Hauptdatei* ausgeführt wird::
 
 	$ python fibo.py 50
@@ -177,8 +177,8 @@ Tatsächlich werden Module in der Reihenfolge gesucht, in der sie in der Variabl
 `sys.path` aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich
 auch das Skript befindet beginnt, gefolgt von :envvar:`PYTHONPATH` und dem
 installationsabhängigen default-Pfad. Dies erlaubt Python-Programmen, die
-Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu Beachten
-ist, dass das Skript nicht den selben Namen haben wie eines der Standardmodule,
+Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu beachten
+ist, dass das Skript nicht den selben Namen haben darf wie eines der Standardmodule,
 da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist. In diesem Fall
 versucht Python das Skript als Modul zu importieren, was normalerweise zu einem
 Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
@@ -207,7 +207,7 @@ kann.
 Einige Tipps für Experten:
 
 * Wird der Python Interpreter mit dem :option:`-O` Flag gestartet, so
-  so wird der optimierte Code in :file:`.pyo` Dateien gespeichert. Optimierter
+  wird der optimierte Code in :file:`.pyo` Dateien gespeichert. Optimierter
   Code hilft momentan nicht viel, da er lediglich :keyword:`assert`-Anweisungen
   entfernt. Wird :option:`-O` verwendet, wird der *komplette*
   :term:`Bytecode` optimiert; :file:`.pyc` werden ignoriert und :file:`.py`
@@ -217,7 +217,7 @@ Einige Tipps für Experten:
   der Bytecode-Compiler Optimierungen, die zu einer
   Fehlfunktion des Programms führen können. Momentan werden nur ``__doc__``
   Strings aus dem Bytecode entfernt, was zu kleineren :file:`.pyo` Dateien
-  führt. Da einige Programm sich darauf verlassen, dass sie verfügbar
+  führt. Da einige Programme sich darauf verlassen, dass sie verfügbar
   sind, sollte man diese Option nur aktivieren, wenn man weiß, was man tut.
 
 * Ein Programm wird in keinster Weise schneller ausgeführt, wenn es aus einer
@@ -236,7 +236,7 @@ Einige Tipps für Experten:
   rekonstruiert werden kann.
 
 * Das Modul :mod:`compileall` kann :file:`.pyc` Dateien (oder auch :file:`.pyo`,
-  wenn :option:`-O` genutzt wird) aus allen Module eines Verzeichnis erzeugen.
+  wenn :option:`-O` genutzt wird) aus allen Modulen eines Verzeichnisses erzeugen.
 
 .. _tut-standardmodules:
 
@@ -274,7 +274,7 @@ interaktiven Modus ist.
 Die Variable ``sys.path`` ist eine Liste von Zeichenketten, die den Suchpfad des
 Interpreters vorgibt. Sie ist mit einem Standardpfad voreingestellt, der aus der
 Umgebungsvariable :envvar:`PYTHONPATH` entnommen wird oder aus einem eingebauten
-Standardwert, falls :envvar:`PYTHONPATH` nicht gesetzt ist. Man diese Variable
+Standardwert, falls :envvar:`PYTHONPATH` nicht gesetzt ist. Man kann diese Variable
 mit normalen Listenoperationen verändern::
 
 	>>> import sys
@@ -366,7 +366,7 @@ ständig wachsende Sammlung von Modulen erstellen und warten muss. Außerdem wil
 man auch verschiedene Arbeiten an den Audiodaten verrichten (wie zum Beispiel
 Mixen, Echo hinzufügen, etc.), also wird man immer wieder Module schreiben, die
 diese Arbeiten ausführen. Hier eine mögliche Struktur für so ein Paket
-(ausgedrückt in der Form eines hierarchisches Dateisystems)::
+(ausgedrückt in der Form eines hierarchischen Dateisystems)::
 
 	sound/                          Top-level package
 	         __init__.py               Initialize the sound package
@@ -432,13 +432,13 @@ diesem Fall wird aber die :func:`echofilter` Funktion direkt verfügbar gemacht:
 	echofilter(input, output, delay=0.7, atten=4)
 	
 Wenn man ``from package import item`` verwendet, kann das ``item`` entweder ein
-Untermodul und -paket sein oder eine Name, der in diesem Paket definiert ist
+Untermodul und -paket sein oder ein Name, der in diesem Paket definiert ist
 (z.B. eine Funktion, eine Klasse oder Variable). Das ``import`` Statement
 überprüft zuerst, ob das ``item`` in diesem Paket definiert ist; falls nicht,
 wird von einem Modul ausgegangen und versucht es zu laden. Wenn nichts gefunden
 wird, wird eine :exc:`ImportError`-Ausnahme geworfen.
 
 Im Gegensatz dazu, muss bei Verwendung von ``import item.subitem.subsubitem``
-jedes ``item`` eine Paket sein; das letzte ``item`` kann ein Modul oder ein
+jedes ``item`` ein Paket sein; das letzte ``item`` kann ein Modul oder ein
 Paket sein, aber es darf keine Klasse, Funktion oder Variable im darüber
 geordneten ``item`` sein.
