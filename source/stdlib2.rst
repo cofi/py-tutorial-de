@@ -120,9 +120,9 @@ lesbarer und stabiler.
 Logging
 =======
 
-Das Modul :mod:`logging` ermöglicht ausführliches und flexibles
-Erstellen von Logfiles. Im einfachsten Fall werden Logs in eine Datei
-geschrieben oder an ``sys.stderr`` geschickt::
+Das Modul :mod:`logging` ermöglicht ausführliches und flexibles Erstellen von
+Logfiles. Im einfachsten Fall werden Logs in eine Datei geschrieben oder an
+``sys.stderr`` geschickt::
 
    import logging
    logging.debug('Debugging Information')
@@ -131,15 +131,13 @@ geschrieben oder an ``sys.stderr`` geschickt::
    logging.error('Fehler')
    logging.critical('Kritischer Fehler!')
 
-Die Ausgabe von Meldungen der Stufen *info* und *debug* wird
-standardmäßig unterdrückt; übrige Meldungen werden an ``sys.stderr``
-geschickt. Darüber hinaus können Meldungen auch per E-Mail, über
-Datenpakete (UDP), Sockets (TCP) oder an einen HTTP-Server
-ausgeliefert werden. Filter können weiterhin entscheiden, worüber
-Meldungen ausgegeben werden - je nach Priorität: :const:`DEBUG`,
+Die Ausgabe von Meldungen der Stufen *info* und *debug* wird standardmäßig
+unterdrückt; übrige Meldungen werden an ``sys.stderr`` geschickt. Darüber hinaus
+können Meldungen auch per E-Mail, über Datenpakete (UDP), Sockets (TCP) oder an
+einen HTTP-Server ausgeliefert werden. Filter können weiterhin entscheiden,
+worüber Meldungen ausgegeben werden - je nach Priorität: :const:`DEBUG`,
 :const:`INFO`, :const:`WARNING`, :const:`ERROR` und :const:`CRITICAL`.
 
-Das Logging-system kann entweder direkt mittels Python konfiguriert
-werden oder seine Konfiguration aus einer vom Benutzer definierbaren
-Konfigurationsdatei lesen, ohne dass dabei das Programm selbst
-geändert werden muss.
+Das Logging-system kann entweder direkt mittels Python konfiguriert werden oder
+seine Konfiguration aus einer vom Benutzer definierbaren Konfigurationsdatei
+lesen, ohne dass dabei das Programm selbst geändert werden muss.
