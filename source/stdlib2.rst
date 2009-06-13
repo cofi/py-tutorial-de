@@ -115,3 +115,31 @@ anderen Threads in dieses zu bekommen.  Programme die :class:`Queue` Objekte
 als Kommunikation zwischen ihren Threads nutzen sind einfacher zu entwickeln,
 lesbarer und stabiler.
 
+.. _tut-logging:
+
+Logging
+=======
+
+Das Modul :mod:`logging` ermöglicht ausführliches und flexibles
+Erstellen von Logfiles. Im einfachsten Fall werden Logs in eine Datei
+geschrieben oder an ``sys.stderr`` geschickt::
+
+   import logging
+   logging.debug('Debugging Information')
+   logging.info('Information')
+   logging.warning('Warnung:Datei %s nicht gefunden', 'server.conf')
+   logging.error('Fehler')
+   logging.critical('Kritischer Fehler!')
+
+Die Ausgabe von Meldungen der Stufen *info* und *debug* wird
+standardmäßig unterdrückt; übrige Meldungen werden an ``sys.stderr``
+geschickt. Darüber hinaus können Meldungen auch per E-Mail, über
+Datenpakete (UDP), Sockets (TCP) oder an einen HTTP-Server
+ausgeliefert werden. Filter können weiterhin entscheiden, worüber
+Meldungen ausgegeben werden - je nach Priorität: :const:`DEBUG`,
+:const:`INFO`, :const:`WARNING`, :const:`ERROR` und :const:`CRITICAL`.
+
+Das Logging-system kann entweder direkt mittels Python konfiguriert
+werden oder seine Konfiguration aus einer vom Benutzer definierbaren
+Konfigurationsdatei lesen, ohne dass dabei das Programm selbst
+geändert werden muss.
