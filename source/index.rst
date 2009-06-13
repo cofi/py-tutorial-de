@@ -65,3 +65,4 @@ Es lohnt sich ebenfalls das :ref:`glossary` durchzugehen.
    whatnow.rst
    interactive.rst
    floatingpoint.rst
+   authors.rst
