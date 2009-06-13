@@ -96,8 +96,8 @@ Attribute können schreibgeschützt oder schreibbar sein. In letzterem Fall ist
 eine Zuweisung an dieses Attribut möglich. Modulattribute sind schreibbar: Man
 kann ``modname.the_answer = 42`` schreiben. Schreibbare Attribute sind
 gleichzeitig durch die :keyword:`del`-Anweisung löschbar. Zum Beispiel löscht
-``del modname.the_answer`` das Attribut :attr:`the_answer`` vom Objekt namens
-``modname``-
+``del modname.the_answer`` das Attribut :attr:`the_answer` des Objekts namens
+``modname``.
 
 Namensräume werden zu verschiedenen Zeitpunkten erzeugt und haben verschiedene
 Lebenszeiten. Der Namensraum, der die eingebauten Namen enthält, wird beim Start
@@ -127,7 +127,7 @@ die lokalen Namen enthält;
 
 .. rubric:: Fußnoten
 
-.. [#] Bis auf eine Ausnahme.  Modulobjekte haben ein geheimes schreibgeschützes
+.. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes schreibgeschützes
    Attribut namens :attr:`__dict__`, das das Dictionary darstellt, mit dem der
    Namensraum des Modules implementiert wird; der Name :attr:`__dict__`` ist ein
    Attribut, aber kein globaler Name. Offensichtlich ist dessen Benutzung eine
