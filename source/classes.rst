@@ -261,6 +261,72 @@ Klassenobjekt wird in ihm an den Namen, der im Kopf der Klassendefinition
 angegeben wurde, gebunden (:class:`ClassName` in unserem Beispiel). 
 
 
+.. _tut-classobjects:
+
+Klassenobjekte
+--------------
+
+Klassenobjekte unterstützen zwei Arten von Operationen: Attributreferenzierungen
+und Instanzierung.
+
+*Attributreferenzierungen* benutzen die normale Syntax, die für alle
+Attributreferenzen in Python benutzt werden: ``obj.name``. Gültige Attribute
+sind alle Namen, die bei der Erzeugung des Klassenobjektes im Namensraum der Klasse waren. Wenn die Klassendefinition also so aussah::
+
+   class MyClass:
+       """A simple example class"""
+       i = 12345
+       def f(self):
+           return 'Hallo Welt'
+
+
+dann sind ``MyClass.i`` und ``MyClass.f`` gültige Attributreferenzen, die eine
+Ganzzahl beziehungsweise ein Funktionsobjekt zurückgeben. Zuweisungen an
+Klassenattribute sind ebenfalls möglich, sodass man den Wert von ``MyClass.i``
+durch Zuweisung verändern kann. :attr:`__doc__` ist ebenfalls ein gültiges
+Attribut, das den Docstring, der zur Klasse gehört, enthält: ``"A simple example
+class"``.
+
+Klassen *Instanziierung* benutzt die Funktionsnotation. Tu einfach so, als ob
+das Klassenobjekt eine parameterlose Funktion wäre, die eine neue Instanz der
+Klasse zurückgibt. Zum Beispiel (im Fall der obigen Klasse)::
+
+   x = MyClass()
+
+
+Dies erzeugt eine neue *Instanz* der Klasse und weist dieses Objekt der lokalen
+Variable ``x`` zu.
+
+Die Instanziierungsoperation ("aufrufen" eines Klassenobjekts) erzeugt ein leeres
+Objekt. Viele Klassen haben es gerne Instanzobjekte, die auf einen spezifischen
+Anfangszustand angepasst wurden, zu erstellen. Deshalb kann eine Klasse eine
+spezielle Methode namens :meth:`__init__`, wie folgt definieren::
+
+   def __init__(self):
+       self.data = []
+
+Definiert eine Klasse eine :meth:`__init__`-Methode, ruft die
+Klasseninstanziierung automatisch :meth:`__init__` für die neu erstellte
+Klasseninstanz auf. So kann in diesem Beispiel eine neue, initialisierte Instanz
+durch folgendes bekommen werden::
+
+   x = MyClass()
+
+Natürlich kann die :meth:`__init__`-Methode Argumente haben, um eine größere
+Flexibilität zu erreichen. In diesem Fall werden die, dem
+Klasseninstanziierungsoperator übergebenen Argumente an :meth:`__init__`
+weitergereicht. Zum Beispiel::
+
+   >>> class Complex:
+   ...     def __init__(self, realpart, imagpart):
+   ...         self.r = realpart
+   ...         self.i = imagpart
+   ...
+   >>> x = Complex(3.0, -4.5)
+   >>> x.r, x.i
+   (3.0, -4.5)
+
+
 .. rubric:: Fußnoten
 
 .. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes schreibgeschützes
