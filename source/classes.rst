@@ -170,6 +170,47 @@ neu gebunden werden sollen. Die :keyword:`nonlocal`-Anweisung zeigt an, dass
 eine bestimmte Variable im umgebenden Gültigkeitsbereich existiert und hier
 neu gebunden werden soll.
 
+.. _tut-scopeexample:
+
+Beispiel zu Gültigkeitsbereichen und Namensräumen
+-------------------------------------------------
+
+Dies ist ein Beispiel, das zeigt, wie man die verschiedenen Gültigkeitsbereiche
+und Namensräume referenziert und wie :keyword:`global` und :keyword`nonlocal`
+die Variablenbindung beeinflussen::
+
+   def scope_test():
+       def do_local():
+           spam = "local spam"
+       def do_nonlocal():
+           nonlocal spam
+           spam = "nonlocal spam"
+       def do_global():
+           global spam
+           spam = "global spam"
+
+       spam = "test spam"
+       do_local()
+       print("Nach der lokalen Zuweisung:", spam)
+       do_nonlocal()
+       print("Nach der nonlocal Zuweisung:", spam)
+       do_global()
+       print("Nach der global Zuweisung:", spam)
+
+   scope_test()
+   print("Im globalen Gültigkeitsbereich:", spam)
+
+Die Ausgabe des Beispielcodes ist::
+
+   Nach der lokalen Zuweisung: test spam
+   Nach der nonlocal Zuweisung: nonlocal spam
+   Nach der global Zuweisung: nonlocal spam
+   Im globalen Gültigkeitsbereich: global spam
+
+Beachte, dass die *lokale* Zuweisung (was der Standard ist) die Bindung von *spam* in *scope_test* nicht verändert hat. Die :keyword:`nonlocal` Zuweisung die Bindung von *spam* in *scope_test* und die :keyword:`global` Zuweisung die Bindung auf Modulebene verändert hat.
+
+Man kann außerdem sehen, dass es keine vorherige Bindung von *spam* vor der
+:keyword:`global` Zuweisung gab.
 
 .. rubric:: Fußnoten
 
