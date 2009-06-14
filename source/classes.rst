@@ -212,6 +212,55 @@ Beachte, dass die *lokale* Zuweisung (was der Standard ist) die Bindung von *spa
 Man kann außerdem sehen, dass es keine vorherige Bindung von *spam* vor der
 :keyword:`global` Zuweisung gab.
 
+.. _tut-firstclasses:
+
+Eine erste Betrachtung von Klassen
+==================================
+
+Klassen führen ein kleines bisschen neue Syntax, drei neue Objekttypen und ein
+wenig neue Semantik ein.
+
+
+.. _tut-classdefinition:
+
+Syntax der Klassendefinition
+----------------------------
+
+Die einfachste Form einer Klassendefinition sieht so aus::
+
+    class ClassName:
+        <anweisung-1>
+        .
+        .
+        .
+        <anweisung-N>
+
+Klassendefinitionen müssen wie Funktionsdefinitionen
+(:keyword:`def`-Anweisungen) ausgeführt werden, bevor sie irgendwelche
+Auswirkungen haben. (Es wäre vorstellbar eine Klassendefinition in einen Zweig
+einer :keyword:`if`-Anweisung oder in eine Funktion zu platzieren.)
+
+In der Praxis sind die Anweisungen innerhalb einer Klassendefinition
+üblicherweise Funktionsdefinitionen, aber andere Anweisungen sind erlaubt und
+manchmal nützlich --- dazu kommen wir später noch. Die Funktionsdefinitionen
+innerhalb einer Klasse haben normalerweise eine besondere Argumentenliste, die
+von den Aufrufkonventionen für Methoden vorgeschrieben wird --- das wird
+wiederum später erklärt.
+
+Wird eine Klassendefinition betreten, wird ein neuer Namensraum erzeugt und als
+lokaler Gültigkeitsbereich benutzt --- deshalb werden Zuweisungen an lokale
+Variablen in diesem neuen Namensraum wirksam. Funktionsdefinitionen binden den
+Namen der neuen Funktion ebenfalls dort.
+
+Wird eine Klassendefinition normale verlassen (indem sie endet), wird ein
+*Klassenobjekt* erstellt. Dies ist im Grunde eine Verpackung um den Inhalt des
+Namensraums, der von der Klassendefinition erstellt wurde. Im nächsten Abschnitt
+lernen wir mehr darüber. Der ursprüngliche lokale Gültigkeitsbereich (der vor
+dem Betreten der Klassendefinition aktiv war) wird wiederhergestellt und das
+Klassenobjekt wird in ihm an den Namen, der im Kopf der Klassendefinition
+angegeben wurde, gebunden (:class:`ClassName` in unserem Beispiel). 
+
+
 .. rubric:: Fußnoten
 
 .. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes schreibgeschützes
