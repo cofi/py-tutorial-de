@@ -367,6 +367,52 @@ entsprechendes Methodenobjekt für seine Instanz. Deshalb ist in unserem Beispie
 dasselbe wie ``MyClass.f`` --- es ist ein *Methodenobjekt* und kein
 Funktionsobjekt.
 
+.. _tut-methodobjects:
+
+Methodenobjekte
+---------------
+
+Űblicherweise wird eine Methode gemäß seiner Bindung aufgerufen::
+
+    x.f()
+
+Im :class:`MyClass` Beispiel wird dies die Zeichenkette ``'Hallo Welt'``
+ausgeben. Jedoch ist es nicht notwendig eine Methode direkt aufzurufen: ``x.f``
+ist ein Methodenobjekt und kann weggespeichert werden und später wieder
+aufgerufen werden. Zum Beispiel::
+
+    xf = x.f
+    while True:
+        print(xf())
+
+Das wird bis zum Ende der Zeit ``Hallo Welt`` ausgeben.
+
+Was passiert genau, wenn eine Methode aufgerufen wird? Du hast vielleicht
+bemerkt, dass ``x.f()`` oben ohne Argument aufgerufen wurde, obwohl in der
+Funktionsdefinition für :meth:`f` ein Argument festgelegt wurde. Was ist mit
+diesem Argument passiert? Natürlich verursacht Python eine Ausnahme, wenn eine
+Funktion, die ein Argument benötigt ohne aufgerufen wird --- auch wenn das
+Argument eigentlich gar nicht genutzt wird ...
+
+Tatsächlich, wie du vielleicht schon erraten hast, ist die Besonderheit bei
+Methoden, dass das Objekt als erstes Argument der Funktion übergeben wird. In
+unserem Beispiel ist der Aufruf ``x.f()`` das genaue äquivalent von
+``MyClass.f(x)``. Im Allgemeinen ist der Aufruf einer Methode mit *n* Argumenten
+äquivalent zum Aufruf der entsprechenden Funktion mit einer Argumentenliste, die
+durch das Einfügen des Objekts der Methode vor das erste Argument erzeugt wird.
+
+Verstehst du immernoch nicht, wie Methoden funktionieren, hilft vielleicht ein
+Blick auf die Implementierung, um die Dinge zu klären. Wenn ein Instanzattribut
+referenziert wird, das kein Datenattribut ist, wird seine Klasse durchsucht.
+Bezeichnet der Name ein gültiges Klassenattribut, das eine Funktion ist, wird
+ein Methodenobjekt erzeugt, indem (Zeiger zu) Instanzobjekt und Funktionsobjekt
+zu einem abstrakten Objekt verschmolzen werden: Dies ist das Methodenobjekt.
+Wird das Methodenobjekt mit einer Argumentenliste aufgerufen, wird es wieder
+entpackt, eine neue Argumentenliste wird aus dem Instanzobjektund der
+ursprünglichen Argumentenliste erzeugt und das Funktionsobjekt wird mit dieser
+neuen Argumentenliste aufgerufen.
+
+
 .. rubric:: Fußnoten
 
 .. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes schreibgeschützes
