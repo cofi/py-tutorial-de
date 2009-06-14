@@ -131,7 +131,7 @@ parallel dazu weiterläuft.::
    background.start()
    print('Das Hauptprogramm läuft inzwischen weiter.')
 
-   background.join()    # Warten bis das Thread beendet.
+   background.join()    # Warten bis sich der Thread beendet.
    print('Das Hauptprogramm hat auf die Beendigung des Hintergrund-Prozesses gewartet.')
 
 Das Hauptproblem von Programmen mit mehreren Threads ist die Koordination
