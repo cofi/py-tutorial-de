@@ -2,3 +2,6 @@ expression : Ausdruck
 namespace : Namensraum
 scope : Gültigkeitsbereich
 statement : Anweisung
+assignment : Zuweisung
+mutable : veränderbar
+immutable : unveränderbar

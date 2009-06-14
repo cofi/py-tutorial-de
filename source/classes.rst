@@ -116,14 +116,60 @@ Beschreibung dessen, was passiert.) Natürlich haben auch rekursive Aufrufe ihre
 jeweiligen lokalen Namensraum.
 
 Ein *Gültigkeitsbereich* (*scope*) ist eine Region eines Pythonprogrammes, in
-dem ein Namensraum direkt verfügbar ist, das heisst es einem unqualifiziertem
+der ein Namensraum direkt verfügbar ist, das heisst es einem unqualifiziertem
 Namen möglich ist einen Namen in diesem Namensraum zu finden.
 
+.. NOTICE: Abweichung zum Original, da das hier Schwachsinn enthält
 Auch wenn Gültigkeitsbereiche statisch ermittelt werden, werden sie dynamisch
 benutzt. An einem beliebigen Zeitpunkt während der Ausführung, gibt es
 mindestens drei verschachtelte Gültigkeitsbereiche, deren Namensräume direkt
 verfügbar sind: Der innerste Gültigkeitsbereich, der zuerst durchsucht wird und
-die lokalen Namen enthält; 
+die lokalen Namen enthält; der Gültigkeitsbereich mit allen umgebenden
+Namensräumen (enthält auch die globalen Namen des momentanen Moduls), der vom
+nächsten umgebenden Namensraum aus durchsucht wird, und der äußerste
+Gültigkeitsbereich (zuletzt durchsuchte) ist der Namensraum, der die eingebauten
+Namen enthält.
+
+Wird ein Name als global deklariert, so gehen alle Referenzen und Zuweisungen
+direkt an den mittleren Gültigkeitsbereich, der die globalen Namen des Moduls
+enthält. Um Variablen, die außerhalb des innersten Gültigkeitsbereichs zu finden
+sind, neu zu binden, kann die :keyword:`nonlocal`-Anweisung benutzt werden.
+Falls diese nicht als ``nonlocal`` deklariert sind, sind diese Variablen
+schreibgeschützt (ein Versuch in diese Variablen zu schreiben, würde einfach
+eine *neue* lokale Variable im innersten Gültigkeitsbereich anlegen und die
+äußere Variable mit demselben Namen unverändert lassen).
+
+Normalerweise referenziert der lokale Gültigkeitsbereich die lokalen Namen der
+momentanen Funktion. Außerhalb von Funktionen bezieht sich der lokale
+Gültigkeitsbereich auf denselben Namensraum wie der globale Gültigkeitsbereich:
+Den Namensraum des Moduls. Klassendefinition stellen einen weiteren
+Namensraum im lokalen Gültigkeitsbereich dar.
+
+Es ist wichtig zu verstehen, dass die Gültigkeitsbereiche am Text ermittelt
+werden: Der globale Gültigkeitsbereich einer Funktion, die in einem Modul
+definiert wird, ist der Namensraum des Moduls, ganz egal wo die Funktion
+aufgerufen wird. Andererseits wird die tatsächliche Suche nach namen dynamisch
+zur Laufzeit durchgeführt --- jedoch entwickelt sich die Definition der Sprache
+hin zu einer statischen Namensauflösung zur Kompilierzeit, deshalb sollte man
+sich nicht auf die dynamische Namensauflösung verlassen! (In der Tat werden
+lokale Variablen schon statisch ermittelt.)
+
+Eine besondere Eigenart Pythons ist das -- wenn keine :keyword:`global`- oder
+:keyword:`nonlocal`-Anweisung aktiv ist -- Zuweisungen an Namen immer im
+innersten Gültigkeitsbereich abgewickelt werden. Zuweisungen kopieren keine
+Daten, sondern binden nur Namen an Objekte. Das gleiche gilt für Löschungen: Die
+Anweisung ``del x`` entfernt nur die Bindung von ``x`` aus dem Namensraum des
+lokalen Gültigkeitsbereichs. In der Tat benutzen alle Operationen, die neue
+Namen einführen, den lokalen Gültigkeitsbereich: Im Besonderen binden
+:keyword:`import`-Anweisungen und Funktionsdefinitionen das Modul
+beziehungsweise den Funktionsnamen im lokalen Gültigkeitsbereich.
+
+Die :keyword:`global`-Anweisung kann benutzt werden, um anzuzeigen, dass
+bestimmte Variablen im globalen Gültigkeitsbereich existieren und hier
+neu gebunden werden sollen. Die :keyword:`nonlocal`-Anweisung zeigt an, dass
+eine bestimmte Variable im umgebenden Gültigkeitsbereich existiert und hier
+neu gebunden werden soll.
+
 
 .. rubric:: Fußnoten
 
