@@ -21,14 +21,14 @@ functions* (Methoden) sind *virtual*. Es gibt keine speziellen Konstruktoren
 oder Destruktoren. Es gibt, wie in Modula-3, keine Abkürzung zum referenzieren
 von Attributen eines Objekts aus dessen Methoden heraus: Die Methode wird mit
 einem expliziten ersten Argument, das das Objekt repräsentiert, deklariert,
-welches implizit beim Aufruf übergeben wird. Wie in Smalltalk sind auch sind
-Klassen auch selbst Objekte, wenn auch in einer breiteren Bedeutung, denn in
-Python sind alle Datentypen Objekte. Das ermöglicht die Semantik zum importieren
-und umbenennen. Anders als in C++ und Modula-3 können eingebaute Datentypen vom
-Benutzer als Basisklassen benutzt, das heisst abgeleitet werden. Außerdem können
-die meisten eingebauten Operatoren, wie in C++, aber nicht in Modula-3, mit
-einer besonderen Syntax (arithmetische Operatoren, Indizierung, usw.) für
-Instanzen der Klasse neu definiert werden.
+welches implizit beim Aufruf übergeben wird. Wie in Smalltalk sind auch Klassen
+selbst Objekte, wenn auch in einer breiteren Bedeutung, denn in Python sind alle
+Datentypen Objekte. Das ermöglicht die Semantik zum importieren und umbenennen.
+Anders als in C++ und Modula-3 können eingebaute Datentypen vom Benutzer als
+Basisklassen benutzt, das heisst abgeleitet werden. Außerdem können die meisten
+eingebauten Operatoren, wie in C++, aber nicht in Modula-3, mit einer besonderen
+Syntax (arithmetische Operatoren, Indizierung, usw.) für Instanzen der Klasse
+neu definiert werden.
 
 
 .. _tut-terminology:
@@ -47,15 +47,15 @@ Gültigkeitsbereichen) können an dasselbe Objekt gebunden werden. In anderen
 Sprachen wird dies als Aliasing bezeichnet. Das wird meist beim ersten Blick auf
 Python nicht geschätzt und kann problemlos ignoriert werden, wenn man mit
 unveränderbaren Datentypen (Zahlen, Zeichenketten, Tupel) arbeitet. Aber
-Aliasing hat einen (beabsichtigen!) Effekt auf die Semantik von Pythoncode
-angeht, der veränderbare Objekte wie Listen, Dictionaries oder die meisten
-anderen Typen, die Dinge außerhalb des Programms (Dateien, Fenster, usw.)
-beschreiben, enthält. Dies kommt normalerweise dem Programm zugute, da sich
-Aliase in mancher Hinsicht wie Pointer verhalten. Zum Beispiel ist die Übergabe
-eines Objekts günstig, da von der Implementierung nur ein Pointer übergeben
-wird. Verändert eine Funktion ein Objekt, das als Argument übergeben wurde, wird
-der Aufrufende die Veränderung sehen --- dies vermeidet den Bedarf an zwei
-verschiedenen Übergabemechanismen, wie in Pascal.
+Aliasing hat einen (beabsichtigen!) Effekt auf die Semantik von Pythoncode , der
+veränderbare Objekte wie Listen, Dictionaries oder die meisten anderen Typen,
+die Dinge außerhalb des Programms (Dateien, Fenster, usw.) beschreiben, enthält.
+Dies kommt normalerweise dem Programm zugute, da sich Aliase in mancher Hinsicht
+wie Pointer verhalten. Zum Beispiel ist die Übergabe eines Objekts günstig, da
+von der Implementierung nur ein Pointer übergeben wird. Verändert eine Funktion
+ein Objekt, das als Argument übergeben wurde, wird der Aufrufende die
+Veränderung sehen --- dies vermeidet den Bedarf an zwei verschiedenen
+Übergabemechanismen, wie in Pascal.
 
 
 .. _tut-scopes:
@@ -66,7 +66,7 @@ Gültigkeitsbereiche und Namensräume in Python
 Bevor man Klassen überhaupt einführt, muss man über Pythons Regeln im Bezug auf
 Gültigkeitsbereiche reden. Klassendefinitionen wenden ein paar nette Kniffe bei
 Namensräumen an und man muss wissen wie Gültigkeitsbereiche und Namensräume
-funktionieren, um vollkommen zu verstehen was abläuft. Außerdem das Wissen
+funktionieren, um vollkommen zu verstehen was abläuft. Außerdem ist das Wissen
 hierüber nützlich für jeden fortgeschrittenen Pythonprogrammierer.
 
 Fangen wir mit ein paar Definitionen an.
@@ -88,7 +88,7 @@ Nebenbei bemerkt: Ich benutze das Wort *Attribut* für jeden Namen nach einem
 Punkt --- zum Beispiel in dem Ausdruck ``z.real`` ist ``real`` ein Attribut des
 Objekts ``z``. Genau genommen sind auch Referenzen zu Namen in Modulen
 Attributreferenzen: Im Ausdruck ``modname.funcname``, ist ``modname`` ein
-Modulobjekt und ``funcname`` ein Attribut dessen. In diesem Fall gibt es ein
+Modulobjekt und ``funcname`` ein Attribut dessen. In diesem Fall gibt es eine
 geradlinige Zuordnung von Modulattributen und globalen Namen, die im Modul
 definiert sind: Sie teilen sich denselben Namensraum! [#]_
 
@@ -103,14 +103,14 @@ Namensräume werden zu verschiedenen Zeitpunkten erzeugt und haben verschiedene
 Lebenszeiten. Der Namensraum, der die eingebauten Namen enthält, wird beim Start
 des Interpreters erzeugt und nie gelöscht. Der globale Namensraum für ein Modul
 wird erzeugt, wenn die Moduldefinition eingelesen wird; normalerweise existieren
-die Modulnamesräume auch solange bis der Interpreter beendet wird. Die
-Anweisungen auf oberster Ebene vom Interpreter aufgerufen werden, entweder von
-einem Skript oder interaktiv gelesen, werden als Teil des Moduls
+die Namensräume des Modul auch solange bis der Interpreter beendet wird. Die
+Anweisungen, die auf oberster Ebene vom Interpreter aufgerufen werden, entweder
+von einem Skript oder interaktiv gelesen, werden als Teil des Moduls
 :mod:`__main__`, sodass sie ihren eigenen globalen Namensraum haben. (Die
 eingebauten Namen existieren ebenfalls in einem Modul namens :mod:`builtins`.)
 
 Der lokale Namensraum einer Funktion wird bei deren Aufruf erstellt und wird
-gelöscht, wenn die Funktion zurückgibt oder eine Ausnahme auslöst, die nicht
+gelöscht, wenn sich die Funktion beendet oder eine Ausnahme auslöst, die nicht
 innerhalb der Funktion behandelt wird. (Eigentlich wäre "vergessen" eine bessere
 Beschreibung dessen, was passiert.) Natürlich haben auch rekursive Aufrufe ihren
 jeweiligen lokalen Namensraum.
@@ -142,13 +142,13 @@ eine *neue* lokale Variable im innersten Gültigkeitsbereich anlegen und die
 Normalerweise referenziert der lokale Gültigkeitsbereich die lokalen Namen der
 momentanen Funktion. Außerhalb von Funktionen bezieht sich der lokale
 Gültigkeitsbereich auf denselben Namensraum wie der globale Gültigkeitsbereich:
-Den Namensraum des Moduls. Klassendefinition stellen einen weiteren
+Den Namensraum des Moduls. Klassendefinitionen stellen einen weiteren
 Namensraum im lokalen Gültigkeitsbereich dar.
 
 Es ist wichtig zu verstehen, dass die Gültigkeitsbereiche am Text ermittelt
 werden: Der globale Gültigkeitsbereich einer Funktion, die in einem Modul
 definiert wird, ist der Namensraum des Moduls, ganz egal wo die Funktion
-aufgerufen wird. Andererseits wird die tatsächliche Suche nach namen dynamisch
+aufgerufen wird. Andererseits wird die tatsächliche Suche nach Namen dynamisch
 zur Laufzeit durchgeführt --- jedoch entwickelt sich die Definition der Sprache
 hin zu einer statischen Namensauflösung zur Kompilierzeit, deshalb sollte man
 sich nicht auf die dynamische Namensauflösung verlassen! (In der Tat werden
@@ -252,7 +252,7 @@ lokaler Gültigkeitsbereich benutzt --- deshalb werden Zuweisungen an lokale
 Variablen in diesem neuen Namensraum wirksam. Funktionsdefinitionen binden den
 Namen der neuen Funktion ebenfalls dort.
 
-Wird eine Klassendefinition normale verlassen (indem sie endet), wird ein
+Wird eine Klassendefinition normal verlassen (indem sie endet), wird ein
 *Klassenobjekt* erstellt. Dies ist im Grunde eine Verpackung um den Inhalt des
 Namensraums, der von der Klassendefinition erstellt wurde. Im nächsten Abschnitt
 lernen wir mehr darüber. Der ursprüngliche lokale Gültigkeitsbereich (der vor
@@ -267,7 +267,7 @@ Klassenobjekte
 --------------
 
 Klassenobjekte unterstützen zwei Arten von Operationen: Attributreferenzierungen
-und Instanzierung.
+und Instanziierung.
 
 *Attributreferenzierungen* benutzen die normale Syntax, die für alle
 Attributreferenzen in Python benutzt werden: ``obj.name``. Gültige Attribute
@@ -355,7 +355,7 @@ nicht allein für Klasseninstanzen: Andere Objekttypen können genauso Methoden
 haben. Zum Beispiel haben Listenobjekte Methoden namens :meth:`append`,
 :meth:`insert`, :meth:`remove`, :meth:`sort`, und so weiter. Jedoch benutzen wir
 in der folgenden Diskussion den Begriff Methode ausschliesslich im Sinne von
-Methoden von Klasseninstanzobjekten, sofern nichts anderes angegeben ist.)
+Methoden von Klasseninstanzobjekten, sofern nichts anderes angegeben ist.
 
 .. index:: object: method
 
@@ -408,9 +408,9 @@ Bezeichnet der Name ein gültiges Klassenattribut, das eine Funktion ist, wird
 ein Methodenobjekt erzeugt, indem (Zeiger zu) Instanzobjekt und Funktionsobjekt
 zu einem abstrakten Objekt verschmolzen werden: Dies ist das Methodenobjekt.
 Wird das Methodenobjekt mit einer Argumentenliste aufgerufen, wird es wieder
-entpackt, eine neue Argumentenliste wird aus dem Instanzobjektund der
-ursprünglichen Argumentenliste erzeugt und das Funktionsobjekt wird mit dieser
-neuen Argumentenliste aufgerufen.
+entpackt, eine neue Argumentenliste aus dem Instanzobjekt und der ursprünglichen
+Argumentenliste erzeugt und das Funktionsobjekt mit dieser neuen Argumentenliste
+aufgerufen.
 
 
 .. rubric:: Fußnoten
