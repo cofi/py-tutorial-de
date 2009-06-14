@@ -327,6 +327,46 @@ weitergereicht. Zum Beispiel::
    (3.0, -4.5)
 
 
+.. _tut-instanceobjects:
+
+Instanzobjekte
+--------------
+
+Was können wir jetzt mit den Instanzobjekten tun? Die einzigen Operationen, die
+Instanzobjekte verstehen, sind Attributreferenzierungen. Es gibt zwei Arten
+gültiger Attribute: Datenattribute und Methoden.
+
+*Datenattribute* entsprechen "Instanzvariablen" in Smalltalk und "data members"
+in C++. Datenattribute müssen nicht deklariert werden; wie lokale Variablen
+erwachen sie zum Leben, sobald ihnen zum ersten Mal etwas zugewiesen wird. Zum
+Beispiel wird folgender Code, unter der Annahme, dass ``x`` die Instanz von
+:class:`MyClass` ist, die oben erstellt wurde, den Wert ``16`` ausgeben, ohne
+Spuren zu hinterlassen::
+
+    x.counter = 1
+    while x.counter < 10:
+        x.counter = x.counter * 2
+    print(x.counter)
+    del x.counter
+
+Die andere Art von Instanzattribut ist die *Methode*. Eine Methode ist eine
+Funktion, die zu einem Objekt *gehört*. (In Python existiert der Begriff Methode
+nicht allein für Klasseninstanzen: Andere Objekttypen können genauso Methoden
+haben. Zum Beispiel haben Listenobjekte Methoden namens :meth:`append`,
+:meth:`insert`, :meth:`remove`, :meth:`sort`, und so weiter. Jedoch benutzen wir
+in der folgenden Diskussion den Begriff Methode ausschliesslich im Sinne von
+Methoden von Klasseninstanzobjekten, sofern nichts anderes angegeben ist.)
+
+.. index:: object: method
+
+Ob ein Attribut eine gültige Methode ist, hängt von der Klasse ab. Per
+Definition definieren alle Attribute, die ein Funktionsobjekt sind, ein
+entsprechendes Methodenobjekt für seine Instanz. Deshalb ist in unserem Beispiel
+``x.f`` eine gültige Methodenreferenz, da ``MyClass.f`` eine Funktion ist, aber
+``x.i`` ist keine, da ``MyClass.i`` es nicht ist. ``x.f`` ist aber nicht
+dasselbe wie ``MyClass.f`` --- es ist ein *Methodenobjekt* und kein
+Funktionsobjekt.
+
 .. rubric:: Fußnoten
 
 .. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes schreibgeschützes
