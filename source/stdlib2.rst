@@ -141,3 +141,47 @@ worüber Meldungen ausgegeben werden - je nach Priorität: :const:`DEBUG`,
 Das Logging-system kann entweder direkt mittels Python konfiguriert werden oder
 seine Konfiguration aus einer vom Benutzer definierbaren Konfigurationsdatei
 lesen, ohne dass dabei das Programm selbst geändert werden muss.
+
+
+.. _tut-weak-references:
+
+Weak References
+===============
+
+Python bietet automatische Speicherverwaltung - Zählen von Referenzen für die
+meisten Objekte und :term:`garbage collection`. Nachdem die letzte Referenz auf
+ein Objekt aufgelöst worden ist, wird der Speicher bald freigegeben.
+
+Für die meisten Anwendungen funktioniert dieser Ansatz gut, gelegentlich kann es
+allerdings auch nötig werden, Objekte nur so lange vorzuhalten, wie sie an
+anderer Stelle noch verwendet werden. Das allein führt allerdings bereits dazu,
+dass eine Referenz auf das Objekt erstellt wird, die es permanent macht. Mit dem
+Modul :mod:`weakref` können Objekte vorgehalten werden, ohne eine Referenz zu
+erstellen. Wird das Objekt nicht länger gebraucht, wird es automatisch aus einer
+Tabelle mit so genannten *schwachen Referenzen* gelöscht und eine
+Rückruffunktion für *weakref*-Objekte wird aufgerufen. Dieser Mechanismus wird
+etwa verwendet, um Objekte zwischenzuspeichern, deren Erstellung besonders
+aufwändig ist::
+
+   >>> import weakref, gc
+   >>> class A:
+   ...     def __init__(self, value):
+   ...             self.value = value
+   ...     def __repr__(self):
+   ...             return str(self.value)
+   ...
+   >>> a = A(10)                   # Eine Referenz erstellen
+   >>> d = weakref.WeakValueDictionary()
+   >>> d['primary'] = a            # Erstellt keine Referenz
+   >>> d['primary']                # Klappt, falls Objekt noch vorhanden
+   10
+   >>> del a                       # Einzige Referenz löschen
+   >>> gc.collect()                # Garbage collector aufrufen
+   0
+   >>> d['primary']                # Eintrag wurde automatisch gelöscht
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+       d['primary']                # entry was automatically removed
+     File "C:/python31/lib/weakref.py", line 46, in __getitem__
+       o = self.data[key]()
+   KeyError: 'primary'
