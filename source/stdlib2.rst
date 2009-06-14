@@ -69,6 +69,36 @@ eine einfache Möglichkeit um Zahlen mit Tausendertrennzeichen zu formatieren::
    ...               conv['frac_digits'], x), grouping=True)
    '$1,234,567.80'
 
+.. _tut-binary-formats:
+
+Arbeit mit strukturierten binären Daten
+=======================================
+
+Das Modul :mod:`struct` stellt die Funktionen :func:`pack()` und :func:`unpack()`
+bereit, mit denen strukturierte binäre Daten verarbeitet werden können.  Das
+folgende Beispiel zeigt, wie die Headerinformationen aus einem ZIP-Archiv
+ausgelesen werden, ohne das :mod:`zipfile`-Modul zu benutzen.
+Die Pack Codes ``"H"`` und ``"I"`` stellen zwei Byte respektive vier Byte lange
+unsigned Integers dar.  Das Zeichen ``"<"`` bedeutet, dass damit Standardgrößen
+gemeint sind und in der Little Endian-Bytereihenfolge vorliegen::
+
+   import struct
+
+   data = open('myfile.zip', 'rb').read()
+   start = 0
+   for i in range(3):                      # show the first 3 file headers
+       start += 14
+       fields = struct.unpack('<IIIHH', data[start:start+16])
+       crc32, comp_size, uncomp_size, filenamesize, extra_size = fields
+
+       start += 16
+       filename = data[start:start+filenamesize]
+       start += filenamesize
+       extra = data[start:start+extra_size]
+       print filename, hex(crc32), comp_size, uncomp_size
+
+       start += extra_size + comp_size     # skip to the next header
+
 .. _tut-multi-threading:
 
 Multi-threading

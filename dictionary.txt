@@ -1,0 +1,4 @@
+expression : Ausdruck
+namespace : Namensraum
+scope : Gültigkeitsbereich
+statement : Anweisung
