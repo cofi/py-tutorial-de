@@ -179,7 +179,7 @@ für dieses Feld an. Das ist nützlich um Tabellen schön aussehen zu lassen. ::
 Hat man einen wirklich langen Formatstring, den man nicht aufteilen will, wäre
 es nett, wenn man die zu formatierenden Variablen durch den Namen, statt durch
 die Position referenzieren könnte. Dies kann einfach bewerkstelligt werden,
-indem man das Dictionary übergibt und die auf die Schlüssel über eckige Klammern
+indem man das Dictionary übergibt und auf die Schlüssel über eckige Klammern
 ``'[]'`` zugreift ::
 
     >>> table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
@@ -204,7 +204,7 @@ Alte Zeichenkettenformatierung
 ------------------------------
 
 Der ``%``-Operator kann auch zur Zeichenkettenformatierung genutzt werden. Er
-interpretiert das linke Argument genauso wie die einen :cfunc:`sprintf`-artigen
+interpretiert das linke Argument genauso wie einen :cfunc:`sprintf`-artigen
 Formatstring, der auf das rechte Argument angewendet werden soll und gibt die
 resultierende Zeichenkette dieser Formatierungsoperation zurück. Zum Beispiel::
 
@@ -402,7 +402,7 @@ Zeichenketten können einfach in eine Datei geschrieben und aus ihr gelesen
 werden. Zahlen sind ein bisschen aufwändiger, da die :meth:`read`-Methode nur
 Zeichenketten zurückgibt, das an eine Funktion wie :func:`int` übergeben werden
 muss, die eine Zeichenkette wie ``'123'`` nimmt und deren numerischen Wert 123
-zurückgibt. Wenn jedoch man komplexere Datentypen wie Listen, Dictionaries oder
+zurückgibt. Wenn man jedoch komplexere Datentypen wie Listen, Dictionaries oder
 Klasseninstanzen speichern will, wird die Angelegenheit viel komplizierter.
 
 Anstatt die Benutzer ständig Code schreiben und Debuggen zu lassen, um
