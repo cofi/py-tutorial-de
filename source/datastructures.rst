@@ -151,6 +151,8 @@ Schlange abzurufen, benutzt man :meth:`pop` mit dem Index ``0``. Zum Beispiel::
     ['Michael', 'Terry', 'Graham']
 
 
+.. _tut-listcomps:
+
 List Comprehensions
 -------------------
 
@@ -409,7 +411,8 @@ Hier eine kurze Demonstration::
    >>> a ^ b                              # entweder in a oder b
    {'r', 'd', 'b', 'm', 'z', 'l'}
 
-Wie für Listen gibt es auch eine Set Comprehension Syntax::
+Wie :ref:`für Listen <tut-listcomps>` gibt es auch eine "Set
+Comprehension"-Syntax::
 
    >>> a = {x for x in 'abracadabra' if x not in 'abc'}
    >>> a
@@ -451,9 +454,9 @@ Einen Wert mit einem nicht-existenten Schlüssel abrufen zu wollen, erzeugt eine
 Fehlermeldung.
 
 Der Aufruf ``list(d.keys())`` auf ein Dictionary gibt eine Liste aller Schlüssel
-in zufälliger Reihenfolge zurück (Will man sie sortiert haben, wendet man
-einfach die Funktion :func:`sorted` statt :func:`list` an). Um zu überprüfen ob
-ein einzelner Schlüssel im Dictionary ist, lässt sich das Schlüsselwort
+in zufälliger Reihenfolge zurück (Will man sie sortiert haben, verwendet man
+einfach die Funktion ``sorted(d.keys)`` stattdessen). [1]_ Um zu überprüfen ob ein
+einzelner Schlüssel im Dictionary ist, lässt sich das Schlüsselwort
 :keyword:`in` benutzen.
 
 Hier ein kleines Beispiel wie man Dictionaries benutzt::
@@ -478,14 +481,13 @@ Hier ein kleines Beispiel wie man Dictionaries benutzt::
     >>> 'jack' not in tel
     False
 
-Der :func:`dict`-Konstruktor erstellt Dictionaries direkt von Listen, die die
-Schlüssel-Wert-Paare als Tupel enthalten. Bilden die Paare ein Muster, können
-List Comprehensions die Schlüssel-Wert Liste kompakt beschreiben. ::
+Der :func:`dict`-Konstruktor erstellt Dictionaries direkt von Sequenzen von
+Schlüssel-Wert-Paare::
 
     >>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
     {'sape': 4139, 'jack': 4098, 'guido': 4127}
 
-Außerdem können Dict Comprehensions benutzt werden, um Dictionaries von
+Außerdem können "Dict Comprehensions" benutzt werden, um Dictionaries von
 willkürlichen Schlüssel und Wert Ausdrücken zu erstellen::
 
     >>> {x: x**2 for x in (2, 4, 6)}
@@ -620,9 +622,9 @@ Elemente, die verglichen werden sollen wiederum Sequenzen desselben Sequenztyps,
 wird der lexikographische Vergleich rekursiv durchgeführt. Sind alle Elemente
 zweier Sequenzen gleich, werden die Sequenzen für gleich befunden. Ist eine
 Sequenz eine anfängliche Teilfolge der anderen, so ist die kürzere die kleinere
-(geringere). Die Lexikographische Ordnung von Strings benutzt die
-ASCII-Reihenfolge für einzelne Zeichen. Ein paar Beispiele für Vergleiche
-zwischen Sequenzen des gleichen Typs::
+(geringere). Die Lexikographische Ordnung von Zeichenketten benutzt die Nummer
+des Unicode-Codepoints, um einzelne Zeichen zu ordnen. Ein paar Beispiele für
+Vergleiche zwischen Sequenzen des gleichen Typs::
 
     (1, 2, 3)              < (1, 2, 4)
     [1, 2, 3]              < [1, 2, 4]
@@ -637,3 +639,8 @@ erlaubt, sofern die Objekte passende Vergleichsmethoden haben. Zum Beispiel
 werden numerische Typen anhand ihres numerischen Wertes verglichen, sodass 0 0.0
 gleicht, usw. Andernfalls wird der Interpreter eine :exc:`TypeError`-Ausnahme
 verursachen, statt eine willkürliche Ordnung bereitzustellen.
+
+.. [1] Der Aufruf von ``d.keys()`` wird ein :dfn:`dictionary view`-Objekt
+   zurückgeben. Es unterstützt Operationen wie Mitgliedschaftsprüfung
+   (membership testing) und Iteration, aber sein Inhalt ist abhängig vom
+   ursprünglichen Dictionary -- es ist nur eine Ansicht (*view*).
