@@ -207,7 +207,10 @@ Die Ausgabe des Beispielcodes ist::
    Nach der global Zuweisung: nonlocal spam
    Im globalen Gültigkeitsbereich: global spam
 
-Beachte, dass die *lokale* Zuweisung (was der Standard ist) die Bindung von *spam* in *scope_test* nicht verändert hat. Die :keyword:`nonlocal` Zuweisung die Bindung von *spam* in *scope_test* und die :keyword:`global` Zuweisung die Bindung auf Modulebene verändert hat.
+Beachte, dass die *lokale* Zuweisung (was der Standard ist) die Bindung von
+*spam* in *scope_test* nicht verändert hat. Die :keyword:`nonlocal` Zuweisung
+die Bindung von *spam* in *scope_test* und die :keyword:`global` Zuweisung die
+Bindung auf Modulebene verändert hat.
 
 Man kann außerdem sehen, dass es keine vorherige Bindung von *spam* vor der
 :keyword:`global` Zuweisung gab.
@@ -271,7 +274,8 @@ und Instanziierung.
 
 *Attributreferenzierungen* benutzen die normale Syntax, die für alle
 Attributreferenzen in Python benutzt werden: ``obj.name``. Gültige Attribute
-sind alle Namen, die bei der Erzeugung des Klassenobjektes im Namensraum der Klasse waren. Wenn die Klassendefinition also so aussah::
+sind alle Namen, die bei der Erzeugung des Klassenobjektes im Namensraum der
+Klasse waren. Wenn die Klassendefinition also so aussah::
 
    class MyClass:
        """A simple example class"""
@@ -413,9 +417,100 @@ Argumentenliste erzeugt und das Funktionsobjekt mit dieser neuen Argumentenliste
 aufgerufen.
 
 
+.. _tut-remarks:
+
+Beiläufige Anmerkugen
+=====================
+
+Datenattribute überschreiben Methodenattribute desselben Namens. Um zufällige
+Namenskonflikte zu vermeiden, die zu schwer auffindbaren Fehlern in großen
+Programmen führen, ist es sinnvoll sich auf irgendeine Konvention zu
+verständigen, die das Risiko solcher Konflikte vermindern. Mögliche Konventionen
+beinhalten das Großschreiben von Methodennamen, das Voranstellen von kleinen
+eindeutigen Zeichenketten (vielleicht auch nur ein Unterstrich) bei
+Datenattributen oder das Benutzen von Verben bei Methodennamen und Nomen bei
+Datenattributen.
+
+Datenattribute können von Methoden, genauso wie von normalen Benutzern
+("clients") eines Objektes referenziert werden. In anderen Worten: Klassen sind
+nicht benutzbar um reine abstrakte Datentypen ("abstract data types") zu
+implementieren. In Wirklichkeit, gibt es in Python keine Möglichkeit um
+Datenkapselung (data hiding) zu erzwingen --- alles basiert auf Konventionen.
+(Auf der anderen Seite kann die Python-Implementierung, in C geschrieben,
+Implementationsdetails komplett verstecken und den Zugriff auf ein Objekt
+kontrollieren, wenn das nötig ist; das kann von in C geschriebenen
+Python-Erweiterungen ebenfalls benutzt werden.)
+
+Clients sollten Datenattribute mit Bedacht nutzen, denn sie könnten Invarianten
+kaputt machen, die von Methoden verwaltet werden, indem sie auf deren
+Datenattributen herumtrampeln. Man sollte beachten, dass Clients zu ihrem
+eigenen Instanzobjekt Datenattribute hinzufügen können, ohne die Gültigkeit der
+Methoden zu gefährden, sofern Namenskonflikte vermieden werden --- auch hier
+kann eine Bennenungskonvention viele Kopfschmerzen ersparen.
+
+Es gibt keine Abkürzung, um Datenattribute (oder andere Methoden!) innerhalb von
+Methoden zu referenzieren. Meiner Meinung verhilft das Methoden zu besserer
+Lesbarkeit: Man läuft keine Gefahr, lokale und Instanzvariablen zu verwechseln,
+wenn man eine Methode überfliegt.
+
+Oft wird das erste Argument einer Methode ``self`` genannt. Dies ist nichts
+anderes als eine Konvention: Der Name ``self`` hat absolut keine spezielle
+Bedeutung für Python. (Aber beachte: Hälst du dich nicht an die Konvention, kann
+dein Code schwerer für andere Python-Programmierer sein und es ist auch
+vorstellbar, dass ein *Klassenbrowser* (*class browser*) sich auf diese
+Konvention verlässt.)
+
+Jedes Funktionsobjekt, das ein Klassenattribut ist, definiert eine Methode für
+Instanzen dieser Klasse. Es ist nicht nötig, dass die Funktionsdefinition im
+Text innerhalb der Klassendefinition ist: Die Zuweisung eines Funktionsobjektes
+an eine lokale Variable innerhalb der Klasse ist ebenfalls in Ordnung. Zum
+Beispiel::
+
+    # Funktionsdefintion außerhalb der Klasse
+    def f1(self, x, y):
+       return min(x, x+y)
+
+    class C:
+       f = f1
+       def g(self):
+           return 'Hallo Welt'
+       h = g
+
+``f``, ``g`` und ``h`` sind jetzt alle Attribute der Klasse :class:`C`, die
+Funktionsobjekte referenzieren und somit sind sie auch alle Methoden der
+Instanzen von :class:`C` --- ``h`` ist dabei gleichbedeutend mit ``g``. Beachte
+aber, dass diese Praxis nur dazu dient einen Leser des Programms zu verwirren.
+
+Methoden können auch andere Methoden aufrufen, indem sie das Methodenattribut
+des Arguments ``self`` benutzen::
+
+    class Bag:
+       def __init__(self):
+           self.data = []
+       def add(self, x):
+           self.data.append(x)
+       def addtwice(self, x):
+           self.add(x)
+           self.add(x)
+
+Methoden können globale Namen genauso wie normale Funktionen referenzieren. Der
+globale Gültigkeitsbereich der Methode ist das Modul, das die Klassendefinition
+enthält. (Die Klasse selbst wird nie als globaler Gültigkeitsbereich benutzt!)
+Während man selten einen guten Grund dafür hat globale Daten zu benutzen, gibt
+es viele berechtigte Verwendungen des globalen Gültigkeitsbereichs: Zum einen
+können Funktionen und Module, die in den globalen Gültigkeitsbereich importiert
+werden, genauso wie Funktionen und Klassen die darin definiert werden, von der
+Methode benutzt werden. Normalerweise ist die Klasse, die die Methode enthält,
+selbst in diesem globalen Gültigkeitsbereich definiert und im nächsten Abschnitt
+werden wir ein paar gute Gründe entdecken, warum eine Methode die eigene Klasse
+referenzieren wollte.
+
+Jeder Wert ist ein Objekt und hat deshalb eine *Klasse* (auch *type* genannt).
+Es wird als ``Objekt.__class__`` abgelegt.
+
 .. rubric:: Fußnoten
 
-.. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes schreibgeschützes
+.. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes, schreibgeschützes
    Attribut namens :attr:`__dict__`, das das Dictionary darstellt, mit dem der
    Namensraum des Modules implementiert wird; der Name :attr:`__dict__`` ist ein
    Attribut, aber kein globaler Name. Offensichtlich ist dessen Benutzung eine

@@ -5,3 +5,4 @@ statement : Anweisung
 assignment : Zuweisung
 mutable : veränderbar
 immutable : unveränderbar
+instance : Instanz
