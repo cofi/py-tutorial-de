@@ -573,6 +573,51 @@ Python hat zwei eingebaute Funktionen, die mit Vererbung zusammenarbeiten:
   :class:`float` keine von :class:`int` abgeleitete Klasse ist.
 
 
+.. _tut-multiple:
+
+Mehrfachvererbung
+-----------------
+
+Python unterstützt auch eine Form der Mehrfachvererbung. Eine Klassendefinition
+mit mehreren Basisklassen sieht so aus::
+
+    class DerivedClassName(Base1, Base2, Base3):
+       <statement-1>
+       .
+       .
+       .
+       <statement-N>
+
+Für die meisten Zwecke, im einfachsten Fall, kann man sich die Suche nach
+geerbten Attributen von einer Elternklasse so vorstellen: Zuerst in die Tiefe
+(*depth-first*), von links nach rechts (*left-to-right*), wobei nicht zweimal in
+derselben Klasse gesucht wird, wenn sich die Klassenhierarchie dort überlappt.
+Deshalb wird, wenn ein Attribut nicht in :class:`DerivedClassName` gefunden
+wird, danach in :class:`Base1` gesucht, dann (rekursiv) in den Basisklassen von
+:class:`Base1` und wenn es dort nicht gefunden wurde, wird in :class:`Base2`
+gesucht, und so weiter.
+
+In Wirklichkeit ist es ein wenig komplexer als das, denn die Reihenfolge der
+Methodenauflösung (*method resolution order - MRO*) wird dynamisch verändert, um
+zusammenwirkende Aufrufe von :func:`super` zu unterstützen. Dieser Ansatz wird
+in manchen anderen Sprachen als *call-next-method* (Aufruf der nächsten Methode)
+bekannt und ist mächtiger als der ``super``-Aufruf, den es in Sprachen mit
+einfacher Vererbung gibt.
+
+Es ist nötig dynamisch zu ordnen, da alle Fälle von Mehrfachvererbung eine oder
+mehrere Diamantbeziehungen aufweisen (bei der auf mindestens eine der
+Elternklassen durch mehrere Pfade von der untersten Klasse aus zugegriffen
+werden kann). Zum Beispiel erben alle Klassen von :class:`object` und so stellt
+jeder Fall von Mehrfachvererbung mehrere Wege bereit, um :class:`object`
+zu erreichen. Um zu verhindern, dass auf die Basisklassen mehr als einmal
+zugegriffen werden kann, linearisiert der dynamische Algorithmus die
+Suchreihenfolge, sodass die Ordnung von links nach rechts, die in jeder Klasse
+festgelegt wird, jede Elternklasse nur einmal aufruft und zwar monoton (in der
+Bedeutung, dass eine Klasse geerbt werden kann, ohne die Rangfolge seiner Eltern
+berührt wird). Zusammengenommen machen diese Eigenschaften es möglich
+verlässliche und erweiterbare Klassen mit Mehrfachvererbung zu entwerfen. Für
+Details, siehe http://www.python.org/download/releases/2.3/mro/.
+
 
 .. rubric:: Fußnoten
 
