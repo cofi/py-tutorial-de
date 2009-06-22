@@ -508,6 +508,72 @@ referenzieren wollte.
 Jeder Wert ist ein Objekt und hat deshalb eine *Klasse* (auch *type* genannt).
 Es wird als ``Objekt.__class__`` abgelegt.
 
+
+..  _tut-inheritance:
+
+Vererbung
+=========
+
+Natürlich verdient ein Sprachenmerkmal nicht den Namen "Klasse", wenn es nicht
+Vererbung unterstützt. Die Syntax für eine abgeleitete Klassendefinition sieht
+so aus::
+
+    class DerivedClassName(BaseClassName):
+       <statement-1>
+       .
+       .
+       .
+       <statement-N>
+
+Der Name :class:`BaseClassName` muss innerhalb des Gültigkeitsbereichs, der die
+abgeleitete Klassendefinition enthält, definiert sein. Anstelle eines
+Basisklassennamens sind auch andere willkürliche Ausdrücke erlaubt. Dies kann
+beispielsweise nützlich sein, wenn die Basisklasse in einem anderen Modul
+definiert ist::
+
+    class DerivedClassName(modname.BaseClassName):
+
+Die Ausführung einer abgeleiteten Klassendefinition läuft genauso wie bei einer
+Basisklasse ab. Bei der Erzeugung des Klassenobjekts, wird sich der Basisklasse
+erinnert. Dies wird zum Auflösen der Attributsreferenzen benutzt: Wird ein
+angefordertes Attribut nicht innerhalb der Klasse gefunden, so wird in der
+Basisklasse weitergesucht. Diese Regel wird rekursiv angewandt, wenn die
+Basisklasse selbst von einer anderen Klasse abgeleitet wird.
+
+Es gibt nichts besonderes an der Instanziierung von abgeleiteten Klassen:
+``DerivedClassName`` erzeugt eine neue Instanz der Klasse. Methodenreferenzen
+werden wie folgt aufgelöst: Das entsprechende Klassenattribut wird durchsucht,
+falls nötig bis zum Ende der Basisklassenkette hinab und die Methodenreferenz
+ist gültig, wenn es ein Funktionsobjekt bereithält.
+
+Abgeleitete Klassen können Methoden ihrer Basisklassen überschreiben. Da
+Methoden keine besonderen Privilegien beim aufrufen anderer Methoden desselben
+Objekts haben, kann eine Methode einer Basisklasse, die eine andere Methode, die
+in derselben Basisklasse definiert wird, aufruft, beim Aufruf einer Methode der
+abgeleiteten Klasse landen, die sie überschreibt. (Für C++-Programmierer: Alle
+Methoden in Python sind im Grunde ``virtual``.)
+
+Eine überschreibende Methode in einer abgeleiteten Klasse wird in der Tat eher
+die Methode der Basisklasse mit demselben Namen erweitern, statt einfach nur zu
+ersetzen. Es gibt einen einfachen Weg die Basisklassenmethode direkt aufzurufen:
+Einfach ``BaseClassName.methodname(self, arguments)`` aufrufen. Das ist
+gelegentlich auch für Clients nützlich. (Beachte, dass dies nur funktioniert,
+wenn die Basisklasse direkt im globalen Gültigkeitsbereich definiert oder in ihn
+importiert wird.)
+
+Python hat zwei eingebaute Funktionen, die mit Vererbung zusammenarbeiten:
+
+* Man benutzt :func:`isinstance` um den Typ eines Objekts zu überprüfen:
+  ``isinstance(obj, int)`` ist nur dann ``True``, wenn ``obj.__class__`` vom Typ
+  :class:`int` oder einer davon abgeleiteten Klasse ist.
+
+* Man benutzt :func:`issubclass` um Klassenvererbung zu überprüfen:
+  ``issubclass(bool, int)`` ist ``True``, da :class:`bool` eine von :class:`int`
+  abgeleitete Klasse ist. Jedoch ist ``issubclass(float, int)`` ``False``, da
+  :class:`float` keine von :class:`int` abgeleitete Klasse ist.
+
+
+
 .. rubric:: Fußnoten
 
 .. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes, schreibgeschützes

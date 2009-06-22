@@ -1,8 +1,12 @@
+assignment : Zuweisung
+base class : Basisklasse
+built-in : eingebaut
+derived class : abgeleitete Klasse
 expression : Ausdruck
+immutable : unveränderbar
+instance : Instanz
+mutable : veränderbar
 namespace : Namensraum
 scope : Gültigkeitsbereich
 statement : Anweisung
-assignment : Zuweisung
-mutable : veränderbar
-immutable : unveränderbar
-instance : Instanz
+value : Wert
