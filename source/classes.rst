@@ -619,6 +619,46 @@ verlässliche und erweiterbare Klassen mit Mehrfachvererbung zu entwerfen. Für
 Details, siehe http://www.python.org/download/releases/2.3/mro/.
 
 
+.. _tut-generators:
+
+Generatoren
+===========
+
+:term:`Generatoren` sind eine einfache aber mächtige Möglichkeit um Iteratoren
+zu erzeugen.  Generatoren werden wie normale Funktionen geschrieben, benutzen
+aber :keyword:`yield` um die Daten zurückzugeben.  Jedes Mal wenn :func:`next`
+aufgerufen wird, fährt der Generator an der Stelle fort, an der er zuletzt
+verlassen wurde (der Generator merkt sich dabei die Werte aller Variablen und
+welche Anweisung zuletzt ausgeführt wurde).  Das nachfolgende Beispiel zeigt wie
+einfach die Erstellung von Generatoren ist::
+
+   def reverse(data):
+       for index in range(len(data)-1, -1, -1):
+           yield data[index]
+
+   >>> for char in reverse('golf'):
+   ...     print(char)
+   ...
+   f
+   l
+   o
+   g
+
+Alles was mit Generatoren möglich ist, kann ebenso (wie im vorigen Abschnitt
+dargestellt) mit Klassen-basierten Iteratoren, umgesetzt werden.  Generatoren
+erlauben jedoch eine kompaktere Schreibweise, da die Methoden :meth:`__iter__`
+und :meth:`__next__` automatisch erstellt werden.
+
+Des weiteren werden die lokalen Variablen und der Ausführungsstand automatisch
+zwischen den Aufrufen gespeichert. Das macht das Schreiben derFunktion einfacher
+und verständlicher als ein Ansatz, der mit ``self.index`` oder ``self.data``
+arbeitet.
+
+Generatoren werfen automatisch :exc:`StopIteration` wenn sie terminieren.
+Zusammengenommen ermöglichen diese Features die Erstellung von Iteratoren mit
+einem Aufwand, der nicht größer als die Erstellung einer normalen Funktion ist.
+
+
 .. rubric:: Fußnoten
 
 .. [#] Bis auf eine Ausnahme: Modulobjekte haben ein geheimes, schreibgeschützes

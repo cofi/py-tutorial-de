@@ -4,4 +4,8 @@
 Autoren der Übersetzung
 ***********************
 
-Michael Markert <markert.michael@gmail.com>
+* Florian Heinle <launchpad@planet-tiax.de>
+* Florian Mayer <flormayer@aim.com>
+* HerrHagen
+* Johannes Schönberger
+* Michael Markert <markert.michael@gmail.com>
