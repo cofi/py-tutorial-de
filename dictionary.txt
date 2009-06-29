@@ -3,12 +3,12 @@ base class : Basisklasse
 built-in : eingebaut
 derived class : abgeleitete Klasse
 expression : Ausdruck
+identifier : Bezeichner
 immutable : unveränderbar
 instance : Instanz
 mutable : veränderbar
+name mangling : Namensersetzung
 namespace : Namensraum
 scope : Gültigkeitsbereich
 statement : Anweisung
 value : Wert
-identifier : Bezeichner
-name mangling : Namensersetzung

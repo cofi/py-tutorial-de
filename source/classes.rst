@@ -815,9 +815,43 @@ zwischen den Aufrufen gespeichert. Das macht das Schreiben der Funktion einfache
 und verständlicher als ein Ansatz, der mit Instanzvariablen wie ``self.index``
 oder ``self.data`` arbeitet.
 
-Generatoren werfen automatisch :exc:`StopIteration` wenn sie terminieren.
+Generatoren werfen automatisch :exc:`StopIteration`, wenn sie terminieren.
 Zusammengenommen ermöglichen diese Features die Erstellung von Iteratoren mit
 einem Aufwand, der nicht größer als die Erstellung einer normalen Funktion ist.
+
+.. _tut-genexps:
+
+Generator Ausdrücke
+===================
+
+Manche einfachen Generatoren können prägnant als Ausdrücke mit Hilfe einer
+Syntax geschrieben werden, die der von List Comprehensions ähnlich ist, jedoch
+mit runden, statt eckigen Klammern. Diese Ausdrücke sind für Situationen
+gedacht, in denen der Generator gleich von der umgebenden Funktion genutzt wird.
+Generator Ausdrücke sind kompakter, aber auch nicht so flexibel wie ganze
+Generatordefinitionen und neigen dazu speicherschonender als die entsprechenden
+List Comprehensions zu sein.
+
+Beispiele::
+
+   >>> sum(i*i for i in range(10))                 # Summe der Quadrate
+   285
+
+   >>> xvec = [10, 20, 30]
+   >>> yvec = [7, 5, 3]
+   >>> sum(x*y for x,y in zip(xvec, yvec))         # Skalarprodukt
+   260
+
+   >>> from math import pi, sin
+   >>> sine_table = {x: sin(x*pi/180) for x in range(0, 91)}
+
+   >>> unique_words = set(word for line in page for word in line.split())
+
+   >>> valedictorian = max((student.gpa, student.name) for student in graduates)
+
+   >>> data = 'golf'
+   >>> list(data[i] for i in range(len(data)-1, -1, -1))
+   ['f', 'l', 'o', 'g']
 
 
 .. rubric:: Fußnoten
