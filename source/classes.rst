@@ -619,6 +619,43 @@ verlässliche und erweiterbare Klassen mit Mehrfachvererbung zu entwerfen. Für
 Details, siehe http://www.python.org/download/releases/2.3/mro/.
 
 
+.. _tut-private:
+
+Private Variablen
+=================
+
+
+.. _tut-odds:
+
+Kleinkram
+=========
+
+Manchmal ist es nützlich einen Datentyp zu haben, der sich ähnlich dem "record"
+in Pascol oder dem "struct" in C verhält und ein Container für ein paar Daten
+ist.Hier bietet sich eine leere Klassendefinition an::
+
+    class Employee:
+        pass
+
+    john = Employee() # Eine leere Arbeitnehmerakte anlegen
+
+    # Die Akte ausfüllen
+    john.name = 'John Doe'
+    john.dept = 'Computerraum'
+    john.salary = 1000
+
+Einem Stück Python-Code, der einen bestimmten abstrakten Datentyp erwartet, kann
+stattdessen oft eine Klasse übergeben werden, die die Methoden dieses Datentyps
+emuliert. Wenn man zum Beispiel eine Funktion hat, die Daten aus einem
+Dateiobjekt formatiert, kann man eine Klasse mit den Methoden :meth:`read` und
+:meth:`readline` definieren, die die Daten stattdessen aus einem
+Zeichenkettenpuffer bekommt, und als Argument übergeben.
+
+Methodenobjekte der Instanz haben auch Attribute: ``m.__self__`` ist das
+Instanzobjekt mit der Methode :meth:`m` und ``m.__func__`` ist das entsprechende
+Funktionsobjekt der Methode.
+
+
 .. _tut-generators:
 
 Generatoren

@@ -10,3 +10,5 @@ namespace : Namensraum
 scope : Gültigkeitsbereich
 statement : Anweisung
 value : Wert
+identifier : Bezeichner
+name mangling : Namensersetzung
