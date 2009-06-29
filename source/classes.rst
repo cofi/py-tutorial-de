@@ -119,7 +119,6 @@ Ein *Gültigkeitsbereich* (*scope*) ist eine Region eines Pythonprogrammes, in
 der ein Namensraum direkt verfügbar ist, das heisst es einem unqualifiziertem
 Namen möglich ist einen Namen in diesem Namensraum zu finden.
 
-.. NOTICE: Abweichung zum Original, da das hier Schwachsinn enthält
 Auch wenn Gültigkeitsbereiche statisch ermittelt werden, werden sie dynamisch
 benutzt. An einem beliebigen Zeitpunkt während der Ausführung, gibt es
 mindestens drei verschachtelte Gültigkeitsbereiche, deren Namensräume direkt
@@ -655,6 +654,131 @@ Methodenobjekte der Instanz haben auch Attribute: ``m.__self__`` ist das
 Instanzobjekt mit der Methode :meth:`m` und ``m.__func__`` ist das entsprechende
 Funktionsobjekt der Methode.
 
+.. _tut-exceptionclasses:
+
+Ausnahmen sind auch Klassen
+===========================
+
+Benutzerdefinierte Ausnahmen werden auch durch Klassen gekennzeichnet. Durch die
+Nutzung dieses Mechanismus ist es möglich erweiterbare Hierarchien von
+Ausnahmen zu erstellen.
+
+Es gibt zwei (semantisch) gültige Varianten der :keyword:`raise`-Anweisung::
+
+    raise Klasse
+
+    raise Instanz
+
+In der ersten Variante muss ``Class`` eine Instanz von :class:`type` oder einer
+davon abgeleiteten Klasse sein und ist eine Abkürzung für::
+
+    raise Klasse()
+
+Die in einem :keyword:`except`-Satz angegebene Klasse fängt Ausnahmen dann ab,
+wenn sie Instanzen derselben Klasse sind oder von dieser abgeleitet wurden,
+nicht jedoch andersrum --- der mit einer abgeleiteten Klasse angegebene
+:keyword:`except`-Satz fängt nicht die Basisklasse ab. Zum Beispiel gibt der
+folgende Code B, C, D in dieser Reihenfolge aus::
+
+    class B(Exception):
+       pass
+    class C(B):
+       pass
+    class D(C):
+       pass
+
+    for c in [B, C, D]:
+       try:
+           raise c()
+       except D:
+           print("D")
+       except C:
+           print("C")
+       except B:
+           print("B")
+
+Beachte, dass B, B, B ausgegeben wird, wenn man die Reihenfolge umdreht, das
+heisst zuerst ``except B``, da der erste zutreffende :keyword:`except`-Satz
+ausgelöst wird.
+
+Wenn eine Fehlermeldung wegen einer unbehandelten Ausnahme ausgegeben wird, wird
+der Name der Klasse, danach ein Doppelpunkt und ein Leerzeichen und schliesslich
+die Instanz mit Hilfe der eingebauten Funktion :func:`str` zu einer Zeichenkette
+umgewandelt ausgegeben.
+
+
+.. _tut-iterators:
+
+Iteratoren
+==========
+
+Mittlerweile hast du wahrscheinlich bemerkt, dass man über die meisten
+Containerobjekte mit Hilfe von :keyword:`for` iterieren kann::
+
+    for element in [1, 2, 3]:
+       print(element)
+    for element in (1, 2, 3):
+       print(element)
+    for key in {'eins':1, 'zwei':2}:
+       print(key)
+    for char in "123":
+       print(char)
+    for line in open("meinedatei.txt"):
+       print(line)
+
+Diese Art des Zugriffs ist klar, präzise und praktisch. Der Gebrauch von
+Iteratoren durchdringt und vereinheitlicht Python. Hinter den Kulissen ruft die
+:keyword:`for`-Anweisung :func:`iter` für das Containerobjekt auf. Die Funktion
+gibt einen Iteratorobjekt zurück, das die Methode :meth:`__next__` definiert,
+die auf die Elemente des Containers nacheinander zugreift. Gibt es keine
+Elemente mehr, verursacht :meth:`__next__` eine :exc:`StopIteration`-Ausnahme,
+die der :keyword:`for`-Schleife mitteilt, dass sie sich beenden soll. Man kann
+auch die :meth:`__next__`-Methode mit Hilfe der eingebauten Funktion
+:func:`next` aufrufen. Folgendes Beispiel demonstriert, wie alles funktioniert.
+
+    >>> s = 'abc'
+    >>> it = iter(s)
+    >>> it
+    <iterator object at 0x00A1DB50>
+    >>> next(it)
+    'a'
+    >>> next(it)
+    'b'
+    >>> next(it)
+    'c'
+    >>> next(it)
+    Traceback (most recent call last):
+     File "<stdin>", line 1, in ?
+       next(it)
+    StopIteration
+
+Kennt man die Mechanismen hinter dem Iterator-Protokoll, ist es einfach das
+Verhalten von Iteratoren eigenen Klassen hinzuzufügen. Man definiert eine
+:meth:`__iter__`-Methode, die ein Objekt mit einer :meth:`__next__`-Methode
+zurückgibt. Definiert die Klasse :meth:`__next__`, kann :meth:`__iter__` einfach
+``self`` zurückgeben::
+
+    class Reverse:
+       "Iterator for looping over a sequence backwards"
+       def __init__(self, data):
+           self.data = data
+           self.index = len(data)
+       def __iter__(self):
+           return self
+       def __next__(self):
+           if self.index == 0:
+               raise StopIteration
+           self.index = self.index - 1
+           return self.data[self.index]
+
+    >>> for char in Reverse('spam'):
+    ...     print(char)
+    ...
+    m
+    a
+    p
+    s
+
 
 .. _tut-generators:
 
@@ -687,9 +811,9 @@ erlauben jedoch eine kompaktere Schreibweise, da die Methoden :meth:`__iter__`
 und :meth:`__next__` automatisch erstellt werden.
 
 Des weiteren werden die lokalen Variablen und der Ausführungsstand automatisch
-zwischen den Aufrufen gespeichert. Das macht das Schreiben derFunktion einfacher
-und verständlicher als ein Ansatz, der mit ``self.index`` oder ``self.data``
-arbeitet.
+zwischen den Aufrufen gespeichert. Das macht das Schreiben der Funktion einfacher
+und verständlicher als ein Ansatz, der mit Instanzvariablen wie ``self.index``
+oder ``self.data`` arbeitet.
 
 Generatoren werfen automatisch :exc:`StopIteration` wenn sie terminieren.
 Zusammengenommen ermöglichen diese Features die Erstellung von Iteratoren mit
