@@ -47,7 +47,7 @@ Gültigkeitsbereichen) können an dasselbe Objekt gebunden werden. In anderen
 Sprachen wird dies als Aliasing bezeichnet. Das wird meist beim ersten Blick auf
 Python nicht geschätzt und kann problemlos ignoriert werden, wenn man mit
 unveränderbaren Datentypen (Zahlen, Zeichenketten, Tupel) arbeitet. Aber
-Aliasing hat einen (beabsichtigen!) Effekt auf die Semantik von Pythoncode , der
+Aliasing hat einen (beabsichtigten!) Effekt auf die Semantik von Pythoncode , der
 veränderbare Objekte wie Listen, Dictionaries oder die meisten anderen Typen,
 die Dinge außerhalb des Programms (Dateien, Fenster, usw.) beschreiben, enthält.
 Dies kommt normalerweise dem Programm zugute, da sich Aliase in mancher Hinsicht
@@ -103,7 +103,7 @@ Namensräume werden zu verschiedenen Zeitpunkten erzeugt und haben verschiedene
 Lebenszeiten. Der Namensraum, der die eingebauten Namen enthält, wird beim Start
 des Interpreters erzeugt und nie gelöscht. Der globale Namensraum für ein Modul
 wird erzeugt, wenn die Moduldefinition eingelesen wird; normalerweise existieren
-die Namensräume des Modul auch solange bis der Interpreter beendet wird. Die
+die Namensräume des Moduls auch solange bis der Interpreter beendet wird. Die
 Anweisungen, die auf oberster Ebene vom Interpreter aufgerufen werden, entweder
 von einem Skript oder interaktiv gelesen, werden als Teil des Moduls
 :mod:`__main__`, sodass sie ihren eigenen globalen Namensraum haben. (Die
@@ -612,7 +612,7 @@ zu erreichen. Um zu verhindern, dass auf die Basisklassen mehr als einmal
 zugegriffen werden kann, linearisiert der dynamische Algorithmus die
 Suchreihenfolge, sodass die Ordnung von links nach rechts, die in jeder Klasse
 festgelegt wird, jede Elternklasse nur einmal aufruft und zwar monoton (in der
-Bedeutung, dass eine Klasse geerbt werden kann, ohne die Rangfolge seiner Eltern
+Bedeutung, dass eine Klasse geerbt werden kann, ohne das die Rangfolge seiner Eltern
 berührt wird). Zusammengenommen machen diese Eigenschaften es möglich
 verlässliche und erweiterbare Klassen mit Mehrfachvererbung zu entwerfen. Für
 Details, siehe http://www.python.org/download/releases/2.3/mro/.
@@ -630,7 +630,7 @@ Kleinkram
 =========
 
 Manchmal ist es nützlich einen Datentyp zu haben, der sich ähnlich dem "record"
-in Pascol oder dem "struct" in C verhält und ein Container für ein paar Daten
+in Pascal oder dem "struct" in C verhält und ein Container für ein paar Daten
 ist.Hier bietet sich eine leere Klassendefinition an::
 
     class Employee:
@@ -729,7 +729,7 @@ Containerobjekte mit Hilfe von :keyword:`for` iterieren kann::
 Diese Art des Zugriffs ist klar, präzise und praktisch. Der Gebrauch von
 Iteratoren durchdringt und vereinheitlicht Python. Hinter den Kulissen ruft die
 :keyword:`for`-Anweisung :func:`iter` für das Containerobjekt auf. Die Funktion
-gibt einen Iteratorobjekt zurück, das die Methode :meth:`__next__` definiert,
+gibt ein Iteratorobjekt zurück, das die Methode :meth:`__next__` definiert,
 die auf die Elemente des Containers nacheinander zugreift. Gibt es keine
 Elemente mehr, verursacht :meth:`__next__` eine :exc:`StopIteration`-Ausnahme,
 die der :keyword:`for`-Schleife mitteilt, dass sie sich beenden soll. Man kann

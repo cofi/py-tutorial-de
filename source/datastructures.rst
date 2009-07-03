@@ -640,7 +640,7 @@ werden numerische Typen anhand ihres numerischen Wertes verglichen, sodass 0 0.0
 gleicht, usw. Andernfalls wird der Interpreter eine :exc:`TypeError`-Ausnahme
 verursachen, statt eine willkürliche Ordnung bereitzustellen.
 
-.. [1] Der Aufruf von ``d.keys()`` wird ein :dfn:`dictionary view`-Objekt
+.. [1] Beim Aufruf von ``d.keys()`` wird ein :dfn:`dictionary view`-Objekt
    zurückgeben. Es unterstützt Operationen wie Mitgliedschaftsprüfung
    (membership testing) und Iteration, aber sein Inhalt ist abhängig vom
    ursprünglichen Dictionary -- es ist nur eine Ansicht (*view*).
