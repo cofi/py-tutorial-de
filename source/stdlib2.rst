@@ -69,6 +69,70 @@ eine einfache Möglichkeit um Zahlen mit Tausendertrennzeichen zu formatieren::
    ...               conv['frac_digits'], x), grouping=True)
    '$1,234,567.80'
 
+.. _tut-templating:
+
+Templating
+==========
+
+Das Modul :mod:`string` enthält die vielseitige Klasse :class:`Template`, die
+wegen ihrer vereinfachten Syntax zum verändern durch Endbenutzer geeignet ist.
+Das ermöglicht Anwendern ihre Anwendung anzupassen, ohne die Anwendung zu
+verändern.
+
+Das Format benutzt Platzhalter, die aus ``$`` und einem gültigen
+Pythonbezeichner(alphanumerische Zeichen und Unterstriche) bestehen. Umgibt man
+einen Platzhalter mit geschweiften Klammern, können andere alphanumerische
+Zeichen ohne Leerzeichen dazwischen folgen. Schreibt man ``$$``, erzeugt man ein
+einzelnes escaptes ``$``::
+
+   >>> from string import Template
+   >>> t = Template('${village}folk send $$10 to $cause.')
+   >>> t.substitute(village='Nottingham', cause='the ditch fund')
+   'Nottinghamfolk send $10 to the ditch fund.'
+
+Die Methode :meth:`substitute` verursacht einen :exc:`KeyError`, wenn ein
+Platzhalter nicht von einem Dictionary oder einem Schlüsselwortargument
+bereitgestellt wird. Bei Serienbrief-artigen Anwendungen können die vom Benutzer
+bereitgestellten Daten lückenhaft sein und die Methode :meth:`safe_substitute`
+deshalb passender --- sie lässt Platzhalter unverändert, wenn Daten fehlen::
+
+   >>> t = Template('Return the $item to $owner.')
+   >>> d = dict(item='unladen swallow')
+   >>> t.substitute(d)
+   Traceback (most recent call last):
+     . . .
+   KeyError: 'owner'
+   >>> t.safe_substitute(d)
+   'Return the unladen swallow to $owner.'
+
+Unterklassen von Template können einen eigenen Begrenzer angeben. Zum Beispiel
+könnte ein Umbennungswerkzeug für einen Photobrowser das Prozentzeichen als
+Platzhalter für das aktuelle Datum, die Fotonummer oder das Dateiformat
+auswählen::
+
+   >>> import time, os.path
+   >>> photofiles = ['img_1074.jpg', 'img_1076.jpg', 'img_1077.jpg']
+   >>> class BatchRename(Template):
+   ...     delimiter = '%'
+   >>> fmt = input('Umbenennungsschema (%d-Datum %n-Nummer %f-Format):  ')
+   Umbenennungsschema (%d-Datum %n-Nummer %f-Format):  Ashley_%n%f
+
+   >>> t = BatchRename(fmt)
+   >>> date = time.strftime('%d%b%y')
+   >>> for i, filename in enumerate(photofiles):
+   ...     base, ext = os.path.splitext(filename)
+   ...     newname = t.substitute(d=date, n=i, f=ext)
+   ...     print('{0} --> {1}'.format(filename, newname))
+
+   img_1074.jpg --> Ashley_0.jpg
+   img_1076.jpg --> Ashley_1.jpg
+   img_1077.jpg --> Ashley_2.jpg
+
+Eine andere Anwendungsmöglichkeit fer Templates ist die Trennung von
+Programmlogik und den Details der Ausgabeformate. Dies ermöglicht es eigene
+Vorlagen für XML-Dateien, Klartextberichte und HTML Web-Berichte zu ersetzen.
+
+
 .. _tut-binary-formats:
 
 Arbeit mit strukturierten binären Daten
