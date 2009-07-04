@@ -516,3 +516,27 @@ specific_submodule`` nichts falsch ist! In der Tat ist es die empfohlene
 Schreibweise, es sei denn das importierende Modul benutzt gleichnamige
 Untermodule von anderen Paketen.
 
+Referenzen innerhalb des Paketes
+--------------------------------
+
+Werden Pakete in Unterpakete strukturiert (wie das :mod:`sound`-Paket im
+Beispiel), kann man absolute Importe benutzen um Untermodule der
+Geschwisterpakete zu referenzieren. Wenn das Modul :mod:`sound.filters.vocoder`
+beispielsweise das Modul :mod:`echo` im Paket :mod:`sound.effects` benutzen
+muss, kann es ``from sound.effects import echo`` nutzen.
+
+Man kann auch relative Importe in der ``from module import name``-Form der
+:keyword:`import`-Anweisung nutzen. Diese Importe nutzen führende Punkte, um das
+aktuelle und die Elternpakete, die im relativen Import beteiligt sind,
+anzugeben. Aus dem :mod:`surround`-Modul heraus, könnte man beispielsweise
+folgendes nutzen::
+
+    from . import echo
+    from .. import formats
+    from ..filters import equalizer
+
+Beachte, dass relative Importe auf dem Namen des aktuellen Moduls basieren. Da
+der Name des Hauptmoduls immer ``"__main__"`` ist, müssen Module, die als
+Hauptmodul einer Python-Anwendung gedacht sind, immer absolute Importe nutzen.
+
+
