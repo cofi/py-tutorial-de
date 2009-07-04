@@ -279,3 +279,70 @@ aufwändig ist::
      File "C:/python31/lib/weakref.py", line 46, in __getitem__
        o = self.data[key]()
    KeyError: 'primary'
+
+
+.. _tut-list-tools:
+
+Werkzeuge zum Arbeiten mit Listen
+=================================
+
+Viele Datenstrukturen können mit dem eingebauten Listentyp dargestellt werden.
+Jedoch gibt es manchmal Bedarf für eine alternative Implementierung mit anderen
+Abstrichen was Leistung angeht.
+
+Das Modul :mod:`array` stellt die Klasse :class:`array` bereit, die sich wie
+eine Liste verhält, jedoch nur homogene Daten aufnimmt und diese kompakter
+speichert. Das folgende Beispiel zeigt ein ``array`` von Nummern, die als
+vorzeichenlose binäre Nummern der Länge 2 Byte (Typcode ``"H"``) gespeichert
+werden, anstatt der bei Listen üblichen 16 Byte pro Python-Ganzzahlobjekt::
+
+    >>> from array import array
+    >>> a = array('H', [4000, 10, 700, 22222])
+    >>> sum(a)
+    26932
+    >>> a[1:3]
+    array('H', [10, 700])
+
+Das Modul :mod:`collections` stellt die Klasse :class:`deque` bereit, das sich
+wie eine Liste verhält, aber an das schneller angehängt und schneller Werte von
+der linken Seite ge-``pop``t werden können, jedoch langsamer Werte in der Mitte
+nachschlägt. Sie ist gut dazu geeignet Schlangen (Queues) und Baumsuchen, die
+zuerst in der Breite suchen (breadth first tree searches)::
+
+    >>> from collections import deque
+    >>> d = deque(["task1", "task2", "task3"])
+    >>> d.append("task4")
+    >>> print("Handling", d.popleft())
+    Handling task1
+
+    unsearched = deque([starting_node])
+    def breadth_first_search(unsearched):
+       node = unsearched.popleft()
+       for m in gen_moves(node):
+           if is_goal(m):
+               return m
+           unsearched.append(m)
+
+Zusätzlich zu alternativen Implementierungen von Listen bietet die Bibliothek
+auch andere Werkzeuge wie das :mod:`bisect`-Modul an, das Funktionen zum
+verändern von sortierten Listen enthält::
+
+    >>> import bisect
+    >>> scores = [(100, 'perl'), (200, 'tcl'), (400, 'lua'), (500, 'python')]
+    >>> bisect.insort(scores, (300, 'ruby'))
+    >>> scores
+    [(100, 'perl'), (200, 'tcl'), (300, 'ruby'), (400, 'lua'), (500, 'python')]
+
+Das :mod:`heapq`-Modul stellt Funktionen bereit, um Heaps auf der Basis von
+normalen Listen zu implementieren. Der niedrigste Wert wird immer an der
+Position Null gehalten. Das ist nützlich für Anwendungen, die wiederholt auf das
+kleinste Element zugreifen, aber nicht die komplette Liste sortieren wollen::
+
+    >>> from heapq import heapify, heappop, heappush
+    >>> data = [1, 3, 5, 7, 9, 2, 4, 6, 8, 0]
+    >>> heapify(data)                      # in Heapreihenfolge neu ordnen
+    >>> heappush(data, -5)                 # neuen Eintrag hinzufügen
+    >>> [heappop(data) for i in range(3)]  # die drei kleinsten Einträge holen
+    [-5, 0, 1]
+
+
