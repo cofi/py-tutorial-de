@@ -106,7 +106,7 @@ deshalb passender --- sie lässt Platzhalter unverändert, wenn Daten fehlen::
    'Return the unladen swallow to $owner.'
 
 Unterklassen von Template können einen eigenen Begrenzer angeben. Zum Beispiel
-könnte ein Umbennungswerkzeug für einen Photobrowser das Prozentzeichen als
+könnte ein Umbenennungswerkzeug für einen Photobrowser das Prozentzeichen als
 Platzhalter für das aktuelle Datum, die Fotonummer oder das Dateiformat
 auswählen::
 
@@ -128,7 +128,7 @@ auswählen::
    img_1076.jpg --> Ashley_1.jpg
    img_1077.jpg --> Ashley_2.jpg
 
-Eine andere Anwendungsmöglichkeit fer Templates ist die Trennung von
+Eine andere Anwendungsmöglichkeit für Templates ist die Trennung von
 Programmlogik und den Details der Ausgabeformate. Dies ermöglicht es eigene
 Vorlagen für XML-Dateien, Klartextberichte und HTML Web-Berichte zu ersetzen.
 
