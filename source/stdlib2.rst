@@ -10,7 +10,7 @@ Fortgeschrittene. Diese Module sind selten in kleinen Skripten zu finden.
 .. _tut-output-formatting:
 
 Ausgabeformatierung
-=================
+===================
 
 Das Modul :mod:`reprlib` stellt eine Variante von :func:`repr` zur Verfügung, 
 die für die verkürzte Anzeige von großen oder tief verschachtelten Containern 
@@ -39,6 +39,7 @@ Datenstruktur klarer zu zeigen::
 
 Das Modul:mod:`textwrap` formatiert Textabsätze so, dass sie einer vorgegebenen
 Bildschirmbreite entsprechen::
+
    >>> import textwrap
    >>> doc = """Die Methode wrap() verhält sich wie fill(), außer dass sie 
    ... anstatt einer einzigen großen Zeichenkette mit Zeilenumbrüchen, eine 
@@ -168,15 +169,15 @@ gemeint sind und in der Little Endian-Bytereihenfolge vorliegen::
 Multi-threading
 ===============
 
-Threading ist eine Methode um nicht unmittelbar voneinander abhängige
-Prozesse abzukoppeln.  Threads können benutzt werden um zu verhindern, dass
-Programme, die während Berechnungen Benutzereingaben akzeptieren, "hängen".
-Ein ähnlicher Verwendungzweck ist es, einen Thread für I/O und einen anderen
-für Berechnungen zu benutzen.
+Threading ist eine Methode um nicht unmittelbar voneinander abhängige Prozesse
+abzukoppeln.  Threads können benutzt werden um zu verhindern, dass Programme,
+die während Berechnungen Benutzereingaben akzeptieren, "hängen".  Ein ähnlicher
+Verwendungzweck ist es, einen Thread für I/O und einen anderen für Berechnungen
+zu benutzen.
 
-Dieser Code zeigt wie das :mod:`threading` Modul benutzt werden kann um 
-Prozesse im Hintergrund ablaufen zu lassen, während das Hauptprogramm
-parallel dazu weiterläuft.::
+Dieser Code zeigt wie das :mod:`threading` Modul benutzt werden kann um Prozesse
+im Hintergrund ablaufen zu lassen, während das Hauptprogramm parallel dazu
+weiterläuft::
 
    import threading, zipfile
 
@@ -196,17 +197,18 @@ parallel dazu weiterläuft.::
    print('Das Hauptprogramm läuft inzwischen weiter.')
 
    background.join()    # Warten bis sich der Thread beendet.
-   print('Das Hauptprogramm hat auf die Beendigung des Hintergrund-Prozesses gewartet.')
+   print('Das Hauptprogramm hat auf die Beendigung des Hintergrund-Prozesses
+         gewartet.')
 
-Das Hauptproblem von Programmen mit mehreren Threads ist die Koordination
-der Zugriffe auf gemeinsame Daten oder andere Ressourcen.  Dafür bietet
-das threading Modul einige Synchronisationsmethoden wie Locks, Events,
-Condition Variables und Semaphoren an.
+Das Hauptproblem von Programmen mit mehreren Threads ist die Koordination der
+Zugriffe auf gemeinsame Daten oder andere Ressourcen.  Dafür bietet das
+threading Modul einige Synchronisationsmethoden wie Locks, Events, Condition
+Variables und Semaphoren an.
 
 Der beste Weg ist es aber, allen Zugriff auf Ressourcen in einem Thread zu
 koordinieren. Das :mod:`queue` Modul wird benutzt, um die Anfragen von den
-anderen Threads in dieses zu bekommen.  Programme die :class:`Queue` Objekte
-als Kommunikation zwischen ihren Threads nutzen sind einfacher zu entwickeln,
+anderen Threads in dieses zu bekommen.  Programme die :class:`Queue` Objekte als
+Kommunikation zwischen ihren Threads nutzen sind einfacher zu entwickeln,
 lesbarer und stabiler.
 
 .. _tut-logging:
@@ -305,7 +307,7 @@ werden, anstatt der bei Listen üblichen 16 Byte pro Python-Ganzzahlobjekt::
 
 Das Modul :mod:`collections` stellt die Klasse :class:`deque` bereit, das sich
 wie eine Liste verhält, aber an das schneller angehängt und schneller Werte von
-der linken Seite ge-``pop``t werden können, jedoch langsamer Werte in der Mitte
+der linken Seite "gepopt" werden können, jedoch langsamer Werte in der Mitte
 nachschlägt. Sie ist gut dazu geeignet Schlangen (Queues) und Baumsuchen, die
 zuerst in der Breite suchen (breadth first tree searches)::
 

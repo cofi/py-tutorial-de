@@ -50,7 +50,7 @@ von Listenobjekten:
    :noindex:
 
    Entfernt das Element an der gegebenen Position und gibt es zurück. Ist kein
-   Index gegeben, entfernt ``a.pop()``das letzte Element der Liste und gibt es
+   Index gegeben, entfernt ``a.pop()`` das letzte Element der Liste und gibt es
    zurück. (Die eckigen Klammern um das *i* in der Methodensignatur herum,
    zeigen an, dass das Argument optional ist und nicht, dass man dort eckige
    Klammern eintippen sollte. Du wirst diese Notation des öfteren in der
@@ -105,7 +105,7 @@ Ein Beispiel, das die meisten Methoden von Listen benutzt::
 .. _tut-lists-as-stacks:
 
 Benutzung von Listen als Stack
------------------------------
+------------------------------
 
 Die Methoden von Listen, machen es sehr einfach eine Liste als Stack zu
 benutzen, wo das zuletzt hinzugekommene als Erstes abgerufen wird ("last-in,

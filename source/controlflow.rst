@@ -150,7 +150,7 @@ Iterables als Argument aufnehmen.
 .. _tut-break:
 
 :keyword:`break`- und :keyword:`continue`-Anweisungen und der :keyword:`else`-Zweig bei Schleifen
-================================================================================================
+=================================================================================================
 
 Eine  :keyword:`break`-Anweisung in einem Schleifenrumpf bewirkt --- wie in C
 --- dass an dieser Stelle mit sofortiger Wirkung die sie unmittelbar umgebende
@@ -504,7 +504,7 @@ Man beachte, dass die Liste der Schlüsselwortargumente erzeugt wird, indem das
 Ergebnis der Methode :meth:`keys` sortiert wird, bevor dessen Inhalt ausgegeben
 wird. Tut man das nicht, ist die Reihenfolge der Ausgabe undefiniert.
 
-.. _tut-arbitraryargs;
+.. _tut-arbitraryargs:
 
 Beliebig lange Argumentlisten
 -----------------------------
@@ -573,7 +573,7 @@ bereitstellen::
 .. _tut-lambda:
 
 Lambda-Form - anonyme Funktion
--------------------------
+------------------------------
 
 Aufgrund der hohen Nachfrage, haben ein paar Merkmale, die in funktionalen
 Programmiersprachen wie Lisp üblich sind, Einzug in Python gehalten. Mit dem

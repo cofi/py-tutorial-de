@@ -5,19 +5,20 @@ Module
 ******
 
 Wenn man den Python-Interpreter beendet und erneut startet, gehen alle
-vorgenommenen Definitionen (Funktionen und Variablen) verloren. Deshalb
-benutzt man vorzugsweise einen Text-Editor, um längere und komplexere Programme
-zu schreiben und verwendet eine Datei als Eingabe für den Interpreter. Diese Datei
-wird auch als Skript bezeichnet. Wird ein Programm länger, teilt man es
-besser in mehrere Dateien auf, um es leichter warten zu können. Außerdem ist es
-von Vorteil, nützliche Funktionen in mehreren Programmen verwenden zu können, ohne sie in jedem Programm erneut definieren zu müssen.
+vorgenommenen Definitionen (Funktionen und Variablen) verloren. Deshalb benutzt
+man vorzugsweise einen Text-Editor, um längere und komplexere Programme zu
+schreiben und verwendet eine Datei als Eingabe für den Interpreter. Diese Datei
+wird auch als Skript bezeichnet. Wird ein Programm länger, teilt man es besser
+in mehrere Dateien auf, um es leichter warten zu können. Außerdem ist es von
+Vorteil, nützliche Funktionen in mehreren Programmen verwenden zu können, ohne
+sie in jedem Programm erneut definieren zu müssen.
 
 Hierfür bietet Python die Möglichkeit, etwas in einer Datei zu definieren und
 diese in einer anderen Datei oder in der interaktiven Konsole wieder zu
 verwenden. So eine Datei wird als *Modul* bezeichnet. Definitionen eines Moduls
 können in anderen Modulen oder in das *Hauptmodul* *importiert* werden, welches
-die Gesamtheit aller Funktionen und Variablen enthält, auf die man in einem Skript
-zugreifen kann.
+die Gesamtheit aller Funktionen und Variablen enthält, auf die man in einem
+Skript zugreifen kann.
  
 Ein Modul ist eine Datei, die Python-Definitionen und -Anweisungen beinhaltet.
 Der Dateiname mit dem :file:`.py` Suffix entspricht dem Namen des Moduls.
@@ -159,7 +160,7 @@ wird, wird eine Testsuite gestartet).
 
 .. _tut-searchpath:
 
-Das Modul Suchpfad
+Der Modul-Suchpfad
 ------------------
 
 .. index:: triple: module; search; path
@@ -178,10 +179,11 @@ Tatsächlich werden Module in der Reihenfolge gesucht, in der sie in der Variabl
 auch das Skript befindet beginnt, gefolgt von :envvar:`PYTHONPATH` und dem
 installationsabhängigen default-Pfad. Dies erlaubt Python-Programmen, die
 Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu beachten
-ist, dass das Skript nicht den selben Namen haben darf wie eines der Standardmodule,
-da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist. In diesem Fall
-versucht Python das Skript als Modul zu importieren, was normalerweise zu einem
-Fehler führt. Siehe :ref:`tut-standardmodules` für mehr Informationen.
+ist, dass das Skript nicht den selben Namen haben darf wie eines der
+Standardmodule, da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist.
+In diesem Fall versucht Python das Skript als Modul zu importieren, was
+normalerweise zu einem Fehler führt. Siehe :ref:`tut-standardmodules` für mehr
+Informationen.
 
 "Kompilierte" Python-Dateien
 ----------------------------
@@ -195,7 +197,7 @@ Der Zeitpunkt an dem die Datei :file:`spam.py` zuletzt geändert wurde, wird in
 :file:`.pyc` ignoriert.
 
 Normalerweise muss man nichts tun, damit die :file:`spam.pyc` Datei erstellt
-wird. Immer wenn :file:`spam.py` erfolgreich kompiliert wird, wird auch
+wird. Immer, wenn :file:`spam.py` erfolgreich kompiliert wird, wird auch
 versucht die kompilierte Version in :file:`spam.pyc` zu schreiben. Es wird kein
 Fehler geworfen, wenn der Vorgang scheitert; wenn aus irgendeinem Grund die
 Datei nicht vollständig geschrieben sein sollte, wird die daraus resultierende
@@ -236,7 +238,8 @@ Einige Tipps für Experten:
   rekonstruiert werden kann.
 
 * Das Modul :mod:`compileall` kann :file:`.pyc` Dateien (oder auch :file:`.pyo`,
-  wenn :option:`-O` genutzt wird) aus allen Modulen eines Verzeichnisses erzeugen.
+  wenn :option:`-O` genutzt wird) aus allen Modulen eines Verzeichnisses
+  erzeugen.
 
 .. _tut-standardmodules:
 
@@ -274,8 +277,8 @@ interaktiven Modus ist.
 Die Variable ``sys.path`` ist eine Liste von Zeichenketten, die den Suchpfad des
 Interpreters vorgibt. Sie ist mit einem Standardpfad voreingestellt, der aus der
 Umgebungsvariable :envvar:`PYTHONPATH` entnommen wird oder aus einem eingebauten
-Standardwert, falls :envvar:`PYTHONPATH` nicht gesetzt ist. Man kann diese Variable
-mit normalen Listenoperationen verändern::
+Standardwert, falls :envvar:`PYTHONPATH` nicht gesetzt ist. Man kann diese
+Variable mit normalen Listenoperationen verändern::
 
 	>>> import sys
 	>>> sys.path.append('/ufs/guido/lib/python')
@@ -293,16 +296,16 @@ zurückgegeben::
 	>>> dir(fibo)
 	['__name__', 'fib', 'fib2']
 	>>> dir(sys)
-	['__displayhook__', '__doc__', '__excepthook__', '__name__', '__stderr__',
-	 '__stdin__', '__stdout__', '_getframe', 'api_version', 'argv',
-	 'builtin_module_names', 'byteorder', 'callstats', 'copyright',
-	 'displayhook', 'exc_info', 'excepthook',
-	 'exec_prefix', 'executable', 'exit', 'getdefaultencoding', 'getdlopenflags',
-	 'getrecursionlimit', 'getrefcount', 'hexversion', 'maxint', 'maxunicode',
-	 'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache',
-	 'platform', 'prefix', 'ps1', 'ps2', 'setcheckinterval', 'setdlopenflags',
-	 'setprofile', 'setrecursionlimit', 'settrace', 'stderr', 'stdin', 'stdout',
-	 'version', 'version_info', 'warnoptions']
+    ['__displayhook__', '__doc__', '__excepthook__', '__name__', '__stderr__',
+    '__stdin__', '__stdout__', '_getframe', 'api_version', 'argv',
+    'builtin_module_names', 'byteorder', 'callstats', 'copyright',
+    'displayhook', 'exc_info', 'excepthook', 'exec_prefix', 'executable',
+    'exit', 'getdefaultencoding', 'getdlopenflags', 'getrecursionlimit',
+    'getrefcount', 'hexversion', 'maxint', 'maxunicode', 'meta_path', 'modules',
+    'path', 'path_hooks', 'path_importer_cache', 'platform', 'prefix', 'ps1',
+    'ps2', 'setcheckinterval', 'setdlopenflags', 'setprofile',
+    'setrecursionlimit', 'settrace', 'stderr', 'stdin', 'stdout', 'version',
+    'version_info', 'warnoptions']
 	
 Wenn man keine Parameter übergibt, liefert :func:`dir` eine Liste der aktuell
 definierten Namen::
@@ -311,7 +314,8 @@ definierten Namen::
 	>>> import fibo
 	>>> fib = fibo.fib
 	>>> dir()
-	['__builtins__', '__doc__', '__file__', '__name__', 'a', 'fib', 'fibo', 'sys']
+    ['__builtins__', '__doc__', '__file__', '__name__', 'a', 'fib', 'fibo',
+    'sys']
 	
 Zu Beachten ist, dass alle Typen von Namen ausgegeben werden: Variablen, Module,
 Funktionen, etc.
@@ -325,26 +329,29 @@ Variablen auf. Falls man diese auflisten will, muss man das Standardmodul
 	>>> import builtins
 	>>> dir(builtins)
 
-	['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'Buffer
-	Error', 'BytesWarning', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'Environme
-	ntError', 'Exception', 'False', 'FloatingPointError', 'FutureWarning', 'Generato
-	rExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexErr
-	or', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError',
-	 'None', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'P
-	endingDeprecationWarning', 'ReferenceError', 'RuntimeError', 'RuntimeWarning', '
-	StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'Ta
-	bError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'Unicod
-	eEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserW
-	arning', 'ValueError', 'Warning', 'ZeroDivisionError', '__build_class__', '__deb
-	ug__', '__doc__', '__import__', '__name__', '__package__', 'abs', 'all', 'any',
-	'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'chr', 'classmethod', 'compile', '
-	complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate
-	', 'eval', 'exec', 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr',
-	'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance',
-	 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memory
-	view', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property'
-	, 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sort
-	ed', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
+    ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException',
+    'Buffer Error', 'BytesWarning', 'DeprecationWarning', 'EOFError',
+    'Ellipsis', 'Environme ntError', 'Exception', 'False', 'FloatingPointError',
+    'FutureWarning', 'Generato rExit', 'IOError', 'ImportError',
+    'ImportWarning', 'IndentationError', 'IndexErr or', 'KeyError',
+    'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError', 'None',
+    'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError',
+    'PendingDeprecationWarning', 'ReferenceError', 'RuntimeError',
+    'RuntimeWarning', ' StopIteration', 'SyntaxError', 'SyntaxWarning',
+    'SystemError', 'SystemExit', 'TabError', 'True', 'TypeError',
+    'UnboundLocalError', 'UnicodeDecodeError', 'Unicod eEncodeError',
+    'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning',
+    'ValueError', 'Warning', 'ZeroDivisionError', '__build_class__',
+    '__debug__', '__doc__', '__import__', '__name__', '__package__', 'abs',
+    'all', 'any', 'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'chr',
+    'classmethod', 'compile', ' complex', 'copyright', 'credits', 'delattr',
+    'dict', 'dir', 'divmod', 'enumerate ', 'eval', 'exec', 'exit', 'filter',
+    'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash',
+    'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter',
+    'len', 'license', 'list', 'locals', 'map', 'max', 'memory view', 'min',
+    'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property' , 'quit',
+    'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sort ed',
+    'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
 	
 .. _tut-packages:
 
