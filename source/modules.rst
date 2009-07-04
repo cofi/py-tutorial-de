@@ -540,3 +540,20 @@ der Name des Hauptmoduls immer ``"__main__"`` ist, müssen Module, die als
 Hauptmodul einer Python-Anwendung gedacht sind, immer absolute Importe nutzen.
 
 
+Pakete in mehreren Verzeichnissen
+---------------------------------
+
+Pakete unterstützen ein weiteres besonderes Attribut: :attr:`__path__`. Dieses
+wird als Liste, die den Namen des Verzeichnisses, das die :file:`__init__.py`
+des Pakets enthält, initialisiert, bevor der Code in der Datei ausgeführt wird.
+Diese Variable kann verändert werden und eine Änderung beeinflusst zukünftige
+Suchen nach Modulen und Unterpaketen, die im Paket enthalten sind.
+
+Auch wenn dieses Feature nicht oft gebraucht wird, kann sie benutzt werden um
+die Menge der Module, die in einem Paket gefunden werden, zu erweitern.
+
+.. rubric:: Fußnoten
+
+.. [#] Eigentlich sind Funktionsdefinitionen auch 'Anweisungen', die
+   'ausgeführt' werden; die Ausführung fügt den Funktionsnamen in die globale
+   Symboltabelle des Moduls ein.

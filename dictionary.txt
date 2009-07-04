@@ -11,6 +11,6 @@ name mangling : Namensersetzung
 namespace : Namensraum
 scope : Gültigkeitsbereich
 statement : Anweisung
-value : Wert
 submodule : Untermodul
-
+subpackage : Unterpaket
+value : Wert
