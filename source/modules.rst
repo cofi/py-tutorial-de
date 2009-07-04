@@ -442,3 +442,70 @@ Im Gegensatz dazu, muss bei Verwendung von ``import item.subitem.subsubitem``
 jedes ``item`` ein Paket sein; das letzte ``item`` kann ein Modul oder ein
 Paket sein, aber es darf keine Klasse, Funktion oder Variable im darüber
 geordneten ``item`` sein.
+
+
+.. _tut-pkg-import-start:
+
+\* aus einem Paket importieren
+------------------------------
+
+.. index:: single: __all__
+
+Was passiert nun, wenn der Benutzer ``from sound.effects import *`` schreibt?
+Idealerweise würde man hoffen, dass dies irgendwie an das Dateisystem
+weitergereicht wird und alle Untermodule, die es im Paket gibt, findet und sie
+alle importiert. Unglücklicherweise funktioniert das nicht besonders gut auf
+Windows-Plattformen, bei denen das Dateisystem nicht immer zutreffende
+Informationen über die Schreibweise eines Dateinamens hat. Auf diesen
+Plattformen gibt es keinen zuverlässigen Weg zu wissen, ob eine Datei
+:file:`ECHO.PY` als Modul :mod:`echo`, :mod:`Echo` oder :mod:`ECHO` importiert
+werden soll. (Windows 95 hat zum Beispiel die nervige Praxis alle Dateinamen mit
+einem groß geschriebenen ersten Buchstaben anzuzeigen.) Die Begrenzung auf DOS
+8+3 Dateinamen erzeugt ein weiteres interessantes Problem für lange Modulnamen.
+
+Die einzige Lösung ist, dass der Autor des Paketes einen expliziten Index des
+Paketes bereitstellt. Die :keyword:`import`-Anweisung folgt folgender
+Konvention: Definiert die Datei :file:`__init__.py` des Paketes eine Liste
+namens ``__all__``, wird diese als Liste der Modulnamen behandelt, die bei
+``from package import *`` importiert werden sollen. Es ist Aufgabe des
+Paketautoren diese Liste aktuell zu halten, wenn er eine neue Version des
+Paketes veröffentlicht. Paketautoren können sich auch entscheiden es nicht zu
+unterstützen, wenn sie einen \*-Import ihres Paketes für nutzlos halten. Zum
+Beispiel könnte die Datei :file:`sound/effects/__init__.py` folgenden Code
+enthalten::
+
+    __all__ = ["echo", "surround", "reverse"]
+
+Dies würde bedeuten, dass ``from sound.effects import *`` die drei genannten
+Untermodule des :mod:`sound` Paketes importiert.
+
+Ist ``__all__`` nicht definiert, importiert die Anweisung ``from sound.effects
+import *`` *nicht* alle Untermodule des Paketes :mod:`sound.effects` in den
+aktuellen Namensraum; es stellt nur sicher, dass das Paket :mod:`sound.effects`
+importiert wurde (möglicherweise führt es jeglichen Initialisierungscode in
+:file:`__init__.py` aus) und importiert dann alle Namen, die im Paket definiert
+wurden. Inklusive der Namen, die in :file:`__init__.py` definiert werden (und
+Untermodule die explizit geladen werden). Es bindet auch jegliche Untermodule
+des Paketes ein, die durch vorherige :keyword:`import`-Anweisungen explizit
+geladen wurden. Schau dir mal diesen Code an::
+
+    import sound.effects.echo
+    import sound.effects.surround
+    from sound.effects import *
+
+Hier werden die Module :mod:`echo` und :mod:`surround` in den aktuellen
+Namensraum importiert, da sie im Paket :mod:`sound.effects` definiert sind, wenn
+die Anweisung ``from ... import`` ausgeführt wird. (Das funktioniert auch wenn
+``__all__`` definiert ist.)
+
+Beachte, dass der ``*``-Import eines Moduls oder Paketes im allgemeinen verpönt
+ist, da er oft schlecht lesbaren Code verursacht. Allerdings ist es in Ordnung
+ihn im interaktiven Interpreter zu benutzen, um weniger tippen zu müssen und bei
+bestimmten Modulen die so entworfen wurden, nur Namen, die einem bestimmten
+Namensschema folgen, zu exportieren. 
+
+Aber bedenke, dass an der Benutzung von ``from Package import
+specific_submodule`` nichts falsch ist! In der Tat ist es die empfohlene
+Schreibweise, es sei denn das importierende Modul benutzt gleichnamige
+Untermodule von anderen Paketen.
+

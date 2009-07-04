@@ -12,3 +12,5 @@ namespace : Namensraum
 scope : Gültigkeitsbereich
 statement : Anweisung
 value : Wert
+submodule : Untermodul
+
