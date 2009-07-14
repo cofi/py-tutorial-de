@@ -31,7 +31,7 @@ der Interpreter eine primäre oder sekundäre Eingabeaufforderung ausgibt. Die
 aktuelle Zeile kann mit den üblichen Emacs-Steuerzeichen bearbeitet werden. Die
 wichtigsten davon sind: :kbd:`Strg-A` (Steuerung-A) bewegt den Cursor zum Anfang
 der Zeile, :kbd:`Strg-E` zum Ende. :kbd:`Strg-B` bewegt ihn ein Zeichen nach
-links, :kbd:`Strg-F` nach rechts. :kbd:`Strg-K` "killt" (löscht) den Rest der
+links, :kbd:`Strg-F` nach rechts. :kbd:`Strg-K` löscht ("killt") den Rest der
 Zeile rechts vom Cursor, :kbd:`Strg-Y` fügt die zuletzt gelöschten Zeichen
 wieder ein ("yankt"). :kbd:`Strg-_` macht die zuletzt getätigte Änderung
 rückgängig und kann wiederholt werden, um sie mehrmals auszuführen.
@@ -51,4 +51,100 @@ der Eingabeaufforderung markiert eine Zeile als geändert. Drückt man die
 :kbd:`Enter`-Taste, wird die aktuelle Zeile an den Interpreter übergeben.
 :kbd:`Strg-R` startet eine inkrementelle Rückwärtssuche, :kbd:`Strg-S` eine
 Vorwärtssuche.
+
+Tastenkombinationen
+===================
+
+Die Tastenkombinationen und ein paar andere Parameter der Readline-Bibliothek
+können angepasst werden, indem man Befehle in eine Initialisierungsdatei namens
+:file:`~/.inputrc` schreibt. Tastenkombinationen haben die Form ::
+    
+    Tastenname: Funktionsname
+
+oder ::
+    
+    "Zeichenkette": Funktionsname
+
+und Optionen können so verändert werden::
+
+    set Optionsname Wert
+
+Zum Beispiel::
+
+    #Ich bevorzuge den Bearbeitungsstil von vi:
+    set editing-mode vi
+
+    #Auf einer einzelnen Zeile bearbeiten:
+    set horizontal-scroll-mode On
+
+    #Ein paar Tastenkombinationen verändern:
+    Meta-h: backward-kill-word
+    "\C-u": universal-argument
+    "\C-x\C-r": re-read-init-file
+
+Beachte, dass in Python die Standardkombination für :kbd:`Tab` das Einfügen
+eines :kbd:`Tab`-Zeichens ist, anstatt dem Readline-Standard, die Funktion zum
+vervollständigen von Dateinamen. Bestehst du aber darauf, kannst du das mit ::
+
+    Tab: complete
+
+in deiner :file:`~/.inputrc` überschreiben. (Aber natürlich erschwert das das
+Schreiben von eingerückten Fortsetzungszeilen, wenn man es gewöhnt ist,
+:kbd:`Tab` dafür zu benutzen.)
+
+.. index::
+   module: rlcompleter
+   module: readline
+
+Automatische Vervollständigung von Variablen- und Modulnamen ist optional
+verfügbar. Um sie im Interaktiven Modus des Interpreters zu aktivieren, füge
+folgendes in deine Startup-Datei[#]_ ein::
+
+    import rlcompleter, readline
+    readline.parse_and_bind('tab: complete')
+
+Dies bindet die :kbd:`Tab`-Taste an die Vervollständigungsfunktion, tippt man
+sie also zweimal bekommt man Vorschläge zur Vervollständigung; die Funktion
+durchsucht die lokalen Variablen und die Namen in verfügbaren Module. Für
+Ausdrücke mit Punkten, wie ``string.a``, wird sie den Ausdruck bis zum letzen
+``'.'`` auswerten und dann Vervollständigungen aus den Attributen des sich
+ergebenden Objektes vorschlagen. Beachte, dass dies von der Anwendung
+definierten Code ausführen könnte, wenn ein Objekt mit einer
+:meth:`__getattr__``-Methode Teil des Ausdrucks ist.
+
+Eine leistungsfähigere Startup-Datei könnte wie das Beispiel aussehen. Beachte,
+dass sie die Namen löscht, sobald sie nicht mehr benötigt werden; dies wird
+getan, da die Startup-Datei im selben Namensraum wie die interaktiven Befehle
+ausgeführt wird und das Entfernen der Namen Nebeneffekte in der interaktiven
+Umgebung vermeidet. Du könntest es nützlich finden manche der importierten
+Module, wie :mod:`os`, das in den meisten Interpreter-Sitzungen gebraucht wird,
+zu behalten. ::
+
+    # Add auto-completion and a stored history file of commands to your Python
+    # interactive interpreter. Requires Python 2.0+, readline. Autocomplete is
+    # bound to the Esc key by default (you can change it - see readline docs).
+    #
+    # Store the file in ~/.pystartup, and set an environment variable to point
+    # to it:  "export PYTHONSTARTUP=/home/user/.pystartup" in bash.
+    #
+    # Note that PYTHONSTARTUP does *not* expand "~", so you have to put in the
+    # full path to your home directory.
+
+    import atexit
+    import os
+    import readline
+    import rlcompleter
+
+    historyPath = os.path.expanduser("~/.pyhistory")
+
+    def save_history(historyPath=historyPath):
+       import readline
+       readline.write_history_file(historyPath)
+
+    if os.path.exists(historyPath):
+       readline.read_history_file(historyPath)
+
+    atexit.register(save_history)
+    del os, atexit, readline, rlcompleter, save_history, historyPath
+
 
