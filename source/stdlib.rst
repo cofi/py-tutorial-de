@@ -114,8 +114,8 @@ lesen und zu verstehen sind::
 Mathematik
 ==========
 
-Mit dem Modul :mod:`math` kann man tiefer liegende Funktionen der C-Bibliothek
-für Fließkommaberechnungen verwenden::
+Das Modul :mod:`math` ermöglicht den Zugriff auf Funktionen der
+zugrundeliegenden C-Bibliothek für Fließkomma-Mathematik::
 
    >>> import math
    >>> math.cos(math.pi / 4.0)
