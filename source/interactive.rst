@@ -148,3 +148,21 @@ zu behalten. ::
     del os, atexit, readline, rlcompleter, save_history, historyPath
 
 
+.. _tut-commentary:
+
+Kommentar
+=========
+
+Diese Möglichkeiten sind ein enormer Schritt vorwärts verglichen mit früheren
+Versionen des Interpreters, aber ein paar Wünsche sind noch offen: Es wäre nett,
+wenn die richtige Einrückung bei Fortsetzungszeilen vorgeschlagen würde (der
+Parser weiss, ob eine Einrückung benötigt wird). Der
+Vervollständigungsmechanismus könnte die Symbolstabelle des Interpreters nutzen.
+Und ein Befehl zum Überprüfen von passenden Klammern, Anführungszeichen, usw.
+(oder sie sogar vorschlägt) wäre auch nützlich.
+
+.. rubric:: Fußnoten
+
+.. [#] Python wird beim Starten des Interaktiven Interpreters den Inhalt der
+   Datei ausführen, die von der Umgebungsvariable :envvar:`PYTHONSTARTUP`
+   angegeben wird.
