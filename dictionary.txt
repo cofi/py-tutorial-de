@@ -1,3 +1,4 @@
+(primary/secondary) prompt : (primäre/sekundäre) Eingabeaufforderung
 assignment : Zuweisung
 base class : Basisklasse
 built-in : eingebaut
