@@ -37,3 +37,18 @@ wieder ein ("yankt"). :kbd:`Strg-_` macht die zuletzt getätigte Änderung
 rückgängig und kann wiederholt werden, um sie mehrmals auszuführen.
 
 
+.. _tut-history:
+
+Ersetzung des Verlaufs
+======================
+
+Die Ersetzung des Verlaufs funktioniert so: Alle eingetippten, nicht-leeren
+Zeilen werden in einem Verlaufspuffer gespeichert. Wird eine neue
+Eingabeaufforderung ausgegeben, ist man am Ende dieses Puffers platziert.
+:kbd:`Strg-P` bewegt einen eine Zeile im Puffer zurück, :kbd:`Strg-N` eine Zeile
+vorwärts. Jede Zeile im Verlaufspuffer kann bearbeitet werden; ein Sternchen vor
+der Eingabeaufforderung markiert eine Zeile als geändert. Drückt man die
+:kbd:`Enter`-Taste, wird die aktuelle Zeile an den Interpreter übergeben.
+:kbd:`Strg-R` startet eine inkrementelle Rückwärtssuche, :kbd:`Strg-S` eine
+Vorwärtssuche.
+
