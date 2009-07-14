@@ -87,9 +87,9 @@ Zeichen ohne Leerzeichen dazwischen folgen. Schreibt man ``$$``, erzeugt man ein
 einzelnes escaptes ``$``::
 
    >>> from string import Template
-   >>> t = Template('${village}folk send $$10 to $cause.')
-   >>> t.substitute(village='Nottingham', cause='the ditch fund')
-   'Nottinghamfolk send $10 to the ditch fund.'
+   >>> t = Template('Die Bürger von ${village} schicken 10 € für $cause.')
+   >>> t.substitute(village='Hannover', cause='den Grabenfond')
+   'Die Bürger von Hannover schicken 10 € für den Grabenfond.'
 
 Die Methode :meth:`substitute` verursacht einen :exc:`KeyError`, wenn ein
 Platzhalter nicht von einem Dictionary oder einem Schlüsselwortargument
@@ -97,14 +97,14 @@ bereitgestellt wird. Bei Serienbrief-artigen Anwendungen können die vom Benutze
 bereitgestellten Daten lückenhaft sein und die Methode :meth:`safe_substitute`
 deshalb passender --- sie lässt Platzhalter unverändert, wenn Daten fehlen::
 
-   >>> t = Template('Return the $item to $owner.')
-   >>> d = dict(item='unladen swallow')
+   >>> t = Template('Bringe $item $owner zurück.')
+   >>> d = dict(item='die unbeladene Schwalbe')
    >>> t.substitute(d)
    Traceback (most recent call last):
      . . .
    KeyError: 'owner'
    >>> t.safe_substitute(d)
-   'Return the unladen swallow to $owner.'
+   'Bringe die unbeladene Schwalbe $owner zurück.'
 
 Unterklassen von Template können einen eigenen Begrenzer angeben. Zum Beispiel
 könnte ein Umbenennungswerkzeug für einen Photobrowser das Prozentzeichen als
