@@ -49,7 +49,7 @@ Die :keyword:`for`-Anweisung in Python unterscheidet sich ein wenig von der, die
 man von C oder Pascal her kennt. Man kann nicht nur über eine Zahlenfolge
 iterieren (wie in Pascal) oder lediglich Schrittweite und Abbruchbedingung
 festlegen (wie in C), sondern über eine beliebige Sequenz (also z. B. eine Liste
-oder Zeichenkette) iterieren, und zwar in der Reihenfolge, in der die Elemente
+oder Zeichenkette), und zwar in der Reihenfolge, in der die Elemente
 in der Sequenz vorkommen. Zum Beispiel: ::
 
     >>> # Die Längen einiger Zeichenketten ermitteln:
@@ -142,7 +142,8 @@ werden, wo ein Objekt erwartet wird, das eine Folge von Elementen der Reihe nach
 :func:`list` ist ein solcher Iterator, die als Argument ein Iterable erwartet
 und eine Liste daraus macht ::
  
-    >>> list(range(5)) [0, 1, 2, 3, 4]
+    >>> list(range(5))
+    [0, 1, 2, 3, 4]
 
 Später werden noch weitere Funktionen behandelt, die Iterables zurückgeben und
 Iterables als Argument aufnehmen.
@@ -654,11 +655,11 @@ Intermezzo: Schreibstil
 
 .. index:: pair: coding; style
 
-Jetzt da du längere, komplexere Stücke in Python schreibst, ist es an der Zeit
-mal über den Schreibstil (*coding style*) zu sprechen. Viele Sprachen können in
+Jetzt da Du längere, komplexere Stücke in Python schreibst, ist es an der Zeit
+einmal über den Schreibstil (*coding style*) zu sprechen. Viele Sprachen können in
 verschiedenen Stilen geschrieben (präziser: *formatiert*) werden; davon sind
-manche lesbarer als andere. Es anderen leichter zu machen deinen Code zu lesen
-ist immer eine gute Idee und einen schönen Schreibstil anzugewöhnen hilft dabei
+manche lesbarer als andere. Es anderen leichter zu machen Deinen Code zu lesen
+ist immer eine gute Idee und sich einen schönen Schreibstil anzugewöhnen hilft dabei
 ungemein.
 
 Für Python hat sich :pep:`8` als der Styleguide herauskristallisiert, dem die
@@ -688,13 +689,13 @@ lesen, hier jedoch die wichtigsten Punkte:
 * Benutze Leerzeichen um Operatoren herum und nach Kommas, jedoch nicht direkt
   innerhalb von Klammerkonstrukten: ``a = f(1, 2) + g(3, 4)``.
 
-* Benenne deine Klassen und Funktionen konsistent: Die Konvention schlägt
+* Benenne Deine Klassen und Funktionen konsistent: Die Konvention schlägt
   ``CamelCase`` für Klassen und ``klein_geschrieben_mit_unterstrichen`` für
   Funktionen und Methoden vor. Benutze immer ``self`` als Namen für das erste
   Methoden Argument (mehr zu Klassen und Methoden, siehe
-  :ref:`tut-firstclasses`)
+  :ref:`tut-firstclasses`).
 
-* Benutze keine ausgefallenen Dateikodierungen, wenn dein Code für ein
+* Benutze keine ausgefallenen Dateikodierungen, wenn Dein Code für ein
   internationales Publikum vorgesehen ist. Pythons Standardkodierung -- UTF-8 --
   oder sogar einfaches ASCII ist in jedem Fall am Besten.
 
