@@ -12,8 +12,8 @@ kleine Datenbank nach Maß, eine spezialisierte GUI-Anwendung oder ein einfaches
 Spiel.
 
 Als professioneller Softwareentwickler muss man vielleicht mit mehreren
-C/C++/Java Bibliotheken arbeiten, findet aber den üblichen
-Schreiben/Kompilieren/Testen/Re-Kompilieren Zyklus zu langsam.  Wer eine
+C/C++/Java-Bibliotheken arbeiten, findet aber den üblichen
+Schreiben/Kompilieren/Testen/Re-Kompilieren-Zyklus zu langsam.  Wer eine
 Testsuite für solch eine Bibliothek schreibt, hält es vielleicht für eine
 ermüdende Aufgabe, den Testcode zu schreiben. Vielleicht hat der ein oder andere
 auch ein Programm geschrieben, das eine Erweiterungssprache gebrauchen könnte,
@@ -22,10 +22,10 @@ implementieren.
 
 Dann ist Python genau die richtige Sprache!
 
-Man könnte natürlich Unix Shellskripte oder Windows Batchdateien für ein paar
+Man könnte natürlich Unix-Shellskripte oder Windows-Batchdateien für ein paar
 dieser Aufgaben schreiben. Mit Shellskripten lassen sich gut Dateien verschieben
 und Textdaten verändern, zur Entwicklung von GUI-Applikationen oder Spielen sind
-sie aber weniger geeignet. Man könnte ein entsprechendes C/C++/Java Programm
+sie aber weniger geeignet. Man könnte ein entsprechendes C/C++/Java-Programm
 dafür schreiben, aber es kostet in der Regel bereits viel Entwicklungszeit, um
 überhaupt einen ersten Programmentwurf zu entwickeln.  Python ist einfacher zu
 nutzen, verfügbar für Windows-, Mac OS X- und Unix-Betriebssysteme und hilft,
@@ -51,12 +51,12 @@ Python ist eine interpretierte Sprache, wodurch sich bei der Programmentwicklung
 erheblich Zeit sparen lässt, da Kompilieren und Linken nicht nötig sind. Der
 Interpreter kann interaktiv genutzt werden, so dass man einfach mit den
 Fähigkeiten der Sprache experimentieren, Wegwerf-Code schreiben oder Funktionen
-während der Bottom-Up Programmentwicklung testen kann. Es ist auch ein
+während der Bottom-Up-Programmentwicklung testen kann. Es ist auch ein
 praktischer Tischrechner.
 
 Python ermöglicht die Entwicklung von kompakten und lesbaren Programmen.
 Programme, die in Python geschrieben sind, sind aus mehreren Gründen viel kürzer
-als C/C++/Java Äquivalente:
+als C/C++/Java-Äquivalente:
 
 * Die abstrakten Datentypen erlauben es, komplexe Operationen in einer einzigen
   Anweisung auszudrücken;
