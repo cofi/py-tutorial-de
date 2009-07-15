@@ -41,7 +41,7 @@ anschauen. Es gibt auch zahlreiche Bücher, die Python tiefergehend behandeln.
 Ziel dieses Tutorials ist nicht die umfangreiche und vollständige Behandlung
 sämtlicher Sprachmerkmale von Python, sondern die Vermittlung der wichtigsten
 Eigenschaften, um einen Eindruck von dem zu bekommen, was Python ist.  Nach der
-Lektüre sollte man in der Lage sein, Python Module und Programme zu schreiben.
+Lektüre sollte man in der Lage sein, Python-Module und -Programme zu schreiben.
 Außerdem verfügt man dann über die notwendigen Grundlagen, um sich mit weiteren
 Modulen der Standardbibliothek zu beschäftigen, die in der Python Library
 Reference beschrieben werden.

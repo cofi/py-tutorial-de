@@ -28,14 +28,14 @@ Kommando in die DOS-Eingabeaufforderung eingeben::
 
     set path=%path%;C:\python31
 
-Durch Eingabe eines End-Of-File Zeichens (EOF; :kbd:`Strg-D` unter Unix,
+Durch Eingabe eines End-Of-File-Zeichens (EOF; :kbd:`Strg-D` unter Unix,
 :kbd:`Strg-Z` unter Windows) in der Eingabeaufforderung des Interpreters wird
 der Interpreter mit dem Rückgabewert Null beendet. Falls er das nicht tut, kann
 man den Interpreter durch folgende Befehlszeile beenden: ``import sys;
 sys.exit(1)``.
 
 Die Möglichkeiten des Interpreters hinsichtlich des Editierens der Eingabe sind
-ziemlich beschränkt, lassen sich aber durch Einsatz der GNU readline Bibliothek
+ziemlich beschränkt, lassen sich aber durch Einsatz der GNU-readline-Bibliothek
 erweitern. Ob diese erweiterten Möglichkeiten verfügbar sind, lässt sich
 überprüfen, indem man ein :kbd:`Strg-P` in die Eingabeaufforderung tippt. Wenn
 es piepst, ist die "readline"-Unterstützung vorhanden. In diesem Fall findet man
@@ -247,6 +247,6 @@ Skript geschehen::
 
 .. [#] Unter Unix wird der Python 3.1 Interpreter nicht standardmäßig als
    ausführbare Datei namens ``python`` installiert, damit es nicht zu einer
-   Kollision mit einer gleichzeitig installierten Python 2.x Version kommt.
+   Kollision mit einer gleichzeitig installierten Python-2.x-Version kommt.
 
-.. [#] Ein Problem mit dem GNU readline Paket kann dies verhindern.
+.. [#] Ein Problem mit dem GNU-readline-Paket kann dies verhindern.
