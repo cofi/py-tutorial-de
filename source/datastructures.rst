@@ -4,7 +4,7 @@
 Datenstrukturen
 ***************
 
-Dieses Kapitel beschreibt Dinge, die du schon kennengelernt hast, detaillierter
+Dieses Kapitel beschreibt Dinge, die Du schon kennengelernt hast, detaillierter
 und geht auch auf ein paar neue Dinge ein.
 
 .. _tut-morelists:
@@ -107,7 +107,7 @@ Ein Beispiel, das die meisten Methoden von Listen benutzt::
 Benutzung von Listen als Stack
 ------------------------------
 
-Die Methoden von Listen, machen es sehr einfach eine Liste als Stack zu
+Die Methoden von Listen, machen es sehr einfach eine Liste als Stapel (*Stack*) zu
 benutzen, wo das zuletzt hinzugekommene als Erstes abgerufen wird ("last-in,
 first-out"). Um ein Element auf den Stack zu legen, benutzt man :meth:`append`.
 Um ein Element abzurufen, benutzt man :meth:`pop` ohne expliziten Index. Zum
@@ -136,7 +136,7 @@ Benutzung von Listen als Queue
 ------------------------------
 
 Listen lassen sich auch bequem als Schlange (*Queue*) benutzen, wo das zuerst
-hinzugekommene Element auch zuerst abgerufen wird ("firs-in, first-out"). Um ein
+hinzugekommene Element auch zuerst abgerufen wird ("first-in, first-out"). Um ein
 Element anzuhängen, benutzt man :meth:`append`. Um ein Element vom Anfang der
 Schlange abzurufen, benutzt man :meth:`pop` mit dem Index ``0``. Zum Beispiel::
 
@@ -156,7 +156,7 @@ Schlange abzurufen, benutzt man :meth:`pop` mit dem Index ``0``. Zum Beispiel::
 List Comprehensions
 -------------------
 
-List Comprehensions bieten einen prägnanten Weg Listen aus Sequenzen zu
+List Comprehensions bieten einen prägnanten Weg, Listen aus Sequenzen zu
 erzeugen. Übliche Anwendungen sind solche, in denen man Listen erstellt, in
 denen jedes Element das Ergebnis eines Verfahrens ist, das auf jedes Mitglied
 einer Sequenz angewendet wird oder solche, in denen eine Teilfolge von
@@ -188,7 +188,7 @@ Hier wenden wir einen Methodenaufruf auf jedes Objekt in der Sequenz an::
     >>> [weapon.strip() for weapon in freshfruit]
     ['banana', 'loganberry', 'passion fruit']
 
-Indem wir eine :keyword:`if`-Klausel anwenden können wir die Elemente filtern::
+Indem wir eine :keyword:`if`-Klausel anwenden, können wir die Elemente filtern::
 
    >>> [3*x for x in vec if x > 3]
    [12, 18]
@@ -231,7 +231,7 @@ Man kann List Comprehensions auch verschachteln, sofern man sich das traut. Sie
 sind ein mächtiges Werkzeug, aber, wie alle mächtigen Werkzeuge, sollten sie,
 wenn überhaupt, mit Bedacht benutzt werden.
 
-Denk mal über das folgende Beispiel einer 3x3-Matrix nach, die über eine Liste
+Denk einmal über das folgende Beispiel einer 3x3-Matrix nach, die über eine Liste
 von 3 Listen realisiert wird, wobei eine Liste eine Zeile darstellt::
 
     >>> mat = [
@@ -249,7 +249,7 @@ Comprehension benutzen::
 
 Bei *verschachtelten* List Comprehension muss man besonders sorgfältig vorgehen:
 
-    Damit du dich nicht beim verschachteln von List Comprehensions verzettelst,
+    Damit Du Dich nicht beim verschachteln von List Comprehensions verzettelst,
     lese sie von rechts nach links.
 
 Eine ausführlichere Version dieses Schnipsels zeigt den Ablauf deutlich::
@@ -289,7 +289,7 @@ getan haben). Zum Beispiel::
     >>> a
     []
 
-:keyword:`del` kann auch dazu benutzt werden ganze Variablen zu löschen::
+:keyword:`del` kann auch dazu benutzt werden, ganze Variablen zu löschen::
 
    >>> del a
 
@@ -330,7 +330,7 @@ werden (wenn das Tupel Teil eines größeren Ausdrucks ist).
 
 Tupel lassen sich vielfach einsetzen, beispielsweise (x, y)-Koordinatenpaare,
 Unterlagen über die Angestellten von der Datenbank, usw.  Wie Strings sind auch
-Tupel unveränderbar: Es ist nicht möglich einzelnen Elementen eines Tupels einen
+Tupel unveränderbar: Es ist nicht möglich, einzelnen Elementen eines Tupels einen
 Wert zuzuweisen (das Verhalten kann man jedoch mit Slicing und Verkettung
 simulieren). Es ist auch möglich Tupel, die veränderbare Objekte wie Listen
 enthalten, zu erstellen.
@@ -379,7 +379,7 @@ Vereinigungsmenge, Schnittmenge, Differenz und symmetrische Differenz.
 Geschweifte Klammern oder die Funktion :func:`set` können dazu genutzt werden
 Mengen zu erzeugen. Wichtig: Um eine leere Menge zu erzeugen muss man ``set()``
 benutzen, ``{}`` ist dagegen nicht möglich. Letzteres erzeugt ein leeres
-Dictionary, eine Datenstruktur die wir im nächsten Abschnitt besprechen.
+Dictionary, eine Datenstruktur, die wir im nächsten Abschnitt besprechen.
 
 Hier eine kurze Demonstration::
 
@@ -454,7 +454,7 @@ Einen Wert mit einem nicht-existenten Schlüssel abrufen zu wollen, erzeugt eine
 Fehlermeldung.
 
 Der Aufruf ``list(d.keys())`` auf ein Dictionary gibt eine Liste aller Schlüssel
-in zufälliger Reihenfolge zurück (Will man sie sortiert haben, verwendet man
+in zufälliger Reihenfolge zurück (will man sie sortiert haben, verwendet man
 einfach die Funktion ``sorted(d.keys)`` stattdessen). [1]_ Um zu überprüfen ob ein
 einzelner Schlüssel im Dictionary ist, lässt sich das Schlüsselwort
 :keyword:`in` benutzen.
@@ -493,7 +493,7 @@ willkürlichen Schlüssel und Wert Ausdrücken zu erstellen::
     >>> {x: x**2 for x in (2, 4, 6)}
     {2: 4, 4: 16, 6: 36}
 
-Sind die Schlüssel einfache Zeichenketten, ist es manchmal einfacher die Paare
+Sind die Schlüssel einfache Zeichenketten, ist es manchmal einfacher, die Paare
 als Schlüsselwort-Argumente anzugeben::
 
    >>> dict(sape=4139, guido=4127, jack=4098)
