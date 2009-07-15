@@ -33,7 +33,7 @@ Ein paar Beispiele::
 Benutzung von Python als Taschenrechner
 =======================================
 
-Wir wollen ein paar einfache Pythonbefehle ausprobieren: Starte den Interpreter
+Wir wollen ein paar einfache Python-Befehle ausprobieren: Starte den Interpreter
 und warte auf die primäre Eingabeaufforderung, ``>>>``. 
 
 
@@ -205,7 +205,7 @@ Anführungszeichen eingeschlossen werden::
     >>> "\"Ja,\", hat er gesagt."
     '"Ja,", hat er gesagt.'
     >>> '"Isses nich\',", sagte sie.'
-    '"Isses nich\',", sagte sue.
+    '"Isses nich\',", sagte sie.
 
 Der Interpreter gibt das Ergebnis von String-Operationen auf die gleiche Weise
 aus, wie sie eingegeben werden: Innerhalb von Anführungszeichen und mit
@@ -447,9 +447,8 @@ soll.
 
 Andere Zeichen werden interpretiert, indem ihre jeweiligen Ordnungszahlen direkt
 als Unicode-Ordnungszahlen benutzt werden. Hat man Stringliterale in der
-normalen Latin-1 Kodierung, die in vielen westlichen Ländern benutzt wird, dann
-entsprechen die ersten 256 Zeichen von Unicode denselben Zeichen der Latin-1
-Kodierung.
+normalen Latin-1-Kodierung, die in vielen westlichen Ländern benutzt wird, dann
+entsprechen die ersten 256 Zeichen von Unicode denselben Zeichen der Latin-1-Kodierung.
 
 Neben diesen Standardkodierungen stellt Python eine ganze Reihe anderer
 Möglichkeiten bereit, Unicodestrings zu erstellen, sofern man die verwendete
@@ -459,7 +458,7 @@ Zur Konvertierung von Strings in Bytefolgen stellen Stringobjekte die Methode
 :func:`encode` bereit, die den Namen der Kodierung als Argument entgegennimmt,
 und zwar möglichst in Kleinbuchstaben. ::
 
-    >>> "Ã„pfel".encode('utf-8')
+    >>> "Äpfel".encode('utf-8')
     b'\xc3\x84pfel'
 
 .. _tut-lists:
