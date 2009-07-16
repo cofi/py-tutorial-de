@@ -49,8 +49,8 @@ Die :keyword:`for`-Anweisung in Python unterscheidet sich ein wenig von der, die
 man von C oder Pascal her kennt. Man kann nicht nur über eine Zahlenfolge
 iterieren (wie in Pascal) oder lediglich Schrittweite und Abbruchbedingung
 festlegen (wie in C), sondern über eine beliebige Sequenz (also z. B. eine Liste
-oder Zeichenkette), und zwar in der Reihenfolge, in der die Elemente
-in der Sequenz vorkommen. Zum Beispiel: ::
+oder Zeichenkette), und zwar in der Reihenfolge, in der die Elemente in der
+Sequenz vorkommen. Zum Beispiel: ::
 
     >>> # Die Längen einiger Zeichenketten ermitteln:
     ... a = ['Katze', 'Fenster', 'rauswerfen']
@@ -63,10 +63,10 @@ in der Sequenz vorkommen. Zum Beispiel: ::
 
 Vorsicht ist geboten, wenn man versucht, Veränderungen an einer Sequenz
 vorzunehmen, über die gerade iteriert wird (was natürlich nur bei veränderbaren
-Sequenztypen, wie etwa Listen, passieren kann).
-Will man eine Liste verändern, über die man iteriert, um beispielsweise
-ausgewählte Elemente zu duplizieren, muss man über eine Kopie iterieren.
-Die Slice-Notation macht dies sehr einfach::
+Sequenztypen, wie etwa Listen, passieren kann).  Will man eine Liste verändern,
+über die man iteriert, um beispielsweise ausgewählte Elemente zu duplizieren,
+muss man über eine Kopie iterieren.  Die Slice-Notation macht dies sehr
+einfach::
 
     >>> for x in a[:]: # benutze eine Kopie der gesamten Liste
     ...    if len(x) > 7: a.insert(0, x)
@@ -142,8 +142,7 @@ werden, wo ein Objekt erwartet wird, das eine Folge von Elementen der Reihe nach
 :func:`list` ist ein solcher Iterator, die als Argument ein Iterable erwartet
 und eine Liste daraus macht ::
  
-    >>> list(range(5))
-    [0, 1, 2, 3, 4]
+    >>> list(range(5)) [0, 1, 2, 3, 4]
 
 Später werden noch weitere Funktionen behandelt, die Iterables zurückgeben und
 Iterables als Argument aufnehmen.
@@ -243,14 +242,14 @@ Danach folgt der Funktionsname und eine Auflistung der formalen Parameter, die
 allerdings auch leer sein kann. Die Anweisungen, die den Funktionskörper bilden,
 beginnen in der nächsten Zeile und müssen eingerückt sein.
 
-Die erste Anweisung des Funktionskörpers kann auch ein Stringliteral sein, ein
-so genannter Dokumentationsstring der Funktion, auch :dfn:`Docstring` genannt.
-(Mehr zu Docstrings kann im Abschnitt :ref`tut-docstrings` nachgelesen werden.)
-Es gibt Werkzeuge, die Docstrings verwenden, um automatisch Online-Dokumentation
-oder gedruckte Dokumentation zu erzeugen oder es dem Anwender ermöglichen,
-interaktiv den Code zu durchsuchen.  Die Verwendung von docstrings ist eine gute
-Konvention, an die man sich bei der Programmierung nach Möglichkeit halten
-sollte.
+Die erste Anweisung des Funktionskörpers kann auch ein Zeichenkettenliteral
+sein, ein so genannter Dokumentationsstring der Funktion, auch :dfn:`Docstring`
+genannt.  (Mehr zu Docstrings kann im Abschnitt :ref`tut-docstrings` nachgelesen
+werden.) Es gibt Werkzeuge, die Docstrings verwenden, um automatisch
+Online-Dokumentation oder gedruckte Dokumentation zu erzeugen oder es dem
+Anwender ermöglichen, interaktiv den Code zu durchsuchen.  Die Verwendung von
+Docstrings ist eine gute Konvention, an die man sich bei der Programmierung nach
+Möglichkeit halten sollte.
 
 Beim *Aufruf* einer Funktion kommt es zur Bildung eines lokalen Namensraums, der
 sich
@@ -271,11 +270,11 @@ Zugriff nur unter Verwendung der :keyword:`global`-Anweisung.
 
 Die konkreten Parameter (Argumente), die beim Funktionsaufruf übergeben werden,
 werden den formalen Parametern der Parameterliste zugeordnet und gehören damit
-zur lokalen Symboltabelle der Funktion. Das heißt, Argumente werden
-über *call by value* übergeben (wobei
-der *Wert* allerdings immer eine *Referenz* auf ein Objekt ist, nicht der Wert
-des Objektes selbst) [#]_. Wenn eine Funktion eine andere Funktion aufruft, wird
-eine neue lokale Symboltabelle für diesen Aufruf erzeugt.
+zur lokalen Symboltabelle der Funktion. Das heißt, Argumente werden über *call
+by value* übergeben (wobei der *Wert* allerdings immer eine *Referenz* auf ein
+Objekt ist, nicht der Wert des Objektes selbst) [#]_. Wenn eine Funktion eine
+andere Funktion aufruft, wird eine neue lokale Symboltabelle für diesen Aufruf
+erzeugt.
 
 Eine Funktionsdefinition fügt den Funktionsnamen in die lokale Symboltabelle
 ein. Der Wert des Funktionsnamens hat einen Typ, der vom Interpreter als
@@ -302,8 +301,8 @@ mittels :func:`print` sichtbar machen.::
     >>> print(fib(0))
     None
 
-Statt eine Abfolge von Zahlen in einer Funktion auszugeben, kann man auch eine Liste
-dieser Zahlen als Objekt zurückliefern. ::
+Statt eine Abfolge von Zahlen in einer Funktion auszugeben, kann man auch eine
+Liste dieser Zahlen als Objekt zurückliefern. ::
 
     >>> def fib2(n): # gibt die Fibonacci-Folge bis  n zurück
     ...     """Return a list containing the Fibonacci series up to n."""
@@ -340,8 +339,9 @@ Dieses Beispiel zeigt einige neue Eigenschaften von Python:
 Mehr zum Definieren von Funktion
 ================================
 
-Funktionen lassen sich auch mit einer variablen Anzahl von Argumenten definieren.
-Dabei sind drei Varianten zu unterscheiden, die auch kombiniert werden können.
+Funktionen lassen sich auch mit einer variablen Anzahl von Argumenten
+definieren.  Dabei sind drei Varianten zu unterscheiden, die auch kombiniert
+werden können.
 
 .. _tut-defaultargs:
 
@@ -522,10 +522,10 @@ speziellen Argument kann eine beliebige Menge normaler Argumente vorkommen. ::
         file.write(separator.join(args))
 
 Normalerweise wird dieses spezielle Argument an das Ende der Argumentliste
-gesetzt, weil es alle verbleibenden Argumente, mit denen die Funktion
-aufgerufen wird, aufnimmt. Alle Argumente, die in der Definition auf ein
-``*args`` folgen, sind nur durch Schlüsselwortargumente zu übergeben
-(*'keyword-only'*) und nicht durch positionsabhängige. ::
+gesetzt, weil es alle verbleibenden Argumente, mit denen die Funktion aufgerufen
+wird, aufnimmt. Alle Argumente, die in der Definition auf ein ``*args`` folgen,
+sind nur durch Schlüsselwortargumente zu übergeben (*'keyword-only'*) und nicht
+durch positionsabhängige. ::
 
     >>> def concat(*args, sep="/"):
     ...    return sep.join(args)
@@ -565,10 +565,10 @@ bereitstellen::
     ...    print("selbst wenn Sie ihm ", voltage, "Volt durch den Schnabel jagen täten.")
     ...    print("-- Er is", state, "!")
 
-   >>> d = {"voltage": "vier Millionen", "state": "verdammt nochmal tot!", "action": "FLIEGEN"}
-   >>> parrot(**d)
-   -- Der Vogel würde selbst dann nicht FLIEGEN selbst wenn sie ihm vier Millionen Volt durch den Schnabel jagen täten.
-   -- Er is verdammt nochmal tot!
+    >>> d = {"voltage": "vier Millionen", "state": "verdammt nochmal tot!", "action": "FLIEGEN"}
+    >>> parrot(**d)
+    -- Der Vogel würde selbst dann nicht FLIEGEN selbst wenn sie ihm vier Millionen Volt durch den Schnabel jagen täten.
+    -- Er is verdammt nochmal tot!
 
 
 .. _tut-lambda:
@@ -656,11 +656,11 @@ Intermezzo: Schreibstil
 .. index:: pair: coding; style
 
 Jetzt da Du längere, komplexere Stücke in Python schreibst, ist es an der Zeit
-einmal über den Schreibstil (*coding style*) zu sprechen. Viele Sprachen können in
-verschiedenen Stilen geschrieben (präziser: *formatiert*) werden; davon sind
+einmal über den Schreibstil (*coding style*) zu sprechen. Viele Sprachen können
+in verschiedenen Stilen geschrieben (präziser: *formatiert*) werden; davon sind
 manche lesbarer als andere. Es anderen leichter zu machen Deinen Code zu lesen
-ist immer eine gute Idee und sich einen schönen Schreibstil anzugewöhnen hilft dabei
-ungemein.
+ist immer eine gute Idee und sich einen schönen Schreibstil anzugewöhnen hilft
+dabei ungemein.
 
 Für Python hat sich :pep:`8` als der Styleguide herauskristallisiert, dem die
 meisten Projekte folgen. Es fördert einen sehr lesbaren Schreibstil, der

@@ -107,11 +107,11 @@ Ein Beispiel, das die meisten Methoden von Listen benutzt::
 Benutzung von Listen als Stack
 ------------------------------
 
-Die Methoden von Listen, machen es sehr einfach eine Liste als Stapel (*Stack*) zu
-benutzen, wo das zuletzt hinzugekommene als Erstes abgerufen wird ("last-in,
-first-out"). Um ein Element auf den Stack zu legen, benutzt man :meth:`append`.
-Um ein Element abzurufen, benutzt man :meth:`pop` ohne expliziten Index. Zum
-Beispiel::
+Die Methoden von Listen, machen es sehr einfach eine Liste als Stapel (*Stack*)
+zu benutzen, bei dem das zuletzt hinzugekommene als Erstes abgerufen wird
+("last-in, first-out"). Um ein Element auf den Stack zu legen, benutzt man
+:meth:`append`.  Um ein Element abzurufen, benutzt man :meth:`pop` ohne
+expliziten Index. Zum Beispiel::
 
     >>> stack = [3, 4, 5]
     >>> stack.append(6)
@@ -231,8 +231,8 @@ Man kann List Comprehensions auch verschachteln, sofern man sich das traut. Sie
 sind ein mächtiges Werkzeug, aber, wie alle mächtigen Werkzeuge, sollten sie,
 wenn überhaupt, mit Bedacht benutzt werden.
 
-Denk einmal über das folgende Beispiel einer 3x3-Matrix nach, die über eine Liste
-von 3 Listen realisiert wird, wobei eine Liste eine Zeile darstellt::
+Denk einmal über das folgende Beispiel einer 3x3-Matrix nach, die über eine
+Liste von 3 Listen realisiert wird, wobei eine Liste eine Zeile darstellt::
 
     >>> mat = [
     ...        [1, 2, 3],
@@ -330,8 +330,8 @@ werden (wenn das Tupel Teil eines größeren Ausdrucks ist).
 
 Tupel lassen sich vielfach einsetzen, beispielsweise (x, y)-Koordinatenpaare,
 Unterlagen über die Angestellten von der Datenbank, usw.  Wie Strings sind auch
-Tupel unveränderbar: Es ist nicht möglich, einzelnen Elementen eines Tupels einen
-Wert zuzuweisen (das Verhalten kann man jedoch mit Slicing und Verkettung
+Tupel unveränderbar: Es ist nicht möglich, einzelnen Elementen eines Tupels
+einen Wert zuzuweisen (das Verhalten kann man jedoch mit Slicing und Verkettung
 simulieren). Es ist auch möglich Tupel, die veränderbare Objekte wie Listen
 enthalten, zu erstellen.
 
@@ -455,8 +455,8 @@ Fehlermeldung.
 
 Der Aufruf ``list(d.keys())`` auf ein Dictionary gibt eine Liste aller Schlüssel
 in zufälliger Reihenfolge zurück (will man sie sortiert haben, verwendet man
-einfach die Funktion ``sorted(d.keys)`` stattdessen). [1]_ Um zu überprüfen ob ein
-einzelner Schlüssel im Dictionary ist, lässt sich das Schlüsselwort
+einfach die Funktion ``sorted(d.keys)`` stattdessen). [1]_ Um zu überprüfen ob
+ein einzelner Schlüssel im Dictionary ist, lässt sich das Schlüsselwort
 :keyword:`in` benutzen.
 
 Hier ein kleines Beispiel wie man Dictionaries benutzt::

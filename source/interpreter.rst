@@ -154,8 +154,8 @@ eine :keyword:`try`-Anweisung behandelt werden kann.
 
 .. _tut-scripts:
 
-Ausführbare Pythonskripte
--------------------------
+Ausführbare Python-Skripte
+--------------------------
 
 Auf BSD-ähnlichen Unixsystemen kann ein Pythonskript - ähnlich einem Shellskript
 - direkt ausführbar gemacht werden, indem man folgende Zeile (shebang) an den

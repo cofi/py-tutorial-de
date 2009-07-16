@@ -39,9 +39,9 @@ Mehr Quellen zu Python:
 
 * http://docs.python.org:  Schneller Zugriff auf die Python-Dokumentation.
 
-* http://pypi.python.org: Der *Py*thon *P*ackage *I*ndex, früher auch als Cheese
-  Shop bezeichnet, ist ein Index für Python-Module, die von anderen Benutzern
-  zum Download bereitgestellt wurden.  Sollte man Quelltext
+* http://pypi.python.org: Der *Python Package Index* (PyPI), früher auch als
+  Cheese Shop bezeichnet, ist ein Index für Python-Module, die von anderen
+  Benutzern zum Download bereitgestellt wurden. Sollte man Quelltext
   veröffentlichen wollen, kann man sich hier registrieren, damit andere
   Benutzer diesen leichter finden können.
 

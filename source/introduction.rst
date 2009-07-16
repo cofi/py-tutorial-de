@@ -15,8 +15,8 @@ Viele Beispiele in diesem Tutorial enthalten Kommentare - auch solche, die im
 interaktiven Modus eingegeben werden. Kommentare beginnen in Python mit einer
 Raute ``#`` und gelten bis zum Ende der physikalischen Zeile.  Ein Kommentar
 kann am Anfang einer Zeile beginnen oder im weiteren Verlauf einer Zeile,
-allerdings nicht innerhalb eines Stringliterals. Eine Raute innerhalb eines
-Stringliterals ist einfach nur eine Raute.  Da Kommentare dazu dienen, Code zu
+allerdings nicht innerhalb eines Zeichenkettenliterals. Eine Raute innerhalb eines
+Zeichenkettenliterals ist einfach nur eine Raute.  Da Kommentare dazu dienen, Code zu
 erklären und von Python nicht interpretiert werden, können sie beim Abtippen
 weggelassen werden.
 
@@ -187,8 +187,8 @@ ihrem speziellen Verhalten verdeckt.
 
 .. _tut-strings:
 
-Strings
--------
+Zeichenketten (Strings)
+-----------------------
 
 Außer mit Zahlen kann Python auch mit Zeichenketten umgehen, die auf
 unterschiedliche Weise darstellbar sind. Sie können in einfache oder doppelte
@@ -207,17 +207,17 @@ Anführungszeichen eingeschlossen werden::
     >>> '"Isses nich\',", sagte sie.'
     '"Isses nich\',", sagte sie.
 
-Der Interpreter gibt das Ergebnis von String-Operationen auf die gleiche Weise
-aus, wie sie eingegeben werden: Innerhalb von Anführungszeichen und mit
+Der Interpreter gibt das Ergebnis von Zeichenketten-Operationen auf die gleiche
+Weise aus, wie sie eingegeben werden: Innerhalb von Anführungszeichen und mit
 durch Backslashes maskierten Anführungszeichen oder anderen seltsamen Zeichen,
-um den exakten Wert wiederzugeben. Der String wird von doppelten
+um den exakten Wert wiederzugeben. Die Zeichenkette wird von doppelten
 Anführungszeichen eingeschlossen, wenn er ein einfaches Anführungszeichen, aber
 keine doppelten enthält, sonst wird er von einfachen Anführungszeichen
-eingeschlossen. Auch hier produziert die Funktion :func:`print` eine
-lesbarere Ausgabe.
+eingeschlossen. Auch hier produziert die Funktion :func:`print` eine lesbarere
+Ausgabe.
 
-Es gibt mehrere Möglichkeiten, mehrzeilige Stringliterale zu erzeugen, zum
-Beispiel durch Fortsetzungszeilen, die mit einem Backslash am Ende der
+Es gibt mehrere Möglichkeiten, mehrzeilige Zeichenkettenliterale zu erzeugen,
+zum Beispiel durch Fortsetzungszeilen, die mit einem Backslash am Ende der
 physikalischen Zeile anzeigen, dass die nächste Zeile die logische Fortsetzung
 der aktuellen ist::
 
@@ -228,17 +228,17 @@ der aktuellen ist::
 
     print(hello)
 
-Zu beachten ist, dass Zeilenumbrüche immer noch in den String mit Hilfe von
-``\n`` eingebettet werden müssen. Der auf den Backslash folgende Zeilenumbruch
-gehört allerdings nicht mit zur Zeichenkette. Die vom Beispiel erzeugte Ausgabe
-sieht so aus ::
+Zu beachten ist, dass Zeilenumbrüche immer noch in den Zeichenkette mit Hilfe
+von ``\n`` eingebettet werden müssen. Der auf den Backslash folgende
+Zeilenumbruch gehört allerdings nicht mit zur Zeichenkette. Die vom Beispiel
+erzeugte Ausgabe sieht so aus ::
 
     Dies ist eine ziemlich lange Zeichenkette,
     die mehrere Zeilen Text enthält und wie man sie auch in C schreiben würde.
         Achtung: Leerzeichen am Anfang haben eine Bedeutung für die Darstellung.
 
-Wenn wir den Stringliteral zu einem "raw"-String machen, wird ``\n`` nicht in
-einen Zeilenumbruch umgewandelt; auch der Backslash am Ende und das
+Wenn wir den Zeichenkettenliteral zu einem "raw"-String machen, wird ``\n``
+nicht in einen Zeilenumbruch umgewandelt; auch der Backslash am Ende und das
 Zeilenumbruch-Zeichen im Quellcode sind Teil der Zeichenkette. Das Beispiel::
 
     hello = r"Dies ist eine ziemlich lange Zeichenkette,\n\
@@ -251,7 +251,7 @@ führt zu folgender Ausgabe::
     Dies ist eine ziemlich lange Zeichenkette,\n\
     die mehrere Zeilen Text enthält und wie man sie auch in C schreiben würde.
 
-Strings können mit dem ``+``-Operator verkettet und mit
+Zeichenketten können mit dem ``+``-Operator verkettet und mit
 ``*`` wiederholt werden::
 
     >>> word = 'Help' + 'A'
@@ -260,10 +260,10 @@ Strings können mit dem ``+``-Operator verkettet und mit
     >>> '<' + word*5 + '>'
     '<HelpAHelpAHelpAHelpAHelpA>'
 
-Zwei Stringliterale nebeneinander werden automatisch miteinander verknüpft. Die
-erste Zeile im obigen Beispiel hätte also auch ``word = 'Help' 'A'`` lauten
-können. Das funktioniert allerdings nur mit zwei Literalen, nicht mit beliebigen
-String-Ausdrücken::
+Zwei Zeichenkettenliterale nebeneinander werden automatisch miteinander
+verknüpft. Die erste Zeile im obigen Beispiel hätte also auch ``word = 'Help'
+'A'`` lauten können. Das funktioniert allerdings nur mit zwei Literalen, nicht
+mit beliebigen String-Ausdrücken::
 
     >>> 'str' 'ing'             #Das ist ok
     'string'
@@ -275,12 +275,13 @@ String-Ausdrücken::
                          ^
     SyntaxError: invalid syntax
 
-Zeichenketten  können indiziert werden, wobei das erste Zeichen eines Strings
-wie in C den Index 0 hat ("nullbasierte Zählung"). Es gibt keinen speziellen
-Zeichentyp (wie ``char`` in C) --- ein Zeichen ist einfach ein String der Länge
-eins. Wie in der Programmiersprache Icon können Teile einer Zeichenkette mittels
-Ausschnittschreibweise (*Slice-Notation*) festgelegt werden. Angegeben werden
-zwei Indizes getrennt durch einen Doppelpunkt (``:``). ::
+Zeichenketten  können indiziert werden, wobei das erste Zeichen einer
+Zeichenkette wie in C den Index 0 hat ("nullbasierte Zählung"). Es gibt keinen
+speziellen Zeichentyp (wie ``char`` in C) --- ein Zeichen ist einfach eine
+Zeichenkette der Länge eins. Wie in der Programmiersprache Icon können Teile
+einer Zeichenkette mittels *Slice-Notation* (Ausschnittschreibweise) festgelegt
+werden. Angegeben werden zwei Indizes getrennt durch einen Doppelpunkt (``:``).
+::
 
     >>> word[4]
     'A'
@@ -301,7 +302,7 @@ Zeichenkette ::
 
 Im Unterschied zu einem C-String kann ein Python-String nicht verändert werden
 --- Zeichenketten sind *unveränderbar* (*immutable*). Der Versuch, einer
-indizierten Position eines Strings etwas zuzuweisen, führt zu einer
+indizierten Position einer Zeichenkette etwas zuzuweisen, führt zu einer
 Fehlermeldung ::
  
     >>> word[0] = 'x'
@@ -313,7 +314,8 @@ Fehlermeldung ::
      File "<stdin>", line 1, in ?
     TypeError: 'str' object does not support slice assignment
 
-Stattdessen erzeugt man einfach einen neuen String mit dem kombinierten Inhalt ::
+Stattdessen erzeugt man einfach eine neue Zeichenkette mit dem kombinierten
+Inhalt ::
 
     >>> 'x' + word[1:]
     'xelpA'
@@ -327,9 +329,9 @@ Noch ein Beispiel: ``s[:i] + s[i:]`` entspricht ``s``. ::
     >>> word[:3] + word[3:]
     'HelpA'
 
-Werden bei der Ausschnittschreibweise Indizes angegeben, die die tatsächliche
-Länge einer Zeichenkette überschreiten, führt dies nicht zu einer Fehlermeldung:
-Ein zu großer zweiter Index wird durch die Länge des Strings ersetzt und
+Werden bei der Slice-Notation Indizes angegeben, die die tatsächliche Länge
+einer Zeichenkette überschreiten, führt dies nicht zu einer Fehlermeldung: Ein
+zu großer zweiter Index wird durch die Länge der Zeichenkette ersetzt und
 Ausschnitte, die keine Zeichen enthalten, liefern eine leere Zeichenkette
 zurück. ::
 
@@ -359,7 +361,7 @@ Achtung: -0 ist dasselbe wie 0. Das heißt, die Zählung beginnt ganz normal von
 
 Das automatische Kürzen bei Verwendung von Indizes, die außerhalb der
 tatsächlichen Länge der Zeichenkette liegen, funktioniert allerdings nur bei der
-Ausschnittschreibweise, nicht beim Zugriff auf ein einzelnes Zeichen mittels
+Slice-Notation, nicht beim Zugriff auf ein einzelnes Zeichen mittels
 Indexschreibweise::
 
     >>> word[-100:]
@@ -369,9 +371,9 @@ Indexschreibweise::
      File "<stdin>", line 1, in ?
     IndexError: string index out of range
 
-Man kann sich die Indizes beim Slicing so vorstellen, dass sie *zwischen*
-den Zeichen liegen --- wobei die linke Ecke des ersten Zeichens den Index 0 hat
-und die rechte Ecke des letzten Zeichens  eines *n* Zeichen langen Strings den
+Man kann sich die Indizes beim Slicing so vorstellen, dass sie *zwischen* den
+Zeichen liegen --- wobei die linke Ecke des ersten Zeichens den Index 0 hat und
+die rechte Ecke des letzten Zeichens einer *n* Zeichen langen Zeichenkette den
 Index *n*. Ein Beispiel ::
 
     +---+---+---+---+---+
@@ -434,9 +436,9 @@ Hinblick auf Internationalisierung von Software (üblicherweise ``i18n`` ---
 ``'i'`` + 18 Zeichen + ``'n'``) . Unicode löst diese Probleme, indem es eine
 Codepage für alle Schriftstücke definiert.
 
-Will man spezielle Zeichen in einen String einbinden, erreicht man das durch die
-Verwendung von Pythons *Unicode-Escape* Kodierung. Das folgende Beispiel zeigt
-wie::
+Will man spezielle Zeichen in eine Zeichenketten einbinden, erreicht man das
+durch die Verwendung von Pythons *Unicode-Escape*-Schreibweise. Das folgende
+Beispiel zeigt wie::
 
     >>> 'Hello\u0020World !'
     'Hello World !'
@@ -446,7 +448,7 @@ Ordnungszahl 0x0020 (das Leerzeichen) an der gegebenen Position eingefügt werde
 soll.
 
 Andere Zeichen werden interpretiert, indem ihre jeweiligen Ordnungszahlen direkt
-als Unicode-Ordnungszahlen benutzt werden. Hat man Stringliterale in der
+als Unicode-Ordnungszahlen benutzt werden. Hat man Zeichenkettenliterale in der
 normalen Latin-1-Kodierung, die in vielen westlichen Ländern benutzt wird, dann
 entsprechen die ersten 256 Zeichen von Unicode denselben Zeichen der Latin-1-Kodierung.
 
@@ -454,9 +456,9 @@ Neben diesen Standardkodierungen stellt Python eine ganze Reihe anderer
 Möglichkeiten bereit, Unicodestrings zu erstellen, sofern man die verwendete
 Kodierung kennt.
 
-Zur Konvertierung von Strings in Bytefolgen stellen Stringobjekte die Methode
-:func:`encode` bereit, die den Namen der Kodierung als Argument entgegennimmt,
-und zwar möglichst in Kleinbuchstaben. ::
+Zur Konvertierung von Zeichenketten in Bytefolgen stellen Stringobjekte die
+Methode :func:`encode` bereit, die den Namen der Kodierung als Argument
+entgegennimmt, und zwar möglichst in Kleinbuchstaben. ::
 
     >>> "Äpfel".encode('utf-8')
     b'\xc3\x84pfel'
