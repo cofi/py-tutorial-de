@@ -23,20 +23,20 @@ Skript zugreifen kann.
 Ein Modul ist eine Datei, die Python-Definitionen und -Anweisungen beinhaltet.
 Der Dateiname mit dem :file:`.py` Suffix entspricht dem Namen des Moduls.
 Innerhalb eines Moduls ist der Modulname als ``__name__`` verfügbar (globale
-Variable des Typs String). Zum Beispiel: Öffne einen Editor deiner Wahl und
+Variable des Typs String). Zum Beispiel: Öffne einen Editor Deiner Wahl und
 erstelle eine Datei im aktuellen Verzeichnis mit dem Namen :file:`fibo.py` und
 folgendem Inhalt::
 
-	# Fibonacci Zahlen Modul
+	# Fibonacci-Zahlen-Modul
 
-	def fib(n):    # schreibe Fibonacci Folge bis n
+	def fib(n):    # schreibe Fibonacci-Folge bis n
 	    a, b = 0, 1
 	    while b < n:
 	        print(b, end=' ')
 	        a, b = b, a+b
 	    print()
 
-	def fib2(n): # gib die Fibonacci Folge zurück bis n
+	def fib2(n): # gib die Fibonacci-Folge zurück bis n
 	    result = []
 	    a, b = 0, 1
 	    while b < n:
@@ -44,7 +44,7 @@ folgendem Inhalt::
 	        a, b = b, a+b
 	    return result
 	
-Öffne danach deinen Python-Interpreter und importiere das Modul mit folgendem
+Öffne danach Deinen Python-Interpreter und importiere das Modul mit folgendem
 Befehl::
 
 	>>> import fibo
@@ -188,7 +188,7 @@ Informationen.
 "Kompilierte" Python-Dateien
 ----------------------------
 
-Um den Start von kurzen Programmen, die viele Standard Module verwenden,
+Um den Start von kurzen Programmen, die viele Standardmodule verwenden,
 schneller zu machen, werden Dateien erstellt, welche bereits "byte-kompiliert"
 sind. Existiert eine Datei mit dem Namen :file:`spam.pyc`, so ist das eine
 "byte-kompilierte" Version der Datei :file:`spam.py` und des Moduls :mod:`spam`.
@@ -196,7 +196,7 @@ Der Zeitpunkt an dem die Datei :file:`spam.py` zuletzt geändert wurde, wird in
 :file:`spam.pyc` festgehalten. Falls die Zeiten nicht übereinstimmen, wird die
 :file:`.pyc` ignoriert.
 
-Normalerweise muss man nichts tun, damit die :file:`spam.pyc` Datei erstellt
+Normalerweise muss man nichts tun, damit die :file:`spam.pyc`-Datei erstellt
 wird. Immer, wenn :file:`spam.py` erfolgreich kompiliert wird, wird auch
 versucht die kompilierte Version in :file:`spam.pyc` zu schreiben. Es wird kein
 Fehler geworfen, wenn der Vorgang scheitert; wenn aus irgendeinem Grund die
@@ -208,56 +208,56 @@ kann.
 
 Einige Tipps für Experten:
 
-* Wird der Python Interpreter mit dem :option:`-O` Flag gestartet, so
-  wird der optimierte Code in :file:`.pyo` Dateien gespeichert. Optimierter
+* Wird der Python-Interpreter mit dem :option:`-O`-Flag gestartet, so
+  wird der optimierte Code in :file:`.pyo`-Dateien gespeichert. Optimierter
   Code hilft momentan nicht viel, da er lediglich :keyword:`assert`-Anweisungen
   entfernt. Wird :option:`-O` verwendet, wird der *komplette*
-  :term:`Bytecode` optimiert; :file:`.pyc` werden ignoriert und :file:`.py`
-  Dateien werden zu optimiertem Bytecode kompiliert.
+  :term:`Bytecode` optimiert; :file:`.pyc` werden ignoriert und :file:`.py`-Dateien
+  werden zu optimiertem Bytecode kompiliert.
 
-* Werden dem Python Interpreter zwei :option:`-O` Flags übergiben, vollzieht
+* Werden dem Python-Interpreter zwei :option:`-O`-Flags übergiben, vollzieht
   der Bytecode-Compiler Optimierungen, die zu einer
-  Fehlfunktion des Programms führen können. Momentan werden nur ``__doc__``
-  Strings aus dem Bytecode entfernt, was zu kleineren :file:`.pyo` Dateien
+  Fehlfunktion des Programms führen können. Momentan werden nur ``__doc__``-Strings
+  aus dem Bytecode entfernt, was zu kleineren :file:`.pyo`-Dateien
   führt. Da einige Programme sich darauf verlassen, dass sie verfügbar
   sind, sollte man diese Option nur aktivieren, wenn man weiß, was man tut.
 
 * Ein Programm wird in keinster Weise schneller ausgeführt, wenn es aus einer
-  :file:`.pyc` oder :file:`.pyo` anstatt aus einer :file:`.py` Datei gelesen
+  :file:`.pyc` oder :file:`.pyo` anstatt aus einer :file:`.py`-Datei gelesen
   wird; der einzige Geschwindigkeitsvorteil ist beim Starten der Dateien.
 
 * Wenn ein Skript durch das Aufrufen über die Kommandozeile ausgeführt wird,
-  wird der Bytecode nie in eine :file:`.pyc` oder :file:`.pyo` Datei
+  wird der Bytecode nie in eine :file:`.pyc`- oder :file:`.pyo`-Datei
   geschrieben. Deshalb kann die Startzeit eines Skripts durch das Auslagern des
   Codes in ein Modul reduziert werden. Es ist auch möglich eine :file:`.pyc`-
   oder :file:`.pyo`-Datei direkt in der Kommandozeile auszuführen.
 
-* Es ist möglich, eine :file:`.pyc` oder :file:`.pyo` Datei zu haben, ohne
+* Es ist möglich, eine :file:`.pyc`- oder :file:`.pyo`-Datei zu haben, ohne
   dass eine Datei mit dem Namen :file:`spam.py` für selbiges Modul existiert.
   Dies kann dazu genutzt werden, Python-Code auszuliefern, der relativ schwer
   rekonstruiert werden kann.
 
-* Das Modul :mod:`compileall` kann :file:`.pyc` Dateien (oder auch :file:`.pyo`,
+* Das Modul :mod:`compileall` kann :file:`.pyc`-Dateien (oder auch :file:`.pyo`,
   wenn :option:`-O` genutzt wird) aus allen Modulen eines Verzeichnisses
   erzeugen.
 
 .. _tut-standardmodules:
 
-Standard Module
-===============
+Standardmodule
+==============
 
 .. index:: module: sys
 
-Python wird mit einer Bibliothek von Standard Modulen ausgeliefert, welche in
+Python wird mit einer Bibliothek von Standardmodulen ausgeliefert, welche in
 der Python Library Reference beschrieben werden. Einige Module sind in den
 Interpreter eingebaut; diese bieten Zugang zu Operationen, die nicht Teil des
 Sprachkerns sind, aber trotzdem eingebaut sind. Entweder, um Zugang
-zu Systemoperationen (wie z.B. Systemaufrufe) bereitzustellen oder aus
+zu Systemoperationen (wie z. B. Systemaufrufe) bereitzustellen oder aus
 Effizienzgründen. Die Zusammenstellung dieser Module ist eine Option in der
 Konfiguration, welche auch von der verwendeten Plattform abhängig ist.
-Beispielsweise ist das :mod:`winreg` Modul nur unter Windows Systemen verfügbar.
+Beispielsweise ist das :mod:`winreg`-Modul nur unter Windows-Systemen verfügbar.
 Ein bestimmtes Modul verdient besondere Aufmerksamkeit: :mod:`sys`, welches in
-jeden Python Interpreter eingebaut ist. Die Variablen ``sys.ps1`` und
+jeden Python-Interpreter eingebaut ist. Die Variablen ``sys.ps1`` und
 ``sys.ps2`` definieren die primären und sekundären Eingabeaufforderungen, die in
 der Kommandozeile verwendet werden::
 
@@ -285,7 +285,7 @@ Variable mit normalen Listenoperationen verändern::
 	
 .. _tut-dir:
 
-Die :func:`dir` Funktion
+Die :func:`dir`-Funktion
 ========================
 
 Die eingebaute Funktion :func:`dir` wird benutzt, um herauszufinden, welche
@@ -402,12 +402,12 @@ diese Arbeiten ausführen. Hier eine mögliche Struktur für so ein Paket
 Wenn man das Paket importiert, sucht Python durch die Verzeichnisse im
 ``sys.path``, um nach dem Paket in einem Unterverzeichnis zu suchen.
 
-Die :file:`__init__.py` Datei wird benötigt, damit Python das Verzeichnis als
+Die :file:`__init__.py`-Datei wird benötigt, damit Python das Verzeichnis als
 Pakete behandelt; dies wurde gemacht, damit Verzeichnisse mit einem normalen
 Namen, wie z.B. ``string``, nicht unbeabsichtigt Module verstecken, die weiter
 hinten im Suchpfad erscheinen. Im einfachsten Fall ist :file:`__init__.py` eine
 leere Datei, sie kann allerdings auch Initialisierungscode für das Paket
-enthalten oder die ``__all__`` Variable setzen, welche später genauer
+enthalten oder die ``__all__``-Variable setzen, welche später genauer
 beschrieben wird.
 
 Benutzer eines Pakets können individuelle Module aus dem Paket importieren::
@@ -440,7 +440,7 @@ diesem Fall wird aber die :func:`echofilter` Funktion direkt verfügbar gemacht:
 	
 Wenn man ``from package import item`` verwendet, kann das ``item`` entweder ein
 Untermodul und -paket sein oder ein Name, der in diesem Paket definiert ist
-(z.B. eine Funktion, eine Klasse oder Variable). Das ``import`` Statement
+(z. B. eine Funktion, eine Klasse oder Variable). Das ``import``-Statement
 überprüft zuerst, ob das ``item`` in diesem Paket definiert ist; falls nicht,
 wird von einem Modul ausgegangen und versucht es zu laden. Wenn nichts gefunden
 wird, wird eine :exc:`ImportError`-Ausnahme geworfen.
@@ -466,9 +466,9 @@ Windows-Plattformen, bei denen das Dateisystem nicht immer zutreffende
 Informationen über die Schreibweise eines Dateinamens hat. Auf diesen
 Plattformen gibt es keinen zuverlässigen Weg zu wissen, ob eine Datei
 :file:`ECHO.PY` als Modul :mod:`echo`, :mod:`Echo` oder :mod:`ECHO` importiert
-werden soll. (Windows 95 hat zum Beispiel die nervige Praxis alle Dateinamen mit
+werden soll. (Windows 95 hat zum Beispiel die nervige Praxis, alle Dateinamen mit
 einem groß geschriebenen ersten Buchstaben anzuzeigen.) Die Begrenzung auf DOS
-8+3 Dateinamen erzeugt ein weiteres interessantes Problem für lange Modulnamen.
+8+3-Dateinamen erzeugt ein weiteres interessantes Problem für lange Modulnamen.
 
 Die einzige Lösung ist, dass der Autor des Paketes einen expliziten Index des
 Paketes bereitstellt. Die :keyword:`import`-Anweisung folgt folgender
@@ -494,7 +494,7 @@ importiert wurde (möglicherweise führt es jeglichen Initialisierungscode in
 wurden. Inklusive der Namen, die in :file:`__init__.py` definiert werden (und
 Untermodule die explizit geladen werden). Es bindet auch jegliche Untermodule
 des Paketes ein, die durch vorherige :keyword:`import`-Anweisungen explizit
-geladen wurden. Schau dir mal diesen Code an::
+geladen wurden. Schau Dir mal diesen Code an::
 
     import sound.effects.echo
     import sound.effects.surround
