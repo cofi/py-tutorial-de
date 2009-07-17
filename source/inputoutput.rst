@@ -4,7 +4,7 @@
 Eingabe und Ausgabe
 *******************
 
-Es gibt verschiedene Arten die Ausgabe eines Programmes darzustellen: Daten
+Es gibt verschiedene Arten, die Ausgabe eines Programmes darzustellen: Daten
 können in menschenlesbarer Form ausgegeben werden oder in eine Datei für die
 spätere Verwendung geschrieben werden. Dieses Kapitel beschreibt einige
 Möglichkeiten.
@@ -36,8 +36,8 @@ Eine Frage bleibt natürlich: Wie konvertiert man Werte zu Zeichenketten?
 Glücklicherweise kennt Python Wege, um jeden Wert in eine Zeichenkette
 umzuwandeln: Übergib den Wert an die :func:`repr`- oder :func:`str`-Funktion.
 
-Die :func:`str` ist dazu gedacht eine ziemlich menschenlesbare Repräsentation
-des Wertes zurückzugeben, während :func:`repr` dazu gedacht ist vom Interpreter
+Die :func:`str`-Funktion ist dazu gedacht eine ziemlich menschenlesbare Repräsentation
+des Wertes zurückzugeben, während :func:`repr` dazu gedacht ist, vom Interpreter
 lesbar zu sein (oder einen :exc:`SyntaxError` erzwingt, wenn es keine
 äquivalente Syntax gibt). Für Objekte, die keine besondere menschenlesbare
 Repräsentation haben, gibt :func:`str` denselben Wert wie :func:`repr` zurück.
@@ -70,7 +70,7 @@ Ein paar Beispiele::
    ... repr((x, y, ('spam', 'eggs')))
    "(32.5, 40000, ('spam', 'eggs'))"
 
-Nun zwei Möglichkeiten eine Tabelle von Quadrat- und Kubikzahlen zu erstellen::
+Nun zwei Möglichkeiten, eine Tabelle von Quadrat- und Kubikzahlen zu erstellen::
 
    >>> for x in range(1, 11):
    ...     print(repr(x).rjust(2), repr(x*x).rjust(3), end=' ')
@@ -104,7 +104,7 @@ Nun zwei Möglichkeiten eine Tabelle von Quadrat- und Kubikzahlen zu erstellen::
 
 (Achte darauf, dass im ersten Beispiel ein Leerzeichen pro Spalte durch die
 Funktionsweise von :func:`print` hinzugefügt wird: Sie trennt ihre Argumente mit
-Leerzeichen.
+Leerzeichen.)
 
 Dieses Beispiel hat die :meth:`rjust`-Methode von Zeichenkettenobjekten gezeigt,
 die eine Zeichenkette in einem Feld der gegebenen Breite rechtsbündig macht,
@@ -113,8 +113,8 @@ indem sie diese links mit Leerzeichen auffüllt. Es gibt die ähnlichen Methoden
 eine neue Zeichenkette zurück. Ist die gegebene Zeichenkette zu lang,
 schneiden sie nichts, sondern geben diese unverändert zurück; dies wird die
 Anordnung durcheinanderbringen, aber ist meistens besser als die Alternative,
-die den Wert zu verfälschen wäre. (Will man wirklich abschneiden, kann man
-immernoch eine Slicingoperation hinzufügen, zum Beispiel ``x.ljust(n)[:n]``.)
+den Wert zu verfälschen. (Will man wirklich abschneiden, kann man
+immer noch eine Slicingoperation hinzufügen, zum Beispiel ``x.ljust(n)[:n]``.)
 
 Es gibt noch eine weitere Methode, :meth:`zfill`, die eine numerische
 Zeichenkette mit Nullen auffüllt. Sie versteht auch Plus- und Minuszeichen::
@@ -177,7 +177,7 @@ für dieses Feld an. Das ist nützlich um Tabellen schön aussehen zu lassen. ::
     Sjoerd     ==>       4127
 
 Hat man einen wirklich langen Formatstring, den man nicht aufteilen will, wäre
-es nett, wenn man die zu formatierenden Variablen durch den Namen, statt durch
+es nett, wenn man die zu formatierenden Variablen durch den Namen statt durch
 die Position referenzieren könnte. Dies kann einfach bewerkstelligt werden,
 indem man das Dictionary übergibt und auf die Schlüssel über eckige Klammern
 ``'[]'`` zugreift ::
@@ -214,7 +214,7 @@ resultierende Zeichenkette dieser Formatierungsoperation zurück. Zum Beispiel::
 
 Da :meth:`str.format` ziemlich neu ist, benutzt viel Pythoncode noch den
 ``%``-Operator. Jedoch sollte :meth:`str.format` hauptsächlich benutzt werden,
-da diese alte Art der Formatierung irgendwann aus der Sprache entfernt wird.
+da alte Art der Formatierung irgendwann aus der Sprache entfernt werden wird.
 
 Mehr Informationen dazu gibt es in dem Abschnitt :ref:`old-string-formatting`.
 
@@ -260,7 +260,7 @@ Im Textmodus wird beim Lesen standardmäßig das plattformspezifische Zeilenende
 konvertiert und beim Schreiben ``\n`` zurück zum plattformspezifischen
 Zeilenende. Diese versteckte Modifikation ist klasse für Textdateien, wird aber
 binäre Dateiformate, wie :file:`JPEG`- oder :file:`EXE`-Dateien,  beschädigen.
-Achte sehr sorgfältig darauf, dass du den Binärmodus benutzt, wenn du solche
+Achte sehr sorgfältig darauf, dass Du den Binärmodus benutzt, wenn Du solche
 Dateien schreibst oder liest.
 
 
@@ -274,10 +274,10 @@ Die übrigen Beispiele in diesem Abschnitt nehmen an, dass ein Dateiobjekt namen
 
 Um den Inhalt einer Datei zu lesen, kann man ``f.read(size)`` aufrufen, was
 einen Teil der Daten ausliest und diese als Zeichenketten- oder Byteobjekt
-zurückgibt. *size* ist ein optionales, numerisches Argument, wird es ausgelassen
+zurückgibt. *size* ist ein optionales, numerisches Argument. Wird es ausgelassen
 oder ist es negativ, so wird der gesamte Inhalt der Datei ausgelesen und
-zurückgegeben, falls die Datei doppelt so groß wie der Speicher deiner Maschine
-ist, so ist das dein Problem. Andernfalls werden höchstens *size* Byte
+zurückgegeben, falls die Datei doppelt so groß wie der Speicher Deiner Maschine
+ist, so ist das Dein Problem. Andernfalls werden höchstens *size* Byte
 ausgelesen und zurückgegeben. Ist das Ende der Datei erreicht, so gibt
 ``f.read()`` eine leere Zeichenkette (``''``) zurück. ::
 
@@ -312,7 +312,9 @@ zurückgegeben. ::
     >>> f.readlines()
     ['Dies ist die erste Zeile der Datei\n', 'Zweite Zeile der Datei\n']
 
-Ein alternativer Ansatz Zeilen auszulesen, ist über das Dateiobjekt zu iterieren. Das ist speichereffizient, schnell und führt zu einfacherem Code::
+Ein alternativer Ansatz Zeilen auszulesen ist, über das Dateiobjekt zu
+iterieren. Das ist speichereffizient, schnell und führt zu einfacherem
+Code::
 
     >>> for line in f:
     ...     print(line, end='')
@@ -365,7 +367,7 @@ Positionierungen vom Anfang der Datei aus erlaubt (mit der Ausnahme, dass mit
 ``f.seek(0, 2)`` zum Ende der Datei gesprungen werden kann).
 
 Wenn man mit einer Datei fertig ist, ruft man ``f.close()`` auf, um sie zu
-schliessen und jegliche Systemressource freizugeben, die von der offenen Datei
+schließen und jegliche Systemressource freizugeben, die von der offenen Datei
 belegt wird. Nach dem Aufruf von ``f.close()`` schlägt automatisch jeder Versuch
 fehl das Objekt zu benutzen. ::
 
@@ -400,17 +402,17 @@ Das :mod:`pickle`-Modul
 
 Zeichenketten können einfach in eine Datei geschrieben und aus ihr gelesen
 werden. Zahlen sind ein bisschen aufwändiger, da die :meth:`read`-Methode nur
-Zeichenketten zurückgibt, das an eine Funktion wie :func:`int` übergeben werden
-muss, die eine Zeichenkette wie ``'123'`` nimmt und deren numerischen Wert 123
+Zeichenketten zurückgibt. Diese müssen an eine Funktion wie :func:`int` übergeben werden,
+die eine Zeichenkette wie ``'123'`` nimmt und deren numerischen Wert 123
 zurückgibt. Wenn man jedoch komplexere Datentypen wie Listen, Dictionaries oder
 Klasseninstanzen speichern will, wird die Angelegenheit viel komplizierter.
 
-Anstatt die Benutzer ständig Code schreiben und Debuggen zu lassen, um
+Anstatt die Benutzer ständig Code schreiben und debuggen zu lassen, um
 komplexere Datentypen zu speichern, stellt Python ein Standardmodul namens
 :mod:`pickle` bereit. Dies ist ein fantastisches Modul, das fast jedes
 Pythonobjekt (sogar ein paar Formen von Pythoncode!) nehmen kann und es in eine
 Zeichenkettenrepräsentation konvertieren kann; dieser Prozess wird
-:dfn:`pickling` genannt. Das Objekt aus der Zeichenkettenrepräsentation zu
+:dfn:`pickling` ("einwecken") genannt. Das Objekt aus der Zeichenkettenrepräsentation zu
 rekonstruieren wird :dfn:`unpickling` genannt. Zwischen pickling und unpickling,
 kann die Zeichenkettenrepräsentation in Daten oder Dateien gespeichert werden
 oder über ein Netzwerk an eine entfernte Maschine geschickt werden.
