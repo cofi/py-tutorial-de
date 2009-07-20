@@ -20,6 +20,7 @@ Autoren der Übersetzung
 * Florian Mayer <flormayer@aim.com>
 * HerrHagen
 * Johannes Schönberger
+* Lutz Horn <lutz.horn@fastmail.fm>
 * Michael Markert <markert.michael@gmail.com>
 * Stefan Matthias Aust <eibaan@googlemail.com>
 
