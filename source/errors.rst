@@ -5,7 +5,7 @@ Fehler und Ausnahmen
 ********************
 
 Bis jetzt wurden Fehlermeldungen nur am Rande erwähnt, aber wenn du
-die Beispiele ausprobiert hast, hast du sicherlich schon einige
+die Beispiele ausprobiert hast, hast Du sicherlich schon einige
 gesehen. Es gibt (mindestens) zwei verschiedene Arten von Fehlern:
 *Syntaxfehler* (engl.: syntax errors) und *Ausnahmen* (engl.:
 exceptions).
@@ -17,7 +17,7 @@ Syntaxfehler
 ============
 
 Syntaxfehler, auch Parser-Fehler genannt, sind vielleicht die
-häufigsten Fehlermeldungen, die du bekommt, wenn du Python lernst:: 
+häufigsten Fehlermeldungen, die Du bekommt, wenn Du Python lernst:: 
 
    >>> while True print('Hallo Welt')
      File "<stdin>", line 1, in ?
@@ -31,7 +31,7 @@ wurde. Der Fehler ist an dem Token aufgetreten (oder wurde zumindest
 dort entdeckt), welches *vor* dem Pfeil steht: In dem Beispiel wurde der
 Fehler bei der :func:`print`-Funktion entdeckt, da ein Doppelpunkt
 (``':'``) vor der Funktion fehlt. Des weiteren werden der Dateiname
-und die Zeilennummer ausgegeben, sodass du weißt, wo du suchen musst,
+und die Zeilennummer ausgegeben, sodass Du weißt, wo Du suchen musst,
 falls die Eingabe aus einem Skript kam.
  
 
@@ -44,7 +44,7 @@ Selbst wenn eine Anweisung oder ein Ausdruck syntaktisch korrekt ist,
 kann es bei der Ausführung zu Fehlern kommen. Fehler, die bei der
 Ausführung auftreten, werden *Ausnahmen* (engl: exceptions) genannt
 und sind nicht notwendigerweise schwerwiegend: Du wirst gleich lernen,
-wie du in Python-Programmen mit ihnen umgehst. Die meisten Ausnahmen
+wie Du in Python-Programmen mit ihnen umgehst. Die meisten Ausnahmen
 werden von Programmen aber nicht behandelt, und erzeugen
 Fehlermeldungen, wie dieses Beispiel zeigt::
 
@@ -90,7 +90,7 @@ Ausnahmen behandeln
 ===================
 
 Es ist möglich, Programme zu schreiben, welche ausgewählte Ausnahmen
-behandeln. Schau dir das folgende Beispiel an, welches den Benutzer
+behandeln. Schau Dir das folgende Beispiel an, welches den Benutzer
 solange um Eingabe bittet, bis eine gültige Ganzzahl eingegeben
 wird, es dem Benutzer aber ermöglicht, das Programm abzubrechen (mit
 :kbd:`Strg-C` oder was das Betriebssystem sonst unterstützt); ein
@@ -133,7 +133,7 @@ festzulegen. Es wird höchstens ein except-Block ausgeführt. Ein Block
 kann nur die Ausnahmen behandeln, welche in dem zugehörigen try-Block
 aufgetreten sind, nicht jedoch solche, welche in einem anderen
 except-Block der gleichen try-Anweisung auftreten. Ein except-Block
-kann mehrere Exceptions gleichzeitig behandeln, dies wird in einem
+kann mehrere Ausnahmen gleichzeitig behandeln, dies wird in einem
 Tupel in runden Klammern angegeben:
 
    ... except (RuntimeError, TypeError, NameError):
@@ -175,7 +175,7 @@ auslöst. Zum Beispiel::
            print(arg, 'hat', len(f.readlines()), 'Zeilen')
            f.close()
 
-Die Benutzung eines :keyword:`else`-Blockes ist besser als
+Die Benutzung eines :keyword:`else`-Blockes ist besser, als
 zusätzlichen Code zum :keyword:`try`-Block hinzuzufügen. Sie
 verhindert, dass aus Versehen Ausnahmen abgefangen werden, die nicht
 von dem Code ausgelöst wurden, welcher von der :keyword:`try` ...
@@ -248,8 +248,8 @@ Ausnahme an, die ausgelöst werden soll. Es muss entweder eine
 Ausnahme-Instanz sein oder eine Ausnahmeklasse (eine Klasse, die von
 :class:`Exception` erbt).
 
-Wenn du herausfinden willst, ob eine Ausnahme ausgelöst wurde, sie
-aber nicht behandeln willst, erlaubt dir eine einfachere Form der 
+Wenn Du herausfinden willst, ob eine Ausnahme ausgelöst wurde, sie
+aber nicht behandeln willst, erlaubt Dir eine einfachere Form der 
 :keyword:`raise`-Anweisung, eine Ausnahme erneut auszulösen::
 
    >>> try:
@@ -397,7 +397,7 @@ wurde. Ein etwas komplizierteres Beispiel::
    TypeError: unsupported operand type(s) for /: 'str' and 'str'
 
 
-Wie du sehen kannst, wird der :keyword:`finally`-Block in jedem Fall
+Wie Du sehen kannst, wird der :keyword:`finally`-Block in jedem Fall
 ausgeführt. Der :exc:`TypeError`, der durch die Division zweier
 Strings ausgelöst wird, wird nicht vom :keyword:`except`-Block
 behandelt und wird somit erneut ausgelöst, nachdem der
@@ -416,7 +416,7 @@ Vordefinierte Aufräumaktionen
 Einige Objekte definieren Standard-Aufräumaktionen, die ausgeführte
 werden, wenn das Objekt nicht länger gebraucht wird, egal ob die
 Operation, die das Objekt benutzte, erfolgreich war oder nicht. Schau
-dir das folgende Beispiel an, welches versucht, eine Datei zu öffnen
+Dir das folgende Beispiel an, welches versucht, eine Datei zu öffnen
 und ihren Inhalt auf dem Bildschirm auszugeben.::
 
    for line in open("myfile.txt"):
