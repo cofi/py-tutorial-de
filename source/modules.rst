@@ -216,11 +216,11 @@ Einige Tipps für Experten:
   werden zu optimiertem Bytecode kompiliert.
 
 * Werden dem Python-Interpreter zwei :option:`-O`-Flags übergiben, vollzieht
-  der Bytecode-Compiler Optimierungen, die zu einer
-  Fehlfunktion des Programms führen können. Momentan werden nur ``__doc__``-Strings
-  aus dem Bytecode entfernt, was zu kleineren :file:`.pyo`-Dateien
-  führt. Da einige Programme sich darauf verlassen, dass sie verfügbar
-  sind, sollte man diese Option nur aktivieren, wenn man weiß, was man tut.
+  der Bytecode-Compiler Optimierungen, die zu einer Fehlfunktion des Programms
+  führen können. Momentan werden nur ``__doc__``-Strings aus dem Bytecode
+  entfernt, was zu kleineren :file:`.pyo`-Dateien führt. Da einige Programme
+  sich darauf verlassen, dass sie verfügbar sind, sollte man diese Option nur
+  aktivieren, wenn man weiß, was man tut.
 
 * Ein Programm wird in keinster Weise schneller ausgeführt, wenn es aus einer
   :file:`.pyc` oder :file:`.pyo` anstatt aus einer :file:`.py`-Datei gelesen
@@ -248,11 +248,11 @@ Standardmodule
 
 .. index:: module: sys
 
-Python wird mit einer Bibliothek von Standardmodulen ausgeliefert, welche in
-der Python Library Reference beschrieben werden. Einige Module sind in den
+Python wird mit einer Bibliothek von Standardmodulen ausgeliefert, welche in der
+Python Library Reference beschrieben werden. Einige Module sind in den
 Interpreter eingebaut; diese bieten Zugang zu Operationen, die nicht Teil des
-Sprachkerns sind, aber trotzdem eingebaut sind. Entweder, um Zugang
-zu Systemoperationen (wie z. B. Systemaufrufe) bereitzustellen oder aus
+Sprachkerns sind, aber trotzdem eingebaut sind. Entweder, um Zugang zu
+Systemoperationen (wie z. B. Systemaufrufe) bereitzustellen oder aus
 Effizienzgründen. Die Zusammenstellung dieser Module ist eine Option in der
 Konfiguration, welche auch von der verwendeten Plattform abhängig ist.
 Beispielsweise ist das :mod:`winreg`-Modul nur unter Windows-Systemen verfügbar.
@@ -375,7 +375,7 @@ Mixen, Echo hinzufügen, etc.), also wird man immer wieder Module schreiben, die
 diese Arbeiten ausführen. Hier eine mögliche Struktur für so ein Paket
 (ausgedrückt in der Form eines hierarchischen Dateisystems)::
 
-	sound/                          Top-level package
+	sound/                             Top-level package
 	         __init__.py               Initialize the sound package
 	         formats/                  Subpackage for file format conversions
 	                 __init__.py
@@ -466,9 +466,10 @@ Windows-Plattformen, bei denen das Dateisystem nicht immer zutreffende
 Informationen über die Schreibweise eines Dateinamens hat. Auf diesen
 Plattformen gibt es keinen zuverlässigen Weg zu wissen, ob eine Datei
 :file:`ECHO.PY` als Modul :mod:`echo`, :mod:`Echo` oder :mod:`ECHO` importiert
-werden soll. (Windows 95 hat zum Beispiel die nervige Praxis, alle Dateinamen mit
-einem groß geschriebenen ersten Buchstaben anzuzeigen.) Die Begrenzung auf DOS
-8+3-Dateinamen erzeugt ein weiteres interessantes Problem für lange Modulnamen.
+werden soll. (Windows 95 hat zum Beispiel die nervige Praxis, alle Dateinamen
+mit einem groß geschriebenen ersten Buchstaben anzuzeigen.) Die Begrenzung auf
+DOS 8+3-Dateinamen erzeugt ein weiteres interessantes Problem für lange
+Modulnamen.
 
 Die einzige Lösung ist, dass der Autor des Paketes einen expliziten Index des
 Paketes bereitstellt. Die :keyword:`import`-Anweisung folgt folgender

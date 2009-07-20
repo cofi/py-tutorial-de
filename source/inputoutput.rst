@@ -36,10 +36,10 @@ Eine Frage bleibt natürlich: Wie konvertiert man Werte zu Zeichenketten?
 Glücklicherweise kennt Python Wege, um jeden Wert in eine Zeichenkette
 umzuwandeln: Übergib den Wert an die :func:`repr`- oder :func:`str`-Funktion.
 
-Die :func:`str`-Funktion ist dazu gedacht eine ziemlich menschenlesbare Repräsentation
-des Wertes zurückzugeben, während :func:`repr` dazu gedacht ist, vom Interpreter
-lesbar zu sein (oder einen :exc:`SyntaxError` erzwingt, wenn es keine
-äquivalente Syntax gibt). Für Objekte, die keine besondere menschenlesbare
+Die :func:`str`-Funktion ist dazu gedacht eine ziemlich menschenlesbare
+Repräsentation des Wertes zurückzugeben, während :func:`repr` dazu gedacht ist,
+vom Interpreter lesbar zu sein (oder einen :exc:`SyntaxError` erzwingt, wenn es
+keine äquivalente Syntax gibt). Für Objekte, die keine besondere menschenlesbare
 Repräsentation haben, gibt :func:`str` denselben Wert wie :func:`repr` zurück.
 Viele Werte wie Nummern oder Strukturen wie Listen und Dictionaries benutzen für
 beide Funktionen dieselbe Repräsentation. Zeichenketten und insbesondere
@@ -214,7 +214,8 @@ resultierende Zeichenkette dieser Formatierungsoperation zurück. Zum Beispiel::
 
 Da :meth:`str.format` ziemlich neu ist, benutzt viel Pythoncode noch den
 ``%``-Operator. Jedoch sollte :meth:`str.format` hauptsächlich benutzt werden,
-da alte Art der Formatierung irgendwann aus der Sprache entfernt werden wird.
+da die alte Art der Formatierung irgendwann aus der Sprache entfernt werden
+wird.
 
 Mehr Informationen dazu gibt es in dem Abschnitt :ref:`old-string-formatting`.
 
@@ -313,8 +314,7 @@ zurückgegeben. ::
     ['Dies ist die erste Zeile der Datei\n', 'Zweite Zeile der Datei\n']
 
 Ein alternativer Ansatz Zeilen auszulesen ist, über das Dateiobjekt zu
-iterieren. Das ist speichereffizient, schnell und führt zu einfacherem
-Code::
+iterieren. Das ist speichereffizient, schnell und führt zu einfacherem Code::
 
     >>> for line in f:
     ...     print(line, end='')
@@ -402,20 +402,22 @@ Das :mod:`pickle`-Modul
 
 Zeichenketten können einfach in eine Datei geschrieben und aus ihr gelesen
 werden. Zahlen sind ein bisschen aufwändiger, da die :meth:`read`-Methode nur
-Zeichenketten zurückgibt. Diese müssen an eine Funktion wie :func:`int` übergeben werden,
-die eine Zeichenkette wie ``'123'`` nimmt und deren numerischen Wert 123
-zurückgibt. Wenn man jedoch komplexere Datentypen wie Listen, Dictionaries oder
-Klasseninstanzen speichern will, wird die Angelegenheit viel komplizierter.
+Zeichenketten zurückgibt. Diese müssen an eine Funktion wie :func:`int`
+übergeben werden, die eine Zeichenkette wie ``'123'`` nimmt und deren
+numerischen Wert 123 zurückgibt. Wenn man jedoch komplexere Datentypen wie
+Listen, Dictionaries oder Klasseninstanzen speichern will, wird die
+Angelegenheit viel komplizierter.
 
 Anstatt die Benutzer ständig Code schreiben und debuggen zu lassen, um
 komplexere Datentypen zu speichern, stellt Python ein Standardmodul namens
 :mod:`pickle` bereit. Dies ist ein fantastisches Modul, das fast jedes
 Pythonobjekt (sogar ein paar Formen von Pythoncode!) nehmen kann und es in eine
 Zeichenkettenrepräsentation konvertieren kann; dieser Prozess wird
-:dfn:`pickling` ("einwecken") genannt. Das Objekt aus der Zeichenkettenrepräsentation zu
-rekonstruieren wird :dfn:`unpickling` genannt. Zwischen pickling und unpickling,
-kann die Zeichenkettenrepräsentation in Daten oder Dateien gespeichert werden
-oder über ein Netzwerk an eine entfernte Maschine geschickt werden.
+:dfn:`pickling` ("einwecken") genannt. Das Objekt aus der
+Zeichenkettenrepräsentation zu rekonstruieren wird :dfn:`unpickling` genannt.
+Zwischen pickling und unpickling, kann die Zeichenkettenrepräsentation in Daten
+oder Dateien gespeichert werden oder über ein Netzwerk an eine entfernte
+Maschine geschickt werden.
 
 Hat man ein Objekt ``x`` und ein Dateiobjekt ``f``, das zum Schreiben geöffnet
 wurde, benötigt der einfachste Weg das Objekt zu picklen nur eine Zeile Code::
