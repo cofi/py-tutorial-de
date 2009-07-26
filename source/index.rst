@@ -66,3 +66,4 @@ Es lohnt sich ebenfalls das :ref:`glossary` durchzugehen.
    interactive.rst
    floatingpoint.rst
    authors.rst
+   glossary.rst

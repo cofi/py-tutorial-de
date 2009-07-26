@@ -197,7 +197,7 @@ Schlüsselwortargumente mit der '**'-Notation übergibt.
 Das ist besonders nützlich in Verbindung mit der neuen eingebauten Funktion
 :func:`vars`, die ein Dictionary mit allen lokalen Variablen zurückgibt.
 
-Siehe :ref:`formatstrings` für eine komplette Übersicht zu
+Siehe `Format String Syntax <http://docs.python.org/3.1/library/string.html#formatstrings>`_ für eine komplette Übersicht zu
 Zeichenkettenformatierung mit :meth:`str.format`.
 
 Alte Zeichenkettenformatierung
@@ -217,7 +217,7 @@ Da :meth:`str.format` ziemlich neu ist, benutzt viel Pythoncode noch den
 da die alte Art der Formatierung irgendwann aus der Sprache entfernt werden
 wird.
 
-Mehr Informationen dazu gibt es in dem Abschnitt :ref:`old-string-formatting`.
+Mehr Informationen dazu gibt es in dem Abschnitt `Old String Formatting Operations <http://docs.python.org/3.1/library/stdtypes.html#old-string-formatting>`_.
 
 .. _tut-files:
 
@@ -439,3 +439,4 @@ der Fachbegriff für so etwas ist ein :dfn:`persistentes` Objekt. Weil
 :mod:`pickle` so weitläufig benutzt wird, stellen viele Programmierer, die
 Pythonerweiterungen schreiben sicher, dass neue Datentypen, wie Matrizen,
 richtig gepickled und unpickled werden können.
+

@@ -80,7 +80,7 @@ dort der Programmverlauf mittels der entsprechenden Zeilen des
 Quellcodes aufgelistet; es werden jedoch keine Zeilen ausgegeben, die
 von der Standardeingabe gelesen wurden.
 
-:ref:`bltin-exceptions` listet alle eingebauten Ausnahmen und ihre
+`Built-in Exceptions <http://docs.python.org/3.1/library/exceptions.html#bltin-exceptions>`_ listet alle eingebauten Ausnahmen und ihre
 Bedeutung auf.
 
 
@@ -437,5 +437,4 @@ Nachdem die Anweisung ausgeführt wurde, wird die Datei *f* stets
 geschlossen, selbst wenn ein Problem bei der Ausführung der Zeilen
 auftrat. Objekte die, wie Dateien, vordefinierte Aufräumaktionen
 bereitstellen, geben dies in ihrer Dokumentation an.
-
 

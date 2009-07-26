@@ -11,7 +11,7 @@ zu lösen. Wo kann man sich nun weiter informieren?
 Dieses Tutorial ist Teil der Python Dokumentation.   Einige andere Dokumente 
 davon sind:
 
-* :ref:`library-index`:
+* `The Python Standard Library <http://docs.python.org/3.1/library/index.html#library-index>`_:
 
   Dieses Handbuch enthält eine vollständige (aber kompakte) Referenz zu den
   Typen, Funktionen und Modulen, die die Standardbibliothek enthält und die
@@ -22,9 +22,9 @@ davon sind:
   Überfliegen der Referenz zur Standardbibliothek gibt einen Überblick über die
   verfügbaren Module.
 
-* :ref:`install-index` erklärt wie man externe Module installiert.
+* `Installing Python Modules <http://docs.python.org/3.1/install/index.html#install-index>`_ erklärt wie man externe Module installiert.
 
-* :ref:`reference-index`: Gibt eine detaillierte Beschreibung der Syntax
+* `The Python Language Reference <http://docs.python.org/3.1/reference/index.html#reference-index>`_: Gibt eine detaillierte Beschreibung der Syntax
   und Semantik von Python.  Dies ist eher schwerer Stoff, aber als komplette
   Referenz der Sprache als solche sinnvoll.
 
