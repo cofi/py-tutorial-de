@@ -145,12 +145,12 @@ das es sich nicht um Dezimal-Arithmetik handelt und dass jede Operation mit
 einer Fließkommazahl einen neuen Rundungsfehler enthalten kann.
 
 Von einigen pathologischen Fällen abgesehen, erhält man in den meisten
-existierenden Fällen, für die gängigsten Anwendungen von Fließkommazahlen
-das erwartete Ergebnis, wenn man einfach die Anzeige des Ergebnisses auf
-die Zahl der Dezimalstellen rundet, die man erwartet.
-:func:`str` genügt meist, für eine feinere Kontrolle kann man sich
-:meth:`str.format` mit den Formatierungsoptionen in :ref:`formatstrings`
-anschauen.
+existierenden Fällen, für die gängigsten Anwendungen von Fließkommazahlen das
+erwartete Ergebnis, wenn man einfach die Anzeige des Ergebnisses auf die Zahl
+der Dezimalstellen rundet, die man erwartet. :func:`str` genügt meist, für eine
+feinere Kontrolle kann man sich :meth:`str.format` mit den Formatierungsoptionen
+in `Format String Syntax
+<http://docs.python.org/3.1/library/string.html#formatstrings>`_ anschauen.
 
 Für Anwendungsfälle, die eine exakte dezimale Darstellung benötigen,
 kann das Modul :mod:`decimal` verwendet werden, welches Dezimalarithmetik

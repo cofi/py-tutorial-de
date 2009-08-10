@@ -466,7 +466,8 @@ benutzt werden. Hier ein Beispiel, das wegen dieser Einschränkung scheitert::
     TypeError: function() got multiple values for keyword argument 'a'
 
 Ist ein Parameter der Form ``**name`` in der Definition enthalten, bekommt
-dieser ein Dictionary (siehe :ref:`typesmapping`), das alle
+dieser ein Dictionary (siehe `Mapping Types
+<http://docs.python.org/3.1/library/stdtypes.html#typesmapping>`_), das alle
 Schlüsselwortargumente enthält, bis auf die, die in der Definition vorkommen.
 Dies kann mit einem Parameter der Form ``*name``, der im nächsten Unterabschnitt
 beschrieben wird, kombiniert werden. Dieser bekommt ein Tupel, das alle

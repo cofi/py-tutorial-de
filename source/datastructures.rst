@@ -305,9 +305,10 @@ Tupel und Sequenzen
 
 Wir haben gesehen, dass Listen und Zeichenketten viele Eigenschaften, wie
 Slicing und Indizierung, gemein haben. Beide sind Exemplare von
-*Sequenzdatentypen* (siehe :ref:`typesseq`). Da sich Python weiterentwickelt
-können auch noch andere Sequenzdatentypen hinzukommen. Es gibt aber noch einen
-weiteren standardmäßigen Sequenzdatentyp: Das Tupel.
+*Sequenzdatentypen* (siehe `Sequence Types
+<http://docs.python.org/3.1/library/stdtypes.html#typesseq>`_). Da sich Python
+weiterentwickelt können auch noch andere Sequenzdatentypen hinzukommen. Es gibt
+aber noch einen weiteren standardmäßigen Sequenzdatentyp: Das Tupel.
 
 Ein Tupel besteht aus mehreren Werten, die durch Kommas von einander getrennt
 sind, beispielsweise::
@@ -425,17 +426,18 @@ Dictionaries
 ============
 
 Ein weiterer nützlicher Datentyp, der in Python eingebaut ist, ist das
-*Dictionary* (siehe :ref:`typesmapping`). Dictionaries sind in manch anderen
-Sprachen als "assoziativer Speicher" oder "assoziative Arrays" zu finden. Anders
-als Sequenzen, die über Zahlen indizierbar sind, sind Dictionaries durch
-*Schlüssel* (*keys*), als die jeder unveränderbare Typ dienen kann, indizierbar;
-aus Zeichenketten und Zahlen kann immer solch ein Schlüssel gebildet werden.
-Tupel können als Schlüssel benutzt werden, wenn sie nur aus Zeichenketten,
-Zahlen oder Tupel bestehen; enthält ein Tupel direkt oder indirekt ein
-veränderbares Objekt, kann es nicht als Schlüssel genutzt werden. Listen können
-nicht als Schlüssel benutzt werden, da sie direkt veränderbar sind, sei es durch
-Indexzuweisung, Abschnittszuweisung oder Methoden wie :meth:`append` and
-:meth:`extend`.
+*Dictionary* (siehe `Mapping Types
+<http://docs.python.org/3.1/library/stdtypes.html#typesmapping>`_). Dictionaries
+sind in manch anderen Sprachen als "assoziativer Speicher" oder "assoziative
+Arrays" zu finden. Anders als Sequenzen, die über Zahlen indizierbar sind, sind
+Dictionaries durch *Schlüssel* (*keys*), als die jeder unveränderbare Typ dienen
+kann, indizierbar; aus Zeichenketten und Zahlen kann immer solch ein Schlüssel
+gebildet werden.  Tupel können als Schlüssel benutzt werden, wenn sie nur aus
+Zeichenketten, Zahlen oder Tupel bestehen; enthält ein Tupel direkt oder
+indirekt ein veränderbares Objekt, kann es nicht als Schlüssel genutzt werden.
+Listen können nicht als Schlüssel benutzt werden, da sie direkt veränderbar
+sind, sei es durch Indexzuweisung, Abschnittszuweisung oder Methoden wie
+:meth:`append` and :meth:`extend`.
 
 Am Besten stellt man sich Dictionaries als ungeordnete Menge von *Schlüssel:
 Wert*-Paaren vor, mit der Anforderung, dass die Schlüssel eindeutig sind
