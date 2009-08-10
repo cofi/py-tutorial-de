@@ -68,7 +68,7 @@ eins zwei drei`` in der Eingabeaufforderung des Betriebssystems eingibt::
    >>> print sys.argv
    ['demo.py', 'eins', 'zwei', 'drei']
 
-Das Modul 'mod'`getopt` verarbeitet *sys.argv* gemäß der üblichen Konventionen
+Das Modul :mod:`getopt` verarbeitet *sys.argv* gemäß der üblichen Konventionen
 der aus Unix bekannten :func:`getopt`-Funktion. Erweiterte und flexiblere
 Möglichkeiten bietet das Modul :mod:`optparse`.
 
@@ -88,12 +88,12 @@ Der direkteste Weg, ein Skript zu beenden, führt über ``sys.exit()``.
 
 .. _tut-string-pattern-matching:
 
-Muster in Strings
-=================
+Muster in Zeichenketten
+=======================
 
 Das Modul :mod:`re` erlaubt die Arbeit mit regulären Ausdrücken (*regular
-expressions*) für komplexe String-Operationen. Reguläre Ausdrücke
-eignen sich vor allem für komplizierte Suchen und Änderungen an Strings::
+expressions*) für komplexe Zeichenketten-Operationen. Reguläre Ausdrücke
+eignen sich vor allem für komplizierte Suchen und Änderungen an Zeichenketten::
 
    >>> import re
    >>> re.findall(r'\bk[a-z]*', 'drei kleine katzen')
@@ -135,6 +135,8 @@ Mit dem Modul :mod:`random` lassen sich zufällige Auswahlen treffen::
    >>> random.randrange(6)    # Zufällige Ganzzahl aus range(6)
    4
 
+Das `SciPy-Projekt <http://scipy.org/>`_ hat viele weitere Module für numirische
+Berechnungen.
 
 .. _tut-internet-access:
 
@@ -142,7 +144,7 @@ Zugriff auf das Internet
 ========================
 
 Zum Zugriff auf das Internet und für die Arbeit mit Internetprotokollen stehen
-verschiedene Module bereit. Zwei der einfachsten sind :mod:`urllib2` zum
+verschiedene Module bereit. Zwei der einfachsten sind :mod:`urllib.request` zum
 Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
 
    >>> import urllib2
@@ -243,9 +245,9 @@ Abschnitten von Programmcode auffinden.
 Qualitätskontrolle
 ==================
 
-Um eine hohe Qualität der entwickelten Software zu gewährleisten, sollte man
-Tests für jede Funktion schreiben, die dann regelmäßig während des
-Entwicklungsprozesses ausgeführt werden.
+Ein Ansatz, um Software hoher Qualität zu entwickeln, ist es Tests für jede
+Funktion schreiben, die regelmäßig während des Entwicklungsprozesses ausgeführt
+werden.
 
 Das Modul :mod:`doctest` durchsucht ein Modul nach Tests in seinen Docstrings
 und führt diese aus. Das Erstellen eines Tests ist sehr einfach, dazu muss
@@ -258,7 +260,7 @@ Dokumentation auch nach Änderungen noch übereinstimmen::
    def durchschnitt(values):
        """Berechnet das arithmetische Mittel aus einer Liste von Zahlen
 
-       >>> print durchschnitt([20, 30, 70])
+       >>> print(durchschnitt([20, 30, 70]))
        40.0
        """
        return sum(values, 0.0) / len(values)
@@ -267,8 +269,8 @@ Dokumentation auch nach Änderungen noch übereinstimmen::
    doctest.testmod()   # Führt den Test automatisch durch
 
 Das Modul :mod:`unittest` funktioniert nicht ganz so einfach, dafür lassen sich
-damit auch umfangreichere Tests erstellen, die in einer eigenen Datei verwaltet
-werden::
+damit auch umfangreichere Tests erstellen, die dazu gedacht sind, in einer
+eigenen Datei verwaltet zu werden::
 
    import unittest
 
@@ -288,24 +290,26 @@ werden::
 Batteries Included
 ===================
 
-Bei Python gilt das Motto "Batteries Included". Am besten lässt sich das anhand
-seiner größeren Pakete aufzeigen. Beispiele:
+Bei Python folgt der Philosophie "Batteries Included". Am besten lässt sich das
+an den komplexen und robusten Möglichkeiten seiner größeren Pakete sehen. Ein
+paar Beispiele:
 
-* Die Module :mod:`xmlrpclib` and :mod:`SimpleXMLRPCServer` erleichtern RPC
-  enorm. Trotz ihrer Namen ist übrigens keine Kenntnis von XML notwendig.
+* Die Module :mod:`xmlrpc.client` and :mod:`xmlrpc.server` erleichtern Remote
+  Procedure Calls (RPC) enorm. Trotz ihrer Namen ist allerdings keine direkte
+  Kenntnis oder Handhabung von XML notwendig.
 
-* Das Modul :mod:`email` ist eine Bibliothek zur Arbeit mit E-Mails, auch mit
+* Das Modul :mod:`email` ist eine Bibliothek zur Arbeit mit E-Mails, inklusive
   MIME und anderen RFC 2822-basierten Nachrichten. Anders als :mod:`smtplib`
-  und :mod:`poplib`, mit denen Nachrichten versandt und empfangen werden
-  können, ist :mod:`email` dafür zuständig, komplizierte Nachrichten
-  (einschließlich Anhänge) zu konstruieren oder zu analysieren. Weiterhin
-  erleichtert es den Umgang mit im Internet verwendeten Encodings und den
-  Headern.
+  und :mod:`poplib`, mit denen Nachrichten versandt und empfangen werden können,
+  ist :mod:`email` dafür zuständig, komplizierte Nachrichten (einschließlich
+  Anhänge) zu konstruieren oder zu analysieren. Weiterhin erleichtert es den
+  Umgang mit im Internet verwendeten Encodings und den Headern.
 
-* :mod:`xml.dom` und :mod:`xml.sax` dienen dem Umgang mit XML. Mit :mod:`csv`
-  lässt sich in ein allgemein gebräuchliches Datenbankformat schreiben und
-  daraus lesen. Diese Module erleichtern den Austausch von Daten zwischen
-  Python und anderen Werkzeugen enorm. 
+* :mod:`xml.dom` und :mod:`xml.sax` halten eine robuste Untestützung für dieses
+  populäre Datenaustausch-Format bereit. Mit :mod:`csv` lässt sich in ein
+  allgemein gebräuchliches Datenbankformat schreiben und daraus lesen. Diese
+  Module erleichtern den Austausch von Daten zwischen Python und anderen
+  Werkzeugen enorm. 
 
 * Zur Internationalisierung von Anwendungen stehen unter anderem die Module
   :mod:`gettext`, :mod'`locale` und :mod:`codecs` zur Verfügung.
