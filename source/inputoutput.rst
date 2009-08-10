@@ -34,9 +34,10 @@ Möglichkeit ist die Benutzung der :meth:`str.format`-Methode.
 
 Eine Frage bleibt natürlich: Wie konvertiert man Werte zu Zeichenketten?
 Glücklicherweise kennt Python Wege, um jeden Wert in eine Zeichenkette
-umzuwandeln: Übergib den Wert an die :func:`repr`- oder :func:`str`-Funktion.
+umzuwandeln: Man übergibt den Wert an die :func:`repr`- oder
+:func:`str`-Funktion.
 
-Die :func:`str`-Funktion ist dazu gedacht eine ziemlich menschenlesbare
+Die :func:`str`-Funktion ist dazu gedacht eine möglichst menschenlesbare
 Repräsentation des Wertes zurückzugeben, während :func:`repr` dazu gedacht ist,
 vom Interpreter lesbar zu sein (oder einen :exc:`SyntaxError` erzwingt, wenn es
 keine äquivalente Syntax gibt). Für Objekte, die keine besondere menschenlesbare
@@ -70,7 +71,7 @@ Ein paar Beispiele::
    ... repr((x, y, ('spam', 'eggs')))
    "(32.5, 40000, ('spam', 'eggs'))"
 
-Nun zwei Möglichkeiten, eine Tabelle von Quadrat- und Kubikzahlen zu erstellen::
+Hier zwei Möglichkeiten, eine Tabelle von Quadrat- und Kubikzahlen zu erstellen::
 
    >>> for x in range(1, 11):
    ...     print(repr(x).rjust(2), repr(x*x).rjust(3), end=' ')
@@ -110,11 +111,11 @@ Dieses Beispiel hat die :meth:`rjust`-Methode von Zeichenkettenobjekten gezeigt,
 die eine Zeichenkette in einem Feld der gegebenen Breite rechtsbündig macht,
 indem sie diese links mit Leerzeichen auffüllt. Es gibt die ähnlichen Methoden
 :meth:`ljust` und :meth:`center`. Diese Methoden schreiben nichts, sondern geben
-eine neue Zeichenkette zurück. Ist die gegebene Zeichenkette zu lang,
-schneiden sie nichts, sondern geben diese unverändert zurück; dies wird die
-Anordnung durcheinanderbringen, aber ist meistens besser als die Alternative,
-den Wert zu verfälschen. (Will man wirklich abschneiden, kann man
-immer noch eine Slicingoperation hinzufügen, zum Beispiel ``x.ljust(n)[:n]``.)
+eine neue Zeichenkette zurück. Ist die gegebene Zeichenkette zu lang, schneiden
+sie nichts, sondern geben diese unverändert zurück; dies wird die Anordnung
+durcheinanderbringen, aber ist meistens besser als die Alternative, den Wert zu
+verfälschen. (Will man wirklich abschneiden, kann man immer noch eine
+Slicing-Operation hinzufügen, zum Beispiel ``x.ljust(n)[:n]``.)
 
 Es gibt noch eine weitere Methode, :meth:`zfill`, die eine numerische
 Zeichenkette mit Nullen auffüllt. Sie versteht auch Plus- und Minuszeichen::
@@ -197,8 +198,9 @@ Schlüsselwortargumente mit der '**'-Notation übergibt.
 Das ist besonders nützlich in Verbindung mit der neuen eingebauten Funktion
 :func:`vars`, die ein Dictionary mit allen lokalen Variablen zurückgibt.
 
-Siehe `Format String Syntax <http://docs.python.org/3.1/library/string.html#formatstrings>`_ für eine komplette Übersicht zu
-Zeichenkettenformatierung mit :meth:`str.format`.
+Siehe `Format String Syntax
+<http://docs.python.org/3.1/library/string.html#formatstrings>`_ für eine
+komplette Übersicht zur Zeichenkettenformatierung mit :meth:`str.format`.
 
 Alte Zeichenkettenformatierung
 ------------------------------
@@ -217,7 +219,9 @@ Da :meth:`str.format` ziemlich neu ist, benutzt viel Pythoncode noch den
 da die alte Art der Formatierung irgendwann aus der Sprache entfernt werden
 wird.
 
-Mehr Informationen dazu gibt es in dem Abschnitt `Old String Formatting Operations <http://docs.python.org/3.1/library/stdtypes.html#old-string-formatting>`_.
+Mehr Informationen dazu gibt es in dem Abschnitt `Old String Formatting
+Operations
+<http://docs.python.org/3.1/library/stdtypes.html#old-string-formatting>`_.
 
 .. _tut-files:
 
