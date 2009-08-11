@@ -20,24 +20,24 @@ ausgelegt ist::
    >>> reprlib.repr(set('supercalifragilisticexpialidocious'))
    "set(['a', 'c', 'd', 'e', 'f', 'g', ...])"
 
-Das Modul:mod:`pprint` bietet ausgefeiltere Kontrollmöglichkeiten für die
+Das Modul :mod:`pprint` bietet ausgefeiltere Kontrollmöglichkeiten für die
 Ausgabe von eingebauten und benutzerdefinierten Objekten, so dass diese im 
 Interpreter gelesen werden können. Falls das Ergebnis länger als eine Zeile 
 ist, fügt der "pretty printer" Zeilenumbrüche und Einrückungen hinzu, um die 
 Datenstruktur klarer zu zeigen::
 
    >>> import pprint
-   >>> t = [[[['black', 'cyan'], 'white', ['green', 'red']], [['magenta',
-   ...     'yellow'], 'blue']]]
+   >>> t = [[[['schwarz', 'cyan'], 'weiß', ['grün', 'rot']], [['magenta',
+   ...     'gelb'], 'blau']]]
    ...
    >>> pprint.pprint(t, width=30)
-   [[[['black', 'cyan'],
-      'white',
-      ['green', 'red']],
-     [['magenta', 'yellow'],
-      'blue']]]
+   [[[['schwarz', 'cyan'],
+      'weiß',
+      ['grün', 'rot']],
+     [['magenta', 'gelb'],
+      'blau']]]
 
-Das Modul:mod:`textwrap` formatiert Textabsätze so, dass sie einer vorgegebenen
+Das Modul :mod:`textwrap` formatiert Textabsätze so, dass sie einer vorgegebenen
 Bildschirmbreite entsprechen::
 
    >>> import textwrap
@@ -60,15 +60,15 @@ Datenformaten zu. Das grouping-Attribut der format-Funktion von locale bietet
 eine einfache Möglichkeit um Zahlen mit Tausendertrennzeichen zu formatieren::
 
    >>> import locale
-   >>> locale.setlocale(locale.LC_ALL, 'English_United States.1252')
-   'English_United States.1252'
-   >>> conv = locale.localeconv()          # get a mapping of conventions
+   >>> locale.setlocale(locale.LC_ALL, 'de_DE.UTF-8')
+   'de_DE.UTF-8'
+   >>> conv = locale.localeconv()          # die Zeichenkonventionen holen
    >>> x = 1234567.8
    >>> locale.format("%d", x, grouping=True)
-   '1,234,567'
-   >>> locale.format("%s%.*f", (conv['currency_symbol'],
+   '1.234.567'
+   >>> locale.format_string("%s%.*f", (conv['currency_symbol'],
    ...               conv['frac_digits'], x), grouping=True)
-   '$1,234,567.80'
+   '€1.234.567,80'
 
 .. _tut-templating:
 
@@ -95,7 +95,8 @@ Die Methode :meth:`substitute` verursacht einen :exc:`KeyError`, wenn ein
 Platzhalter nicht von einem Dictionary oder einem Schlüsselwortargument
 bereitgestellt wird. Bei Serienbrief-artigen Anwendungen können die vom Benutzer
 bereitgestellten Daten lückenhaft sein und die Methode :meth:`safe_substitute`
-deshalb passender --- sie lässt Platzhalter unverändert, wenn Daten fehlen::
+ist hier deshalb passender --- sie lässt Platzhalter unverändert, wenn Daten
+fehlen::
 
    >>> t = Template('Bringe $item $owner zurück.')
    >>> d = dict(item='die unbeladene Schwalbe')
@@ -139,19 +140,19 @@ Vorlagen für XML-Dateien, Klartextberichte und HTML Web-Berichte zu ersetzen.
 Arbeit mit strukturierten binären Daten
 =======================================
 
-Das Modul :mod:`struct` stellt die Funktionen :func:`pack()` und :func:`unpack()`
-bereit, mit denen strukturierte binäre Daten verarbeitet werden können.  Das
-folgende Beispiel zeigt, wie die Headerinformationen aus einem ZIP-Archiv
-ausgelesen werden, ohne das :mod:`zipfile`-Modul zu benutzen.
-Die Pack Codes ``"H"`` und ``"I"`` stellen zwei Byte respektive vier Byte lange
+Das Modul :mod:`struct` stellt die Funktionen :func:`pack()` und
+:func:`unpack()` bereit, mit denen strukturierte binäre Daten verarbeitet werden
+können.  Das folgende Beispiel zeigt, wie die Headerinformationen aus einem
+ZIP-Archiv ausgelesen werden, ohne das :mod:`zipfile`-Modul zu benutzen.  Die
+Pack Codes ``"H"`` und ``"I"`` stellen zwei Byte respektive vier Byte lange
 unsigned Integers dar.  Das Zeichen ``"<"`` bedeutet, dass damit Standardgrößen
-gemeint sind und in der Little Endian-Bytereihenfolge vorliegen::
+gemeint sind und in der "Little Endian"-Bytereihenfolge vorliegen::
 
    import struct
 
    data = open('myfile.zip', 'rb').read()
    start = 0
-   for i in range(3):                      # show the first 3 file headers
+   for i in range(3):                      # zeige die ersten 3 Dateiheader
        start += 14
        fields = struct.unpack('<IIIHH', data[start:start+16])
        crc32, comp_size, uncomp_size, filenamesize, extra_size = fields
@@ -169,8 +170,8 @@ gemeint sind und in der Little Endian-Bytereihenfolge vorliegen::
 Multi-threading
 ===============
 
-Threading ist eine Methode um nicht unmittelbar voneinander abhängige Prozesse
-abzukoppeln.  Threads können benutzt werden um zu verhindern, dass Programme,
+Threading ist eine Methode, um nicht unmittelbar voneinander abhängige Prozesse
+abzukoppeln. Threads können benutzt werden, um zu verhindern, dass Programme,
 die während Berechnungen Benutzereingaben akzeptieren, "hängen".  Ein ähnlicher
 Verwendungzweck ist es, einen Thread für I/O und einen anderen für Berechnungen
 zu benutzen.
@@ -201,13 +202,13 @@ weiterläuft::
          gewartet.')
 
 Das Hauptproblem von Programmen mit mehreren Threads ist die Koordination der
-Zugriffe auf gemeinsame Daten oder andere Ressourcen.  Dafür bietet das
+Zugriffe auf gemeinsame Daten oder andere Ressourcen. Dafür bietet das
 threading Modul einige Synchronisationsmethoden wie Locks, Events, Condition
 Variables und Semaphoren an.
 
 Der beste Weg ist es aber, allen Zugriff auf Ressourcen in einem Thread zu
 koordinieren. Das :mod:`queue` Modul wird benutzt, um die Anfragen von den
-anderen Threads in dieses zu bekommen.  Programme die :class:`Queue` Objekte als
+anderen Threads in dieses zu bekommen. Programme die :class:`Queue` Objekte als
 Kommunikation zwischen ihren Threads nutzen sind einfacher zu entwickeln,
 lesbarer und stabiler.
 
@@ -216,8 +217,8 @@ lesbarer und stabiler.
 Logging
 =======
 
-Das Modul :mod:`logging` ermöglicht ausführliches und flexibles Erstellen von
-Logfiles. Im einfachsten Fall werden Logs in eine Datei geschrieben oder an
+Das Modul :mod:`logging` ermöglicht ein ausführliches und flexibles Erstellen
+von Logfiles. Im einfachsten Fall werden Logs in eine Datei geschrieben oder an
 ``sys.stderr`` geschickt::
 
    import logging
@@ -244,9 +245,9 @@ lesen, ohne dass dabei das Programm selbst geändert werden muss.
 Weak References
 ===============
 
-Python bietet automatische Speicherverwaltung - Zählen von Referenzen für die
-meisten Objekte und :term:`garbage collection`. Nachdem die letzte Referenz auf
-ein Objekt aufgelöst worden ist, wird der Speicher bald freigegeben.
+Python bietet automatische Speicherverwaltung (Zählen von Referenzen für die
+meisten Objekte und :term:`garbage collection`). Der Speicher wird kurz nachdem
+die letzte Referenz auf ein Objekt aufgelöst worden ist freigegeben.
 
 Für die meisten Anwendungen funktioniert dieser Ansatz gut, gelegentlich kann es
 allerdings auch nötig werden, Objekte nur so lange vorzuhalten, wie sie an
@@ -277,7 +278,7 @@ aufwändig ist::
    >>> d['primary']                # Eintrag wurde automatisch gelöscht
    Traceback (most recent call last):
      File "<stdin>", line 1, in <module>
-       d['primary']                # entry was automatically removed
+       d['primary']                # Eintrag wurde automatisch gelöscht
      File "C:/python31/lib/weakref.py", line 46, in __getitem__
        o = self.data[key]()
    KeyError: 'primary'
