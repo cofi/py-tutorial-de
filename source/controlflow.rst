@@ -466,14 +466,13 @@ benutzt werden. Hier ein Beispiel, das wegen dieser Einschränkung scheitert::
     TypeError: function() got multiple values for keyword argument 'a'
 
 Ist ein Parameter der Form ``**name`` in der Definition enthalten, bekommt
-dieser ein Dictionary (siehe `Mapping Types
-<http://docs.python.org/3.1/library/stdtypes.html#typesmapping>`_), das alle
-Schlüsselwortargumente enthält, bis auf die, die in der Definition vorkommen.
-Dies kann mit einem Parameter der Form ``*name``, der im nächsten Unterabschnitt
-beschrieben wird, kombiniert werden. Dieser bekommt ein Tupel, das alle
-positionsabhängigen Argumente enthält, die über die Anzahl der definierten
-hinausgehe. (``*name`` muss aber vor ``**name`` kommen.) Wenn wir zum Beispiel
-eine Funktion wie diese definieren::
+dieser ein Dictionary (siehe :lib:`Mapping Types <stdtypes.html#typesmapping>`),
+das alle Schlüsselwortargumente enthält, bis auf die, die in der Definition
+vorkommen.  Dies kann mit einem Parameter der Form ``*name``, der im nächsten
+Unterabschnitt beschrieben wird, kombiniert werden. Dieser bekommt ein Tupel,
+das alle positionsabhängigen Argumente enthält, die über die Anzahl der
+definierten hinausgehe. (``*name`` muss aber vor ``**name`` kommen.) Wenn wir
+zum Beispiel eine Funktion wie diese definieren::
 
     def cheeseshop(kind, *arguments, **keywords):
         print("-- Haben sie", kind, "?")

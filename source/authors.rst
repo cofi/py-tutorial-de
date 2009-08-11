@@ -4,9 +4,11 @@
 Zur Übersetzung
 ***************
 
-Dies ist die Übersetzung des offiziellen `Python-Tutorials der Version 3.1 <http://docs.python.org/3.1/tutorial/index.html>`_.
+Dies ist die Übersetzung des offiziellen :doc:`Python-Tutorials der Version 3.1
+<tutorial/index.html>`.
 
-Sie steht unter der `Apache License 2.0 <http://www.apache.org/licenses/LICENSE-2.0.html>`_.
+Sie steht unter der `Apache License 2.0
+<http://www.apache.org/licenses/LICENSE-2.0.html>`_.
 
 .. _translation-authors: 
 
@@ -28,9 +30,9 @@ Autoren der Übersetzung
 Möglichkeiten der Mitarbeit
 ***************************
 
-Dieses Tutorial wird über ein bei bitbucket.org gehostetes Mercurial-Repository
-übersetzt und betreut: http://bitbucket.org/cofi/py-tutorial-de/
+Dieses Tutorial wird über ein bei http://bitbucket.org gehostetes
+:home:`Mercurial-Repository <` übersetzt und betreut.
 
-Details zur Mitarbeit finden sich im `Wiki des Projektes <http://bitbucket.org/cofi/py-tutorial-de/wiki/Home>`_.
+Details zur Mitarbeit finden sich im :home:`Wiki des Projektes <wiki/Home>`.
 
-Um Fehler oder Verbesserungen zu melden kann der `Issue-Tracker <http://bitbucket.org/cofi/py-tutorial-de/issues/>`_ benutzt werden.
+Um Fehler oder Verbesserungen zu melden kann der :home:`Issue-Tracker <issues/>` benutzt werden.

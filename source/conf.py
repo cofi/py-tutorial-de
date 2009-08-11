@@ -192,3 +192,52 @@ latex_documents = [
 
 # If false, no module index is generated.
 #latex_use_modindex = True
+
+#ext.extlinks copy from sphinx-trunk
+from docutils import nodes, utils
+from sphinx.util import caption_ref_re
+
+def split_explicit_title(text):
+    """Split role content into title and target, if given."""
+    brace = text.find('<')
+    if brace != -1:
+        m = caption_ref_re.match(text)
+        if m:
+            target = m.group(2)
+            title = m.group(1)
+        else:
+            # fallback: everything after '<' is the target
+            target = text[brace+1:]
+            title = text[:brace]
+        return True, title, target
+    else:
+        return False, text, text
+
+def make_link_role(base_url, prefix):
+    def role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
+        text = utils.unescape(text)
+        has_explicit_title, title, url = split_explicit_title(text)
+        # NOTE: not using urlparse.urljoin() here, to allow something like
+        # base_url = 'bugs.python.org/issue'  and  url = '1024'
+        full_url = base_url + url
+        if not has_explicit_title:
+            if prefix is None:
+                title = full_url
+            else:
+                title = prefix + url
+        pnode = nodes.reference(title, title, refuri=full_url)
+        return [pnode], []
+    return role
+
+def setup_link_roles(app):
+    for name, (base_url, prefix) in app.config.extlinks.iteritems():
+        app.add_role(name, make_link_role(base_url, prefix))
+
+def setup(app):
+    app.add_config_value('extlinks', {}, 'env')
+    app.connect('builder-inited', setup_link_roles)
+
+extlinks = {'doc' : ('http://docs.python.org/3.1/', 'doc'),
+            'lib' : ('http://docs.python.org/3.1/library/', 'lib'),
+            'home' : ('http://bitbucket.org/cofi/py-tutorial-de/', 'home')
+           }

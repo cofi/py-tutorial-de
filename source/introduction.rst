@@ -401,19 +401,19 @@ Die eingebaute Funktion :func:`len` gibt die Länge eines Strings zurück::
 
 .. seealso::
 
-    `Sequence Types <http://docs.python.org/3.1/library/stdtypes.html#typesseq>`_
+    :lib:`Sequence Types <stdtypes.html#typesseq>`
         Zeichenketten gehören zu den *Sequenztypen* und verfügen über alle
         Operationen, die von diesen Typen unterstützt werden.
 
-    `String Methods <http://docs.python.org/3.1/library/stdtypes.html#string-methods>`_
+    :lib:`String Methods <stdtypes.html#string-methods>`
         Strings verfügen über eine große Zahl an Methoden für grundlegende
         Transformationen und Suche.
 
-    `String Formatting <http://docs.python.org/3.1/library/string.html#string-formatting>`_
+    :lib:`String Formatting <string.html#string-formatting>`
         Informationen über Stringformatierung mit :meth:`str.format` sind hier
         zu finden.
 
-    `Old String Formatting Operations <http://docs.python.org/3.1/library/stdtypes.html#old-string-formatting>`_
+    :lib:`Old String Formatting Operations <stdtypes.html#old-string-formatting>`
         Die alten Formatierungsoperationen, die aufgerufen werden, wenn Strings
         und Unicodestrings die linken Operanden des ``%``-Operators sind, werden
         hier ausführlich beschrieben.

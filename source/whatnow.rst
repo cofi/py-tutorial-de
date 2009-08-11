@@ -4,14 +4,14 @@
 Wie geht's weiter?
 ******************
 
-Das Lesen dieses Tutorials hat hoffentlich dein Interesse verstärkt Python 
+Das Lesen dieses Tutorials hat hoffentlich dein Interesse verstärkt Python
 einzusetzen --- du bist nun bestimmt voller Eifer, "echte" Probleme mit Python
 zu lösen. Wo kann man sich nun weiter informieren?
 
-Dieses Tutorial ist Teil der Python Dokumentation.   Einige andere Dokumente 
-davon sind:
+Dieses Tutorial ist Teil der Python Dokumentation. Einige andere Dokumente davon
+sind:
 
-* `The Python Standard Library <http://docs.python.org/3.1/library/index.html#library-index>`_:
+* :lib:`The Python Standard Library <index.html#library-index>`:
 
   Dieses Handbuch enthält eine vollständige (aber kompakte) Referenz zu den
   Typen, Funktionen und Modulen, die die Standardbibliothek enthält und die
@@ -22,20 +22,22 @@ davon sind:
   Überfliegen der Referenz zur Standardbibliothek gibt einen Überblick über die
   verfügbaren Module.
 
-* `Installing Python Modules <http://docs.python.org/3.1/install/index.html#install-index>`_ erklärt wie man externe Module installiert.
+* :doc:`Installing Python Modules <install/index.html#install-index>` erklärt
+  wie man externe Module installiert.
 
-* `The Python Language Reference <http://docs.python.org/3.1/reference/index.html#reference-index>`_: Gibt eine detaillierte Beschreibung der Syntax
-  und Semantik von Python.  Dies ist eher schwerer Stoff, aber als komplette
-  Referenz der Sprache als solche sinnvoll.
+* :doc:`The Python Language Reference <reference/index.html#reference-index>`:
+  Gibt eine detaillierte Beschreibung der Syntax und Semantik von Python.  Dies
+  ist eher schwerer Stoff, aber als komplette Referenz der Sprache als solche
+  sinnvoll.
 
-Mehr Quellen zu Python:
+Weitere Quellen zu Python:
 
-* http://www.python.org:  Die eigentliche Python-Internet-Präsenz.  Hier findet
-  man den Quelltext, die Dokumentation und Verweise zu weiteren Webseiten, die
-  einen Bezug zu Python haben. Diese Webseite wurde für einige Regionen dieser
-  Welt, wie beispielsweise Europa, Japan, und Australien gespiegelt; ein
-  Spiegelserver ist unter Umständen schneller als die Hauptseite --- abhängig
-  von der geografischen Lage.
+* http://www.python.org: Die eigentliche Internet-Präsenz von Python. Hier
+  findet man den Quelltext, die Dokumentation und Verweise zu weiteren
+  Webseiten, die einen Bezug zu Python haben. Diese Webseite wurde für einige
+  Regionen dieser Welt, wie beispielsweise Europa, Japan, und Australien
+  gespiegelt; ein Spiegelserver ist unter Umständen schneller als die Hauptseite
+  --- abhängig von der geografischen Lage.
 
 * http://docs.python.org:  Schneller Zugriff auf die Python-Dokumentation.
 

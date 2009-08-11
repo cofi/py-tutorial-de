@@ -77,9 +77,8 @@ Programmverlauf mittels der entsprechenden Zeilen des Quellcodes aufgelistet; es
 werden jedoch keine Zeilen ausgegeben, die von der Standardeingabe gelesen
 wurden.
 
-`Built-in Exceptions
-<http://docs.python.org/3.1/library/exceptions.html#bltin-exceptions>`_ listet
-alle eingebauten Ausnahmen und ihre Bedeutung auf.
+:lib:`Built-in Exceptions <exceptions.html#bltin-exceptions>` listet alle
+eingebauten Ausnahmen und ihre Bedeutung auf.
 
 
 .. _tut-handling:

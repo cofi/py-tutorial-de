@@ -129,14 +129,14 @@ Runden, so das die ungenauen Ergebnisse vergleichbar zueinander werden::
     >>> round(.1 + .1 + .1, 1) == round(.3, 1)
     True
 
-Binäre Fließkommaarithmetik sorgt noch für einige Überraschungen wie diese.
-Das Problem mit "0.1" ist im Abschnitt "Darstellungsfehler" weiter unten
-detailliert beschrieben.  Dazu sei auf `The Perils of Floating Point
+Binäre Fließkommaarithmetik sorgt noch für einige Überraschungen wie diese.  Das
+Problem mit "0.1" ist im Abschnitt "Darstellungsfehler" weiter unten detailliert
+beschrieben. Dazu sei auf `The Perils of Floating Point
 <http://www.lahey.com/float.htm>`_ für eine umfassendere Liste von üblichen
 Problemen verwiesen.
 
 Wie schon dort gegen Ende des Textes gesagt wird: "Es gibt keine einfachen
-Antworten.". Trotzdem sollte man nicht zögerlich bei dem Einsatz von
+Antworten." Trotzdem sollte man nicht zögerlich bei dem Einsatz von
 Fließkommazahlen sein!  Die Fehler in Python-Fließkommaoperationen sind
 Folgefehler der Fließkomma-Hardware und liegt auf den meisten Maschinen in einem
 Bereich der geringer als 1 zu 2\*\*53 pro Operation ist.  Das ist mehr als
@@ -149,22 +149,21 @@ existierenden Fällen, für die gängigsten Anwendungen von Fließkommazahlen da
 erwartete Ergebnis, wenn man einfach die Anzeige des Ergebnisses auf die Zahl
 der Dezimalstellen rundet, die man erwartet. :func:`str` genügt meist, für eine
 feinere Kontrolle kann man sich :meth:`str.format` mit den Formatierungsoptionen
-in `Format String Syntax
-<http://docs.python.org/3.1/library/string.html#formatstrings>`_ anschauen.
+in :lib:`Format String Syntax <string.html#formatstrings>` anschauen.
 
-Für Anwendungsfälle, die eine exakte dezimale Darstellung benötigen,
-kann das Modul :mod:`decimal` verwendet werden, welches Dezimalarithmetik
-implementiert, die für Buchhaltung und Anwendungen, die eine hohe Präzision
-erfordern, geeignet ist.
+Für Anwendungsfälle, die eine exakte dezimale Darstellung benötigen, kann das
+Modul :mod:`decimal` verwendet werden, welches Dezimalarithmetik implementiert,
+die für Buchhaltung und Anwendungen, die eine hohe Präzision erfordern, geeignet
+ist.
 
 Eine andere Form exakter Arithmetik wird von dem Modul :mod:`fractions`
-bereitgestellt, welche eine Arithmetik implementiert die auf rationalen
-Zahlen basiert (so dass Zahlen wie 1/3 exakt abgebildet werden können).
+bereitgestellt, welche eine Arithmetik implementiert die auf rationalen Zahlen
+basiert (so dass Zahlen wie 1/3 exakt abgebildet werden können).
 
-Wenn man im größeren Umfang mit Fließkommazahlen zu tun hat, sollte man
-einen Blick auf Numerical Python und die vielen weitere Pakete für 
-mathematische und statistische Operationen die vom SciPy-Projekt 
-bereitgestellt werden anschauen. Siehe <http://scipy.org>.
+Wenn man im größeren Umfang mit Fließkommazahlen zu tun hat, sollte man einen
+Blick auf Numerical Python und die vielen weitere Pakete für mathematische und
+statistische Operationen die vom `SciPy-Projekt <http://scipy.org>`_
+bereitgestellt werden anschauen.
 
 Python verfügt außerdem über ein Werkzeug für die seltenen Fälle, in
 denen man *wirklich* den exakten Wert des floats wissen will. Die Methode
