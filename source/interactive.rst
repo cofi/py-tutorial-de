@@ -7,7 +7,7 @@ Interaktive Zeilenbearbeitung und Ersetzung des Verlaufs
 Einige Versionen des Python-Interpreters unterstützen die Bearbeitung der
 aktuellen Zeile und die Ersetzung des Verlaufs ähnlich der Möglichkeiten die die
 Korn-Shell oder die GNU Bash-Shell bieten. Dies wird durch die Benutzung der
-*GNU Readline*-Bibliothek implementiert, die eine Bearbeitung im Emacs- oder
+`GNU Readline`_-Bibliothek implementiert, die eine Bearbeitung im Emacs- oder
 vi-Stil ermöglicht. Da diese Bibliothek eine eigene Dokumentation hat, wird sie
 hier nicht neu geschrieben, aber die Grundlagen lassen sich einfach erklären.
 Die hier beschriebenen Möglichkeiten sind in der Unix- und Cygwin-Version des
@@ -150,8 +150,8 @@ zu behalten. ::
 
 .. _tut-commentary:
 
-Kommentar
-=========
+Alternativen zum Interaktiven Interpreter
+=========================================
 
 Diese Möglichkeiten sind ein enormer Schritt vorwärts verglichen mit früheren
 Versionen des Interpreters, aber ein paar Wünsche sind noch offen: Es wäre nett,
@@ -161,8 +161,20 @@ Vervollständigungsmechanismus könnte die Symbolstabelle des Interpreters nutze
 Und ein Befehl zum Überprüfen von passenden Klammern, Anführungszeichen, usw.
 (oder sie sogar vorschlägt) wäre auch nützlich.
 
+Ein alternativer erweiterter interaktiver Interpreter, der schon seit einer
+Weile verfügbar ist, ist `IPython`_. Er bietet Tab Completion, Erkundung von
+Objekten und eine fortschrittliche Verwaltung der Befehls-Chronik. Er kann
+komplett angepasst werden und auch in andere Anwendungen eingebettet werden.
+Eine weitere ähnlich fortschrittliche interaktive Umgebung ist `bpython`_
+
 .. rubric:: Fußnoten
 
 .. [#] Python wird beim Starten des Interaktiven Interpreters den Inhalt der
    Datei ausführen, die von der Umgebungsvariable :envvar:`PYTHONSTARTUP`
    angegeben wird.
+
+.. _GNU Readline: http://tiswww.case.edu/php/chet/readline/rltop.html
+.. _IPython: http://ipython.scipy.org/
+.. _bpython: http://www.bpython-interpreter.org/
+
+

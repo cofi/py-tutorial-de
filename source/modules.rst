@@ -556,5 +556,5 @@ die Menge der Module, die in einem Paket gefunden werden, zu erweitern.
 .. rubric:: Fußnoten
 
 .. [#] Eigentlich sind Funktionsdefinitionen auch 'Anweisungen', die
-   'ausgeführt' werden; die Ausführung fügt den Funktionsnamen in die globale
-   Symboltabelle des Moduls ein.
+   'ausgeführt' werden; die Ausführung einer Funktionsdefinition auf Modulebene
+   fügt den Funktionsnamen in die globale Symboltabelle des Moduls ein.

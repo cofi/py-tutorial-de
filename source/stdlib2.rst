@@ -355,13 +355,20 @@ Dezimale Fließkomma-Arithmetik
 ==============================
 
 Das Modul :mod:`decimal` bietet den :class:`Decimal`-Datentyp für dezimale
-Fließkomma-Arithmetik. Verglichen mit der eingebauten :class:`float`
-Implementierung von binären Fließkomma-Zahlen ist die neue Klasse besonders
-hilfreich für Finanzanwendungen und andere Gebiete, die eine exakte dezimale
-Repräsentation, Kontrolle über die Präzision, Kontrolle über die Rundung, um
-gesetzliche oder regulative Anforderungen zu erfüllen, das Tracking von
-signifikanten Dezimalstellen, erfordern oder für Anwendungen bei denen der
-Benutzer erwartet, dass die Resultate den händischen Berechnungen entsprechen.
+Fließkomma-Arithmetik. Verglichen mit der eingebauten :class:`float`-
+Implementierung von binären Fließkomma-Zahlen ist die Klasse besonders
+hilfreich für
+
+* Finanzanwendungen und andere Gebiete, die eine exakte dezimale Repräsentation,
+* Kontrolle über die Präzision,
+* Kontrolle über die Rundung, um gesetzliche oder regulative Anforderungen zu
+  erfüllen,
+* das Tracking von signifikanten Dezimalstellen
+
+erfordern, oder
+
+* für Anwendungen bei denen der Benutzer erwartet, dass die Resultate den
+  händischen Berechnungen entsprechen.
 
 Die Berechnung einer 5% Steuer auf eine 70 Cent Telefonrechnung ergibt
 unterschiedliche Ergebnisse in dezimaler und binärer Fließkomma-Repräsentation.
@@ -369,10 +376,10 @@ Der Unterschied wird signifikant, wenn die Ergebnisse auf den nächsten Cent
 gerundet werden::
 
     >>> from decimal import *
-    >>> Decimal('0.70') * Decimal('1.05')
-    Decimal("0.7350")
-    >>> .70 * 1.05
-    0.73499999999999999
+    >>> round(Decimal('0.70') * Decimal('1.05'), 2)
+    Decimal('0.74')
+    >>> round(.70 * 1.05, 2)
+    0.73
 
 Das :class:`Decimal` Ergebnis behält die Null am Ende, automatisch vierstellige
 Signifikanz aus den Faktoren mit zweistelliger Signifikanz folgernd.
@@ -385,7 +392,7 @@ Berechnungen und Vergleiche auf Gleichheit durchzuführen, bei denen die binäre
 Fließkomma-Repräsentation untauglich ist::
 
     >>> Decimal('1.00') % Decimal('.10')
-    Decimal("0.00")
+    Decimal('0.00')
     >>> 1.00 % 0.10
     0.09999999999999995
 
@@ -399,5 +406,5 @@ benötigt wird::
 
     >>> getcontext().prec = 36
     >>> Decimal(1) / Decimal(7)
-    Decimal("0.142857142857142857142857142857142857")
+    Decimal('0.142857142857142857142857142857142857')
 

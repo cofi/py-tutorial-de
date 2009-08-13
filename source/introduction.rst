@@ -58,23 +58,14 @@ C); Klammern können zur Gruppierung benutzt werden. Zum Beispiel::
     >>> (50 - 5 * 6) / 4
     5.0
     >>> 8 / 5 # Brüche gehen nicht verloren, wenn man Ganzzahlen teilt
-    1.6000000000000001
-
-Anmerkung: Möglicherweise liefert die letzte Berechnung bei dir nicht genau
-das gleiche Ergebnis, weil sich Ergebnisse von Fließkommaberechnungen von
-Computer zu Computer unterscheiden können. Im weiteren Verlauf wird noch darauf
-eingegangen, wie man die Darstellung bei der Ausgabe von Fließkommazahlen
-festlegen kann. Die Anzeige in diesem Beispiel ist die mit dem größten
-Informationsgehalt, ist aber nicht so angenehm zu lesen wie die folgende::
-
-    >>> print(8 / 5)
     1.6
 
-Der Übersichtlichkeit wegen wird in diesem Tutorial diese Darstellung von
-Fließkommazahlen verwendet, sofern nicht ausdrücklich die Ausgabeformatierung
-behandelt wird.  Später wird noch erklärt, wie es zu diesen zwei Arten der
-Ausgabe von Fließkommazahlen kommt und warum sie unterschiedlich sind. Siehe
-:ref:`tut-fp-issues` für eine vollständige Abhandlung.
+Anmerkung: Möglicherweise liefert die letzte Berechnung bei dir nicht genau das
+gleiche Ergebnis, weil sich Ergebnisse von Fließkommaberechnungen von Computer
+zu Computer unterscheiden können. Im weiteren Verlauf wird noch darauf
+eingegangen, wie man die Darstellung bei der Ausgabe von Fließkommazahlen
+festlegen kann. Siehe :ref:`tut-fp-issues` für eine ausführliche Diskussion von
+einigen Feinheiten von Fließkommazahlen und deren Repräsentation.
 
 Um eine Ganzzahldivision auszuführen, die ein ganzzahliges Ergebnis liefert und
 den Bruchteil des Ergebnisses vernachlässigt, gibt es den Operator ``//``::

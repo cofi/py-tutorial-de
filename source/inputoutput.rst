@@ -53,10 +53,10 @@ Ein paar Beispiele::
    'Hallo Welt!'
    >>> repr(s)
    "'Hallo Welt!'"
-   >>> str(0.1)
-   '0.1'
-   >>> repr(0.1)
-   '0.10000000000000001'
+   >>> str(1.0/7.0)
+   '0.142857142857'
+   >>> repr(1.0/7.0)
+   '0.14285714285714285'
    >>> x = 10 * 3.25
    >>> y = 200 * 200
    >>> s = 'Der Wert von x ist ' + repr(x) + ', und y ist ' + repr(y) + '...'
@@ -133,9 +133,9 @@ Die einfachste Benutzung der :meth:`str.format`-Methode sieht so aus::
     Wir sind die Ritter, die "Ni!" sagen.
 
 Die Klammern und die Zeichen darin (genannt Formatfelder - *format fields*)
-werden mit den Objekten ersetzt, die der :meth:`format`-Methode übergeben
+werden mit den Objekten ersetzt, die der :meth:`~str.format`-Methode übergeben
 werden. Die Nummer in den Klammern bezieht sich auf die Position des Objektes,
-die der :meth:`format`-Methode übergeben werden. ::
+die der :meth:`~str.format`-Methode übergeben werden. ::
 
 
     >>> print('{0} and {1}'.format('spam', 'eggs'))
@@ -143,7 +143,7 @@ die der :meth:`format`-Methode übergeben werden. ::
     >>> print('{1} and {0}'.format('spam', 'eggs'))
     eggs and spam
 
-Werden Schlüsselwortargumente in der :meth:`format`-Methode benutzt, können
+Werden Schlüsselwortargumente in der :meth:`~str.format`-Methode benutzt, können
 deren Werte durch die Benutzung des Argumentnamens referenziert werden. ::
 
     >>>print('Dieses {Speise} ist {Adjektiv}.'.format(Speise='Spam',
@@ -158,8 +158,8 @@ werden::
     Die Geschichte von Bill, Manfred und Georg.
     
 Ein optionales ``':'`` mit Formatspezifizierer (*format specifier*) können auf
-den Namen des Feldes folgen. Dies gibt einem eine größere Kontrolle darüber, wie
-der Wert formatiert wird. Das folgende Beispiel begrenzt Pi auf drei Stellen
+den Namen des Feldes folgen. Dies erlaubt einem eine größere Kontrolle darüber,
+wie der Wert formatiert wird. Das folgende Beispiel begrenzt Pi auf drei Stellen
 nach dem Komma.
 
     >>> import math
@@ -213,8 +213,8 @@ resultierende Zeichenkette dieser Formatierungsoperation zurück. Zum Beispiel::
     >>> print('Der Wert von Pi ist ungefähr %5.3f.' % math.pi)
     Der Wert von Pi ist ungefähr 3.142.
 
-Da :meth:`str.format` ziemlich neu ist, benutzt viel Pythoncode noch den
-``%``-Operator. Jedoch sollte :meth:`str.format` hauptsächlich benutzt werden,
+Da :meth:`~str.format` ziemlich neu ist, benutzt viel Pythoncode noch den
+``%``-Operator. Jedoch sollte :meth:`~str.format` hauptsächlich benutzt werden,
 da die alte Art der Formatierung irgendwann aus der Sprache entfernt werden
 wird.
 
@@ -390,9 +390,9 @@ wenn unterwegs eine Ausnahme verursacht wird. Das ist auch viel kürzer als eine
     >>> f.closed
     True
 
-Dateiobjekte haben noch ein paar zusätzliche Methoden, wie :meth:`isatty` und
-:meth:`truncate`, die weniger häufig genutzt werden. Ein komplettes Handbuch zu
-Dateiobjekten kann in der Bibliotheksreferenz gefunden werden.
+Dateiobjekte haben noch ein paar zusätzliche Methoden, wie :meth:`~file.isatty`
+und :meth:`~file.truncate`, die weniger häufig genutzt werden. Ein komplettes
+Handbuch zu Dateiobjekten kann in der Bibliotheksreferenz gefunden werden.
 
 
 .. _tut-pickle:

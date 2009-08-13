@@ -4,9 +4,6 @@
 Fließkomma-Arithmetik:  Probleme und Einschränkungen
 *****************************************************
 
-.. sectionauthor:: Tim Peters <tim_one@users.sourceforge.net>
-
-
 Fließkommazahlen werden in der Hardware des Computers als Brüche mit der 
 Basis 2 (binär) dargestellt.  Beispielsweise hat folgende Dezimalzahl ::
 
@@ -51,9 +48,10 @@ ist 1/10 die periodische Binärzahl::
 
 Hält man nach einer endlichen Zahl Bits an, erhält man eine Annäherung.  In den
 meisten Rechnern werden heute Fließkommazahlen als Binärbrüche, mit dem Zähler in
-den ersten 53 Bits, gefolgt von dem Nenner als Potenz von Zwei, dargestellt.
-Im Fall von 1/10 lautet der Binärbruch ``3602879701896397 / 2 ** 55``, was in
-etwa, aber nicht exakt, dem echten Wert von 1/10 entspricht.
+den ersten 53 Bits (beginnend mit dem höchstwertigsten Bit), gefolgt von dem
+Nenner als Potenz von Zwei, dargestellt.  Im Fall von 1/10 lautet der Binärbruch
+``3602879701896397 / 2 ** 55``, was in etwa, aber nicht exakt, dem echten Wert
+von 1/10 entspricht.
 
 Viele Benutzer sind sich durch die angezeigten Werte der Problematik nicht
 bewusst.  Python zeigt nur eine dezimale Annäherung an den echten Dezimalwert
@@ -84,8 +82,8 @@ selbe Approximation haben, könnte jeder von ihnen angezeigt werden und
 immer noch die Bedingung ``eval(repr(x)) == x`` erfüllen.
 
 In der Vergangenheit wählten der Python-Prompt und die eingebaute Funktion
-:func:`repr` diejenige mit 17 signifikanten Stellen: ``0.10000000000000001``,
-seit Python 3.1 ist Python (auf den meisten Systemen) fähig, die kürzeste
+:func:`repr` diejenige mit 17 signifikanten Stellen: ``0.10000000000000001``.
+Seit Python 3.1 ist Python (auf den meisten Systemen) dazu fähig, die kürzeste
 Darstellung zu wählen und einfach ``0.1`` anzuzeigen.
 
 Das Verhalten liegt in der Natur der Fließkommadarstellung im Binärsystem:
@@ -124,7 +122,7 @@ kann hilft auch vorheriges Runden mit :func:`round` nichts::
 
 Obwohl die Zahlen nicht besser an ihren gedachten exakten Wert angenähert
 werden können, kann die Funktion :func:`round` nützlich für das nachträgliche
-Runden, so das die ungenauen Ergebnisse vergleichbar zueinander werden::
+Runden, so dass die ungenauen Ergebnisse vergleichbar zueinander werden::
 
     >>> round(.1 + .1 + .1, 1) == round(.3, 1)
     True
@@ -171,7 +169,7 @@ denen man *wirklich* den exakten Wert des floats wissen will. Die Methode
 
    >>> x = 3.14159
    >>> x.as_integer_ratio()
-   (3537115888337719L, 1125899906842624L)
+   (3537115888337719, 1125899906842624)
 
 Da dieser Bruch exakt ist, kann er benutzt werden, um ohne Verluste den
 originalen Wert wiederherzustellen::
@@ -239,12 +237,8 @@ als ::
 und erinnert sich daran das *J* genau 53 Bit breit ist
 (d. h. ``>= 2**52`` und ``< 2**53``), ergibt sich als bester Wert für *N* 56::
 
-   >>> 2**52
-   4503599627370496
-   >>> 2**53
-   9007199254740992
-   >>> 2**56/10
-   7205759403792794.0
+    >>> 2**52 <=  2**56 // 10  < 2**53
+    True
 
 Das heißt, 56 ist der einzige Wert für *N*, wenn *J* auf 53 Bits beschränkt
 ist. Der bestmögliche Wert für *J* ist dann der gerundete Quotient::
@@ -259,14 +253,14 @@ aufrunden ermittelt::
    >>> q+1
    7205759403792794
 
-Aus diesem Grund ist die bestmögliche Approximation von 1/10 als IEEE-754 double 
-precision dieser Wert geteilt durch 2\*\*56, also::
+Aus diesem Grund ist die bestmögliche Approximation von 1/10 als "IEEE-754 double 
+precision"::
 
-   7205759403792794 / 72057594037927936
+   7205759403792794 / 2 ** 56
 
 Kürzt man Zähler und Nenner mit 2, ergibt sich folgender Bruch::
 
-   3602879701896397 / 36028797018963968
+   3602879701896397 / 2 ** 55
 
 Man beachte, dass, da aufgerundet wurde, dieser Wert in Wahrheit etwas größer
 ist als 1/10; hätte man nicht aufgerundet wäre der Bruch ein wenig kleiner als
@@ -278,26 +272,36 @@ oben dargestellte Bruch, die beste IEEE-754 double Approximation, die es gibt::
    >>> 0.1 * 2 ** 55
    3602879701896397.0
 
-Wenn dieser Bruch mit 10\*\*60 multipliziert wird, kann man sich diesen Wert
-bis auf 60 Dezimalstellen anzeigen lassen::
+Wenn dieser Bruch mit 10\*\*55 multipliziert wird, kann man sich diesen Wert
+bis auf 55 Dezimalstellen anzeigen lassen::
 
-   >>> 3602879701896397 * 10 ** 60 // 2 ** 55
+   >>> 3602879701896397 * 10 ** 55 // 2 ** 55
    1000000000000000055511151231257827021181583404541015625
 
 was bedeutet das der exakte Wert der im Rechner gespeichert würde, in etwa
-dem Dezimalwert 0.100000000000000005551115123125 entspricht.  Rundet man dies
-auf 17 Stellen ergeben sich die 0.10000000000000001 die Python darstellt.
-(das tut es zumindest auf einer 754-konformen Plattform, die die bestmögliche
-Eingabe- und Ausgabekonversation in seiner C library durchführt --- auf
-deiner vielleicht nicht!).
+dem Dezimalwert 0.1000000000000000055511151231257827021181583404541015625
+entspricht. Anstatt den ganzen Dezimalwert anzuzeigen runden viele Sprachen
+(inklusive älterer Versionen von Python) das Ergebnis auf 17 signifikante
+Stellen::
 
-Das Modul :mod:`fractions` und das Modul :mod:`decimal` vereinfacht diese
-Rechnung::
+   >>> format(0.1, '.17f')
+   '0.10000000000000001'
+
+Die Module :mod:`fractions` und :mod:`decimal` vereinfachen diese Rechnungen::
 
    >>> from decimal import Decimal
    >>> from fractions import Fraction
-   >>> print(Fraction.from_float(0.1))
-   3602879701896397/36028797018963968
-   >>> print(Decimal.from_float(0.1))
-   0.1000000000000000055511151231257827021181583404541015625
+
+   >>> Fraction.from_float(0.1)
+   Fraction(3602879701896397, 36028797018963968)
+
+   >>> (0.1).as_integer_ratio()
+   (3602879701896397, 36028797018963968)
+
+   >>> Decimal.from_float(0.1)
+   Decimal('0.1000000000000000055511151231257827021181583404541015625')
+
+   >>> format(Decimal.from_float(0.1), '.17')
+   '0.10000000000000001'
+
 

@@ -13,28 +13,20 @@ Die wichtigsten Eigenschaften von Klassen werden jedoch mit voller Kraft
 erhalten: Der Vererbungsmechanismus von Klassen erlaubt mehrere Basisklassen,
 eine abgeleitete Klasse kann jegliche Methoden seiner Basisklasse(n)
 überschreiben und eine Methode kann die Methode der Basisklasse mit demselben
-Namen aufrufen. Objekte können beliebig viele private Daten haben.
+Namen aufrufen. Objekte können beliebig viele Daten haben.
 
 In der Terminologie von C++ sind in Python *class members* (Attribute der
 Klasse) *public* (Ausnahmen siehe :ref:`tut-private`) und alle *member
-functions* (Methoden) sind *virtual*. Es gibt keine speziellen Konstruktoren
-oder Destruktoren. Es gibt, wie in Modula-3, keine Abkürzung zum referenzieren
-von Attributen eines Objekts aus dessen Methoden heraus: Die Methode wird mit
-einem expliziten ersten Argument, das das Objekt repräsentiert, deklariert,
-welches implizit beim Aufruf übergeben wird. Wie in Smalltalk sind auch Klassen
-selbst Objekte, wenn auch in einer breiteren Bedeutung, denn in Python sind alle
-Datentypen Objekte. Das ermöglicht die Semantik zum importieren und umbenennen.
-Anders als in C++ und Modula-3 können eingebaute Datentypen vom Benutzer als
-Basisklassen benutzt, das heisst abgeleitet werden. Außerdem können die meisten
-eingebauten Operatoren, wie in C++, aber nicht in Modula-3, mit einer besonderen
-Syntax (arithmetische Operatoren, Indizierung, usw.) für Instanzen der Klasse
-neu definiert werden.
-
-
-.. _tut-terminology:
-
-Zur Terminologie
-================
+functions* (Methoden) sind *virtual*. Wie in Modula-3 gibt es keine Abkürzung
+zum referenzieren von Attributen eines Objekts aus dessen Methoden heraus: Die
+Methode wird mit einem expliziten ersten Argument, welches das Objekt
+repräsentiert, deklariert, welches implizit vom Aufruf übergeben wird. Wie in
+Smalltalk sind Klassen selbst Objekte. Das bietet die Semantik zum importieren
+und umbenennen.  Anders als in C++ und Modula-3 können eingebaute Datentypen vom
+Benutzer als Basisklassen benutzt, das heisst abgeleitet werden. Außerdem können
+die meisten eingebauten Operatoren, wie in C++, mit einer besonderen Syntax
+(arithmetische Operatoren, Indizierung, usw.) für Instanzen der Klasse neu
+definiert werden.
 
 Da es keine allgemein anerkannte Terminologie im Bezug auf Klassen gibt, werde
 ich zwischendurch auf Smalltalk und C++ Begriffe ausweichen. (Da seine
@@ -42,14 +34,19 @@ objektorientierte Semantik näher an Python als an C++ ist, würde ich lieber
 Modula-3 Begriffe benutzen, allerdings erwarte ich, dass wenige Leser davon
 gehört haben.)
 
+
+.. _tut-object:
+
+Ein Wort zu Namen und Objekten
+==============================
+
 Objekte haben Individualität und mehrere Namen (in mehreren
 Gültigkeitsbereichen) können an dasselbe Objekt gebunden werden. In anderen
 Sprachen wird dies als Aliasing bezeichnet. Das wird meist beim ersten Blick auf
 Python nicht geschätzt und kann problemlos ignoriert werden, wenn man mit
 unveränderbaren Datentypen (Zahlen, Zeichenketten, Tupel) arbeitet. Aber
-Aliasing hat einen (beabsichtigten!) Effekt auf die Semantik von Pythoncode , der
-veränderbare Objekte wie Listen, Dictionaries oder die meisten anderen Typen,
-die Dinge außerhalb des Programms (Dateien, Fenster, usw.) beschreiben, enthält.
+Aliasing hat einen möglicherweise überraschenden Effekt auf die Semantik von Pythoncode, der
+veränderbare Objekte wie Listen, Dictionaries oder die meisten anderen Typen, enthält.
 Dies kommt normalerweise dem Programm zugute, da sich Aliase in mancher Hinsicht
 wie Pointer verhalten. Zum Beispiel ist die Übergabe eines Objekts günstig, da
 von der Implementierung nur ein Pointer übergeben wird. Verändert eine Funktion
@@ -122,12 +119,17 @@ Namen möglich ist einen Namen in diesem Namensraum zu finden.
 Auch wenn Gültigkeitsbereiche statisch ermittelt werden, werden sie dynamisch
 benutzt. An einem beliebigen Zeitpunkt während der Ausführung, gibt es
 mindestens drei verschachtelte Gültigkeitsbereiche, deren Namensräume direkt
-verfügbar sind: Der innerste Gültigkeitsbereich, der zuerst durchsucht wird und
-die lokalen Namen enthält; der Gültigkeitsbereich mit allen umgebenden
-Namensräumen (enthält auch die globalen Namen des momentanen Moduls), der vom
-nächsten umgebenden Namensraum aus durchsucht wird, und der äußerste
-Gültigkeitsbereich (zuletzt durchsuchte) ist der Namensraum, der die eingebauten
-Namen enthält.
+verfügbar sind:
+
+* Der innerste Gültigkeitsbereich, der zuerst durchsucht wird und die lokalen
+  Namen enthält;
+* der Gültigkeitsbereich mit allen umgebenden Namensräumen (enthält auch die
+  globalen Namen des momentanen Moduls), der vom nächsten umgebenden Namensraum
+  aus durchsucht wird, und nicht-lokale, aber auch nicht-globale Namen enthält;
+* der vorletzte Gültigkeitsbereich enthält die globalen Namen des aktuellen
+  Moduls;
+* der letzte Gültigkeitsbereich (zuletzt durchsuchte) ist der Namensraum, der
+  die eingebauten Namen enthält.
 
 Wird ein Name als global deklariert, so gehen alle Referenzen und Zuweisungen
 direkt an den mittleren Gültigkeitsbereich, der die globalen Namen des Moduls
@@ -153,9 +155,9 @@ hin zu einer statischen Namensauflösung zur Kompilierzeit, deshalb sollte man
 sich nicht auf die dynamische Namensauflösung verlassen! (In der Tat werden
 lokale Variablen schon statisch ermittelt.)
 
-Eine besondere Eigenart Pythons ist das -- wenn keine :keyword:`global`- oder
-:keyword:`nonlocal`-Anweisung aktiv ist -- Zuweisungen an Namen immer im
-innersten Gültigkeitsbereich abgewickelt werden. Zuweisungen kopieren keine
+Eine besondere Eigenart Pythons ist, dass -- wenn keine
+:keyword:`global`-Anweisung aktiv ist -- Zuweisungen an Namen immer im innersten
+Gültigkeitsbereich abgewickelt werden. Zuweisungen kopieren keine
 Daten, sondern binden nur Namen an Objekte. Das gleiche gilt für Löschungen: Die
 Anweisung ``del x`` entfernt nur die Bindung von ``x`` aus dem Namensraum des
 lokalen Gültigkeitsbereichs. In der Tat benutzen alle Operationen, die neue
@@ -375,7 +377,7 @@ Funktionsobjekt.
 Methodenobjekte
 ---------------
 
-Űblicherweise wird eine Methode gemäß seiner Bindung aufgerufen::
+Üblicherweise wird eine Methode gemäß seiner Bindung aufgerufen::
 
     x.f()
 
@@ -418,8 +420,8 @@ aufgerufen.
 
 .. _tut-remarks:
 
-Beiläufige Anmerkugen
-=====================
+Beiläufige Anmerkungen
+======================
 
 Datenattribute überschreiben Methodenattribute desselben Namens. Um zufällige
 Namenskonflikte zu vermeiden, die zu schwer auffindbaren Fehlern in großen
@@ -434,7 +436,7 @@ Datenattribute können von Methoden, genauso wie von normalen Benutzern
 ("clients") eines Objektes referenziert werden. In anderen Worten: Klassen sind
 nicht benutzbar um reine abstrakte Datentypen ("abstract data types") zu
 implementieren. In Wirklichkeit, gibt es in Python keine Möglichkeit um
-Datenkapselung (data hiding) zu erzwingen --- alles basiert auf Konventionen.
+Datenkapselung (*data hiding*) zu erzwingen --- alles basiert auf Konventionen.
 (Auf der anderen Seite kann die Python-Implementierung, in C geschrieben,
 Implementationsdetails komplett verstecken und den Zugriff auf ein Objekt
 kontrollieren, wenn das nötig ist; das kann von in C geschriebenen
@@ -454,10 +456,10 @@ wenn man eine Methode überfliegt.
 
 Oft wird das erste Argument einer Methode ``self`` genannt. Dies ist nichts
 anderes als eine Konvention: Der Name ``self`` hat absolut keine spezielle
-Bedeutung für Python. (Aber beachte: Hälst du dich nicht an die Konvention, kann
+Bedeutung für Python. Aber beachte: Hälst du dich nicht an die Konvention, kann
 dein Code schwerer für andere Python-Programmierer sein und es ist auch
 vorstellbar, dass ein *Klassenbrowser* (*class browser*) sich auf diese
-Konvention verlässt.)
+Konvention verlässt.
 
 Jedes Funktionsobjekt, das ein Klassenattribut ist, definiert eine Methode für
 Instanzen dieser Klasse. Es ist nicht nötig, dass die Funktionsdefinition im
@@ -494,7 +496,7 @@ des Arguments ``self`` benutzen::
 
 Methoden können globale Namen genauso wie normale Funktionen referenzieren. Der
 globale Gültigkeitsbereich der Methode ist das Modul, das die Klassendefinition
-enthält. (Die Klasse selbst wird nie als globaler Gültigkeitsbereich benutzt!)
+enthält. (Die Klasse selbst wird nie als globaler Gültigkeitsbereich benutzt.)
 Während man selten einen guten Grund dafür hat globale Daten zu benutzen, gibt
 es viele berechtigte Verwendungen des globalen Gültigkeitsbereichs: Zum einen
 können Funktionen und Module, die in den globalen Gültigkeitsbereich importiert
@@ -557,8 +559,8 @@ die Methode der Basisklasse mit demselben Namen erweitern, statt einfach nur zu
 ersetzen. Es gibt einen einfachen Weg die Basisklassenmethode direkt aufzurufen:
 Einfach ``BaseClassName.methodname(self, arguments)`` aufrufen. Das ist
 gelegentlich auch für Clients nützlich. (Beachte, dass dies nur funktioniert,
-wenn die Basisklasse direkt im globalen Gültigkeitsbereich definiert oder in ihn
-importiert wird.)
+wenn die Basisklasse als ``BaseClassName`` im globalen Gültigkeitsbereich
+zugänglich ist.)
 
 Python hat zwei eingebaute Funktionen, die mit Vererbung zusammenarbeiten:
 
@@ -623,15 +625,43 @@ Details, siehe http://www.python.org/download/releases/2.3/mro/.
 Private Variablen
 =================
 
+"Private" Instanzvariablen, die nur innerhalb des Objekts zugänglich sind, gibt
+es in Python nicht. Jedoch gibt es eine Konvention, die von dem meisten
+Python-Code befolgt wird: Ein Name, der mit einem Unterstrich beginnt (z.B.
+``_spam``) sollte als nicht-öffentlicher Teil der API behandelt werden (egal ob
+es eine Funktion, eine Methode oder ein Datenattribut ist). Es sollte als
+Implementierungsdetails behandelt werden, das sich unangekündigt ändern kann.
+
+Da es eine sinnvolle Verwendung für Klassen-Private Member gibt (um
+Namenskonflikte mit Namen, die von Unterklassen definiert werden zu vermeiden),
+gibt es eine begrenzte Unterstützung für so einen Mechanismus: :dfn:`name
+mangling` (Namensersetzung). Jeder Bezeichner der Form ``__spam`` (mindestens
+zwei führende Unterstriche, höchstens ein folgender) wird im Text durch
+``_classname__spam`` ersetzt, wobei ``classname`` der Name der aktuellen Klasse
+(ohne eventuelle führende Unterstriche) ist. Die Ersetzung geschieht ohne
+Rücksicht auf die syntaktische Position des Bezeichners, sofern er innerhalb der
+Definition der Klasse steht.
+
+Beachte, dass die Ersetzungsregeln vor allem dazu gedacht sind Unfälle zu
+vermeiden; es ist immernoch möglich eine auf eine als privat behandelte Variable von
+aussen zuzugreifen und auch sie zu verändern. Das kann in manchen Umständen
+sogar nützlich sein, beispielsweise in einem Debugger.
+
+Beachte, dass Code der von ``exec()``, ``eval()`` oder ``execfile()`` ausgeführt
+wird, den Klassennamen der aufrufenden Klasse nicht als die aktuelle Klasse
+ansieht; dies ähnelt dem Effekt der :keyword:`global`-Anweisung, dessen Effekt
+ebenfalls sehr beschränkt auf den Code ist, der zusammen byte-kompiliert wird.
+Die gleiche Begrenzung gilt für ``getattr()``, ``setattr()`` und ``delattr()``,
+sowie den direkten Zugriff auf ``__dict__``.
 
 .. _tut-odds:
 
 Kleinkram
 =========
 
-Manchmal ist es nützlich einen Datentyp zu haben, der sich ähnlich dem "record"
-in Pascal oder dem "struct" in C verhält und ein Container für ein paar Daten
-ist.Hier bietet sich eine leere Klassendefinition an::
+Manchmal ist es nützlich einen Datentyp zu haben, der sich ähnlich dem
+``record`` in Pascal oder dem "struct" in C verhält und ein Container für ein
+paar Daten ist. Hier bietet sich eine leere Klassendefinition an::
 
     class Employee:
         pass
@@ -663,7 +693,8 @@ Benutzerdefinierte Ausnahmen werden auch durch Klassen gekennzeichnet. Durch die
 Nutzung dieses Mechanismus ist es möglich erweiterbare Hierarchien von
 Ausnahmen zu erstellen.
 
-Es gibt zwei (semantisch) gültige Varianten der :keyword:`raise`-Anweisung::
+Es gibt zwei neue (semantisch) gültige Varianten der
+:keyword:`raise`-Anweisung::
 
     raise Klasse
 
