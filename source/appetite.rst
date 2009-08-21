@@ -66,7 +66,7 @@ als C/C++/Java-Äquivalente:
   
 * Variablen- oder Argumentdeklarationen sind nicht nötig.
 
-Python ist *erweiterbar*: Wer in C programmieren kannst, kann einfach eine neue
+Python ist *erweiterbar*: Wer in C programmieren kann, kann einfach eine neue
 eingebaute Funktion oder ein Modul zum Interpreter hinzuzufügen. Entweder um
 zeitkritische Operationen mit maximaler Geschwindigkeit auszuführen oder um
 Python-Programme zu Bibliotheken zu linken, die nur in binärer Form (wie
