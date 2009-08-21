@@ -80,14 +80,14 @@ benannt und hat nichts mit Reptilien zu tun. Anspielungen auf Monty
 Python-Sketche in Dokumentation zu benutzen ist nicht nur erlaubt, sondern gern
 gesehen.
 
-Wer jetzt heiß auf Python geworden ist, wird mehr wissen und lernen wollen.  Der
-beste Weg, um eine Sprache zu erlernen, ist ganz sicher der, sie einzusetzen.
-Darum lädt das Tutorial gerade dazu ein, während des Lesens mit dem
-Python-Interpreter zu experimentieren.
+Jetzt, da du nun ganz heiß auf Python bist, wirst du mehr wissen und lernen
+wollen. Der beste Weg, um eine Sprache zu erlernen, ist ganz sicher der, sie
+einzusetzen.  Darum lädt das Tutorial gerade dazu ein, während des Lesens mit
+dem Python-Interpreter zu experimentieren.
 
-Im nächsten Kapitel wird der technische Teil der Interpreternutzung erläutert.
-Das ist eher nüchterne Information, aber wichtig, um die später gezeigten
-Beispiele ausprobieren zu können.
+Im nächsten Kapitel wird der technische Teil der Nutzung des Interpreters
+erläutert. Das ist eher nüchterne Information, aber wichtig, um die später
+gezeigten Beispiele ausprobieren zu können.
 
 Der Rest des Tutorials stellt anhand von Beispielen unterschiedliche
 Möglichkeiten und Sprachelemente von Python vor. Dies beginnt mit einfachen
