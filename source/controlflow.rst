@@ -194,7 +194,7 @@ wenn syntaktisch eine Anweisung benötigt wird, das Programm jedoch nichts tun
 soll. Ein Beispiel::
 
     >>> while True:
-    ...     pass  # geschäftiges Warten auf den Tastatur-Interrupt (:kbd:`Strg+C`)
+    ...     pass  # geschäftiges Warten auf den Tastatur-Interrupt (Strg+C)
     ...
 
 Auch bei der Erzeugung einer minimalen Klasse kann :keyword:`pass` zum Einsatz
@@ -209,7 +209,7 @@ einer Funktionen oder Schleife bei der "Top-Down"-Programmierung, um so zunächs
 auf einer abstrakteren Ebene zu denken ::
 
    >>> def initlog(*args):
-   ...     pass   # Nicht vergessen das zu implementieren!
+   ...     pass   # Implementieren nicht vergessen!
    ...
 
 .. _tut-functions:
@@ -238,24 +238,23 @@ zu einer beliebigen Grenze ausgibt::
    single: strings, documentation
 
 Das Schlüsselwort :keyword:`def` leitet die *Definition* einer Funktion ein.
-Danach folgt der Funktionsname und eine Auflistung der formalen Parameter, die
+Darauf folgt der Funktionsname und eine Auflistung der formalen Parameter, die
 allerdings auch leer sein kann. Die Anweisungen, die den Funktionskörper bilden,
 beginnen in der nächsten Zeile und müssen eingerückt sein.
 
 Die erste Anweisung des Funktionskörpers kann auch ein Zeichenkettenliteral
 sein, ein so genannter Dokumentationsstring der Funktion, auch :dfn:`Docstring`
-genannt.  (Mehr zu Docstrings kann im Abschnitt :ref`tut-docstrings` nachgelesen
-werden.) Es gibt Werkzeuge, die Docstrings verwenden, um automatisch
+genannt. (Mehr zu Docstrings kann im Abschnitt :ref:`tut-docstrings`
+nachgelesen werden.) Es gibt Werkzeuge, die Docstrings verwenden, um automatisch
 Online-Dokumentation oder gedruckte Dokumentation zu erzeugen oder es dem
-Anwender ermöglichen, interaktiv den Code zu durchsuchen.  Die Verwendung von
+Anwender ermöglichen, interaktiv den Code zu durchsuchen. Die Verwendung von
 Docstrings ist eine gute Konvention, an die man sich bei der Programmierung nach
 Möglichkeit halten sollte.
 
 Beim *Aufruf* einer Funktion kommt es zur Bildung eines lokalen Namensraums, der
-sich
-auf alle Bezeichner erstreckt, die im Funktionsrumpf (durch Zuweisung oder als
-Elemente der Parameterliste) neu definiert werden. Diese Bezeichner werden mit den ihnen
-zugeordneten Objekten in einer lokalen Symboltabelle abgelegt.
+sich auf alle Bezeichner erstreckt, die im Funktionsrumpf (durch Zuweisung oder
+als Elemente der Parameterliste) neu definiert werden. Diese Bezeichner werden
+mit den ihnen zugeordneten Objekten in einer lokalen Symboltabelle abgelegt.
 
 Wenn im Funktionsrumpf ein Bezeichner vorkommt, wird der Name zunächst in der
 lokalen Symboltabelle gesucht, danach in den lokalen Symboltabellen der
@@ -664,7 +663,7 @@ dabei ungemein.
 
 Für Python hat sich :pep:`8` als der Styleguide herauskristallisiert, dem die
 meisten Projekte folgen. Es fördert einen sehr lesbaren Schreibstil, der
-angenehm anzuschauen ist. Jeder Pythonentwickler sollte es irgendwann einmal
+angenehm zu lesen ist. Jeder Pythonentwickler sollte ihn irgendwann einmal
 lesen, hier jedoch die wichtigsten Punkte:
 
 * Benutze eine Einrückung von 4 Leerzeichen, keine Tabs.

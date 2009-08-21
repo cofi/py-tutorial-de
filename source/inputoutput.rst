@@ -251,7 +251,7 @@ alle Daten, die in die Datei geschrieben werden, werden automatisch ans Ende
 angehängt. ``'r+'`` öffnet die Datei zum Lesen und Schreiben. Das
 *mode*-Argument ist optional, fehlt es, so wird ``'r'`` angenommen.
 
-Normalerweise werden Dateien im :defn:`Textmodus` (*text mode*) geöffnet, das
+Normalerweise werden Dateien im :dfn:`Textmodus` (*text mode*) geöffnet, das
 heisst, dass man Zeichenketten von ihr liest beziehungsweise in sie schreibt,
 die in einer bestimmten Kodierung kodiert werden (der Standard ist UTF-8).
 Wird ``'b'`` an das *mode*-Argument angehängt, so öffnet man die Datei im
