@@ -17,7 +17,7 @@ Ausgefallenere Ausgabeformatierung
 
 Bis jetzt sind uns zwei Arten der Ausgabe von Werten begegnet:
 *Ausdrucksanweisungen* (*expression statements*) und die :func:`print`-Funktion.
-(Eine dritte Möglichkeit ist die :meth:`write`-Methode von Dateiobjekten; die
+(Eine dritte Möglichkeit ist die :meth:`~file.write`-Methode von Dateiobjekten; die
 Standardausgabedatei kann als ``sys.stdout`` referenziert werden. In der
 Bibliotheksreferenz gibt es dazu weitere Informationen.)
 
@@ -30,7 +30,7 @@ Zeichenketten selbst übernimmt; indem man Slicing- und Verknüpfungsoperationen
 benutzt, kann man jede denkbare Anordnung zusammenstellen. Das Standardmodul
 :mod:`string` enthält ein paar nützliche Operationen um Zeichenketten auf eine
 bestimmte Länge aufzufüllen; diese werden wir in Kürze behandeln. Die zweite
-Möglichkeit ist die Benutzung der :meth:`str.format`-Methode.
+Möglichkeit ist die Benutzung der :meth:`~str.format`-Methode.
 
 Eine Frage bleibt natürlich: Wie konvertiert man Werte zu Zeichenketten?
 Glücklicherweise kennt Python Wege, um jeden Wert in eine Zeichenkette
@@ -103,21 +103,22 @@ Hier zwei Möglichkeiten, eine Tabelle von Quadrat- und Kubikzahlen zu erstellen
     9  81  729
    10 100 1000
 
-(Achte darauf, dass im ersten Beispiel ein Leerzeichen pro Spalte durch die
+(Beachte, dass im ersten Beispiel ein Leerzeichen pro Spalte durch die
 Funktionsweise von :func:`print` hinzugefügt wird: Sie trennt ihre Argumente mit
 Leerzeichen.)
 
-Dieses Beispiel hat die :meth:`rjust`-Methode von Zeichenkettenobjekten gezeigt,
-die eine Zeichenkette in einem Feld der gegebenen Breite rechtsbündig macht,
-indem sie diese links mit Leerzeichen auffüllt. Es gibt die ähnlichen Methoden
-:meth:`ljust` und :meth:`center`. Diese Methoden schreiben nichts, sondern geben
-eine neue Zeichenkette zurück. Ist die gegebene Zeichenkette zu lang, schneiden
-sie nichts, sondern geben diese unverändert zurück; dies wird die Anordnung
-durcheinanderbringen, aber ist meistens besser als die Alternative, den Wert zu
-verfälschen. (Will man wirklich abschneiden, kann man immer noch eine
-Slicing-Operation hinzufügen, zum Beispiel ``x.ljust(n)[:n]``.)
+Dieses Beispiel hat die :meth:`~str.rjust`-Methode von Zeichenkettenobjekten
+gezeigt, die eine Zeichenkette in einem Feld der gegebenen Breite rechtsbündig
+macht, indem sie diese links mit Leerzeichen auffüllt. Es gibt die ähnlichen
+Methoden :meth:`~str.ljust` und :meth:`~str.center`. Diese Methoden schreiben
+nichts, sondern geben eine neue Zeichenkette zurück. Ist die gegebene
+Zeichenkette zu lang, schneiden sie nichts, sondern geben diese unverändert
+zurück; dies wird die Anordnung durcheinanderbringen, aber ist meistens besser
+als die Alternative, dass der  Wert verfälscht wird. (Will man wirklich
+abschneiden, kann man immer noch eine Slicing-Operation hinzufügen, zum Beispiel
+``x.ljust(n)[:n]``.)
 
-Es gibt noch eine weitere Methode, :meth:`zfill`, die eine numerische
+Es gibt noch eine weitere Methode, :meth:`~str.zfill`, die eine numerische
 Zeichenkette mit Nullen auffüllt. Sie versteht auch Plus- und Minuszeichen::
 
     >>> '12'.zfill(5)
@@ -127,7 +128,7 @@ Zeichenkette mit Nullen auffüllt. Sie versteht auch Plus- und Minuszeichen::
     >>> '3.14159265359'.zfill(5)
     '3.14159265359'
 
-Die einfachste Benutzung der :meth:`str.format`-Methode sieht so aus::
+Die einfachste Benutzung der :meth:`~str.format`-Methode sieht so aus::
 
     >>> print('Wir sind die {0}, die "{1}!" sagen.'.format('Ritter', 'Ni'))
     Wir sind die Ritter, die "Ni!" sagen.
@@ -199,7 +200,7 @@ Das ist besonders nützlich in Verbindung mit der neuen eingebauten Funktion
 :func:`vars`, die ein Dictionary mit allen lokalen Variablen zurückgibt.
 
 :lib:`Format String Syntax <string.html#formatstrings>` gibt eine komplette
-Übersicht zur Zeichenkettenformatierung mit :meth:`str.format`.
+Übersicht zur Zeichenkettenformatierung mit :meth:`~str.format`.
 
 Alte Zeichenkettenformatierung
 ------------------------------
@@ -242,8 +243,8 @@ aufgerufen: ``open(filename, mode)``
     <open file '/tmp/workfile', mode 'w' at 80a0960>
 
 Das erste Argument ist eine Zeichenkette, die den Dateinamen enthält. Das zweite
-Argument ist eine andere Zeichenkette mit ein paar Zeichen, die die Art
-der Benutzung der Datei beschreibt. *mode* kann ``'r'`` sein, wenn die Datei nur
+Argument ist eine andere Zeichenkette mit ein paar Zeichen, die die Art der
+Benutzung der Datei beschreibt. *mode* kann ``'r'`` sein, wenn die Datei nur
 gelesen wird, ``'w'``, wenn sie nur geschrieben wird (eine existierende Datei
 mit demselben Namen wird gelöscht) und ``'a'`` öffnet die Datei zum Anhängen;
 alle Daten, die in die Datei geschrieben werden, werden automatisch ans Ende
@@ -381,9 +382,9 @@ fehl das Objekt zu benutzen. ::
 
 Die optimale Vorgehensweise ist es, das Schlüsselwort :keyword:`with` zu
 benutzen, wenn man mit Dateiobjekten arbeitet. Das hat den Vorteil, dass die
-Datei richtig geschlossen wird, sobald deren Befehle abgearbeitet sind, auch
-wenn unterwegs eine Ausnahme verursacht wird. Das ist auch viel kürzer als einen
-äquivalenten :keyword:`try`-:keyword:`finally`-Block zu schreiben::
+Datei richtig geschlossen wird, sobald die Befehle des Blocks abgearbeitet sind,
+auch wenn innerhalb eine Ausnahme verursacht wird. Das ist auch viel kürzer als
+einen äquivalenten :keyword:`try`-:keyword:`finally`-Block zu schreiben::
 
     >>> with open('/tmp/workfile', 'r') as f:
     ...     read_data = f.read()
