@@ -4,8 +4,8 @@
 Datenstrukturen
 ***************
 
-Dieses Kapitel beschreibt Dinge, die Du schon kennengelernt hast, detaillierter
-und geht auch auf ein paar neue Dinge ein.
+Dieses Kapitel beschreibt einige Dinge, die schon vorkamen, detaillierter und
+stellt auch ein paar neue Dinge vor.
 
 .. _tut-morelists:
 
@@ -218,8 +218,8 @@ ausgefallenes Verhalten::
    >>> [vec1[i]*vec2[i] for i in range(len(vec1))]
    [8, 12, -54]
 
-List Comprehensions können auf komplexe Ausdrücke und verschachtelte
-Funktionen angewendet werden::
+List Comprehensions können auf komplexe Ausdrücke und verschachtelte Funktionen
+angewendet werden::
 
    >>> [str(round(355/113, i)) for i in range(1, 6)]
    ['3.1', '3.14', '3.142', '3.1416', '3.14159']
@@ -330,7 +330,7 @@ ohne Klammern eingegeben werden, obwohl Klammern trotzdem sehr oft benötigt
 werden (wenn das Tupel Teil eines größeren Ausdrucks ist).
 
 Tupel lassen sich vielfach einsetzen, beispielsweise (x, y)-Koordinatenpaare,
-Unterlagen über die Angestellten von der Datenbank, usw.  Wie Strings sind auch
+Unterlagen über die Angestellten von der Datenbank, usw. Wie Strings sind auch
 Tupel unveränderbar: Es ist nicht möglich, einzelnen Elementen eines Tupels
 einen Wert zuzuweisen (das Verhalten kann man jedoch mit Slicing und Verkettung
 simulieren). Es ist auch möglich Tupel, die veränderbare Objekte wie Listen
@@ -439,8 +439,8 @@ veränderbar sind, sei es durch Indexzuweisung, Abschnittszuweisung oder Methode
 wie :meth:`append` and :meth:`extend`.
 
 Am Besten stellt man sich Dictionaries als ungeordnete Menge von *Schlüssel:
-Wert*-Paaren vor, mit der Anforderung, dass die Schlüssel eindeutig sind
-(innerhalb eines Dictionaries). Ein Paar von geschweiften Klammern erstellt ein
+Wert*-Paaren vor, mit der Anforderung, dass die Schlüssel innerhalb eines
+Dictionaries eindeutig sind. Ein Paar von geschweiften Klammern erstellt ein
 leeres Dictionary: ``{}``. Schreibt man eine Reihe von Komma-getrennten
 Schlüssel-Wert-Paaren in die Klammern, fügt man diese als Anfangspaare dem
 Dictionary hinzu; dies ist ebenfalls die Art und Weise, wie Dictionaries
@@ -456,7 +456,7 @@ Fehlermeldung.
 
 Der Aufruf ``list(d.keys())`` auf ein Dictionary gibt eine Liste aller Schlüssel
 in zufälliger Reihenfolge zurück (will man sie sortiert haben, verwendet man
-einfach die Funktion ``sorted(d.keys)`` stattdessen). [1]_ Um zu überprüfen ob
+einfach die Funktion ``sorted(d.keys())`` stattdessen). [1]_ Um zu überprüfen ob
 ein einzelner Schlüssel im Dictionary ist, lässt sich das Schlüsselwort
 :keyword:`in` benutzen.
 
