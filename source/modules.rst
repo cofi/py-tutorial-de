@@ -21,7 +21,7 @@ die Gesamtheit aller Funktionen und Variablen enthält, auf die man in einem
 Skript zugreifen kann.
  
 Ein Modul ist eine Datei, die Python-Definitionen und -Anweisungen beinhaltet.
-Der Dateiname mit dem :file:`.py` Suffix entspricht dem Namen des Moduls.
+Der Dateiname mit dem :file:`.py`-Suffix entspricht dem Namen des Moduls.
 Innerhalb eines Moduls ist der Modulname als ``__name__`` verfügbar (globale
 Variable des Typs String). Zum Beispiel: Öffne einen Editor Deiner Wahl und
 erstelle eine Datei im aktuellen Verzeichnis mit dem Namen :file:`fibo.py` und
@@ -50,7 +50,7 @@ Befehl::
 	>>> import fibo
 	
 Dieser Befehl fügt die von :file:`fibo.py` definierten Funktionen nicht
-automatisch in die globale Symboltabelle (symbol table) ein, sondern nur den
+automatisch in die globale Symboltabelle (*symbol table*) ein, sondern nur den
 Modulnamen ``fibo``. Um die Funktionen anzusprechen, benutzt man den
 Modulnamen::
 
@@ -110,19 +110,19 @@ Zusätzlich gibt es eine Variante um alle Namen eines Moduls zu importieren:
 	>>> fib(500)
 	1 1 2 3 5 8 13 21 34 55 89 144 233 37
 	
-Hiermit werden alle Namen, außer denen, die mit einem Unterstrich beginnen
-(`_`), importiert. In den meisten Fällen wird diese Variante nicht verwendet,
-denn dadurch werden unbekannte Namen in den Interpreter importiert und so kann es
+Hiermit werden alle Namen, sofern sie nicht mit einem Unterstrich (`_`) beginnen
+, importiert. In den meisten Fällen wird diese Variante nicht verwendet, denn
+dadurch werden unbekannte Namen in den Interpreter importiert und so kann es
 vorkommen, dass einige Namen überschrieben werden, die bereits definiert worden
 sind.
 
 .. note::
 
     Aus Effizienzgründen wird jedes Modul nur einmal durch eine
-    Interpreter-Sizung importiert. Deshalb muss man den Interpreter bei
-    Veränderung der Module neustarten - oder man benutzt :func:`reload`,
-    beispielsweise ``reload(modulename)``, falls es nur ein Modul ist, welches
-    man interaktiv testen will.
+    Interpreter-Sitzung importiert. Deshalb muss man den Interpreter bei
+    Veränderung der Module neustarten - oder man benutzt :func:`imp.reload`,
+    beispielsweise ``import imp; imp.reload(modulename)``, falls es nur ein
+    Modul ist, welches man interaktiv testen will.
 	
 .. _tut-modulesasscripts:
 	
@@ -172,12 +172,12 @@ gesetzt ist. Diese hat die gleiche Syntax wie die Shell Variable :envvar:`PATH`,
 welche auch eine Verzeichnisliste ist. Falls :envvar:`PYTHONPATH` nicht gesetzt
 ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem
 installationsabhängigen Pfad fortgesetzt; unter Unix ist das normalerweise:
-:file:`.:/usr/local/lib/python`.
+:file:`/usr/local/lib/python`.
 
 Tatsächlich werden Module in der Reihenfolge gesucht, in der sie in der Variable
 `sys.path` aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich
-auch das Skript befindet beginnt, gefolgt von :envvar:`PYTHONPATH` und dem
-installationsabhängigen default-Pfad. Dies erlaubt Python-Programmen, die
+auch das Skript befindet, beginnt, gefolgt von :envvar:`PYTHONPATH` und dem
+installationsabhängigen Standard-Pfad. Dies erlaubt Python-Programmen, die
 Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu beachten
 ist, dass das Skript nicht den selben Namen haben darf wie eines der
 Standardmodule, da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist.
@@ -209,14 +209,14 @@ kann.
 Einige Tipps für Experten:
 
 * Wird der Python-Interpreter mit dem :option:`-O`-Flag gestartet, so
-  wird der optimierte Code in :file:`.pyo`-Dateien gespeichert. Optimierter
-  Code hilft momentan nicht viel, da er lediglich :keyword:`assert`-Anweisungen
-  entfernt. Wird :option:`-O` verwendet, wird der *komplette*
-  :term:`Bytecode` optimiert; :file:`.pyc` werden ignoriert und :file:`.py`-Dateien
-  werden zu optimiertem Bytecode kompiliert.
+  wird der optimierte Code in :file:`.pyo`-Dateien gespeichert. Optimierter Code
+  hilft momentan nicht viel, da er lediglich :keyword:`assert`-Anweisungen
+  entfernt. Wird :option:`-O` verwendet, wird der *komplette* :term:`Bytecode`
+  optimiert; :file:`.pyc` werden ignoriert und :file:`.py`-Dateien werden zu
+  optimiertem Bytecode kompiliert.
 
-* Werden dem Python-Interpreter zwei :option:`-O`-Flags übergiben, vollzieht
-  der Bytecode-Compiler Optimierungen, die zu einer Fehlfunktion des Programms
+* Werden dem Python-Interpreter zwei :option:`-O`-Flags übergiben, vollzieht der
+  Bytecode-Compiler Optimierungen, die zu einer Fehlfunktion des Programms
   führen können. Momentan werden nur ``__doc__``-Strings aus dem Bytecode
   entfernt, was zu kleineren :file:`.pyo`-Dateien führt. Da einige Programme
   sich darauf verlassen, dass sie verfügbar sind, sollte man diese Option nur
@@ -224,7 +224,7 @@ Einige Tipps für Experten:
 
 * Ein Programm wird in keinster Weise schneller ausgeführt, wenn es aus einer
   :file:`.pyc` oder :file:`.pyo` anstatt aus einer :file:`.py`-Datei gelesen
-  wird; der einzige Geschwindigkeitsvorteil ist beim Starten der Dateien.
+  wird. Der einzige Geschwindigkeitsvorteil ist beim Starten der Dateien.
 
 * Wenn ein Skript durch das Aufrufen über die Kommandozeile ausgeführt wird,
   wird der Bytecode nie in eine :file:`.pyc`- oder :file:`.pyo`-Datei
@@ -232,9 +232,9 @@ Einige Tipps für Experten:
   Codes in ein Modul reduziert werden. Es ist auch möglich eine :file:`.pyc`-
   oder :file:`.pyo`-Datei direkt in der Kommandozeile auszuführen.
 
-* Es ist möglich, eine :file:`.pyc`- oder :file:`.pyo`-Datei zu haben, ohne
-  dass eine Datei mit dem Namen :file:`spam.py` für selbiges Modul existiert.
-  Dies kann dazu genutzt werden, Python-Code auszuliefern, der relativ schwer
+* Es ist möglich, eine :file:`.pyc`- oder :file:`.pyo`-Datei zu haben, ohne dass
+  eine Datei mit dem Namen :file:`spam.py` für selbiges Modul existiert.  Dies
+  kann dazu genutzt werden, Python-Code auszuliefern, der relativ schwer
   rekonstruiert werden kann.
 
 * Das Modul :mod:`compileall` kann :file:`.pyc`-Dateien (oder auch :file:`.pyo`,
@@ -250,7 +250,7 @@ Standardmodule
 
 Python wird mit einer Bibliothek von Standardmodulen ausgeliefert, welche in der
 Python Library Reference beschrieben werden. Einige Module sind in den
-Interpreter eingebaut; diese bieten Zugang zu Operationen, die nicht Teil des
+Interpreter eingebaut. Diese bieten Zugang zu Operationen, die nicht Teil des
 Sprachkerns sind, aber trotzdem eingebaut sind. Entweder, um Zugang zu
 Systemoperationen (wie z. B. Systemaufrufe) bereitzustellen oder aus
 Effizienzgründen. Die Zusammenstellung dieser Module ist eine Option in der
@@ -327,32 +327,31 @@ Variablen auf. Falls man diese auflisten will, muss man das Standardmodul
 :mod:`builtins` verwenden::
 
 	>>> import builtins
-	>>> dir(builtins)
-
+    >>> dir(builtins)
     ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException',
-    'Buffer Error', 'BytesWarning', 'DeprecationWarning', 'EOFError',
-    'Ellipsis', 'Environme ntError', 'Exception', 'False', 'FloatingPointError',
-    'FutureWarning', 'Generato rExit', 'IOError', 'ImportError',
-    'ImportWarning', 'IndentationError', 'IndexErr or', 'KeyError',
-    'KeyboardInterrupt', 'LookupError', 'MemoryError', 'NameError', 'None',
-    'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError',
+    'BufferError', 'BytesWarning', 'DeprecationWarning', 'EOFError', 'Ellipsis',
+    'EnvironmentError', 'Exception', 'False', 'FloatingPointError',
+    'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarning',
+    'IndentationError', 'IndexError', 'KeyError', 'KeyboardInterrupt',
+    'LookupError', 'MemoryError', 'NameError', 'None', 'NotImplemented',
+    'NotImplementedError', 'OSError', 'OverflowError',
     'PendingDeprecationWarning', 'ReferenceError', 'RuntimeError',
-    'RuntimeWarning', ' StopIteration', 'SyntaxError', 'SyntaxWarning',
+    'RuntimeWarning', 'StopIteration', 'SyntaxError', 'SyntaxWarning',
     'SystemError', 'SystemExit', 'TabError', 'True', 'TypeError',
-    'UnboundLocalError', 'UnicodeDecodeError', 'Unicod eEncodeError',
+    'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError',
     'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning',
     'ValueError', 'Warning', 'ZeroDivisionError', '__build_class__',
     '__debug__', '__doc__', '__import__', '__name__', '__package__', 'abs',
     'all', 'any', 'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'chr',
-    'classmethod', 'compile', ' complex', 'copyright', 'credits', 'delattr',
-    'dict', 'dir', 'divmod', 'enumerate ', 'eval', 'exec', 'exit', 'filter',
+    'classmethod', 'compile', 'complex', 'copyright', 'credits', 'delattr',
+    'dict', 'dir', 'divmod', 'enumerate', 'eval', 'exec', 'exit', 'filter',
     'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash',
     'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter',
-    'len', 'license', 'list', 'locals', 'map', 'max', 'memory view', 'min',
-    'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property' , 'quit',
-    'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sort ed',
+    'len', 'license', 'list', 'locals', 'map', 'max', 'memoryview', 'min',
+    'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit',
+    'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted',
     'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
-	
+    
 .. _tut-packages:
 
 Pakete
@@ -403,7 +402,7 @@ Wenn man das Paket importiert, sucht Python durch die Verzeichnisse im
 ``sys.path``, um nach dem Paket in einem Unterverzeichnis zu suchen.
 
 Die :file:`__init__.py`-Datei wird benötigt, damit Python das Verzeichnis als
-Pakete behandelt; dies wurde gemacht, damit Verzeichnisse mit einem normalen
+Paket behandelt. Dies hat den Grund, dass Verzeichnisse mit einem normalen
 Namen, wie z.B. ``string``, nicht unbeabsichtigt Module verstecken, die weiter
 hinten im Suchpfad erscheinen. Im einfachsten Fall ist :file:`__init__.py` eine
 leere Datei, sie kann allerdings auch Initialisierungscode für das Paket
@@ -439,16 +438,16 @@ diesem Fall wird aber die :func:`echofilter` Funktion direkt verfügbar gemacht:
 	echofilter(input, output, delay=0.7, atten=4)
 	
 Wenn man ``from package import item`` verwendet, kann das ``item`` entweder ein
-Untermodul und -paket sein oder ein Name, der in diesem Paket definiert ist
-(z. B. eine Funktion, eine Klasse oder Variable). Das ``import``-Statement
-überprüft zuerst, ob das ``item`` in diesem Paket definiert ist; falls nicht,
-wird von einem Modul ausgegangen und versucht es zu laden. Wenn nichts gefunden
-wird, wird eine :exc:`ImportError`-Ausnahme geworfen.
+Untermodul und -paket sein oder ein Name, der in diesem Paket definiert ist (z.
+B. eine Funktion, eine Klasse oder Variable). Die ``import``-Anweisung überprüft
+zuerst, ob das ``item`` in diesem Paket definiert ist; falls nicht, wird von
+einem Modul ausgegangen und versucht es zu laden. Wenn nichts gefunden wird,
+wird eine :exc:`ImportError`-Ausnahme geworfen.
 
 Im Gegensatz dazu, muss bei Verwendung von ``import item.subitem.subsubitem``
-jedes ``item`` ein Paket sein; das letzte ``item`` kann ein Modul oder ein
-Paket sein, aber es darf keine Klasse, Funktion oder Variable im darüber
-geordneten ``item`` sein.
+jedes ``item`` ein Paket sein; das letzte ``item`` kann ein Modul oder ein Paket
+sein, aber es darf keine Klasse, Funktion oder Variable im darüber geordneten
+``item`` sein.
 
 
 .. _tut-pkg-import-start:

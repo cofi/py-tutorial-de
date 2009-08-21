@@ -69,7 +69,7 @@ anzeigt ::
    0.1
 
 Zur Erinnerung - auch wenn der angezeigte Wert wie der exakte Wert von 1/10
-aussieht - ist der eigentlich gespeicherte Wert der nächstgelegene Binärbruch.
+aussieht - ist der eigentlich gespeicherte Wert, der nächstgelegene Binärbruch.
 
 Interessanterweise gibt es viele verschiedene Dezimalzahlen welche die selbe
 beste Approximation durch einen Binärbruch haben.  Beispielsweise werden
