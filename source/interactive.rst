@@ -1,8 +1,8 @@
 .. _tut-interacting:
 
-********************************************************
-Interaktive Zeilenbearbeitung und Ersetzung des Verlaufs
-********************************************************
+**********************************************************
+Interaktive Eingabe-Bearbeitung und Ersetzung des Verlaufs
+**********************************************************
 
 Einige Versionen des Python-Interpreters unterstützen die Bearbeitung der
 aktuellen Zeile und die Ersetzung des Verlaufs ähnlich der Möglichkeiten die die
@@ -29,12 +29,12 @@ Zeilenbearbeitung
 Falls unterstützt, ist die Bearbeitung der Eingabezeile immer dann aktiv, wenn
 der Interpreter eine primäre oder sekundäre Eingabeaufforderung ausgibt. Die
 aktuelle Zeile kann mit den üblichen Emacs-Steuerzeichen bearbeitet werden. Die
-wichtigsten davon sind: :kbd:`Strg-A` (Steuerung-A) bewegt den Cursor zum Anfang
-der Zeile, :kbd:`Strg-E` zum Ende. :kbd:`Strg-B` bewegt ihn ein Zeichen nach
-links, :kbd:`Strg-F` nach rechts. :kbd:`Strg-K` löscht ("killt") den Rest der
-Zeile rechts vom Cursor, :kbd:`Strg-Y` fügt die zuletzt gelöschten Zeichen
-wieder ein ("yankt"). :kbd:`Strg-_` macht die zuletzt getätigte Änderung
-rückgängig und kann wiederholt werden, um sie mehrmals auszuführen.
+wichtigsten davon sind: :kbd:`Strg-A` bewegt den Cursor zum Anfang der Zeile,
+:kbd:`Strg-E` zum Ende. :kbd:`Strg-B` bewegt ihn ein Zeichen nach links,
+:kbd:`Strg-F` nach rechts. :kbd:`Strg-K` löscht ("killt") den Rest der Zeile
+rechts vom Cursor, :kbd:`Strg-Y` fügt die zuletzt gelöschten Zeichen wieder ein
+("yankt"). :kbd:`Strg-_` macht die zuletzt getätigte Änderung rückgängig und
+kann wiederholt werden, um sie mehrmals auszuführen.
 
 
 .. _tut-history:
@@ -165,7 +165,7 @@ Ein alternativer erweiterter interaktiver Interpreter, der schon seit einer
 Weile verfügbar ist, ist `IPython`_. Er bietet Tab Completion, Erkundung von
 Objekten und eine fortschrittliche Verwaltung der Befehls-Chronik. Er kann
 komplett angepasst werden und auch in andere Anwendungen eingebettet werden.
-Eine weitere ähnlich fortschrittliche interaktive Umgebung ist `bpython`_
+Eine weitere ähnlich fortschrittliche interaktive Umgebung ist `bpython`_.
 
 .. rubric:: Fußnoten
 
@@ -176,5 +176,4 @@ Eine weitere ähnlich fortschrittliche interaktive Umgebung ist `bpython`_
 .. _GNU Readline: http://tiswww.case.edu/php/chet/readline/rltop.html
 .. _IPython: http://ipython.scipy.org/
 .. _bpython: http://www.bpython-interpreter.org/
-
 
