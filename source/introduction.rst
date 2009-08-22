@@ -415,8 +415,8 @@ Die eingebaute Funktion :func:`len` gibt die Länge eines Strings zurück::
 Über Unicode
 ------------
 
-Beginnend mit Python 3.0 unterstützen alle Strings Unicode (siehe
-http://www.unicode.org/)
+Beginnend mit Python 3.0 unterstützen alle Strings `Unicode
+<http://www.unicode.org/>`_.
 
 Unicode hat den Vorteil, dass es eine Ordnungszahl für jedes Zeichen in jedem
 Schriftstück bereitstellt, das in modernen und antiken Texten benutzt wird.
@@ -425,7 +425,7 @@ typischerweise an eine Codepage gebunden, die die Ordnungszahlen den
 Schriftzeichen zugeordnet hat. Das führte zu großer Verwirrung, vor allem im
 Hinblick auf Internationalisierung von Software (üblicherweise ``i18n`` ---
 ``'i'`` + 18 Zeichen + ``'n'``) . Unicode löst diese Probleme, indem es eine
-Codepage für alle Schriftstücke definiert.
+Codepage für alle Schriftzeichen definiert.
 
 Will man spezielle Zeichen in eine Zeichenketten einbinden, erreicht man das
 durch die Verwendung von Pythons *Unicode-Escape*-Schreibweise. Das folgende
@@ -441,7 +441,8 @@ soll.
 Andere Zeichen werden interpretiert, indem ihre jeweiligen Ordnungszahlen direkt
 als Unicode-Ordnungszahlen benutzt werden. Hat man Zeichenkettenliterale in der
 normalen Latin-1-Kodierung, die in vielen westlichen Ländern benutzt wird, dann
-entsprechen die ersten 256 Zeichen von Unicode denselben Zeichen der Latin-1-Kodierung.
+entsprechen die ersten 256 Zeichen von Unicode denselben Zeichen der
+Latin-1-Kodierung.
 
 Neben diesen Standardkodierungen stellt Python eine ganze Reihe anderer
 Möglichkeiten bereit, Unicodestrings zu erstellen, sofern man die verwendete
@@ -497,8 +498,8 @@ vorzunehmen ::
     >>> a
     ['spam', 'eggs', 123, 1234]
 
-Selbst Zuweisungen zu Slices sind möglich. Dadurch kann sich die Länge
-einer Liste verändern, sie kann sogar ganz geleert werden ::
+Selbst Zuweisungen an Slices sind möglich. Dadurch kann man die Länge
+einer Liste verändern oder sie sogar ganz leeren ::
 
     >>> # Ein paar Elemente ersetzen:
     ... a[0:2] = [1, 12]

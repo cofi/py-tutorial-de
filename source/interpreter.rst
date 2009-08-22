@@ -219,7 +219,7 @@ Die interaktive Startup-Datei
 
 Wenn Python interaktiv genutzt wird, ist es gelegentlich hilfreich, bei jedem
 Start des Interpreters einige Standardbefehle automatisch auszuführen. Das lässt
-sich erreichen, indem man eine Umgebungsvariable namens :env:`PYTHONSTARTUP`
+sich erreichen, indem man eine Umgebungsvariable namens :envvar:`PYTHONSTARTUP`
 erstellt, die auf eine Datei mit den Startup-Befehlen verweist. Dies ist
 vergleichbar mit der :file:`.profile`-Datei von Unixshells.
 
