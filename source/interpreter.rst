@@ -41,15 +41,15 @@ erweitern. Ob diese erweiterten Möglichkeiten verfügbar sind, lässt sich
 es piepst, ist die "readline"-Unterstützung vorhanden. In diesem Fall findet man
 im Anhang :ref:`tut-interacting` eine Einführung zu den einzelnen Tasten. Falls
 kein Piepton zu hören ist oder ``^P`` erscheint, ist keine
-"readline"-Unterstützung vorhanden und die einzige Möglichkeit zum Editiern ist
+"readline"-Unterstützung vorhanden und die einzige Möglichkeit zum Editieren ist
 die Verwendung der Rücktaste (Backspace), um Zeichen in der aktuellen
 Eingabezeile zu entfernen.
 
 Grundsätzlich ist der Interpreter ähnlich zu bedienen wie eine Unix-Shell: Wird
-er mit der Standardeingabe verbunden mit einem tty Gerät aufgerufen, liest und
-führt er interaktiv Befehle aus. Wird er mit einem Dateinamen als Argument oder
-mit einer Datei als Standardeingabe aufgerufen, liest und führt es ein *Skript*
-von dieser Datei aus.
+er mit einem tty-Gerät als Standardeingabe aufgerufen, liest und führt er
+interaktiv Befehle aus. Wird er mit einem Dateinamen als Argument oder mit einer
+Datei als Standardeingabe aufgerufen, liest und führt es ein *Skript* von dieser
+Datei aus.
 
 Eine zweite Möglichkeit zum Starten des Python-Interpreters ist ``python -c
 Befehl [arg] ...``, wodurch die Anweisung(en) in diesem *Befehl* ausgeführt
@@ -62,8 +62,8 @@ Modul [arg] ...`` aufgerufen werden. Dadurch wird der Quelltext von *Modul*
 ausgeführt, so als hätte man den vollständigen Namen in die Kommandozeile
 eingegeben.
 
-Achtung: Es gibt einen Unterschied zwischen ``python Datei`` und ``python
-<Datei``! Im zweiten Fall werden Eingabeanfragen des Programms, wie
+Achtung: Es gibt einen Unterschied zwischen ``python Datei`` und ``python <
+Datei``! Im zweiten Fall werden Eingabeanfragen des Programms, wie
 beispielsweise der Aufruf ``sys.stdin.read()``, von *Datei* erledigt. Da diese
 Datei aber schon vom Parser bis zum Ende gelesen wurde, bevor mit der Ausführung
 begonnen wird, trifft das Programm sofort auf ein End-Of-File. In ersterem Fall
@@ -110,8 +110,8 @@ nach dem Start zunächst einen kurzen Informationstext an, der unter anderem die
 Versionsnummer des Interpreters und einen Hinweis zum Urheberrecht enthält. ::
 
    $ python3.1
-   Python 3.1a1 (py3k, Sep 12 2007, 12:21:02)
-   [GCC 3.4.6 20060404 (Red Hat 3.4.6-8)] on linux2
+   Python 3.1.1 (r311:74480, Aug 18 2009, 13:31:13)
+   [GCC 4.4.1] on linux2
    Type "help", "copyright", "credits" or "license" for more information.
    >>>
 
@@ -135,17 +135,17 @@ Fehlerbehandlung
 ----------------
 
 Tritt ein Fehler auf, dann zeigt der Interpreter eine Fehlermeldung mit einem
-Verlaufsbericht (Stacktrace) an. Im interaktiven Modus kehrt er dann zurück zur
-primären Eingabeaufforderung. Wenn die Eingabe von einer Datei kam, beendet er
-sich nach der Ausgabe des Fehlerberichts mit einem Rückgabewert ungleich Null.
-Ausnahmen (Exceptions), die in einem :keyword:`try-except`-Block verarbeitet
-werden, gelten in diesem Zusammenhang nicht als Ausnahmen.  Manche Fehler führen
-zum sofortigen Abbruch des Interpreters mit einem Rückgabewert ungleich Null.
-Dies gilt etwa bei internen Inkonsistenzen oder Speichermangel. Alle
-Fehlermeldungen werden in den Standardfehlerausgabestrom, gewöhnliche Ausgaben
-von ausgeführten Befehlen wird in die Standardausgabe geschrieben.
+Verlaufsbericht (*Stacktrace*) an. Im interaktiven Modus kehrt er dann zurück
+zur primären Eingabeaufforderung. Wenn die Eingabe von einer Datei kam, beendet
+er sich nach der Ausgabe des Fehlerberichts mit einem Rückgabewert ungleich
+Null.  Ausnahmen (Exceptions), die in einem :keyword:`try-except`-Block
+verarbeitet werden, gelten in diesem Zusammenhang nicht als Ausnahmen. Manche
+Fehler führen zum sofortigen Abbruch des Interpreters mit einem Rückgabewert
+ungleich Null.  Dies gilt etwa bei internen Inkonsistenzen oder Speichermangel.
+Alle Fehlermeldungen werden in den Standardfehlerausgabestrom, gewöhnliche
+Ausgaben von ausgeführten Befehlen wird in die Standardausgabe geschrieben.
 
-Die Eingabe des Interruptzeichens (normalerweise :kbd:`Strg-C` oder ENTF) bei
+Die Eingabe des Interrupt-Zeichens (normalerweise :kbd:`Strg-C` oder ENTF) bei
 der primären oder sekundären Eingabeaufforderung bricht die Eingabe ab und kehrt
 zur primären Eingabeaufforderung zurück. [#]_ Ein Interrupt während einer
 Befehlsausführung verursacht eine :exc:`KeyboardInterrupt`-Ausnahme, die durch
@@ -174,11 +174,11 @@ Einem solchen Skript können dann Ausführungsrechte mit Hilfe des Befehls
 
     $ chmod +x myscript.py
 
-Auf Windowssystemen gibt es keine Nennung von "Ausführungsrechten". Das
+Auf Windowssystemen gibt es den Begriff der "Ausführungsrechte" nicht. Das
 Python-Installationsprogramm verknüpft automatisch ``.py``-Dateien mit
-``python.exe``, sodass ein Doppelklick auf eine Pythondatei diese als Skript
-ausführt. Die Dateinamenserweiterung kann auch ``.pyw`` lauten, in diesem
-Fall wird das normalerweise auftauchende Konsolenfenster unterdrückt.
+``python.exe``, sodass ein Doppelklick auf eine Python-Datei diese als Skript
+ausführt. Die Dateinamenserweiterung kann auch ``.pyw`` lauten, in diesem Fall
+wird das normalerweise auftauchende Konsolenfenster unterdrückt.
 
 Kodierung von Quellcode
 -----------------------
@@ -223,10 +223,10 @@ sich erreichen, indem man eine Umgebungsvariable namens :envvar:`PYTHONSTARTUP`
 erstellt, die auf eine Datei mit den Startup-Befehlen verweist. Dies ist
 vergleichbar mit der :file:`.profile`-Datei von Unixshells.
 
-Diese Datei wird nur in interaktiven Sitzungen gelesen.  Wenn der Interpreter
-ein Skript ausführt oder :file:`/dev/tty` explizit als Quelle angegeben wird -
-was ansonsten einer interaktiven Sitzung entspricht -, wird die Startup-Datei
-nicht berücksichtigt.  Ausgeführt wird sie im selben Namensraum wie interaktive
+Diese Datei wird nur in interaktiven Sitzungen gelesen. Wenn der Interpreter ein
+Skript ausführt oder :file:`/dev/tty` explizit als Quelle angegeben wird - was
+ansonsten einer interaktiven Sitzung entspricht -, wird die Startup-Datei nicht
+berücksichtigt.  Ausgeführt wird sie im selben Namensraum wie interaktive
 Befehle, so dass Objekte, die in der Startup-Datei definiert oder importiert
 werden, ohne Qualifizierung in der interaktiven Sitzung genutzt werden können.
 Auch die Eingabeaufforderungen ``sys.ps1`` und ``sys.ps2`` lassen sich in dieser
@@ -234,7 +234,7 @@ Datei festlegen.
 
 Sollen noch weitere Startup-Dateien aus dem aktuellen Verzeichnis gelesen
 werden, dann lässt sich dies durch Code wie ``if os.path.isfile('.pythonrc.py'):
-exec(open('.pythonrc.py').read())`` in der globalen Datei erreichen.  Soll die
+exec(open('.pythonrc.py').read())`` in der globalen Datei erreichen. Soll die
 Startup-Datei in einem Skript verwendet werden, muss das explizit in diesem
 Skript geschehen::
 

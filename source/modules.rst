@@ -215,7 +215,7 @@ Einige Tipps für Experten:
   optimiert; :file:`.pyc` werden ignoriert und :file:`.py`-Dateien werden zu
   optimiertem Bytecode kompiliert.
 
-* Werden dem Python-Interpreter zwei :option:`-O`-Flags übergiben, vollzieht der
+* Werden dem Python-Interpreter zwei :option:`-O`-Flags übergeben, vollzieht der
   Bytecode-Compiler Optimierungen, die zu einer Fehlfunktion des Programms
   führen können. Momentan werden nur ``__doc__``-Strings aus dem Bytecode
   entfernt, was zu kleineren :file:`.pyo`-Dateien führt. Da einige Programme
