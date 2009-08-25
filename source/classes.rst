@@ -4,8 +4,8 @@
 Klassen
 *******
 
-Pythons Klassenmechanismus fügt Klassen mit einem Minimum an neuer Syntax und
-Semantik zur Sprache hinzu. Er ist eine Mischung der Klassenmechanismen in C++
+Pythons Klassenmechanismus fügt Klassen - bei einem Minimum an neuer Syntax und
+Semantik - zur Sprache hinzu. Er ist eine Mischung der Klassenmechanismen in C++
 und Modula-3. Wie es auch für Module der Fall ist, ziehen Klassen in Python
 keine absoluten Grenzen zwischen Definition und Benutzer, sondern verlassen sich
 eher auf die Höflichkeit des Benutzers nicht "in die Definition einzubrechen".
@@ -15,24 +15,23 @@ eine abgeleitete Klasse kann jegliche Methoden seiner Basisklasse(n)
 überschreiben und eine Methode kann die Methode der Basisklasse mit demselben
 Namen aufrufen. Objekte können beliebig viele Daten haben.
 
-In der Terminologie von C++ sind in Python *class members* (Attribute der
-Klasse) *public* (Ausnahmen siehe :ref:`tut-private`) und alle *member
-functions* (Methoden) sind *virtual*. Wie in Modula-3 gibt es keine Abkürzung
-zum referenzieren von Attributen eines Objekts aus dessen Methoden heraus: Die
-Methode wird mit einem expliziten ersten Argument, welches das Objekt
-repräsentiert, deklariert, welches implizit vom Aufruf übergeben wird. Wie in
-Smalltalk sind Klassen selbst Objekte. Das bietet die Semantik zum importieren
-und umbenennen.  Anders als in C++ und Modula-3 können eingebaute Datentypen vom
-Benutzer als Basisklassen benutzt, das heisst abgeleitet werden. Außerdem können
-die meisten eingebauten Operatoren, wie in C++, mit einer besonderen Syntax
-(arithmetische Operatoren, Indizierung, usw.) für Instanzen der Klasse neu
-definiert werden.
+In der Terminologie von C++ sind in Python *class members* (inklusive der *data
+member*) normalerweise *public* (Ausnahmen siehe :ref:`tut-private`) und alle
+*member functions* (Methoden) sind *virtual*. Wie in Modula-3 gibt es keine
+Abkürzung zum referenzieren von Attributen eines Objekts aus dessen Methoden
+heraus: Die Methode wird mit einem expliziten ersten Argument, welches das
+Objekt repräsentiert, deklariert, welches implizit vom Aufruf übergeben wird.
+Wie in Smalltalk sind Klassen selbst Objekte. Das bietet die Semantik zum
+importieren und umbenennen.  Anders als in C++ und Modula-3 können eingebaute
+Datentypen vom Benutzer als Basisklassen benutzt, das heisst abgeleitet werden.
+Außerdem können die meisten eingebauten Operatoren, wie in C++, mit einer
+besonderen Syntax (arithmetische Operatoren, Indizierung, usw.) für Instanzen
+der Klasse neu definiert werden.
 
-Da es keine allgemein anerkannte Terminologie im Bezug auf Klassen gibt, werde
-ich zwischendurch auf Smalltalk und C++ Begriffe ausweichen. (Da seine
-objektorientierte Semantik näher an Python als an C++ ist, würde ich lieber
-Modula-3 Begriffe benutzen, allerdings erwarte ich, dass wenige Leser davon
-gehört haben.)
+(Da es keine allgemein anerkannte Terminologie im Bezug auf Klassen gibt, werde
+ich zwischendurch auf Smalltalk und C++ Begriffe ausweichen. Ich würde lieber
+Modula-3 Begriffe benutzen, da seine objektorientierte Semantik näher an Python,
+als an C++ ist, allerdings erwarte ich, dass wenige Leser davon gehört haben.)
 
 
 .. _tut-object:
@@ -42,17 +41,17 @@ Ein Wort zu Namen und Objekten
 
 Objekte haben Individualität und mehrere Namen (in mehreren
 Gültigkeitsbereichen) können an dasselbe Objekt gebunden werden. In anderen
-Sprachen wird dies als Aliasing bezeichnet. Das wird meist beim ersten Blick auf
-Python nicht geschätzt und kann problemlos ignoriert werden, wenn man mit
+Sprachen wird dies als *Aliasing* bezeichnet. Das wird meist beim ersten Blick
+auf Python nicht geschätzt und kann problemlos ignoriert werden, wenn man mit
 unveränderbaren Datentypen (Zahlen, Zeichenketten, Tupel) arbeitet. Aber
-Aliasing hat einen möglicherweise überraschenden Effekt auf die Semantik von Pythoncode, der
-veränderbare Objekte wie Listen, Dictionaries oder die meisten anderen Typen, enthält.
-Dies kommt normalerweise dem Programm zugute, da sich Aliase in mancher Hinsicht
-wie Pointer verhalten. Zum Beispiel ist die Übergabe eines Objekts günstig, da
-von der Implementierung nur ein Pointer übergeben wird. Verändert eine Funktion
-ein Objekt, das als Argument übergeben wurde, wird der Aufrufende die
-Veränderung sehen --- dies vermeidet den Bedarf an zwei verschiedenen
-Übergabemechanismen, wie in Pascal.
+Aliasing hat einen möglicherweise überraschenden Effekt auf die Semantik von
+Pythoncode, der veränderbare Objekte wie Listen, Dictionaries oder die meisten
+anderen Typen, enthält.  Dies kommt normalerweise dem Programm zugute, da sich
+Aliase in mancher Hinsicht wie Pointer verhalten. Zum Beispiel ist die Übergabe
+eines Objekts günstig, da von der Implementierung nur ein Pointer übergeben
+wird. Verändert eine Funktion ein Objekt, das als Argument übergeben wurde, wird
+der Aufrufende die Veränderung sehen --- dies vermeidet den Bedarf an zwei
+verschiedenen Übergabemechanismen, wie in Pascal.
 
 
 .. _tut-scopes:
@@ -69,7 +68,7 @@ hierüber nützlich für jeden fortgeschrittenen Pythonprogrammierer.
 Fangen wir mit ein paar Definitionen an.
 
 Ein *Namensraum* ist eine Zuordnung von Namen zu Objekten. Die meisten
-Namensräume sind momentan als Dictionaries importiert, aber das ist
+Namensräume sind momentan als Dictionaries implementiert, aber das ist
 normalerweise in keinerlei Hinsicht spürbar (außer bei der Performance) und kann
 sich in Zukunft ändern. Beispiele für Namensräume sind: Die Menge der
 eingebauten Namen (Funktionen wie :func:`abs` und eingebaute Ausnahmen), die
@@ -89,9 +88,9 @@ Modulobjekt und ``funcname`` ein Attribut dessen. In diesem Fall gibt es eine
 geradlinige Zuordnung von Modulattributen und globalen Namen, die im Modul
 definiert sind: Sie teilen sich denselben Namensraum! [#]_
 
-Attribute können schreibgeschützt oder schreibbar sein. In letzterem Fall ist
-eine Zuweisung an dieses Attribut möglich. Modulattribute sind schreibbar: Man
-kann ``modname.the_answer = 42`` schreiben. Schreibbare Attribute sind
+Attribute können schreibgeschützt oder veränderbar sein. In letzterem Fall ist
+eine Zuweisung an dieses Attribut möglich. Modulattribute sind veränderbar: Man
+kann ``modname.the_answer = 42`` schreiben. Veränderbare Attribute sind
 gleichzeitig durch die :keyword:`del`-Anweisung löschbar. Zum Beispiel löscht
 ``del modname.the_answer`` das Attribut :attr:`the_answer` des Objekts namens
 ``modname``.
@@ -112,7 +111,7 @@ innerhalb der Funktion behandelt wird. (Eigentlich wäre "vergessen" eine besser
 Beschreibung dessen, was passiert.) Natürlich haben auch rekursive Aufrufe ihren
 jeweiligen lokalen Namensraum.
 
-Ein *Gültigkeitsbereich* (*scope*) ist eine Region eines Pythonprogrammes, in
+Ein *Gültigkeitsbereich* (*scope*) ist eine Region eines Python-Programms, in
 der ein Namensraum direkt verfügbar ist, das heisst es einem unqualifiziertem
 Namen möglich ist einen Namen in diesem Namensraum zu finden.
 
@@ -131,14 +130,15 @@ verfügbar sind:
 * der letzte Gültigkeitsbereich (zuletzt durchsuchte) ist der Namensraum, der
   die eingebauten Namen enthält.
 
-Wird ein Name als global deklariert, so gehen alle Referenzen und Zuweisungen
-direkt an den mittleren Gültigkeitsbereich, der die globalen Namen des Moduls
-enthält. Um Variablen, die außerhalb des innersten Gültigkeitsbereichs zu finden
-sind, neu zu binden, kann die :keyword:`nonlocal`-Anweisung benutzt werden.
-Falls diese nicht als ``nonlocal`` deklariert sind, sind diese Variablen
-schreibgeschützt (ein Versuch in diese Variablen zu schreiben, würde einfach
-eine *neue* lokale Variable im innersten Gültigkeitsbereich anlegen und die
-äußere Variable mit demselben Namen unverändert lassen).
+Wird ein Name als ``global`` deklariert, so gehen alle Referenzen und
+Zuweisungen direkt an den mittleren Gültigkeitsbereich, der die globalen Namen
+des Moduls enthält. Um Variablen, die außerhalb des innersten
+Gültigkeitsbereichs zu finden sind, neu zu binden, kann die
+:keyword:`nonlocal`-Anweisung benutzt werden.  Falls diese nicht als
+``nonlocal`` deklariert sind, sind diese Variablen schreibgeschützt (ein Versuch
+in diese Variablen zu schreiben, würde einfach eine *neue* lokale Variable im
+innersten Gültigkeitsbereich anlegen und die äußere Variable mit demselben Namen
+unverändert lassen).
 
 Normalerweise referenziert der lokale Gültigkeitsbereich die lokalen Namen der
 momentanen Funktion. Außerhalb von Funktionen bezieht sich der lokale
@@ -247,7 +247,7 @@ einer :keyword:`if`-Anweisung oder in eine Funktion zu platzieren.)
 In der Praxis sind die Anweisungen innerhalb einer Klassendefinition
 üblicherweise Funktionsdefinitionen, aber andere Anweisungen sind erlaubt und
 manchmal nützlich --- dazu kommen wir später noch. Die Funktionsdefinitionen
-innerhalb einer Klasse haben normalerweise eine besondere Argumentenliste, die
+innerhalb einer Klasse haben normalerweise eine besondere Argumentliste, die
 von den Aufrufkonventionen für Methoden vorgeschrieben wird --- das wird
 wiederum später erklärt.
 
@@ -383,7 +383,7 @@ Methodenobjekte
 
 Im :class:`MyClass` Beispiel wird dies die Zeichenkette ``'Hallo Welt'``
 ausgeben. Jedoch ist es nicht notwendig eine Methode direkt aufzurufen: ``x.f``
-ist ein Methodenobjekt und kann weggespeichert werden und später wieder
+ist ein Methodenobjekt und kann weg gespeichert werden und später wieder
 aufgerufen werden. Zum Beispiel::
 
     xf = x.f
@@ -403,7 +403,7 @@ Tatsächlich, wie du vielleicht schon erraten hast, ist die Besonderheit bei
 Methoden, dass das Objekt als erstes Argument der Funktion übergeben wird. In
 unserem Beispiel ist der Aufruf ``x.f()`` das genaue äquivalent von
 ``MyClass.f(x)``. Im Allgemeinen ist der Aufruf einer Methode mit *n* Argumenten
-äquivalent zum Aufruf der entsprechenden Funktion mit einer Argumentenliste, die
+äquivalent zum Aufruf der entsprechenden Funktion mit einer Argumentliste, die
 durch das Einfügen des Objekts der Methode vor das erste Argument erzeugt wird.
 
 Verstehst du immernoch nicht, wie Methoden funktionieren, hilft vielleicht ein
@@ -412,9 +412,9 @@ referenziert wird, das kein Datenattribut ist, wird seine Klasse durchsucht.
 Bezeichnet der Name ein gültiges Klassenattribut, das eine Funktion ist, wird
 ein Methodenobjekt erzeugt, indem (Zeiger zu) Instanzobjekt und Funktionsobjekt
 zu einem abstrakten Objekt verschmolzen werden: Dies ist das Methodenobjekt.
-Wird das Methodenobjekt mit einer Argumentenliste aufgerufen, wird es wieder
-entpackt, eine neue Argumentenliste aus dem Instanzobjekt und der ursprünglichen
-Argumentenliste erzeugt und das Funktionsobjekt mit dieser neuen Argumentenliste
+Wird das Methodenobjekt mit einer Argumentliste aufgerufen, wird es wieder
+entpackt, eine neue Argumentliste aus dem Instanzobjekt und der ursprünglichen
+Argumentliste erzeugt und das Funktionsobjekt mit dieser neuen Argumentliste
 aufgerufen.
 
 
@@ -434,7 +434,7 @@ Datenattributen.
 
 Datenattribute können von Methoden, genauso wie von normalen Benutzern
 ("clients") eines Objektes referenziert werden. In anderen Worten: Klassen sind
-nicht benutzbar um reine abstrakte Datentypen ("abstract data types") zu
+nicht benutzbar, um reine abstrakte Datentypen ("abstract data types") zu
 implementieren. In Wirklichkeit, gibt es in Python keine Möglichkeit um
 Datenkapselung (*data hiding*) zu erzwingen --- alles basiert auf Konventionen.
 (Auf der anderen Seite kann die Python-Implementierung, in C geschrieben,
@@ -457,7 +457,7 @@ wenn man eine Methode überfliegt.
 Oft wird das erste Argument einer Methode ``self`` genannt. Dies ist nichts
 anderes als eine Konvention: Der Name ``self`` hat absolut keine spezielle
 Bedeutung für Python. Aber beachte: Hälst du dich nicht an die Konvention, kann
-dein Code schwerer für andere Python-Programmierer sein und es ist auch
+dein Code schwerer lesbar für andere Python-Programmierer sein und es ist auch
 vorstellbar, dass ein *Klassenbrowser* (*class browser*) sich auf diese
 Konvention verlässt.
 
@@ -515,7 +515,7 @@ Es wird als ``Objekt.__class__`` abgelegt.
 Vererbung
 =========
 
-Natürlich verdient ein Sprachenmerkmal nicht den Namen "Klasse", wenn es nicht
+Natürlich verdient ein Sprachmerkmal nicht den Namen "Klasse", wenn es nicht
 Vererbung unterstützt. Die Syntax für eine abgeleitete Klassendefinition sieht
 so aus::
 
@@ -548,7 +548,7 @@ falls nötig bis zum Ende der Basisklassenkette hinab und die Methodenreferenz
 ist gültig, wenn es ein Funktionsobjekt bereithält.
 
 Abgeleitete Klassen können Methoden ihrer Basisklassen überschreiben. Da
-Methoden keine besonderen Privilegien beim aufrufen anderer Methoden desselben
+Methoden keine besonderen Privilegien beim Aufrufen anderer Methoden desselben
 Objekts haben, kann eine Methode einer Basisklasse, die eine andere Methode, die
 in derselben Basisklasse definiert wird, aufruft, beim Aufruf einer Methode der
 abgeleiteten Klasse landen, die sie überschreibt. (Für C++-Programmierer: Alle
@@ -643,8 +643,8 @@ Rücksicht auf die syntaktische Position des Bezeichners, sofern er innerhalb de
 Definition der Klasse steht.
 
 Beachte, dass die Ersetzungsregeln vor allem dazu gedacht sind Unfälle zu
-vermeiden; es ist immernoch möglich eine auf eine als privat behandelte Variable von
-aussen zuzugreifen und auch sie zu verändern. Das kann in manchen Umständen
+vermeiden; es ist immernoch möglich eine auf eine als privat behandelte Variable
+von aussen zuzugreifen und auch sie zu verändern. Das kann in manchen Umständen
 sogar nützlich sein, beispielsweise in einem Debugger.
 
 Beachte, dass Code der von ``exec()``, ``eval()`` oder ``execfile()`` ausgeführt
@@ -817,11 +817,11 @@ Generatoren
 ===========
 
 :term:`Generatoren` sind eine einfache aber mächtige Möglichkeit um Iteratoren
-zu erzeugen.  Generatoren werden wie normale Funktionen geschrieben, benutzen
-aber :keyword:`yield` um die Daten zurückzugeben.  Jedes Mal wenn :func:`next`
+zu erzeugen. Generatoren werden wie normale Funktionen geschrieben, benutzen
+aber :keyword:`yield`, um Daten zurückzugeben. Jedes Mal wenn :func:`next`
 aufgerufen wird, fährt der Generator an der Stelle fort, an der er zuletzt
 verlassen wurde (der Generator merkt sich dabei die Werte aller Variablen und
-welche Anweisung zuletzt ausgeführt wurde).  Das nachfolgende Beispiel zeigt wie
+welche Anweisung zuletzt ausgeführt wurde). Das nachfolgende Beispiel zeigt wie
 einfach die Erstellung von Generatoren ist::
 
    def reverse(data):
@@ -836,8 +836,8 @@ einfach die Erstellung von Generatoren ist::
    o
    g
 
-Alles was mit Generatoren möglich ist, kann ebenso (wie im vorigen Abschnitt
-dargestellt) mit Klassen-basierten Iteratoren, umgesetzt werden.  Generatoren
+Alles, was mit Generatoren möglich ist, kann ebenso (wie im vorigen Abschnitt
+dargestellt) mit Klassen-basierten Iteratoren, umgesetzt werden. Generatoren
 erlauben jedoch eine kompaktere Schreibweise, da die Methoden :meth:`__iter__`
 und :meth:`__next__` automatisch erstellt werden.
 
