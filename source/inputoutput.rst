@@ -130,12 +130,12 @@ Zeichenkette mit Nullen auffüllt. Sie versteht auch Plus- und Minuszeichen::
 
 Die einfachste Benutzung der :meth:`~str.format`-Methode sieht so aus::
 
-    >>> print('Wir sind die {0}, die "{1}!" sagen.'.format('Ritter', 'Ni'))
+    >>> print('Wir sind die {}, die "{}!" sagen.'.format('Ritter', 'Ni'))
     Wir sind die Ritter, die "Ni!" sagen.
 
 Die Klammern und die Zeichen darin (genannt Formatfelder - *format fields*)
 werden mit den Objekten ersetzt, die der :meth:`~str.format`-Methode übergeben
-werden. Die Nummer in den Klammern bezieht sich auf die Position des Objektes,
+werden. Eine Nummer in den Klammern bezieht sich auf die Position des Objektes,
 die der :meth:`~str.format`-Methode übergeben werden. ::
 
 
@@ -158,6 +158,16 @@ werden::
              'Manfred', anderer='Georg'))
     Die Geschichte von Bill, Manfred und Georg.
     
+``'!a'`` (wendet :func:`ascii` an), ``'!s'`` (wendet :func:`str` an) und
+``'!r'`` (wendet :func:`repr` an) können dazu benutzt werden den übergebenen
+Wert zu konvertieren bevor er formatiert wird::
+
+   >>> import math
+   >>> print('Der Wert von PI ist ungefähr {}.'.format(math.pi))
+   Der Wert von PI ist ungefähr 3.14159265359.
+   >>> print('Der Wert von PI ist ungefähr {!r}.'.format(math.pi))
+   Der Wert von PI ist ungefähr 3.141592653589793.
+
 Ein optionales ``':'`` mit Formatspezifizierer (*format specifier*) können auf
 den Namen des Feldes folgen. Dies erlaubt einem eine größere Kontrolle darüber,
 wie der Wert formatiert wird. Das folgende Beispiel begrenzt Pi auf drei Stellen
