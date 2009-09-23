@@ -258,8 +258,9 @@ Benutzerdefinierte Ausnahmen
 ============================
 
 Programme können ihre eigenen Ausnahmen benennen, indem sie eine neue
-Ausnahmeklasse erstellen. Ausnahmen sollten standardmäßig von der Klasse
-:exc:`Exception` erben, entweder direkt oder indirekt. Zum Beispiel::
+Ausnahmeklasse erstellen (Unter :ref:`tut-classes` gibt es mehr Informationen zu
+Python-Klassen). Ausnahmen sollten standardmäßig von der Klasse :exc:`Exception`
+erben, entweder direkt oder indirekt. Zum Beispiel::
 
    >>> class MyError(Exception):
    ...     def __init__(self, value):

@@ -222,11 +222,33 @@ der aktuellen ist::
 Zu beachten ist, dass Zeilenumbrüche immer noch in den Zeichenkette mit Hilfe
 von ``\n`` eingebettet werden müssen. Der auf den Backslash folgende
 Zeilenumbruch gehört allerdings nicht mit zur Zeichenkette. Die vom Beispiel
-erzeugte Ausgabe sieht so aus ::
+erzeugte Ausgabe sieht so aus :
+
+.. code-block:: text
 
     Dies ist eine ziemlich lange Zeichenkette,
     die mehrere Zeilen Text enthält und wie man sie auch in C schreiben würde.
         Achtung: Leerzeichen am Anfang haben eine Bedeutung für die Darstellung.
+
+
+Zeichenketten können auch mit einem Paar von dreifachen Anführungszeichen
+umgeben werden: ``"""`` oder ``'''``. Zeilenenden müssen nicht hierbei escaped
+werden, sondern werden in die Zeichenkette übernommen. ::
+    
+   print("""
+   Usage: thingy [OPTIONS]
+        -h                        Display this usage message
+        -H hostname               Hostname to connect to
+   """)
+
+Das erzeugt folgende Ausgabe:
+
+.. code-block:: text
+
+   Usage: thingy [OPTIONS]
+        -h                        Display this usage message
+        -H hostname               Hostname to connect to
+
 
 Wenn wir den Zeichenkettenliteral zu einem "raw"-String machen, wird ``\n``
 nicht in einen Zeilenumbruch umgewandelt; auch der Backslash am Ende und das
@@ -237,7 +259,9 @@ Zeilenumbruch-Zeichen im Quellcode sind Teil der Zeichenkette. Das Beispiel::
 
     print(hello)
 
-führt zu folgender Ausgabe::
+führt zu folgender Ausgabe:
+
+.. code-block:: text
 
     Dies ist eine ziemlich lange Zeichenkette,\n\
     die mehrere Zeilen Text enthält und wie man sie auch in C schreiben würde.
