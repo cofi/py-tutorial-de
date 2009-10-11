@@ -116,6 +116,10 @@ dadurch werden unbekannte Namen in den Interpreter importiert und so kann es
 vorkommen, dass einige Namen überschrieben werden, die bereits definiert worden
 sind.
 
+Beachte, dass der ``*``-Import eines Moduls oder Paketes im allgemeinen verpönt
+ist, da er oft schlecht lesbaren Code verursacht. Allerdings ist es in Ordnung
+ihn im interaktiven Interpreter zu benutzen, um weniger tippen zu müssen.
+
 .. note::
 
     Aus Effizienzgründen wird jedes Modul nur einmal durch eine
@@ -460,15 +464,9 @@ sein, aber es darf keine Klasse, Funktion oder Variable im darüber geordneten
 Was passiert nun, wenn der Benutzer ``from sound.effects import *`` schreibt?
 Idealerweise würde man hoffen, dass dies irgendwie an das Dateisystem
 weitergereicht wird und alle Untermodule, die es im Paket gibt, findet und sie
-alle importiert. Unglücklicherweise funktioniert das nicht besonders gut auf
-Windows-Plattformen, bei denen das Dateisystem nicht immer zutreffende
-Informationen über die Schreibweise eines Dateinamens hat. Auf diesen
-Plattformen gibt es keinen zuverlässigen Weg zu wissen, ob eine Datei
-:file:`ECHO.PY` als Modul :mod:`echo`, :mod:`Echo` oder :mod:`ECHO` importiert
-werden soll. (Windows 95 hat zum Beispiel die nervige Praxis, alle Dateinamen
-mit einem groß geschriebenen ersten Buchstaben anzuzeigen.) Die Begrenzung auf
-DOS 8+3-Dateinamen erzeugt ein weiteres interessantes Problem für lange
-Modulnamen.
+alle importiert. Das könnte sehr lange dauern und Untermodule zu importieren
+könnte Nebeneffekte hervorrufen, die nur dann auftreten sollten, wenn das
+Untermodul explizit importiert wird.
 
 Die einzige Lösung ist, dass der Autor des Paketes einen expliziten Index des
 Paketes bereitstellt. Die :keyword:`import`-Anweisung folgt folgender
@@ -505,11 +503,9 @@ Namensraum importiert, da sie im Paket :mod:`sound.effects` definiert sind, wenn
 die Anweisung ``from ... import`` ausgeführt wird. (Das funktioniert auch wenn
 ``__all__`` definiert ist.)
 
-Beachte, dass der ``*``-Import eines Moduls oder Paketes im allgemeinen verpönt
-ist, da er oft schlecht lesbaren Code verursacht. Allerdings ist es in Ordnung
-ihn im interaktiven Interpreter zu benutzen, um weniger tippen zu müssen und bei
-bestimmten Modulen die so entworfen wurden, nur Namen, die einem bestimmten
-Namensschema folgen, zu exportieren. 
+Auch wenn manche Module so entworfen wurden, nur Namen, die einem bestimmten
+Namensschema folgen, bei einem ``import *`` zu exportieren, wird es dennoch als
+schlechte Praxis betrachtet.
 
 Aber bedenke, dass an der Benutzung von ``from Package import
 specific_submodule`` nichts falsch ist! In der Tat ist es die empfohlene

@@ -31,8 +31,7 @@ Kommando in die DOS-Eingabeaufforderung eingeben::
 Durch Eingabe eines End-Of-File-Zeichens (EOF; :kbd:`Strg-D` unter Unix,
 :kbd:`Strg-Z` unter Windows) in der Eingabeaufforderung des Interpreters wird
 der Interpreter mit dem Rückgabewert Null beendet. Falls er das nicht tut, kann
-man den Interpreter durch folgende Befehlszeile beenden: ``import sys;
-sys.exit(1)``.
+man den Interpreter durch folgende Befehlszeile beenden: ``quit()``.
 
 Die Möglichkeiten des Interpreters hinsichtlich des Editierens der Eingabe sind
 ziemlich beschränkt, lassen sich aber durch Einsatz der GNU-readline-Bibliothek
