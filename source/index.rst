@@ -32,19 +32,22 @@ zu haben, um praktische Erfahrungen zu sammeln, aber alle Beispiele sind
 eigenständig, so dass das Tutorial auch offline gelesen werden kann.
 
 Eine Beschreibung der Standardobjekte und -module ist in der Referenz der
-Pythonbibliothek (Python Library Reference) zu finden. Das Python
-Referenzhandbuch (Python Reference Manual) bietet eine formellere Definition der
-Sprache. Um Erweiterungen in C oder C++ zu schreiben, sollte man sich "Extending
-and Embedding the Python Interpreter" sowie die "Python/C API Reference"
-anschauen. Es gibt auch zahlreiche Bücher, die Python tiefergehend behandeln.
+:lib:`Pythonbibliothek (Python Library Reference) <index.html#library-index>` zu
+finden. Das :doc:`Python Referenzhandbuch (Python Reference Manual)
+<reference/index.html#reference-index>` bietet eine formellere Definition der
+Sprache. Um Erweiterungen in C oder C++ zu schreiben, sollte man sich
+:doc:`Extending and Embedding the Python Interpreter
+<extending/index.html#extending-index>` sowie die :doc:`Python/C API Reference
+<c-api/index.html#c-api-index>` anschauen. Es gibt auch zahlreiche Bücher, die
+Python tiefergehend behandeln.
 
 Ziel dieses Tutorials ist nicht die umfangreiche und vollständige Behandlung
 sämtlicher Sprachmerkmale von Python, sondern die Vermittlung der wichtigsten
 Eigenschaften, um einen Eindruck von dem zu bekommen, was Python ist.  Nach der
 Lektüre sollte man in der Lage sein, Python-Module und -Programme zu schreiben.
 Außerdem verfügt man dann über die notwendigen Grundlagen, um sich mit weiteren
-Modulen der Standardbibliothek zu beschäftigen, die in der Python Library
-Reference beschrieben werden.
+Modulen der Standardbibliothek zu beschäftigen, die in der :lib:`Python Library
+Reference <index.html#library-index>` beschrieben werden.
 
 Es lohnt sich ebenfalls das :ref:`glossary` durchzugehen.
 
