@@ -223,14 +223,14 @@ zu einer beliebigen Grenze ausgibt::
     >>> def fib(n):    # die Fibonacci-Folge bis n ausgeben
     ...     """Print the Fibonacci series up to n."""
     ...     a, b = 0, 1
-    ...     while b < n:
+    ...     while a < n:
     ...         print(b, end=' ')
     ...         a, b = b, a+b
     ...     print()
     ...
     >>> # Jetzt rufen wir die Funktion auf, die wir gerade definiert haben:
     ... fib(2000)
-    1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+    0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
 
 .. index::
    single: documentation strings
@@ -285,7 +285,7 @@ als Möglichkeit zur Umbenennung dient. ::
     <function fib at 10042ed0>
     >>> f = fib
     >>> f(100)
-    1 1 2 3 5 8 13 21 34 55 89
+    0 2 1 2 3 5 8 13 21 34 55 89
 
 Wer Erfahrung mit anderen Programmiersprachen hat, wird vielleicht einwenden,
 dass ``fib`` gar keine Funktion, sondern eine Prozedur ist, da sie keinen Wert
@@ -305,16 +305,16 @@ Liste dieser Zahlen als Objekt zurückliefern. ::
 
     >>> def fib2(n): # gibt die Fibonacci-Folge bis  n zurück
     ...     """Return a list containing the Fibonacci series up to n."""
-    ...     result = []
+    ...     result = list()
     ...     a, b = 0, 1
-    ...     while b < n:
-    ...         result.append(b)    # siehe unten
-    ...         a, b = b, a+b
+    ...     while a < n:
+    ...         result.append(a)    # siehe unten
+    ...         a, b = b, a + b
     ...     return result
     ...
     >>> f100 = fib2(100)    # ruf es auf
     >>> f100                # gib das Ergebnis aus
-    [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+    [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
 Dieses Beispiel zeigt einige neue Eigenschaften von Python:
 
@@ -322,7 +322,7 @@ Dieses Beispiel zeigt einige neue Eigenschaften von Python:
     zurück. Ohne einen Ausdruck als Argument gibt :keyword:`return` ``None``
     zurück; das gleiche gilt, wenn eine :keyword:`return`-Anweisung fehlt.
 
-*   Die Anweisung ``result.append(b)`` ruft eine *Methode* des Listenobjektes in
+*   Die Anweisung ``result.append(a)`` ruft eine *Methode* des Listenobjektes in
     ``result`` auf. Eine Methode ist eine Funktion, die zu einem Objekt 'gehört'
     und wird mittels Punktnotation (``obj.methodname``) dargestellt. Dabei ist
     ``obj`` irgendein Objekt (es kann auch ein Ausdruck sein) und ``methodname``
@@ -333,7 +333,7 @@ Dieses Beispiel zeigt einige neue Eigenschaften von Python:
     benutzt, siehe :ref:`tut-classes`.) Die Methode :meth:`append`, die im
     Beispiel gezeigt wird, ist für Listenobjekte definiert. Sie hängt ein neues
     Element an das Ende der Liste an. Im Beispiel ist es äquivalent zu ``result
-    = result + [b]``, aber viel effizienter.
+    = result + [a]``, aber effizienter.
 
 Mehr zum Definieren von Funktion
 ================================

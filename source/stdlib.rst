@@ -178,7 +178,7 @@ Datum und Uhrzeit zwar unterstützt wird, liegt das Hauptaugenmerk der
 Implementierung auf Attributzugriffen für Ausgabeformatierung und -manipulation.
 Die Verwendung von Zeitzonen wird ebenfalls unterstützt. :: 
 
-   # Ein Datum lässt sich leicht aufbauen
+   >>> # Ein Datum lässt sich leicht aufbauen
    >>> from datetime import date
    >>> now = date.today()
    >>> now
@@ -186,7 +186,7 @@ Die Verwendung von Zeitzonen wird ebenfalls unterstützt. ::
    >>> now.strftime("%m-%d-%y. %d %b %Y ist ein %A am %d. Tag des %B.")
    '12-02-03. 02 Dec 2003 ist ein Tuesday am 02. Tag des December.'
 
-   # Mit dem Datum lässt sich rechnen
+   >>> # Mit dem Datum lässt sich rechnen
    >>> geburtstag = date(1964, 7, 31)
    >>> alter = jetzt - geburtstag
    >>> alter.days
