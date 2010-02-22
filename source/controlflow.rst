@@ -355,7 +355,7 @@ werden kann, als sie definitionsgemäß erlaubt. Zum Beispiel::
        while True:
            ok = input(prompt)
            if ok in ('j', 'J', 'ja', 'Ja'): return True
-           if ok in ('n', N', 'ne', 'Ne', 'Nein'): return False
+           if ok in ('n', 'N', 'ne', 'Ne', 'Nein'): return False
            retries = retries - 1
            if retries < 0:
                raise IOError('Benutzer abgelehnt!')
