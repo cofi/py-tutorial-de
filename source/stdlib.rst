@@ -128,7 +128,7 @@ Mit dem Modul :mod:`random` lassen sich zufällige Auswahlen treffen::
    >>> import random
    >>> random.choice(['Apfel', 'Birne', 'Banane'])
    'Apfel'
-   >>> random.sample(xrange(100), 10)   # Stichprobe
+   >>> random.sample(range(100), 10)   # Stichprobe
    [30, 83, 16, 4, 8, 81, 41, 50, 18, 33]
    >>> random.random()    # Zufällige Fließkommazahl
    0.17970987693706186
