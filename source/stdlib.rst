@@ -135,7 +135,7 @@ Mit dem Modul :mod:`random` lassen sich zufällige Auswahlen treffen::
    >>> random.randrange(6)    # Zufällige Ganzzahl aus range(6)
    4
 
-Das `SciPy-Projekt <http://scipy.org/>`_ hat viele weitere Module für numirische
+Das `SciPy-Projekt <http://scipy.org/>`_ hat viele weitere Module für numerische
 Berechnungen.
 
 .. _tut-internet-access:
@@ -305,7 +305,7 @@ paar Beispiele:
   Anhänge) zu konstruieren oder zu analysieren. Weiterhin erleichtert es den
   Umgang mit im Internet verwendeten Encodings und den Headern.
 
-* :mod:`xml.dom` und :mod:`xml.sax` halten eine robuste Untestützung für dieses
+* :mod:`xml.dom` und :mod:`xml.sax` halten eine robuste Unterstützung für dieses
   populäre Datenaustausch-Format bereit. Mit :mod:`csv` lässt sich in ein
   allgemein gebräuchliches Datenbankformat schreiben und daraus lesen. Diese
   Module erleichtern den Austausch von Daten zwischen Python und anderen

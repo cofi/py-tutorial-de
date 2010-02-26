@@ -81,7 +81,7 @@ Das ermöglicht Anwendern ihre Anwendung anzupassen, ohne die Anwendung zu
 verändern.
 
 Das Format benutzt Platzhalter, die aus ``$`` und einem gültigen
-Pythonbezeichner(alphanumerische Zeichen und Unterstriche) bestehen. Umgibt man
+Python-Bezeichner (alphanumerische Zeichen und Unterstriche) bestehen. Umgibt man
 einen Platzhalter mit geschweiften Klammern, können andere alphanumerische
 Zeichen ohne Leerzeichen dazwischen folgen. Schreibt man ``$$``, erzeugt man ein
 einzelnes escaptes ``$``::
@@ -108,7 +108,7 @@ fehlen::
    'Bringe die unbeladene Schwalbe $owner zurück.'
 
 Unterklassen von Template können einen eigenen Begrenzer angeben. Zum Beispiel
-könnte ein Umbenennungswerkzeug für einen Photobrowser das Prozentzeichen als
+könnte ein Umbenennungswerkzeug für einen Fotobrowser das Prozentzeichen als
 Platzhalter für das aktuelle Datum, die Fotonummer oder das Dateiformat
 auswählen::
 
@@ -256,7 +256,7 @@ dass eine Referenz auf das Objekt erstellt wird, die es permanent macht. Mit dem
 Modul :mod:`weakref` können Objekte vorgehalten werden, ohne eine Referenz zu
 erstellen. Wird das Objekt nicht länger gebraucht, wird es automatisch aus einer
 Tabelle mit so genannten *schwachen Referenzen* gelöscht und eine
-Rückruffunktion für *weakref*-Objekte wird aufgerufen. Dieser Mechanismus wird
+Rückruf-Funktion für *weakref*-Objekte wird aufgerufen. Dieser Mechanismus wird
 etwa verwendet, um Objekte zwischenzuspeichern, deren Erstellung besonders
 aufwändig ist::
 
