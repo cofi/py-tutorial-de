@@ -312,4 +312,4 @@ paar Beispiele:
   Werkzeugen enorm. 
 
 * Zur Internationalisierung von Anwendungen stehen unter anderem die Module
-  :mod:`gettext`, :mod'`locale` und :mod:`codecs` zur Verfügung.
+  :mod:`gettext`, :mod:`locale` und :mod:`codecs` zur Verfügung.
