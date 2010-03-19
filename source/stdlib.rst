@@ -164,7 +164,7 @@ Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
    ... """)
    >>> server.quit()
 
-(Anmerkung: das zweite Beispiel benötigt einen Mailserver auf localhost.)
+(Anmerkung: Das zweite Beispiel benötigt einen Mailserver auf ``localhost``.)
 
 
 .. _tut-dates-and-times:
