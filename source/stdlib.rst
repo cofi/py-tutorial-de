@@ -147,10 +147,10 @@ Zum Zugriff auf das Internet und für die Arbeit mit Internetprotokollen stehen
 verschiedene Module bereit. Zwei der einfachsten sind :mod:`urllib.request` zum
 Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
 
-   >>> import urllib2
-   >>> for line in urllib2.urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl'):
+   >>> from urllib.request import urlopen
+   >>> for line in urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl'):
    ...     if 'EST' in line or 'EDT' in line:  # Nach Eastern Time suchen
-   ...         print line
+   ...         print(line)
 
    <BR>Nov. 25, 09:43:32 PM EST
 
