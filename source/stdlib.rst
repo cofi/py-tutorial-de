@@ -149,6 +149,7 @@ Herunterladen von Daten über URLs und :mod:`smtplib` zum Versand von E-Mails::
 
    >>> from urllib.request import urlopen
    >>> for line in urlopen('http://tycho.usno.navy.mil/cgi-bin/timer.pl'):
+   ...     line = line.decode('utf-8')  # die binären Daten zu Text dekodieren
    ...     if 'EST' in line or 'EDT' in line:  # Nach Eastern Time suchen
    ...         print(line)
 
