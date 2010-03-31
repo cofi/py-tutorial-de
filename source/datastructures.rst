@@ -136,19 +136,27 @@ Benutzung von Listen als Queue
 ------------------------------
 
 Listen lassen sich auch bequem als Schlange (*Queue*) benutzen, wo das zuerst
-hinzugekommene Element auch zuerst abgerufen wird ("first-in, first-out"). Um ein
-Element anzuhängen, benutzt man :meth:`append`. Um ein Element vom Anfang der
-Schlange abzurufen, benutzt man :meth:`pop` mit dem Index ``0``. Zum Beispiel::
+hinzugekommene Element auch zuerst abgerufen wird ("first-in, first-out").
+Allerdings sind Listen nicht effizient für diesen Zweck. Während :meth:`append`
+und :meth:`pop` am Ende der Liste schnell sind, sind :meth:`insert` und
+:meth:`pop` am Anfang der Liste langsam (da alle anderen Elemente um eine Stelle
+verschoben werden muessen).
 
-    >>> queue = ["Eric", "John", "Michael"]
+Um eine Queue zu implementieren benutzt man :class:`collections.deque`, die so
+entworfen wurde, um beidseitig schnelle appends und pops bereitzustellen. Zum
+Beispiel::
+
+    >>> from collections import deque
+    >>> queue = deque(["Eric", "John", "Michael"])
     >>> queue.append("Terry")           # Terry kommt an
     >>> queue.append("Graham")          # Graham kommt an
-    >>> queue.pop(0)
+    >>> queue.popleft()		        # Der Erste geht jetzt
     'Eric'
-    >>> queue.pop(0)
+    >>> queue.popleft()		        # Der Zweite geht jetzt
     'John'
-    >>> queue
-    ['Michael', 'Terry', 'Graham']
+    >>> queue                           # Verbleibende Schlange in der
+    >>>                                 # Reihenfloge der Ankunft
+    deque(['Michael', 'Terry', 'Graham'])
 
 
 .. _tut-listcomps:
