@@ -512,6 +512,13 @@ bzw. ``*`` sind mit Listen möglich ::
     >>> 3*a[:3] + ['Boo!']
     ['spam', 'eggs', 100, 'spam', 'eggs', 100, 'spam', 'eggs', 100, 'Boo!']
 
+Alle Slicing-Operationen geben eine neue Liste zurück, die die angeforderten
+Elemente enthält.  Das bedeutet, dass die folgende Operation eine flache Kopie
+(*shallow copy*) der Liste ``a`` zurückgibt::
+
+    >>> a[:]
+    ['spam', 'eggs', 100, 1234]
+
 Im Unterschied zu Zeichenketten sind Listen allerdings *veränderbar*
 (*mutable*), so dass es möglich ist, innerhalb einer Liste Veränderungen
 vorzunehmen ::

@@ -70,7 +70,7 @@ eins zwei drei`` in der Eingabeaufforderung des Betriebssystems eingibt::
 
 Das Modul :mod:`getopt` verarbeitet *sys.argv* gemäß der üblichen Konventionen
 der aus Unix bekannten :func:`getopt`-Funktion. Erweiterte und flexiblere
-Möglichkeiten bietet das Modul :mod:`optparse`.
+Möglichkeiten bietet das Modul :mod:`argparse`.
 
 .. _tut-stderr:
 
