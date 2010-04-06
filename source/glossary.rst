@@ -29,12 +29,12 @@ Glossar
       :keyword:`return`-Anweisung zurückgegeben werden.  Generator-Funktionen
       enthalten oft eine oder mehrere Schleifen (:keyword:`for` oder
       :keyword:`while`), die dem Aufrufenden Elemente liefern
-      (:keyword:`yield`en).  Die Ausführung der Funktion wird nach dem
+      (:keyword:`yield` en).  Die Ausführung der Funktion wird nach dem
       :keyword:`yield` unterbrochen (während das Ergebnis zurückgegeben wird)
       und wird dort wiederaufgenommen, wenn das nächste Element durch den Aufruf
       der :meth:`next`-Methode des zurückgegebenen Iterators angefordert wird.
 
    virtual machine
-      Ein Computer, der komplett in Software definiert ist. Pythons Virtuelle
+      Ein Computer, der komplett in Software definiert ist.  Pythons Virtuelle
       Maschine führt den :term:`bytecode` aus, den der Bytecode-Compiler
       erzeugt.
