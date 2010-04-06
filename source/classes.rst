@@ -816,13 +816,13 @@ zurückgibt. Definiert die Klasse :meth:`__next__`, kann :meth:`__iter__` einfac
 Generatoren
 ===========
 
-:term:`Generatoren` sind eine einfache aber mächtige Möglichkeit um Iteratoren
-zu erzeugen. Generatoren werden wie normale Funktionen geschrieben, benutzen
-aber :keyword:`yield`, um Daten zurückzugeben. Jedes Mal wenn :func:`next`
-aufgerufen wird, fährt der Generator an der Stelle fort, an der er zuletzt
-verlassen wurde (der Generator merkt sich dabei die Werte aller Variablen und
-welche Anweisung zuletzt ausgeführt wurde). Das nachfolgende Beispiel zeigt wie
-einfach die Erstellung von Generatoren ist::
+Generatoren (:term:`generator`) sind eine einfache aber mächtige Möglichkeit um
+Iteratoren zu erzeugen. Generatoren werden wie normale Funktionen geschrieben,
+benutzen aber :keyword:`yield`, um Daten zurückzugeben. Jedes Mal wenn
+:func:`next` aufgerufen wird, fährt der Generator an der Stelle fort, an der er
+zuletzt verlassen wurde (der Generator merkt sich dabei die Werte aller
+Variablen und welche Anweisung zuletzt ausgeführt wurde). Das nachfolgende
+Beispiel zeigt wie einfach die Erstellung von Generatoren ist::
 
    def reverse(data):
        for index in range(len(data)-1, -1, -1):
