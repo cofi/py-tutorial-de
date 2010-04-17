@@ -239,5 +239,6 @@ def setup(app):
 
 extlinks = {'doc' : ('http://docs.python.org/3.1/', 'doc'),
             'lib' : ('http://docs.python.org/3.1/library/', 'lib'),
+            'reff' : ('http://docs.python.org/3.1/reference/', 'reff'),
             'home' : ('http://bitbucket.org/cofi/py-tutorial-de/', 'home')
            }
