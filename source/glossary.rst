@@ -399,7 +399,7 @@ Glossar
       ``lambda [arguments]: expression``.
 
    LBYL
-      Look before you leap.  ("Schau bevor du springst.")  Dieser
+      "Look before you leap."  ("Schau bevor du springst.")  Dieser
       Programmierstil testet explizit auf Vorbedingungen bevor Aufrufe oder
       Lookups getätigt werden.  Dieser Stil steht dem :term:`EAFP` Ansatz
       gegenüber und die Präsenz vieler :keyword:`if`-Anweisungen ist
@@ -496,9 +496,8 @@ Glossar
    new-style class
       Jede Klasse, die von :class:`object` erbt.  Dies schliesst alle
       eingebauten Typen wie :class:`list` und :class:`dict` ein.  Nur new-style
-      Klassen können Pythons neuere, vielseitige Features wie
-      :attr:`__slots__`, Deskriptoren, Properties und :meth:`__getattribute__`
-      benutzen.
+      Klassen können Pythons neuere, vielseitige Features wie :attr:`__slots__`,
+      Deskriptoren, Properties und :meth:`__getattribute__` benutzen.
 
       Mehr Informationen können bei :ref:`newstyle` gefunden werden.
 
@@ -507,7 +506,105 @@ Glossar
       (Methoden).  Ebenfalls die ultimative Basisklasse von jeder
       :term:`new-style`-Klasse.
 
+   positional argument
+      Die Argumente, die lokalen Namen innerhalb einer Funktion oder Methode
+      zugewiesen werden, die von der Reihenfolge in der sie im Aufruf angegeben
+      werden festgelegt sind.  ``*`` wird benutzt um entweder mehrere
+      Positionsargumente entgegenzunehmen (wenn es in der Definition vorkommt)
+      oder um mehrere Argumente als eine Liste einer Funktion zu übergeben.
+      Siehe :term:`argument`.
+
+   Python 3000
+      Spitzname für die nächste große Python Version, 3.0 (geprägt vor langer
+      Zeit, als die Veröffentlichung von Version 3 etwas in ferner Zukunft war.)
+      Dies wird auch als "Py3k" abgekürzt.
+
+   Pythonic
+      Eine Idee oder Stück von Code, der den häufigsten Idiomen der
+      Python-Sprache eng folgt, statt Konzepte zu verwenden, die häufig in
+      anderen Sprachen vorkommen.  Zum Beispiel ist es ein häufiges Idiom in
+      Python über alle Elemente eines Iterable mithilfe einer
+      :keyword:`for`-Anweisung zu iterieren.  Viele andere Sprachen haben nicht
+      diese Art von Konstrukt, sodass Leute, die mit Python nicht vertraut sind
+      manchmal einen numerischen Zähler benutzen::
+
+          for i in range(len(food)):
+              print food[i]
+
+      Im Gegensatz zum sauberen, pythonischen Weg::
+
+         for piece in food:
+             print piece
+
+   reference count
+      Die Anzahl von Referenzen zu einem Objekt.  Fällt der Referenzzähler eines
+      Objekts auf null, wird es dealloziert.  Das Referenzzählen ist generell
+      nicht sichtbar für Python-Code, ist jedoch ein Schlüsselelement der
+      :term:`CPython` Implementierung.  Das Modul :mod:`sys` definiert eine
+      :func:`getrefcount`-Funktion, die Programmierer aufrufen können, um den
+      Referenzzähler für ein bestimmtes Objekt zu bekommen.
+
+   __slots__
+      Eine Deklaration innerhalb einer :term:`new-style class`, die Speicher
+      spart, indem der Platz für Instanzattribute vorher deklariert wird und
+      Exemplardictionaries eliminiert werden.  Auch wenn sie populär sind, ist
+      es trickreich die Technik richtig anzuwenden und sollte am besten für
+      seltene Fälle aufgehoben werden, wenn es große Zahlen von Exemplaren in
+      einer speicherkritischen Anwendung gibt.
+
+   sequence
+      Ein Iterable (:term:`iterable`), das effizienten Elementzugriff mit
+      Ganzzahlindizes durch die spezielle Methode :meth:`__getitem__` bietet und
+      eine :meth:`__len__`-Methode definiert, die die Länge der Sequenz
+      zurückgibt.  Manche eingebauten Sequenztypen sind :class:`list`,
+      :class:`str`, :class:`tuple` und :class:`unicode`.  Beachte, dass
+      :class:`dict` ebenfalls :meth:`__getitem__` und :meth:`__len__` definiert,
+      aber eher als Mapping (:term:`mapping`), denn als Sequenz angesehen, da
+      die Lookups durch beliebige unveränderbare (:term:`immutable`) Schlüssel
+      möglich sind, nicht nur durch Ganzzahlen.
+
+   slice
+      Ein Objekt, das normalerweise einen Abschnitt einer Sequenz
+      (:term:`sequence`) enthält.  Ein Slice wird mittels der
+      Subskript-Notation, ``[]`` mit Doppelpunkten zwischen Nummern, wenn
+      mehrere gegeben werden, wie in ``variable_name[1:3:5]``.  Die Notation mit
+      eckigen Klammern (Subskript-Notation) benutzt :class:`slice`-Objekte
+      intern (oder in älteren Versionen, :meth:`__getslice__` und
+      :meth:`__setslice__`).
+
+   special method
+      Eine Methode die implizit von Python aufgerufen wird, um eine bestimmte
+      Operation auf einem Typ auszuführen, wie etwa Addition.  Solche Methoden
+      haben Namen mit führenden wie abschliessenden doppelten Unterstrichen.
+      Spezielle Methoden sind bei :ref:`specialnames` dokumentiert.
+
+   statement
+      Eine Anweisung ist Teil einer Suite (ein "Block" von Code).  Eine
+      Anweisung ist entweder ein Ausdruck (:term:`expression`) oder eine von
+      mehreren Konstrukten mit einem Schlüsselwort, wie etwa :keyword:`if`,
+      :keyword:`while` oder :keyword:`print`.
+
+   triple-quoted string
+      Ein String, der von entweder drei Anführungszeichen (") oder Apostrophen
+      (') umgeben ist.  Während sie keine Funktionalität bieten, die nicht bei
+      einfach-quotierten Strings verfügbar wären, sind sie aus mehreren Gründen
+      nützlich.  Sie erlauben das Einbeziehen von unmaskierten Anführungszeichen
+      und Apostrophen innerhalb eines Strings und sie können mehrere Zeilen
+      umfassen ohne das Fortsetzungszeichen benutzen zu müssen, was sie
+      besonders nützlich beim Schreiben von Docstrings macht.
+
+   type
+      Der Typ eines Python-Objektes legt fest, welche Art von Objekt es ist;
+      jedes Objekt hat einen Typ.  Der Typ eines Objektes ist als dessen
+      :attr:`__class__`-Attribut zugänglich oder kann mit ``type(obj)`` bestimmt
+      werden.
+
    virtual machine
       Ein Computer, der komplett in Software definiert ist.  Pythons Virtuelle
       Maschine führt den :term:`bytecode` aus, den der Bytecode-Compiler
       erzeugt. 
+
+   Zen of Python
+      Aufzählung von Pythons Design Prizipien und Philosophien, die hilfreich
+      beim verstehen und benutzen der Sprache sind.  Gibt man "``import this``"
+      am interaktiven Prompt ein, kann man die Aufzählung einsehen.
