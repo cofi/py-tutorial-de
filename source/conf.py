@@ -103,7 +103,7 @@ html_theme = 'default'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "Das Python3.1-Tutorial auf Deutsch"
+html_title = "Das Python3.2-Tutorial auf Deutsch"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -237,8 +237,8 @@ def setup(app):
     app.add_config_value('extlinks', {}, 'env')
     app.connect('builder-inited', setup_link_roles)
 
-extlinks = {'doc' : ('http://docs.python.org/dev/py3k/', 'doc'),
-            'lib' : ('http://docs.python.org/dev/py3k/library/', 'lib'),
-            'reff' : ('http://docs.python.org/dev/py3k/reference/', 'reff'),
+extlinks = {'doc' : ('http://docs.python.org/3.2/', 'doc'),
+            'lib' : ('http://docs.python.org/3.2/library/', 'lib'),
+            'reff' : ('http://docs.python.org/3.2/reference/', 'reff'),
             'home' : ('http://bitbucket.org/cofi/py-tutorial-de/', 'home')
            }
