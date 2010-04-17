@@ -248,7 +248,266 @@ Glossar
       und wird dort wiederaufgenommen, wenn das nächste Element durch den Aufruf
       der :meth:`next`-Methode des zurückgegebenen Iterators angefordert wird.
 
+      .. index:: single: generator expression
+
+   generator expression
+      Ein Ausdruck, der einen Generator zurückgibt. Er sieht wie ein normaler
+      Ausdruck aus, gefolgt von einem :keyword:`for`-Ausdruck, der eine
+      Schleifenvariable - hier *range* - definiert und einem optionalem
+      :keyword:`if`-Ausdruck. Der kombinierte Ausdruck generiert Werte für eine
+      umgebende Funktion::
+
+         >>> sum(i*i for i in range(10))         # summe der quadrate von 1,2, …, 10
+         285
+
+   GIL
+      Siehe :term:`global interpreter lock`.
+
+   global interpreter lock
+      multi-processor machines.  Efforts have been made in the past to
+      create a "free-threaded" interpreter (one which locks shared data at a
+      much finer granularity), but so far none have been successful because
+      performance suffered in the common single-processor case.
+
+      Das Lock, das von Python-Threads benutzt wird, um sicherzustellen, dass
+      nur ein Thread gleichzeitig in der Virtuellen Maschine (:term:`virtual
+      machine`) von :term:`CPython` ausgeführt wird. Den ganzen Interpreter zu
+      locken, macht es dem Interpreter einfacher multi-threaded zu sein, auf
+      Kosten eines Großteils der Parallelität, die von Multi-Prozessor Maschinen
+      bereitgestellt wird. In der Vergangenheit gab es viele Bestrebungen einen
+      "free-threaded" Interpreter (der den Zugriff auf geteilte Daten in einer
+      feineren Granularität blockt) zu erschaffen, jedoch war noch keiner
+      erfolgreich, da alle Performance-Einbußen im häufigen Fall des
+      Einzel-Prozessors.
+
+   hashable
+      Ein Objekt ist *hashbar*, wenn es einen Hashwert hat, der sich niemals
+      während seiner Existenz ändert (es braucht eine :meth:`__hash__`-Methode)
+      und mit anderen Objekten verglichen werden kann (es braucht eine
+      :meth:`__eq__`- oder :meth:`__cmp__`-Methode). Hashbare Objekte, die sich
+      gleichen, müssen denselben Hashwert haben.
+
+      Hashbarkeit macht ein Objekt als Dictionary-Schlüssel und als
+      Mengen-Mitglied benutzbar, da diese Datenstrukturen intern den Hashwert
+      benutzen.
+
+      Alle von Pythons eingebauten, unveränderbaren Objekte sind hashbar,
+      während keiner der veränderbaren Container (wie Listen oder Dictionaries)
+      es ist. Objekte, die Exemplare von benutzerdefinierten Klassen sind, sind
+      standardmäßig hashbar; sie vergleichen auf ungleich und ihr Hashwert ist
+      ihre :func:`id`.
+
+   IDLE
+      Eine IDE (Integrated Development Environment) für Python.  IDLE ist eine
+      einfache Editor- und Interpreter-Umgebung, die in der
+      Standard-Distribution von Python enthalten ist.  Gut für Anfänger geeignet
+      und dient auch als Beispiel-Code für alle, die eine moderat komplexe,
+      Multi-Plattform GUI Anwendung erstellen wollen.
+
+   immutable
+      Ein Objekt mit einem festen Wert.  Zu den unveränderbaren (*immutable*)
+      Objekten zählen Zahlen, Strings und Tupel.  Solche Objekte könnnen nicht
+      verändert werden. Ein neues Objekte muss erzeugt werden, wenn ein
+      verschiedener Wert gespeichert werden muss.  Sie spielen eine wichtige
+      Rolle an Stellen, bei denen ein konstanter Hashwert benötigt wird, zum
+      Beispiel als Schlüssel in einem Dictionary.
+
+   integer division
+      Mathematische Division, die jeden Rest verwirft.  Zum Beispiel,
+      evaluatiert der Ausdruck ``11 / 4`` zur Zeit zu ``2`` im Unterschied zu
+      ``2.75``, das von der Fliesskomma-Division zurückgegebenen wird.  Auch
+      *floor division* genannt.  Bei der Teilung von zwei Ganzzahlen wird das
+      Ergebnis immer eine Ganzzahl sein (auf die :func:`math.floor` angewendet
+      wurde).  Ist einer der Operanden von einem anderen numerischen Typ (wie
+      :class:`float`), werden beide auf den gemeinsamen Typ gezwungen (siehe
+      :term:`coercion`).  Zum Beispiel resultiert eine Ganzzahl geteilt durch
+      eine Fliesskomma-Zahl in einer Fliesskomma-Zahl, möglicherweise mit einem
+      Deziamalrest.  Ganzzahl-Division kann mit dem ``//``-Operator anstelle des
+      ``/``-Operators erzwungen werden.  Siehe auch :term:`__future__`.
+
+   importer
+      Ein Objekt, das sowohl Module fundet und lädt; zugleich ein
+      :term:`finder`- und :term:`loader`-Objekt.
+
+   interactive
+      Python hat einen interaktiven Interpreter. Das bedeutet, dass man
+      Anweisungen und Ausdrücke in den Interpreter-Prompt eingeben kann, die
+      sofort ausgeführt werden und deren Ergebnis man sehen kann.  Man startet
+      einfach ``python`` ohne Argumente (möglicherweise indem man es im
+      Hauptmenü des Computers auswählt).  Es ist ein mächtiger Weg, um neue
+      Ideen zu testen oder Module und Pakete zu untersuchen (``help(x)`` ist
+      hilfreich).
+
+   interpreted
+      Python ist eine interpretierte Sprache, im Gegensatz zu einer
+      kompilierten, obwohl die Unterscheidung aufgrund des Bytecode-Compilers
+      verschwommen ist.  Das heisst, dass Quelldateien direkt ausgeführt werden
+      können ohne explizit eine ausführbare Datei zu erstellen, die dann
+      ausgeführt wird.  Interpretierte Sprachen haben typischerweise einen
+      kürzeren Entwicklungs/Debug-Zyklus als kompilierte, jedoch laufen deren
+      Programme generell etwas langsamer.  Siehe auch :term:`interactive`.
+
+   iterable
+      Ein Container-Objekt, das dazu imstande ist seine Mitglieder nacheinander
+      zurückzugeben.  Beispiele von Iterables sind alle Sequenztypen (wie etwa
+      :class:`list`, :class:`str` und :class:`tuple`) und einige
+      nicht-Sequenztypen wie :class:`dict` und :class:`file` und Objekte, die
+      man mit :meth:`__iter__`- oder :meth:`__getitem__`-Methoden definiert.
+      Iterables können in :keyword:`for`-Schleifen und vielen anderen Stellen
+      verwendet werden, wo eine Sequenz benötigt wird (:func:`zip`, :func:`map`,
+      etc.).  Wird ein Iterable als Argument der eingebauten Funktion
+      :func:`iter` übergeben, gibt sie einen Iterator für dieses Objekt zurück.
+      Dieser Iterator ist gut, für einen Durchlauf über die Menge der Werte.
+      Nutzt man Iterables, ist es meist nicht nötig :func:`iter` aufzurufen oder
+      sich mit Iterator-Objekten direkt zu befassen.  Die
+      :keyword:`for`-Anweisung erledigt das automatisch, indem sie eine
+      temporäre unbenannte Variable erstellt, um den Iterator für die Laufzeit
+      der Schleife zu halten.  Siehe auch :term:`iterator`, :term:`sequence` und
+      :term:`generator`.
+
+   iterator
+      Ein Objekt, das einen Datenstrom repräsentiert.  Wiederholte Aufrufe der
+      :meth:`next`-Methode geben die aufeinanderfolgenden Elemente im Datenstrom
+      zurück. Sind keine Daten mehr vorhanden, wird eine
+      :exc:`StopIteration`-Ausnahme ausgelöst.  An dieser Stelle ist das
+      Iterator-Objekt erschöpft und alle weiteren Aufrufe verursachen nur
+      weitere :exc:`StopIteration`.  Iteratoren müssen ebenfallse eine
+      :meth:`__iter__`-Methode haben, die den Iterator selbst zurückgibt, sodass
+      jeder Iterator selbst ein Iterable ist und in den meisten Fällen benutzt
+      werden kann, wo andere Iterables akzeptiert werden.  Eine wichtige
+      Ausnahme ist Code, der mehrere Iterationen versucht.  Ein Container-Objekt
+      (wie etwa :class:`list`) erzeugt jedes Mal einen neuen Iterator, wenn man
+      es der :func:`iter`-Funktion übergibt oder in einer
+      :keyword:`for`-Schleife benutzt.  Versucht man dies mit einem Iterator,
+      wird nur dasselbe erschöpfte Iterator-Objekt zurückgeben, das schon im
+      vorangegangenen Durchlauf benutzt wurde und es so wie einen leeren
+      Container erscheinen lässt.
+
+      Mehr Informationen können bei :ref:`typeiter` gefunden werden.
+
+   keyword argument
+      Argumente, denen ein ``variable_name=`` im Aufruf vorausgeht.  Der
+      Variablenname bestimmt den lokalen Namen der Funktion, dem der Wert
+      zugewiesen wird.  ``**`` wird benutzt um ein Dictionary von
+      Schlüsselwort-Argumenten zu übergeben oder zu akzeptieren.  Siehe
+      :term:`argument`.
+
+   lambda
+      Eine anonyme inline Funktion, die nur aus einem einzelnen Ausdruck
+      (:term:`expression`) besteht, der ausgewertet wird, wenn die Funktion
+      aufgerufen wird. Die Syntax, um eine lambda-Funktion zu erstellen ist
+      ``lambda [arguments]: expression``.
+
+   LBYL
+      Look before you leap.  ("Schau bevor du springst.")  Dieser
+      Programmierstil testet explizit auf Vorbedingungen bevor Aufrufe oder
+      Lookups getätigt werden.  Dieser Stil steht dem :term:`EAFP` Ansatz
+      gegenüber und die Präsenz vieler :keyword:`if`-Anweisungen ist
+      charakteristisch für ihn.
+
+   list
+      Eine eingebaute Python :term:`sequence`.  Trotz des Namens ist sie
+      ähnlicher zu Arrays in anderen Sprachen als zu Verknüpften Listen (*linked
+      lists*), da der Elementzugriff in O(1) ist.
+
+   list comprehension
+      Ein kompakter Weg, um alle oder Teile der Elemente in einer
+      Sequenz verarbeitet und eine Liste der Ergebnisse zurückgibt.  ``result =
+      ["0x%02x" % x for x in range(256) if x % 2 == 0]`` generiert eine Liste
+      von Strings, die die geraden Hex-Zahlen (0x..) im Bereich von 0 bis 255
+      enthält.  Der :keyword:`if`-Abschnitt ist optional.  Wird er ausgelassen,
+      werden alle Elemente von ``range(256)`` verarbeitet.
+
+   loader
+      Ein Objekt, das ein Modul lädt.  Es muss eine Methode namens
+      :meth:`load_module` definieren.  Ein *loader* wird typischerweise von
+      einem :term:`finder` zurückgegebenen.  Siehe :pep:`302` für Details.
+
+   mapping
+      Ein Container-Objekt (wie etwa :class:`dict`), das beliebige
+      Schlüssel-Lookups mittels der speziellen Methode :meth:`__getitem`
+      unterstützt.
+
+   metaclass
+      Die Klasse einer Klasse. Klassendefinitionen erstellen einen Klassennamen,
+      ein Klassendictionary und eine Liste der Basisklassen.  Eine Metaklasse
+      ist dafür verantwortlich diese drei Argumente entgegen zunehmen und
+      Klassen zu erzeugen.  Die meisten Objektorientierten Programmiersprachen
+      bieten eine Standard-Implementierung.  Was Python speziell macht, ist dass
+      es möglich ist eigene Metaklassen zu erstellen.  Die meisten Benutzer
+      benötigen dieses Werkzeug nicht, kommt das Bedürfnis aber auf, können
+      Metaklassen mächtige und elegante Lösungen bieten.  Sie wurden schon
+      benutzt um Attributszugriffe zu loggen, Thread-Sicherheit hinzuzufügen,
+      Objekterzeugung zu verfolgen, Singletons zu implementieren und für viele
+      andere Aufgaben.
+
+      Mehr Informationen können in :ref:`metaclasses` gefunden werden.
+
+   method
+      Eine Funktion, die innerhalb eines Klassenkörpers definiert wurde.  Wird
+      es als Attribut eines Exemplares dieser Klasse aufgerufen, bekommt die
+      Methode das Exemplar-Objekt als ihr erstes Argument (:term:`argument`)
+      (das normalerweise ``self`` genannt wird).
+      Siehe :term:`function` und :term:`nested scope`.
+
+   mutable
+      Veränderliche (*mutable*) Objekte können ihren Wert ändern, aber ihre
+      :func:`id` behalten.  Siehe auch :term:`immutable`
+
+   named tuple
+      Jede Tupel-ähnliche Klasse, deren indizierbaren Elemente auch über
+      benannte Attribute zugänglich sind (zum Beispiel gibt
+      :func:`time.localtime` ein Tupel-ähnliches Objekt zurück, wo das Jahr
+      sowohl durch einen Index, wie ``t[0]``, als auch durch ein benanntes
+      Attribut wie ``t.tm_year`` zugänglich ist).
+
+      Ein benanntes Tupel kann ein eingebauter Typ wie etwa
+      :class:`time.struct_time` sein oder es kann mit einer regulären
+      Klassendefinition erstellt werden.  Ein voll funktionierendes benanntes
+      Tupel kann auch mit der Factory-Funktion :func:`collections.namedtuple`
+      erstellt werden.  Der zweite Ansatz bietet automatische extra Features wie
+      eine selbst-dokumentierende Repräsentation wie ``Employee(name='jones',
+      title='programmer')``.
+
+   namespace
+      Der Ort, an dem eine Variable gespeichert wird.  Namensräume sind als
+      Dictionaries implementiert.  Es gibt lokale, globale und eingebaute
+      Namensräume, wie auch verschachtelte Namensräume in Objekten (in
+      Methoden).  Namensräume unterstützen Modularität, indem sie
+      Namenskonflikten vorbeugen.  Zum Beispiel werden die Funktionen
+      :func:`__builtin__.open` und :func:`os.open` anhand ihres Namensraumes
+      unterschieden.  Namensräume unterstützen außerdem die Lesbarkeit und
+      Wartbarkeit indem sie klar machen, welches Modul eine Funktion
+      implementiert. Zum Beispiel machen :func:`random.seed` oder
+      :func:`itertools.izip` es klar, dass diese Funktionen in den Modulen
+      :mod:`random` beziehungsweise :mod:`itertools` implementiert werden.
+
+   nested scope
+      Die Fähigkeit eine Variable in einer umgebenden Definition zu
+      referenzieren. Zum Beispiel, kann eine Funktion, die in einer anderen
+      Funktion definiert wird auf die Variablen in der äußeren Funktion
+      zugreifen.  Beachte, dass verschachtelte Gültigkeitsbereiche nur bei
+      Referenzierungen, nicht bei Zuweisungen, die immer in den innersten
+      Gültigkeitsbereich schreiben, funktionieren.  Im Gegensatz dazu lesen und
+      schreiben lokale Variablen in den innersten Gültigkeitsbereich.
+      Gleichfalls, lesen und schreiben globale Variablen in den globalen
+      Namensraum.
+
+   new-style class
+      Jede Klasse, die von :class:`object` erbt.  Dies schliesst alle
+      eingebauten Typen wie :class:`list` und :class:`dict` ein.  Nur new-style
+      Klassen können Pythons neuere, vielseitige Features wie
+      :attr:`__slots__`, Deskriptoren, Properties und :meth:`__getattribute__`
+      benutzen.
+
+      Mehr Informationen können bei :ref:`newstyle` gefunden werden.
+
+   object
+      Alle Daten mit Zustand (Attribute oder Wert) und definiertem Verhalten
+      (Methoden).  Ebenfalls die ultimative Basisklasse von jeder
+      :term:`new-style`-Klasse.
+
    virtual machine
       Ein Computer, der komplett in Software definiert ist.  Pythons Virtuelle
       Maschine führt den :term:`bytecode` aus, den der Bytecode-Compiler
-      erzeugt.
+      erzeugt. 
