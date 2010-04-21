@@ -71,20 +71,13 @@ Glossar
       Klassendefinitionen enthalten normalerweise Methodendefinitionen, die auf
       den Exemplaren der Klasse agieren.
 
-   classic class
-      Jede Klasse, die nicht von :class:`object` erbt. Siehe :term:`new-style
-      class`. Classic classes werden in Python 3.0 entfernt.
-
    coercion
       Die implizite Konvertierung eines Exemplares eines Typs in einen anderen
       während einer Operation, die zwei Argumente desselben Typs erfordert.  Zum
       Beispiel konvertiert ``int(3.15)`` die Fliesskomma-Zahl zu der Ganzzahl
       ``3``, aber in ``3 + 4.5`` ist jedes Argument von einem verschiedenen Typ
       (eines *int*, eines *float*) und beide müssen zum selben Typ konvertiert
-      werden oder es wird ein :exc:`TypeError` erzeugt. Coercion zwischen zwei
-      Operanden, kann mit der eingebauten Funktion :func:`coerce` ausgeführt
-      werden; so ist ``3 + 4.5`` äquivalent zum Aufruf ``operator.add(*coerce(3,
-      4.5))`` und resultiert in ``operator.add(3.0, 4.5)``.  Ohne Coercion
+      werden oder es wird ein :exc:`TypeError` erzeugt. Ohne Coercion
       müssten alle Argumente, selbst von kompatiblen Typen, zum selben Typ
       vom Programmierer normalisiert werden, z.B. ``float(3) + 4.5`` statt nur
       ``3 + 4.5``.
@@ -130,21 +123,23 @@ Glossar
          def f(...):
              ...
 
-      Siehe :ref:`the documentation for function definition <function>` zu mehr
-      über Dekoratoren.
+      Dasselbe Konzept existiert für Klassen, ist jedoch dort weniger
+      gebräuchlich.  Siehe die Dokumentation für :reff:`Funktionsdefinitionen
+      <compound_stmts.html#function>` und :reff:`Klassendefinitionen
+      <compound_stmts.html#class>` für mehr über Dekoratoren.
 
    descriptor
-      Jedes *new-style* Objekt, das die Methoden :meth:`__get__`,
-      :meth:`__set__` oder :meth:`__delete__` definiert. Wenn ein
-      Klassenattribut ein Deskriptor ist, wird sein spezielles Bindeverhalten
-      beim Attributs-Lookup ausgelöst.  Wenn man *a.b* für das Abfragen (*get*),
-      Setzen (*set*) oder Löschen (*delete*) eines Attributs benutzt, wird nach
-      einem Objekt namens *b* im Klassendictionary von *a* gesucht, ist *b* aber
-      ein Deskriptor, wird die jeweilige Deskriptor-Methode aufgerufen. Das
-      Verstehen von Deskriptoren ist wichtig für ein tiefes Verständnis von
-      Python, da sie die Basis für viele Features einschliesslich Funtionen,
-      Methoden, Properties, Klassenmethoden, statische Methoden und Referenzen
-      zu Super-Klassen bilden.
+      Jedes Objekt, das die Methoden :meth:`__get__`, :meth:`__set__` oder
+      :meth:`__delete__` definiert. Wenn ein Klassenattribut ein Deskriptor ist,
+      wird sein spezielles Bindeverhalten beim Attributs-Lookup ausgelöst.  Wenn
+      man *a.b* für das Abfragen (*get*), Setzen (*set*) oder Löschen (*delete*)
+      eines Attributs benutzt, wird nach einem Objekt namens *b* im
+      Klassendictionary von *a* gesucht, ist *b* aber ein Deskriptor, wird die
+      jeweilige Deskriptor-Methode aufgerufen. Das Verstehen von Deskriptoren
+      ist wichtig für ein tiefes Verständnis von Python, da sie die Basis für
+      viele Features einschliesslich Funtionen, Methoden, Properties,
+      Klassenmethoden, statische Methoden und Referenzen zu Super-Klassen
+      bilden.
       
       Für mehr Informationen zu den Deskriptor-Methoden, siehe
       :ref:`descriptors`.
@@ -190,10 +185,10 @@ Glossar
       Worten ist ein Ausdruck eine Anhäufung von Ausdruckselementen wie
       Literale, Namen, Attributszugriffe, Operatoren oder Funktionsaufrufen, die
       alle einen Wert zurückgeben. Im Unterschied zu vielen anderen Sprachen,
-      sind nicht alle Sprachkonstrukte Ausdrücke. Es gibt ebenfalls Anweisungen
+      sind nicht alle Sprachkonstrukte Ausdrücke.  Es gibt ebenfalls Anweisungen
       (:term:`statement`), die nicht als als Ausdruck benutzt werden können, wie
-      :keyword:`print` oder :keyword:`if`. Zuweisungen sind ebenfalls
-      Anweisungen, keine Ausdrücke.
+      etwa :keyword:`if`.  Zuweisungen sind ebenfalls Anweisungen, keine
+      Ausdrücke.
 
    extension module
       Ein Modul, das in C oder C++ geschrieben ist und mit Pythons C API mit dem
@@ -203,7 +198,14 @@ Glossar
       Ein Objekt, das versucht den :term:`loader` für ein Modul zu finden. Es
       muss eine Methode namens :meth:`find_module` implementieren.
 
-      Siehe :pep:`302` für Details.
+      Siehe :pep:`302` für Details und :class:`importlib.abc.Finder` für eine
+      :term:`abstract base class`.
+
+   floor division
+      Mathematische Division die jeden Rest verwirft.  Der Operator für
+      Ganzzahl-Division ist ``//``.  Zum Beispiel evaluatiert der Ausdruck
+      ``11//4``  zu ``2`` im Gegensatz zu ``2.75``, die von Fliesskomma-Division
+      zurückgegeben wird.
 
    function
       Eine Serie von Anweisungen, die einen Wert zum Aufrufenden zurückgeben.
@@ -214,17 +216,11 @@ Glossar
 
    __future__
       Ein Pseudo-Modul, das Programmierern ermöglicht neue Sprach-Features zu
-      aktivieren, die nicht kompatibel mit dem aktuellen Interpreter sind.  Zum
-      Beispiel evaluiert der Ausdruck ``11/4`` momentan zu  ``2``. Hätte das
-      Modul, in dem er ausgeführt wird *echte Division* durch folgendes
-      aktiviert::
+      aktivieren, die nicht kompatibel mit dem aktuellen Interpreter sind.
 
-          from __future__ import division
-
-      dann würde der Ausdruck ``11/4`` zu ``2.75`` evaluieren. Durch den Import
-      des :mod:`__future__`-Moduls und dem Auswerten seiner Variablen, kann man
-      sehen, wann ein Feature zuerst der Sprache hinzugefügt wurde und wann es
-      das Standard-Verhalten wird::
+      Durch den Import des :mod:`__future__`-Moduls und dem Auswerten seiner
+      Variablen, kann man sehen, wann ein Feature zuerst der Sprache hinzugefügt
+      wurde und wann es das Standard-Verhalten wird::
 
           >>> import __future__
           >>> __future__.division
@@ -246,7 +242,7 @@ Glossar
       (:keyword:`yield` en).  Die Ausführung der Funktion wird nach dem
       :keyword:`yield` unterbrochen (während das Ergebnis zurückgegeben wird)
       und wird dort wiederaufgenommen, wenn das nächste Element durch den Aufruf
-      der :meth:`next`-Methode des zurückgegebenen Iterators angefordert wird.
+      der :meth:`__next__`-Methode des zurückgegebenen Iterators angefordert wird.
 
       .. index:: single: generator expression
 
@@ -284,8 +280,8 @@ Glossar
       Ein Objekt ist *hashbar*, wenn es einen Hashwert hat, der sich niemals
       während seiner Existenz ändert (es braucht eine :meth:`__hash__`-Methode)
       und mit anderen Objekten verglichen werden kann (es braucht eine
-      :meth:`__eq__`- oder :meth:`__cmp__`-Methode). Hashbare Objekte, die sich
-      gleichen, müssen denselben Hashwert haben.
+      :meth:`__eq__`-Methode). Hashbare Objekte, die sich gleichen, müssen
+      denselben Hashwert haben.
 
       Hashbarkeit macht ein Objekt als Dictionary-Schlüssel und als
       Mengen-Mitglied benutzbar, da diese Datenstrukturen intern den Hashwert
@@ -311,19 +307,6 @@ Glossar
       verschiedener Wert gespeichert werden muss.  Sie spielen eine wichtige
       Rolle an Stellen, bei denen ein konstanter Hashwert benötigt wird, zum
       Beispiel als Schlüssel in einem Dictionary.
-
-   integer division
-      Mathematische Division, die jeden Rest verwirft.  Zum Beispiel,
-      evaluatiert der Ausdruck ``11 / 4`` zur Zeit zu ``2`` im Unterschied zu
-      ``2.75``, das von der Fliesskomma-Division zurückgegebenen wird.  Auch
-      *floor division* genannt.  Bei der Teilung von zwei Ganzzahlen wird das
-      Ergebnis immer eine Ganzzahl sein (auf die :func:`math.floor` angewendet
-      wurde).  Ist einer der Operanden von einem anderen numerischen Typ (wie
-      :class:`float`), werden beide auf den gemeinsamen Typ gezwungen (siehe
-      :term:`coercion`).  Zum Beispiel resultiert eine Ganzzahl geteilt durch
-      eine Fliesskomma-Zahl in einer Fliesskomma-Zahl, möglicherweise mit einem
-      Deziamalrest.  Ganzzahl-Division kann mit dem ``//``-Operator anstelle des
-      ``/``-Operators erzwungen werden.  Siehe auch :term:`__future__`.
 
    importer
       Ein Objekt, das sowohl Module fundet und lädt; zugleich ein
@@ -367,8 +350,9 @@ Glossar
 
    iterator
       Ein Objekt, das einen Datenstrom repräsentiert.  Wiederholte Aufrufe der
-      :meth:`next`-Methode geben die aufeinanderfolgenden Elemente im Datenstrom
-      zurück. Sind keine Daten mehr vorhanden, wird eine
+      :meth:`__next__`-Methode des Iterators oder die Übergabe an die eingebaute
+      Funktion :func:`next` geben die aufeinanderfolgenden Elemente im
+      Datenstrom zurück. Sind keine Daten mehr vorhanden, wird eine
       :exc:`StopIteration`-Ausnahme ausgelöst.  An dieser Stelle ist das
       Iterator-Objekt erschöpft und alle weiteren Aufrufe verursachen nur
       weitere :exc:`StopIteration`.  Iteratoren müssen ebenfallse eine
@@ -421,7 +405,8 @@ Glossar
    loader
       Ein Objekt, das ein Modul lädt.  Es muss eine Methode namens
       :meth:`load_module` definieren.  Ein *loader* wird typischerweise von
-      einem :term:`finder` zurückgegebenen.  Siehe :pep:`302` für Details.
+      einem :term:`finder` zurückgegebenen.  Siehe :pep:`302` für Details und
+      :class:`importlib.abc.Loader` für eine :term:`abstract base class`.
 
    mapping
       Ein Container-Objekt (wie etwa :class:`dict`), das beliebige
@@ -475,7 +460,7 @@ Glossar
       Namensräume, wie auch verschachtelte Namensräume in Objekten (in
       Methoden).  Namensräume unterstützen Modularität, indem sie
       Namenskonflikten vorbeugen.  Zum Beispiel werden die Funktionen
-      :func:`__builtin__.open` und :func:`os.open` anhand ihres Namensraumes
+      :func:`builtins.open` und :func:`os.open` anhand ihres Namensraumes
       unterschieden.  Namensräume unterstützen außerdem die Lesbarkeit und
       Wartbarkeit indem sie klar machen, welches Modul eine Funktion
       implementiert. Zum Beispiel machen :func:`random.seed` oder
@@ -494,12 +479,10 @@ Glossar
       Namensraum.
 
    new-style class
-      Jede Klasse, die von :class:`object` erbt.  Dies schliesst alle
-      eingebauten Typen wie :class:`list` und :class:`dict` ein.  Nur new-style
-      Klassen können Pythons neuere, vielseitige Features wie :attr:`__slots__`,
+      Alter Name für die Sorte von Klassen, die nun für alle Klassenobjekte
+      benutzt wird.  In früheren Versionen von Python, konnten nur new-style
+      Klassen Pythons neuere vielseitige Features wie :attr:`__slots__`,
       Deskriptoren, Properties und :meth:`__getattribute__` benutzen.
-
-      Mehr Informationen können bei :ref:`newstyle` gefunden werden.
 
    object
       Alle Daten mit Zustand (Attribute oder Wert) und definiertem Verhalten
@@ -515,9 +498,9 @@ Glossar
       Siehe :term:`argument`.
 
    Python 3000
-      Spitzname für die nächste große Python Version, 3.0 (geprägt vor langer
-      Zeit, als die Veröffentlichung von Version 3 etwas in ferner Zukunft war.)
-      Dies wird auch als "Py3k" abgekürzt.
+      Spitzname für die Reihe der Veröffentlichungen in Python 3.x (geprägt vor
+      langer Zeit, als die Veröffentlichung von Version 3 etwas in ferner
+      Zukunft war.)  Dies wird auch als "Py3k" abgekürzt.
 
    Pythonic
       Eine Idee oder Stück von Code, der den häufigsten Idiomen der
@@ -529,12 +512,12 @@ Glossar
       manchmal einen numerischen Zähler benutzen::
 
           for i in range(len(food)):
-              print food[i]
+              print(food[i])
 
       Im Gegensatz zum sauberen, pythonischen Weg::
 
          for piece in food:
-             print piece
+             print(piece)
 
    reference count
       Die Anzahl von Referenzen zu einem Objekt.  Fällt der Referenzzähler eines
@@ -545,19 +528,19 @@ Glossar
       Referenzzähler für ein bestimmtes Objekt zu bekommen.
 
    __slots__
-      Eine Deklaration innerhalb einer :term:`new-style class`, die Speicher
-      spart, indem der Platz für Instanzattribute vorher deklariert wird und
-      Exemplardictionaries eliminiert werden.  Auch wenn sie populär sind, ist
-      es trickreich die Technik richtig anzuwenden und sollte am besten für
-      seltene Fälle aufgehoben werden, wenn es große Zahlen von Exemplaren in
-      einer speicherkritischen Anwendung gibt.
+      Eine Deklaration innerhalb einer Klasse, die Speicher spart, indem der
+      Platz für Instanzattribute vorher deklariert wird und Exemplardictionaries
+      eliminiert werden.  Auch wenn sie populär sind, ist es trickreich die
+      Technik richtig anzuwenden und sollte am besten für seltene Fälle
+      aufgehoben werden, wenn es große Zahlen von Exemplaren in einer
+      speicherkritischen Anwendung gibt.
 
    sequence
       Ein Iterable (:term:`iterable`), das effizienten Elementzugriff mit
       Ganzzahlindizes durch die spezielle Methode :meth:`__getitem__` bietet und
       eine :meth:`__len__`-Methode definiert, die die Länge der Sequenz
       zurückgibt.  Manche eingebauten Sequenztypen sind :class:`list`,
-      :class:`str`, :class:`tuple` und :class:`unicode`.  Beachte, dass
+      :class:`str`, :class:`tuple` und :class:`bytes`.  Beachte, dass
       :class:`dict` ebenfalls :meth:`__getitem__` und :meth:`__len__` definiert,
       aber eher als Mapping (:term:`mapping`), denn als Sequenz angesehen, da
       die Lookups durch beliebige unveränderbare (:term:`immutable`) Schlüssel
@@ -569,8 +552,7 @@ Glossar
       Subskript-Notation, ``[]`` mit Doppelpunkten zwischen Nummern, wenn
       mehrere gegeben werden, wie in ``variable_name[1:3:5]``.  Die Notation mit
       eckigen Klammern (Subskript-Notation) benutzt :class:`slice`-Objekte
-      intern (oder in älteren Versionen, :meth:`__getslice__` und
-      :meth:`__setslice__`).
+      intern.
 
    special method
       Eine Methode die implizit von Python aufgerufen wird, um eine bestimmte
@@ -582,7 +564,7 @@ Glossar
       Eine Anweisung ist Teil einer Suite (ein "Block" von Code).  Eine
       Anweisung ist entweder ein Ausdruck (:term:`expression`) oder eine von
       mehreren Konstrukten mit einem Schlüsselwort, wie etwa :keyword:`if`,
-      :keyword:`while` oder :keyword:`print`.
+      :keyword:`while` oder :keyword:`for`.
 
    triple-quoted string
       Ein String, der von entweder drei Anführungszeichen (") oder Apostrophen
@@ -598,6 +580,14 @@ Glossar
       jedes Objekt hat einen Typ.  Der Typ eines Objektes ist als dessen
       :attr:`__class__`-Attribut zugänglich oder kann mit ``type(obj)`` bestimmt
       werden.
+ 
+   view
+      Die Objekte, die von :meth:`dict.keys`, :meth:`dict.values` und
+      :meth:`dict.items` zurückgegeben werden, werden Dictionary-Views genannt.
+      Sie sind Lazy Sequenzen, die Veränderungen im zugrundeliegenden Dictionary
+      bemerken. Um einen Dictionary-View zu zwingen eine volle Liste zu werden,
+      benutzt man ``list(dictview)``. Siehe :lib:`Dictionary view objects
+      <stdtypes.html#dict-views>`.
 
    virtual machine
       Ein Computer, der komplett in Software definiert ist.  Pythons Virtuelle
