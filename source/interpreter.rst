@@ -160,7 +160,7 @@ Auf BSD-ähnlichen Unixsystemen kann ein Pythonskript - ähnlich einem Shellskri
 - direkt ausführbar gemacht werden, indem man folgende Zeile (shebang) an den
 Anfang des Skripts schreibt ::
 
-    #!/usr/bin/env python3.1
+    #!/usr/bin/env python3.2
 
 Dabei wird vorausgesetzt, dass sich der Pfad zum Interpreter im :envvar:`PATH`
 des Benutzers befindet. Die ``#!`` müssen die ersten zwei Zeichen der Datei
