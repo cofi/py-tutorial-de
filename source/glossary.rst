@@ -23,7 +23,8 @@ Glossar
 
       2to3 ist in der Standardbibliothek als :mod:`lib2to3` verfügbar.  Ein
       eigenständiger Einstiegspunkt ist als :file:`Tools/scripts/2to3`
-      bereitgestellt.  Siehe :ref:`2to3-reference`.
+      bereitgestellt.  Siehe :lib:`2to3 - Automated Python 2 to 3 code
+      translation <2to3.html#to3-reference>`.
 
    abstract base class
       Abstrakte Basisklassen (Abstract Base Classes - kurz ABCs) ergänzen
@@ -142,7 +143,7 @@ Glossar
       bilden.
       
       Für mehr Informationen zu den Deskriptor-Methoden, siehe
-      :ref:`descriptors`.
+      :reff:`Implementing Descriptors <datamodel.html#descriptors>`.
 
    dictionary
       Ein assoziatives Array, wo beliebige Schlüssel auf Werte abgebildet
@@ -367,7 +368,8 @@ Glossar
       vorangegangenen Durchlauf benutzt wurde und es so wie einen leeren
       Container erscheinen lässt.
 
-      Mehr Informationen können bei :ref:`typeiter` gefunden werden.
+      Mehr Informationen können bei :lib:`Iterator Types
+      <stdtypes.html#typeiter>` gefunden werden.
 
    keyword argument
       Argumente, denen ein ``variable_name=`` im Aufruf vorausgeht.  Der
@@ -426,7 +428,8 @@ Glossar
       Objekterzeugung zu verfolgen, Singletons zu implementieren und für viele
       andere Aufgaben.
 
-      Mehr Informationen können in :ref:`metaclasses` gefunden werden.
+      Mehr Informationen können in :reff:`Customizing class creation
+      <datamodel.html#metaclasses>` gefunden werden.
 
    method
       Eine Funktion, die innerhalb eines Klassenkörpers definiert wurde.  Wird
@@ -487,7 +490,7 @@ Glossar
    object
       Alle Daten mit Zustand (Attribute oder Wert) und definiertem Verhalten
       (Methoden).  Ebenfalls die ultimative Basisklasse von jeder
-      :term:`new-style`-Klasse.
+      :term:`new-style class`.
 
    positional argument
       Die Argumente, die lokalen Namen innerhalb einer Funktion oder Methode
@@ -558,7 +561,8 @@ Glossar
       Eine Methode die implizit von Python aufgerufen wird, um eine bestimmte
       Operation auf einem Typ auszuführen, wie etwa Addition.  Solche Methoden
       haben Namen mit führenden wie abschliessenden doppelten Unterstrichen.
-      Spezielle Methoden sind bei :ref:`specialnames` dokumentiert.
+      Spezielle Methoden sind bei :reff:`Special method names
+      <datamodel.html#specialnames>` dokumentiert.
 
    statement
       Eine Anweisung ist Teil einer Suite (ein "Block" von Code).  Eine
