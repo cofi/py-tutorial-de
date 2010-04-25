@@ -626,30 +626,30 @@ Private Variablen
 =================
 
 "Private" Instanzvariablen, die nur innerhalb des Objekts zugänglich sind, gibt
-es in Python nicht. Jedoch gibt es eine Konvention, die von dem meisten
-Python-Code befolgt wird: Ein Name, der mit einem Unterstrich beginnt (z.B.
-``_spam``) sollte als nicht-öffentlicher Teil der API behandelt werden (egal ob
-es eine Funktion, eine Methode oder ein Datenattribut ist). Es sollte als
+es in Python nicht.  Jedoch gibt es eine Konvention, die im meisten Python-Code
+befolgt wird: Ein Name, der mit einem Unterstrich beginnt (z.B.  ``_spam``)
+sollte als nicht-öffentlicher Teil der API behandelt werden (egal ob es eine
+Funktion, eine Methode oder ein Datenattribut ist).  Es sollte als
 Implementierungsdetails behandelt werden, das sich unangekündigt ändern kann.
 
-Da es eine sinnvolle Verwendung für Klassen-Private Member gibt (um
-Namenskonflikte mit Namen, die von Unterklassen definiert werden zu vermeiden),
+Da es eine sinnvolle Verwendung für klassen-private Attribute gibt, um
+Namenskonflikte mit Namen, die von Unterklassen definiert werden zu vermeiden,
 gibt es eine begrenzte Unterstützung für so einen Mechanismus: :dfn:`name
-mangling` (Namensersetzung). Jeder Bezeichner der Form ``__spam`` (mindestens
+mangling` (Namensersetzung).  Jeder Bezeichner der Form ``__spam`` (mindestens
 zwei führende Unterstriche, höchstens ein folgender) wird im Text durch
 ``_classname__spam`` ersetzt, wobei ``classname`` der Name der aktuellen Klasse
-(ohne eventuelle führende Unterstriche) ist. Die Ersetzung geschieht ohne
+(ohne eventuelle führende Unterstriche) ist.  Die Ersetzung geschieht ohne
 Rücksicht auf die syntaktische Position des Bezeichners, sofern er innerhalb der
 Definition der Klasse steht.
 
-Beachte, dass die Ersetzungsregeln vor allem dazu gedacht sind Unfälle zu
-vermeiden; es ist immernoch möglich eine auf eine als privat behandelte Variable
-von aussen zuzugreifen und auch sie zu verändern. Das kann in manchen Umständen
-sogar nützlich sein, beispielsweise in einem Debugger.
+Beachte, dass die Ersetzungsregeln vor allem dazu gedacht sind, Unfälle zu
+vermeiden; es ist immernoch möglich auf einen solchen als privat
+gekennzeichneten Namen von aussen zuzugreifen und ihn auch zu verändern.  Das
+kann in manchen Umständen sogar nützlich sein, beispielsweise in einem Debugger.
 
-Beachte, dass Code der von ``exec()``, ``eval()`` oder ``execfile()`` ausgeführt
-wird, den Klassennamen der aufrufenden Klasse nicht als die aktuelle Klasse
-ansieht; dies ähnelt dem Effekt der :keyword:`global`-Anweisung, dessen Effekt
+Beachte, dass Code, der von ``exec()``, ``eval()`` oder ``execfile()``
+ausgeführt wird, den Klassennamen der aufrufenden Klasse nicht als die aktuelle
+Klasse ansieht. Dies ähnelt dem Effekt der :keyword:`global`-Anweisung, der
 ebenfalls sehr beschränkt auf den Code ist, der zusammen byte-kompiliert wird.
 Die gleiche Begrenzung gilt für ``getattr()``, ``setattr()`` und ``delattr()``,
 sowie den direkten Zugriff auf ``__dict__``.
