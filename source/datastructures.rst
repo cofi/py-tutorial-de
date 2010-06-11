@@ -567,8 +567,8 @@ ursprüngliche Sequenz, aber nicht anrührt. ::
     ...
     Apfel
     Banane
-    Orange
     Birne
+    Orange
 
 Mehr zu Bedingungen
 ===================
