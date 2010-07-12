@@ -647,12 +647,12 @@ vermeiden; es ist immernoch möglich auf einen solchen als privat
 gekennzeichneten Namen von aussen zuzugreifen und ihn auch zu verändern.  Das
 kann in manchen Umständen sogar nützlich sein, beispielsweise in einem Debugger.
 
-Beachte, dass Code, der von ``exec()``, ``eval()`` oder ``execfile()``
-ausgeführt wird, den Klassennamen der aufrufenden Klasse nicht als die aktuelle
-Klasse ansieht. Dies ähnelt dem Effekt der :keyword:`global`-Anweisung, der
-ebenfalls sehr beschränkt auf den Code ist, der zusammen byte-kompiliert wird.
-Die gleiche Begrenzung gilt für ``getattr()``, ``setattr()`` und ``delattr()``,
-sowie den direkten Zugriff auf ``__dict__``.
+Beachte, dass Code, der von ``exec()`` oder ``eval()`` ausgeführt wird, den
+Klassennamen der aufrufenden Klasse nicht als die aktuelle Klasse ansieht. Dies
+ähnelt dem Effekt der :keyword:`global`-Anweisung, der ebenfalls sehr beschränkt
+auf den Code ist, der zusammen byte-kompiliert wird.  Die gleiche Begrenzung
+gilt für ``getattr()``, ``setattr()`` und ``delattr()``, sowie den direkten
+Zugriff auf ``__dict__``.
 
 .. _tut-odds:
 
