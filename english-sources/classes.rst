@@ -580,7 +580,7 @@ Private Variables
 =================
 
 "Private" instance variables that cannot be accessed except from inside an
-object, don't exist in Python.  However, there is a convention that is followed
+object don't exist in Python.  However, there is a convention that is followed
 by most Python code: a name prefixed with an underscore (e.g. ``_spam``) should
 be treated as a non-public part of the API (whether it is a function, a method
 or a data member).  It should be considered an implementation detail and subject
@@ -599,12 +599,12 @@ Note that the mangling rules are designed mostly to avoid accidents; it still is
 possible to access or modify a variable that is considered private.  This can
 even be useful in special circumstances, such as in the debugger.
 
-Notice that code passed to ``exec()``, ``eval()`` or ``execfile()`` does not
-consider the classname of the invoking  class to be the current class; this is
-similar to the effect of the  ``global`` statement, the effect of which is
-likewise restricted to  code that is byte-compiled together.  The same
-restriction applies to ``getattr()``, ``setattr()`` and ``delattr()``, as well
-as when referencing ``__dict__`` directly.
+Notice that code passed to ``exec()`` or ``eval()`` does not consider the
+classname of the invoking class to be the current class; this is similar to the
+effect of the ``global`` statement, the effect of which is likewise restricted
+to code that is byte-compiled together.  The same restriction applies to
+``getattr()``, ``setattr()`` and ``delattr()``, as well as when referencing
+``__dict__`` directly.
 
 
 .. _tut-odds:
