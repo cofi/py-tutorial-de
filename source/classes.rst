@@ -802,7 +802,10 @@ zurückgibt. Definiert die Klasse :meth:`__next__`, kann :meth:`__iter__` einfac
            self.index = self.index - 1
            return self.data[self.index]
 
-    >>> for char in Reverse('spam'):
+    >>> rev = Reverse('spam')
+    >>> iter(rev)
+    <__main__.Reverse object at 0x00A1DB50>
+    >>> for char in rev:
     ...     print(char)
     ...
     m
