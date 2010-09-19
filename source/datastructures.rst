@@ -393,7 +393,7 @@ Dictionary, eine Datenstruktur, die wir im nächsten Abschnitt besprechen.
 Hier eine kurze Demonstration::
 
    >>> basket = {'Apfel', 'Orange', 'Apfel', 'Birne', 'Orange', 'Banane'}
-   >>> print(basket)                      # zeigt, dass die Duplikate sind entfernt wurden
+   >>> print(basket)                      # zeigt, dass die Duplikate entfernt wurden
    {'Orange', 'Birne', 'Apfel', 'Banane'}
    >>> 'Orange' in basket                 # schnelles Testen auf Mitgliedschaft
    True
