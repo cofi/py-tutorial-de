@@ -241,8 +241,8 @@ Lesen und Schreiben von Dateien
    builtin: open
    object: file
 
-:func:`open` gibt ein Dateiobjekt zurück und wird meistens mit zwei Argumenten
-aufgerufen: ``open(filename, mode)``
+:func:`open` gibt ein Dateiobjekt (:term:`file object`) zurück und wird meistens
+mit zwei Argumenten aufgerufen: ``open(filename, mode)``
 
 ::
 

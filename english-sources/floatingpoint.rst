@@ -81,7 +81,7 @@ approximated by ``3602879701896397 / 2 ** 55``.  Since all of these decimal
 values share the same approximation, any one of them could be displayed
 while still preserving the invariant ``eval(repr(x)) == x``.
 
-Historically, the Python prompt and built-in :func:`repr` function would chose
+Historically, the Python prompt and built-in :func:`repr` function would choose
 the one with 17 significant digits, ``0.10000000000000001``.   Starting with
 Python 3.1, Python (on most systems) is now able to choose the shortest of
 these and simply display ``0.1``.
@@ -92,18 +92,17 @@ thing in all languages that support your hardware's floating-point arithmetic
 (although some languages may not *display* the difference by default, or in all
 output modes).
 
-Python's built-in :func:`str` function produces only 12 significant digits, and
-you may wish to use that instead.  It's unusual for ``eval(str(x))`` to
-reproduce *x*, but the output may be more pleasant to look at::
+For more pleasant output, you may may wish to use string formatting to produce a limited number of significant digits::
 
-   >>> str(math.pi)
+   >>> format(math.pi, '.12g')  # give 12 significant digits
    '3.14159265359'
+
+   >>> format(math.pi, '.2f')   # give 2 digits after the point
+   '3.14'
 
    >>> repr(math.pi)
    '3.141592653589793'
 
-   >>> format(math.pi, '.2f')
-   '3.14'
 
 It's important to realize that this is, in a real sense, an illusion: you're
 simply rounding the *display* of the true machine value.

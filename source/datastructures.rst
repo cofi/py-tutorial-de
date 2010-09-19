@@ -392,16 +392,12 @@ Dictionary, eine Datenstruktur, die wir im nächsten Abschnitt besprechen.
 
 Hier eine kurze Demonstration::
 
-   >>> basket = ['Apfel', 'Orange', 'Apfel', 'Birne', 'Orange', 'Banane']
-   >>> fruit = set(basket)               # eine Menge ohne Dublikate erstellen
-   >>> fruit
+   >>> basket = {'Apfel', 'Orange', 'Apfel', 'Birne', 'Orange', 'Banane'}
+   >>> print(basket)                      # zeigt, dass die Duplikate sind entfernt wurden
    {'Orange', 'Birne', 'Apfel', 'Banane'}
-   >>> fruit = {'Orange', 'Apfel'}       # {}-Syntax analog der [] von Listen
-   >>> fruit
-   {'Orange', 'Apfel'}
-   >>> 'Orange' in fruit                 # schnelles Testen auf Mitgliedschaft
+   >>> 'Orange' in basket                 # schnelles Testen auf Mitgliedschaft
    True
-   >>> 'Fingerhirse' in fruit
+   >>> 'Fingerhirse' in basket
    False
 
    >>> a = set('abracadabra')

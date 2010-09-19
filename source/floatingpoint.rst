@@ -90,17 +90,13 @@ dieses Problem in allen Sprachen, die die Fließkomma-Darstellung der Hardware
 unterstützen (obwohl manche Sprachen den Unterschied nicht standardmäßig oder in
 allen Anzeigemodi *anzeigen*).
 
-Pythons eingebaute Funktion :func:`str` erzeugt nur 12 signifikante Stellen Es
-ist selten, dass ``eval(str(x))`` den Wert *x* erzeugt, aber die Ausgabe sieht
-unter Umständen besser aus::
+Für eine schönere Ausgabe kann man String Formatierung nutzen, um die Anzahl der
+ausgegebenen signifikanten Ziffern zu beschränken.
 
-   >>> str(math.pi)
+   >>> format(math.pi, '.12g')  # 12 signifikante Stellen angeben
    '3.14159265359'
 
-   >>> repr(math.pi)
-   '3.141592653589793'
-
-   >>> format(math.pi, '.2f')
+   >>> format(math.pi, '.2f')   # 2 Nachkommastellen angeben
    '3.14'
 
 Es ist wichtig sich zu verinnerlichen, dass dies in Wahrheit eine Illusion ist -

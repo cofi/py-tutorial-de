@@ -71,14 +71,14 @@ Ein *Namensraum* ist eine Zuordnung von Namen zu Objekten. Die meisten
 Namensräume sind momentan als Dictionaries implementiert, aber das ist
 normalerweise in keinerlei Hinsicht spürbar (außer bei der Performance) und kann
 sich in Zukunft ändern. Beispiele für Namensräume sind: Die Menge der
-eingebauten Namen (Funktionen wie :func:`abs` und eingebaute Ausnahmen), die
-globalen Namen eines Moduls und die lokalen Namen eines Funktionsaufrufs. In
-gewisser Hinsicht bilden auch die Attribute eines Objektes einen Namensraum.
-Das Wichtigste, das man über Namensräume wissen muss, ist, dass es absolut
-keinen Bezug von Namen in verschiedenen Namensräumen zueinander gibt. Zum
-Beispiel können zwei verschiedene Module eine Funktion namens ``maximize``
-definieren, ohne dass es zu einer Verwechslung kommt, denn Benutzer des Moduls
-müssen dessen Namen voranstellen.
+eingebauten Namen (die Funktionen wie :func:`abs` und eingebaute Ausnahmen
+enthält), die globalen Namen eines Moduls und die lokalen Namen eines
+Funktionsaufrufs. In gewisser Hinsicht bilden auch die Attribute eines Objektes
+einen Namensraum.  Das Wichtigste, das man über Namensräume wissen muss, ist,
+dass es absolut keinen Bezug von Namen in verschiedenen Namensräumen zueinander
+gibt. Zum Beispiel können zwei verschiedene Module eine Funktion namens
+``maximize`` definieren, ohne dass es zu einer Verwechslung kommt, denn Benutzer
+des Moduls müssen dessen Namen voranstellen.
 
 Nebenbei bemerkt: Ich benutze das Wort *Attribut* für jeden Namen nach einem
 Punkt --- zum Beispiel in dem Ausdruck ``z.real`` ist ``real`` ein Attribut des
