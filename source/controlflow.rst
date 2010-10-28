@@ -224,7 +224,7 @@ zu einer beliebigen Grenze ausgibt::
     ...     """Print the Fibonacci series up to n."""
     ...     a, b = 0, 1
     ...     while a < n:
-    ...         print(b, end=' ')
+    ...         print(a, end=' ')
     ...         a, b = b, a+b
     ...     print()
     ...
