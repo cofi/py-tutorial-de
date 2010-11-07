@@ -142,7 +142,8 @@ werden, wo ein Objekt erwartet wird, das eine Folge von Elementen der Reihe nach
 :func:`list` ist ein solcher Iterator, die als Argument ein Iterable erwartet
 und eine Liste daraus macht ::
  
-    >>> list(range(5)) [0, 1, 2, 3, 4]
+    >>> list(range(5))
+    [0, 1, 2, 3, 4]
 
 Später werden noch weitere Funktionen behandelt, die Iterables zurückgeben und
 Iterables als Argument aufnehmen.
