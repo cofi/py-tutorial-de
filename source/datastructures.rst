@@ -155,7 +155,7 @@ Beispiel::
     >>> queue.popleft()		        # Der Zweite geht jetzt
     'John'
     >>> queue                           # Verbleibende Schlange in der
-    >>>                                 # Reihenfloge der Ankunft
+    >>>                                 # Reihenfolge der Ankunft
     deque(['Michael', 'Terry', 'Graham'])
 
 
