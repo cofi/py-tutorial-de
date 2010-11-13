@@ -281,7 +281,7 @@ erben, entweder direkt oder indirekt. Zum Beispiel::
 
 In diesem Beispiel wurde die Methode :meth:`__init__` der Klasse
 :class:`Exception` überschrieben. Das neue Verhalten erzeugt schlicht das
-Attribute *value*, es ersetzt das Standardverhalten, ein Attribut *args* zu
+Attribut *value*, es ersetzt das Standardverhalten, ein Attribut *args* zu
 erzeugen.
 
 Ausnahmeklassen können alle Möglichkeiten nutzen, die bei der Definition von
