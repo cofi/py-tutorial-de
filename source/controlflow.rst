@@ -477,10 +477,12 @@ zum Beispiel eine Funktion wie diese definieren::
     def cheeseshop(kind, *arguments, **keywords):
         print("-- Haben sie", kind, "?")
         print("-- Tut mir leid,", kind, "ist leider gerade aus.")
-        for arg in arguments: print(arg)
+        for arg in arguments:
+            print(arg)
         print("-" * 40)
         keys = sorted(keywords.keys())
-        for kw in keys: print(kw, ":", keywords[kw])
+        for kw in keys:
+            print(kw, ":", keywords[kw])
 
 könnte sie so aufgerufen werden::
 

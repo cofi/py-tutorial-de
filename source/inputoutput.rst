@@ -216,7 +216,7 @@ Alte Zeichenkettenformatierung
 ------------------------------
 
 Der ``%``-Operator kann auch zur Zeichenkettenformatierung genutzt werden. Er
-interpretiert das linke Argument genauso wie einen :cfunc:`sprintf`-artigen
+interpretiert das linke Argument genauso wie einen :c:func:`sprintf`-artigen
 Formatstring, der auf das rechte Argument angewendet werden soll und gibt die
 resultierende Zeichenkette dieser Formatierungsoperation zurück. Zum Beispiel::
 

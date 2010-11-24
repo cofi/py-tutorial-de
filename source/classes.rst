@@ -6,14 +6,11 @@ Klassen
 
 Pythons Klassenmechanismus fügt Klassen - bei einem Minimum an neuer Syntax und
 Semantik - zur Sprache hinzu. Er ist eine Mischung der Klassenmechanismen in C++
-und Modula-3. Wie es auch für Module der Fall ist, ziehen Klassen in Python
-keine absoluten Grenzen zwischen Definition und Benutzer, sondern verlassen sich
-eher auf die Höflichkeit des Benutzers nicht "in die Definition einzubrechen".
-Die wichtigsten Eigenschaften von Klassen werden jedoch mit voller Kraft
-erhalten: Der Vererbungsmechanismus von Klassen erlaubt mehrere Basisklassen,
-eine abgeleitete Klasse kann jegliche Methoden seiner Basisklasse(n)
-überschreiben und eine Methode kann die Methode der Basisklasse mit demselben
-Namen aufrufen. Objekte können beliebig viele Daten haben.
+und Modula-3. Python bietet alle Standardfeatures Objektorientierter
+Programmierung: Der Vererbungsmechanismus von Klassen erlaubt mehrere
+Basisklassen, eine abgeleitete Klasse kann jegliche Methoden seiner
+Basisklasse(n) überschreiben und eine Methode kann die Methode der Basisklasse
+mit demselben Namen aufrufen. Objekte können beliebig viele Daten haben.
 
 In der Terminologie von C++ sind in Python *class members* (inklusive der *data
 member*) normalerweise *public* (Ausnahmen siehe :ref:`tut-private`) und alle
@@ -23,7 +20,7 @@ heraus: Die Methode wird mit einem expliziten ersten Argument, welches das
 Objekt repräsentiert, deklariert, welches implizit vom Aufruf übergeben wird.
 Wie in Smalltalk sind Klassen selbst Objekte. Das bietet die Semantik zum
 importieren und umbenennen.  Anders als in C++ und Modula-3 können eingebaute
-Datentypen vom Benutzer als Basisklassen benutzt, das heisst abgeleitet werden.
+Datentypen vom Benutzer als Basisklassen benutzt, das heißt abgeleitet werden.
 Außerdem können die meisten eingebauten Operatoren, wie in C++, mit einer
 besonderen Syntax (arithmetische Operatoren, Indizierung, usw.) für Instanzen
 der Klasse neu definiert werden.
