@@ -93,9 +93,9 @@ eingebaute Funktion :func:`range` an, die arithmetische Folgen erzeugt. ::
 
 Wird nur ein Argument angegeben, so beginnt der erzeugte Bereich bei Null und
 endet mit dem um 1 kleineren Wert des angegebenen Arguments. ``range(10)``
-erzeugt die Zahlen von 0 bis einschließlich 9. Das entspricht den gültigen
-Indizes einer Sequenz mit zehn Elementen. Es ist ebenfalls möglich, den Bereich
-mit einem anderen Wert als Null zu beginnen oder auch eine bestimmte
+erzeugt eine Sequenz der Zahlen von 0 bis einschließlich 9. Das entspricht den
+gültigen Indizes einer Sequenz mit zehn Elementen. Es ist ebenfalls möglich, den
+Bereich mit einem anderen Wert als Null zu beginnen oder auch eine bestimmte
 Schrittweite (*step*) festzulegen --- sogar negative Schrittweiten sind möglich.
 ::
 

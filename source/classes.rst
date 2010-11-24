@@ -71,8 +71,8 @@ Ein *Namensraum* ist eine Zuordnung von Namen zu Objekten. Die meisten
 Namensräume sind momentan als Dictionaries implementiert, aber das ist
 normalerweise in keinerlei Hinsicht spürbar (außer bei der Performance) und kann
 sich in Zukunft ändern. Beispiele für Namensräume sind: Die Menge der
-eingebauten Namen (Funktionen wie :func:`abs` und eingebaute Ausnahmen), die
-globalen Namen eines Moduls und die lokalen Namen eines Funktionsaufrufs. In
+eingebauten Namen (enthält Funktionen wie :func:`abs` und eingebaute Ausnahmen),
+die globalen Namen eines Moduls und die lokalen Namen eines Funktionsaufrufs. In
 gewisser Hinsicht bilden auch die Attribute eines Objektes einen Namensraum.
 Das Wichtigste, das man über Namensräume wissen muss, ist, dass es absolut
 keinen Bezug von Namen in verschiedenen Namensräumen zueinander gibt. Zum

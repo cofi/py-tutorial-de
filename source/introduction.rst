@@ -204,8 +204,7 @@ durch Backslashes maskierten Anführungszeichen oder anderen seltsamen Zeichen,
 um den exakten Wert wiederzugeben. Die Zeichenkette wird von doppelten
 Anführungszeichen eingeschlossen, wenn er ein einfaches Anführungszeichen, aber
 keine doppelten enthält, sonst wird er von einfachen Anführungszeichen
-eingeschlossen. Auch hier produziert die Funktion :func:`print` eine lesbarere
-Ausgabe.
+eingeschlossen. Die Funktion :func:`print` produziert eine lesbarere Ausgabe.
 
 Es gibt mehrere Möglichkeiten, mehrzeilige Zeichenkettenliterale zu erzeugen,
 zum Beispiel durch Fortsetzungszeilen, die mit einem Backslash am Ende der
@@ -235,7 +234,7 @@ Zeichenketten können auch mit einem Paar von dreifachen Anführungszeichen
 umgeben werden: ``"""`` oder ``'''``. Zeilenenden müssen nicht hierbei escaped
 werden, sondern werden in die Zeichenkette übernommen. ::
     
-   print("""
+   print("""\
    Usage: thingy [OPTIONS]
         -h                        Display this usage message
         -H hostname               Hostname to connect to
