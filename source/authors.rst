@@ -36,3 +36,5 @@ Dieses Tutorial wird über ein bei http://bitbucket.org gehostetes
 Details zur Mitarbeit finden sich im :home:`Wiki des Projektes <wiki/Home>`.
 
 Um Fehler oder Verbesserungen zu melden kann der :home:`Issue-Tracker <issues/>` benutzt werden.
+
+Desweiteren gibt es den IRC-Channel #py-tutorial-de auf freenode.
