@@ -542,12 +542,9 @@ Pakete in mehreren Verzeichnissen
 Pakete unterstützen ein weiteres besonderes Attribut: :attr:`__path__`.  Es wird
 als Liste initialisiert, die den Namen des Verzeichnisses mit der
 :file:`__init__.py` des Pakets enthält. Dies geschieht, bevor der Code in dieser
-Datei ausgeführt wird.
-
-wird als Liste, die den Namen des Verzeichnisses, das die :file:`__init__.py`
-des Pakets enthält, initialisiert, bevor der Code in der Datei ausgeführt wird.
-Diese Variable kann verändert werden und eine Änderung beeinflusst zukünftige
-Suchen nach Modulen und Unterpaketen, die im Paket enthalten sind.
+Datei ausgeführt wird. Diese Variable kann verändert werden und eine Änderung
+beeinflusst zukünftige Suchen nach Modulen und Unterpaketen, die im Paket
+enthalten sind.
 
 Auch wenn dieses Feature nicht oft gebraucht wird, kann sie benutzt werden um
 die Menge der Module, die in einem Paket gefunden werden, zu erweitern.
