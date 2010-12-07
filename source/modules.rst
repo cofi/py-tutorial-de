@@ -539,7 +539,11 @@ Hauptmodul einer Python-Anwendung gedacht sind, immer absolute Importe nutzen.
 Pakete in mehreren Verzeichnissen
 ---------------------------------
 
-Pakete unterstützen ein weiteres besonderes Attribut: :attr:`__path__`. Dieses
+Pakete unterstützen ein weiteres besonderes Attribut: :attr:`__path__`.  Es wird
+als Liste initialisiert, die den Namen des Verzeichnisses mit der
+:file:`__init__.py` des Pakets enthält. Dies geschieht, bevor der Code in dieser
+Datei ausgeführt wird.
+
 wird als Liste, die den Namen des Verzeichnisses, das die :file:`__init__.py`
 des Pakets enthält, initialisiert, bevor der Code in der Datei ausgeführt wird.
 Diese Variable kann verändert werden und eine Änderung beeinflusst zukünftige
