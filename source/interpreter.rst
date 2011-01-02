@@ -203,7 +203,7 @@ Kodierungen findet man in der Python Library Reference, in der Sektion zu
 
 Wenn ein Editor beispielsweise keine UTF-8 kodierten Dateien unterstützt und auf
 die Benutzung einer anderen Kodierung besteht, sagen wir mal Windows-1252, kann
-man durch folgende Kodierungszeile 
+man durch folgende Kodierungszeile ::
 
     # -*- coding: cp-1252 -*-
 
