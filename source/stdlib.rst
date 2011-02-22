@@ -14,11 +14,11 @@ Im Modul :mod:`os` findet man Dutzende von Funktionen, um mit dem
 Betriebssystem zu interagieren::
 
    >>> import os
-   >>> os.system('time 0:02')
-   0
-   >>> os.getcwd()      # Das aktuelle Verzeichnis
-   'C:\\Python26'
-   >>> os.chdir('/server/accesslogs')
+   >>> os.getcwd()                         # das aktuelle Arbeitsverzeichnis
+   'C:\\Python32'
+   >>> os.chdir('/server/accesslogs')      # Arbeitsverzeichnis verändern
+   >>> os.system('os.system(mkdir today)') # Kommando in der Systemshell ausführen
+   >>> 0
 
 Dabei sollte unbedingt beachtet werden, ``import os`` statt ``from os import
 *`` zu verwenden, da ansonsten :func:`os.open` die eingebaute Funktion
@@ -203,14 +203,14 @@ eigenen Modulen unterstützt. Darunter: :mod:`zlib`, :mod:`gzip`, :mod:`bz2`,
 :mod:`zipfile` und :mod:`tarfile`. ::
 
    >>> import zlib
-   >>> s = 'Wenn Fliegen hinter Fliegen fliegen'
+   >>> s = b'Wenn Fliegen hinter Fliegen fliegen'
    >>> len(s)
    35
    >>> t = zlib.compress(s)
    >>> len(t)
    31
    >>> zlib.decompress(t)
-   'Wenn Fliegen hinter Fliegen fliegen'
+   b'Wenn Fliegen hinter Fliegen fliegen'
    >>> zlib.crc32(s)
    1048664767
 

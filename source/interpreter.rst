@@ -82,9 +82,9 @@ Standardeingabe gelesen wird, funktioniert dies - wie oben erläutert - nicht.
 -----------------------
 
 Werden dem Interpreter ein Skriptname und zusätzliche Argumente übergeben, dann
-werden diese dem Skript in der Variablen ``sys.argv`` zur Verfügung gestellt.
-``sys.argv`` ist eine Liste von Zeichenketten, die mindestens ein Element
-enthält. Wenn kein Skript und keine Argumente übergeben wurden, dann ist
+werden diese in eine Liste von Zeichenketten gewandelt und an die Variable
+``argv`` im ``sys`` Modul übergeben. Zugriff darauf erhält man mittels ``import
+sys``. Wenn kein Skript und keine Argumente übergeben wurden, dann ist
 ``sys.argv[0]`` eine leere Zeichenkette.  Wenn der Skriptname als ``'-'``
 angegeben ist (das entspricht der Standardeingabe), dann wird ``sys.argv[0]``
 auf ``'-'`` gesetzt. Wird :option:`-c` *Befehl* verwendet, dann erhält

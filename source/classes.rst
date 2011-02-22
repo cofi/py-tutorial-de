@@ -4,23 +4,27 @@
 Klassen
 *******
 
-Pythons Klassenmechanismus fügt Klassen - bei einem Minimum an neuer Syntax und
-Semantik - zur Sprache hinzu. Er ist eine Mischung der Klassenmechanismen in C++
-und Modula-3. Python bietet alle Standardfeatures Objektorientierter
-Programmierung: Der Vererbungsmechanismus von Klassen erlaubt mehrere
-Basisklassen, eine abgeleitete Klasse kann jegliche Methoden seiner
-Basisklasse(n) überschreiben und eine Methode kann die Methode der Basisklasse
-mit demselben Namen aufrufen. Objekte können beliebig viele Daten haben.
+Verglichen mit anderen Programmiersprachen, fügt Pythons Klassenmechanismus
+Klassen mit einem Minimum an neuer Syntax und Semantik zur Sprache hinzu. Er ist
+eine Mischung der Klassenmechanismen von C++ und Modula-3. Python Klassen bieten
+alle Standardeigenschaften von objektorientierter Programmierung: Der
+Vererbungsmechanismus von Klassen erlaubt mehrere Basisklassen, eine abgeleitete
+Klasse kann jegliche Methoden seiner Basisklasse(n) überschreiben und eine
+Methode kann die Methode der Basisklasse mit demselben Namen aufrufen. Objekte
+können beliebig viele Mengen und Arten von Daten haben. Wie es auch bei Modulen
+der Fall ist, haben auch Klassen die dynamische Natur von Python inne: Sie
+werden zur Laufzeit erstellt und können auch nach der Erstellung verändert
+werden.
 
-In der Terminologie von C++ sind in Python *class members* (inklusive der *data
-member*) normalerweise *public* (Ausnahmen siehe :ref:`tut-private`) und alle
+In der Terminologie von C++ sind *class members* (inklusive der *data member*)
+normalerweise in Python *public* (Ausnahmen siehe :ref:`tut-private`) und alle
 *member functions* (Methoden) sind *virtual*. Wie in Modula-3 gibt es keine
 Abkürzung zum referenzieren von Attributen eines Objekts aus dessen Methoden
 heraus: Die Methode wird mit einem expliziten ersten Argument, welches das
-Objekt repräsentiert, deklariert, welches implizit vom Aufruf übergeben wird.
-Wie in Smalltalk sind Klassen selbst Objekte. Das bietet die Semantik zum
+Objekt repräsentiert, deklariert, und dann implizit beim Aufruf übergeben wird.
+Wie in Smalltalk sind Klassen selbst Objekte. Das bietet Semantiken zum
 importieren und umbenennen.  Anders als in C++ und Modula-3 können eingebaute
-Datentypen vom Benutzer als Basisklassen benutzt, das heißt abgeleitet werden.
+Datentypen vom Benutzer als Basisklassen benutzt, das heisst abgeleitet, werden.
 Außerdem können die meisten eingebauten Operatoren, wie in C++, mit einer
 besonderen Syntax (arithmetische Operatoren, Indizierung, usw.) für Instanzen
 der Klasse neu definiert werden.
