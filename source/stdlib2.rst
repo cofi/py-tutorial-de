@@ -279,7 +279,7 @@ aufwändig ist::
    Traceback (most recent call last):
      File "<stdin>", line 1, in <module>
        d['primary']                # Eintrag wurde automatisch gelöscht
-     File "C:/python31/lib/weakref.py", line 46, in __getitem__
+     File "C:/python33/lib/weakref.py", line 46, in __getitem__
        o = self.data[key]()
    KeyError: 'primary'
 

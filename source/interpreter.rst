@@ -10,11 +10,11 @@ Aufrufen des Interpreters
 =========================
 
 Sofern der Python-Interpreter auf einem Rechner installiert ist, findet man ihn
-normalerweise unter :file:`/usr/local/bin/python/python3.2`. Wenn man
+normalerweise unter :file:`/usr/local/bin/python/python3.3`. Wenn man
 :file:`/usr/local/bin` in den Suchpfad der Unix-Shell setzt, kann man den
 Interpreter aufrufen durch [#]_::
     
-    python3.2
+    python3.3
 
 Die Auswahl des Installationspfades für den Interpreter ist eine
 Installationsoption, so dass auch eine Installation an anderer Stelle möglich
@@ -22,11 +22,11 @@ ist. Das ist mit dem örtlichen Python-Guru oder dem Systemadministrator zu
 klären. (Eine populäre Alternative ist etwa :file:`/usr/local/python`)
 
 Auf Windows-Rechnern befindet sich die Pythoninstallation meist unter
-:file:`C:\\Python32`, auch wenn man das während des Installationsvorgangs ändern
+:file:`C:\\Python33`, auch wenn man das während des Installationsvorgangs ändern
 kann. Um dieses Verzeichnis zum Suchpfad hinzuzufügen, kann man folgendes
 Kommando in die DOS-Eingabeaufforderung eingeben::
 
-    set path=%path%;C:\python32
+    set path=%path%;C:\python33
 
 Durch Eingabe eines End-Of-File-Zeichens (EOF; :kbd:`Strg-D` unter Unix,
 :kbd:`Strg-Z` unter Windows) in der Eingabeaufforderung des Interpreters wird
@@ -108,8 +108,8 @@ das sind normalerweise drei Punkte (``...``).  Außerdem zeigt der Interpreter
 nach dem Start zunächst einen kurzen Informationstext an, der unter anderem die
 Versionsnummer des Interpreters und einen Hinweis zum Urheberrecht enthält. ::
 
-   $ python3.2
-   Python 3.2 (py3k, Apr 1 2010, 13:37:42)
+   $ python3.3
+   Python 3.3 (py3k, Apr 1 2010, 13:37:42)
    [GCC 4.4.1] on linux2
    Type "help", "copyright", "credits" or "license" for more information.
    >>>
@@ -160,7 +160,7 @@ Auf BSD-ähnlichen Unixsystemen kann ein Pythonskript - ähnlich einem Shellskri
 - direkt ausführbar gemacht werden, indem man folgende Zeile (shebang) an den
 Anfang des Skripts schreibt ::
 
-    #!/usr/bin/env python3.2
+    #!/usr/bin/env python3.3
 
 Dabei wird vorausgesetzt, dass sich der Pfad zum Interpreter im :envvar:`PATH`
 des Benutzers befindet. Die ``#!`` müssen die ersten zwei Zeichen der Datei
