@@ -14,11 +14,11 @@ The :mod:`os` module provides dozens of functions for interacting with the
 operating system::
 
    >>> import os
-   >>> os.system('time 0:02')
-   0
    >>> os.getcwd()      # Return the current working directory
    'C:\\Python31'
-   >>> os.chdir('/server/accesslogs')
+   >>> os.chdir('/server/accesslogs')   # Change current working directory
+   >>> os.system('mkdir today')   # Run the command mkdir in the system shell
+   0
 
 Be sure to use the ``import os`` style instead of ``from os import *``.  This
 will keep :func:`os.open` from shadowing the built-in :func:`open` function which
@@ -207,14 +207,14 @@ including: :mod:`zlib`, :mod:`gzip`, :mod:`bz2`, :mod:`zipfile` and
 :mod:`tarfile`. ::
 
    >>> import zlib
-   >>> s = 'witch which has which witches wrist watch'
+   >>> s = b'witch which has which witches wrist watch'
    >>> len(s)
    41
    >>> t = zlib.compress(s)
    >>> len(t)
    37
    >>> zlib.decompress(t)
-   'witch which has which witches wrist watch'
+   b'witch which has which witches wrist watch'
    >>> zlib.crc32(s)
    226805979
 
