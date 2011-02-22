@@ -3,7 +3,7 @@ dir=$(dirname $(readlink -f $0))
 latexdir=${dir}/build/latex
 pbranch=$(hg branch)
 
-for branch in "python-3.1" "python-3.2"; do
+for branch in "python-3.1" "python-3.2" "python-3.3"; do
     hg update ${branch}
     make latex
     cd ${latexdir}
