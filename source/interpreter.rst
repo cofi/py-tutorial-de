@@ -61,15 +61,6 @@ Modul [arg] ...`` aufgerufen werden. Dadurch wird der Quelltext von *Modul*
 ausgeführt, so als hätte man den vollständigen Namen in die Kommandozeile
 eingegeben.
 
-Achtung: Es gibt einen Unterschied zwischen ``python Datei`` und ``python <
-Datei``! Im zweiten Fall werden Eingabeanfragen des Programms, wie
-beispielsweise der Aufruf ``sys.stdin.read()``, von *Datei* erledigt. Da diese
-Datei aber schon vom Parser bis zum Ende gelesen wurde, bevor mit der Ausführung
-begonnen wird, trifft das Programm sofort auf ein End-Of-File. In ersterem Fall
-passiert das, was man normalerweise erwartet: Die Eingabeanfragen werden durch
-diejenige Datei oder das Gerät erledigt, die bzw. das als Standardeingabe zur
-Verfügung steht.
-
 Wenn eine Skriptdatei verwendet wird, ist es oft hilfreich, das Skript
 auszuführen und danach in den interaktiven Modus zu wechseln.  Dies erreicht man
 durch die Option :option:`-i` vor dem Skript. Falls das Skript von der
