@@ -170,7 +170,7 @@ Wert zu konvertieren bevor er formatiert wird::
 
 Ein optionales ``':'`` mit Formatspezifizierer (*format specifier*) können auf
 den Namen des Feldes folgen. Dies erlaubt einem eine größere Kontrolle darüber,
-wie der Wert formatiert wird. Das folgende Beispiel begrenzt Pi auf drei Stellen
+wie der Wert formatiert wird. Das folgende Beispiel rundet Pi auf drei Stellen
 nach dem Komma.
 
     >>> import math
