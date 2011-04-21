@@ -4,7 +4,7 @@
 Zur Übersetzung
 ***************
 
-Dies ist die Übersetzung des offiziellen :doc:`Python-Tutorials der Version 3.1
+Dies ist die Übersetzung des offiziellen :doc:`Python-Tutorials der Version 3.3
 <tutorial/index.html>`.
 
 Sie steht unter der `Apache License 2.0
