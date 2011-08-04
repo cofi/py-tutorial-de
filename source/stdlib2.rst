@@ -161,7 +161,7 @@ gemeint sind und in der "Little Endian"-Bytereihenfolge vorliegen::
        filename = data[start:start+filenamesize]
        start += filenamesize
        extra = data[start:start+extra_size]
-       print filename, hex(crc32), comp_size, uncomp_size
+       print(filename, hex(crc32), comp_size, uncomp_size)
 
        start += extra_size + comp_size     # skip to the next header
 
