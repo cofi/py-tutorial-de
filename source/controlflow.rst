@@ -185,6 +185,9 @@ Berechnung von Primzahlen veranschaulicht das. ::
     8 equals 2 * 4
     9 equals 3 * 3
 
+(Ja, dieser Code ist korrekt.  Schau genau hin: Die ``else`` Klausel gehört zur
+:keyword:`for`-Schleife, **nicht** zur :keyword:`if`-Anweisung.)
+
 .. _tut-pass:
 
 :keyword:`pass`-Anweisungen

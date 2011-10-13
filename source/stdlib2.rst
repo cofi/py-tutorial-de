@@ -150,7 +150,9 @@ gemeint sind und in der "Little Endian"-Bytereihenfolge vorliegen::
 
    import struct
 
-   data = open('myfile.zip', 'rb').read()
+   with open('myfile.zip', 'rb') as f:
+       data = f.read()
+
    start = 0
    for i in range(3):                      # zeige die ersten 3 Dateiheader
        start += 14

@@ -19,15 +19,15 @@ von Listenobjekten:
 .. method:: list.append(x)
    :noindex:
 
-   Hängt ein neues Element an das Ende der Liste an; äquivalent zu ``a[len(a):]
+   Hängt ein neues Element an das Ende der Liste an. Äquivalent zu ``a[len(a):]
    = [x]``.
 
 
 .. method:: list.extend(L)
    :noindex:
 
-   Erweitert die Liste, indem es alle Elemente der gegebenen Liste anhängt;
-   äquivalent zu ``a[len(a):] = L``.
+   Erweitert die Liste, indem es alle Elemente der gegebenen Liste anhängt.
+   Äquivalent zu ``a[len(a):] = L``.
 
 
 .. method:: list.insert(i, x)
@@ -73,13 +73,13 @@ von Listenobjekten:
 .. method:: list.sort()
    :noindex:
 
-   Sortiert die Elemente der Liste, im selben Exemplar (*in place*).
+   Sortiert die Elemente der Liste im selben Exemplar (*in place*).
 
 
 .. method:: list.reverse()
    :noindex:
 
-   Kehrt die Reihenfolge der Listenelemente um, im selben Exemplar (*in place*).
+   Kehrt die Reihenfolge der Listenelemente im selben Exemplar (*in place*) um.
 
 Ein Beispiel, das die meisten Methoden von Listen benutzt::
 
@@ -101,6 +101,11 @@ Ein Beispiel, das die meisten Methoden von Listen benutzt::
     >>> a.sort()
     >>> a
     [-1, 1, 66.25, 333, 333, 1234.5]
+
+Vielleicht ist dir aufgefallen, dass bei Methoden wie ``insert``, ``remove``
+oder ``sort``, die die Liste verändern, keinen Rückgabewert gedruckt wird -- sie
+geben ``None`` zurück. [1]_ Dies ist ein Designprinzip für alle veränderlichen
+Datenstrukturen in Python.
 
 .. _tut-lists-as-stacks:
 
@@ -457,7 +462,7 @@ Fehlermeldung.
 
 Der Aufruf ``list(d.keys())`` auf ein Dictionary gibt eine Liste aller Schlüssel
 in zufälliger Reihenfolge zurück (will man sie sortiert haben, verwendet man
-einfach die Funktion ``sorted(d.keys())`` stattdessen). [1]_ Um zu überprüfen ob
+einfach die Funktion ``sorted(d.keys())`` stattdessen). [2]_ Um zu überprüfen ob
 ein einzelner Schlüssel im Dictionary ist, lässt sich das Schlüsselwort
 :keyword:`in` benutzen.
 
@@ -642,7 +647,10 @@ werden numerische Typen anhand ihres numerischen Wertes verglichen, sodass 0 0.0
 gleicht, usw. Andernfalls wird der Interpreter eine :exc:`TypeError`-Ausnahme
 verursachen, statt eine willkürliche Ordnung bereitzustellen.
 
-.. [1] Beim Aufruf von ``d.keys()`` wird ein :dfn:`dictionary view`-Objekt
+.. [1] Andere Sprachen geben möglicherweise das veränderte Objekt selbst zurück,
+       was die Verkettung von Methoden erlaubt, wie z.B. ``d->insert("a")->remove("b")->sort();``
+
+.. [2] Beim Aufruf von ``d.keys()`` wird ein :dfn:`dictionary view`-Objekt
    zurückgeben. Es unterstützt Operationen wie Mitgliedschaftsprüfung
    (membership testing) und Iteration, aber sein Inhalt ist abhängig vom
    ursprünglichen Dictionary -- es ist nur eine Ansicht (*view*).

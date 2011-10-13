@@ -170,13 +170,13 @@ Der Modul-Suchpfad
 .. index:: triple: module; search; path
 
 Wenn ein Modul mit dem Namen :mod:`spam` importiert wird, sucht der Interpreter
-im aktuellen Verzeichnis nach einer Datei mit dem Namen :file:`spam.py` und dann
-in der Verzeichnisliste, die in der Umgebungsvariable :envvar:`PYTHONPATH`
-gesetzt ist. Diese hat die gleiche Syntax wie die Shell Variable :envvar:`PATH`,
-welche auch eine Verzeichnisliste ist. Falls :envvar:`PYTHONPATH` nicht gesetzt
-ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem
-installationsabhängigen Pfad fortgesetzt; unter Unix ist das normalerweise:
-:file:`/usr/local/lib/python`.
+im Verzeichnis, das das Skript enthält, nach einer Datei mit dem Namen
+:file:`spam.py` und dann in der Verzeichnisliste, die in der Umgebungsvariable
+:envvar:`PYTHONPATH` gesetzt ist. Diese hat die gleiche Syntax wie die Shell
+Variable :envvar:`PATH`, welche auch eine Verzeichnisliste ist. Falls
+:envvar:`PYTHONPATH` nicht gesetzt ist oder wenn die Datei nicht gefunden wurde,
+so wird die Suche in einem installationsabhängigen Pfad fortgesetzt; unter Unix
+ist das normalerweise: :file:`/usr/local/lib/python`.
 
 Tatsächlich werden Module in der Reihenfolge gesucht, in der sie in der Variable
 `sys.path` aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich
