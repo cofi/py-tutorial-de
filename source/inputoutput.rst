@@ -21,16 +21,15 @@ Bis jetzt sind uns zwei Arten der Ausgabe von Werten begegnet:
 Standardausgabedatei kann als ``sys.stdout`` referenziert werden. In der
 Bibliotheksreferenz gibt es dazu weitere Informationen.)
 
-.. index:: module: string
-
 Oft will man mehr Kontrolle über die Formatierung der Ausgabe haben als nur
 Leerzeichen-getrennte Werte auszugeben. Es gibt zwei Arten die Ausgabe zu
 formatieren: Die erste Möglichkeit ist, dass man die gesamte Verarbeitung der
 Zeichenketten selbst übernimmt; indem man Slicing- und Verknüpfungsoperationen
-benutzt, kann man jede denkbare Anordnung zusammenstellen. Das Standardmodul
-:mod:`string` enthält ein paar nützliche Operationen um Zeichenketten auf eine
-bestimmte Länge aufzufüllen; diese werden wir in Kürze behandeln. Die zweite
-Möglichkeit ist die Benutzung der :meth:`~str.format`-Methode.
+benutzt, kann man jede denkbare Anordnung zusammenstellen.  Der Typ ``string``
+hat einige Methoden, die ein paar nützliche Operationen ausführen, um
+Zeichenketten auf eine bestimmte Länge aufzufüllen; diese werden wir in Kürze
+behandeln.  Die zweite Möglichkeit ist die Benutzung der
+:meth:`~str.format`-Methode.
 
 Eine Frage bleibt natürlich: Wie konvertiert man Werte zu Zeichenketten?
 Glücklicherweise kennt Python Wege, um jeden Wert in eine Zeichenkette
@@ -206,7 +205,7 @@ Schlüsselwortargumente mit der '**'-Notation übergibt.
     >>> print('Jack: {Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'.format(**table))
     Jack: 4098; Sjoerd: 4127; Dcab: 8637678
 
-Das ist besonders nützlich in Verbindung mit der neuen eingebauten Funktion
+Das ist besonders nützlich in Verbindung mit der eingebauten Funktion
 :func:`vars`, die ein Dictionary mit allen lokalen Variablen zurückgibt.
 
 :lib:`Format String Syntax <string.html#formatstrings>` gibt eine komplette
