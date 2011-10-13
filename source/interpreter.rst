@@ -244,6 +244,8 @@ Skript geschehen::
     if filename and os.path.isfile(filename):
         exec(open(filename).read())
 
+.. _tut-customize:
+
 Die Customization Module
 ------------------------
 

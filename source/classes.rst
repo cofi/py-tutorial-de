@@ -814,7 +814,7 @@ zurückgibt. Definiert die Klasse :meth:`__next__`, kann :meth:`__iter__` einfac
 ``self`` zurückgeben::
 
     class Reverse:
-       """Iterator for looping over a sequence backwards"""
+       """Iterator for looping over a sequence backwards."""
        def __init__(self, data):
            self.data = data
            self.index = len(data)
