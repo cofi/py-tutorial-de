@@ -125,10 +125,8 @@ zu behalten. ::
     # bound to the Esc key by default (you can change it - see readline docs).
     #
     # Store the file in ~/.pystartup, and set an environment variable to point
-    # to it:  "export PYTHONSTARTUP=/home/user/.pystartup" in bash.
+    # to it:  "export PYTHONSTARTUP=~/.pystartup" in bash.
     #
-    # Note that PYTHONSTARTUP does *not* expand "~", so you have to put in the
-    # full path to your home directory.
 
     import atexit
     import os
@@ -162,16 +160,17 @@ Und ein Befehl zum Überprüfen von passenden Klammern, Anführungszeichen, usw.
 (oder sie sogar vorschlägt) wäre auch nützlich.
 
 Ein alternativer erweiterter interaktiver Interpreter, der schon seit einer
-Weile verfügbar ist, ist `IPython`_. Er bietet Tab Completion, Erkundung von
+Weile verfügbar ist, ist IPython_. Er bietet Tab Completion, Erkundung von
 Objekten und eine fortschrittliche Verwaltung der Befehls-Chronik. Er kann
 komplett angepasst werden und auch in andere Anwendungen eingebettet werden.
-Eine weitere ähnlich fortschrittliche interaktive Umgebung ist `bpython`_.
+Eine weitere ähnlich fortschrittliche interaktive Umgebung ist bpython_.
 
 .. rubric:: Fußnoten
 
 .. [#] Python wird beim Starten des Interaktiven Interpreters den Inhalt der
    Datei ausführen, die von der Umgebungsvariable :envvar:`PYTHONSTARTUP`
-   angegeben wird.
+   angegeben wird. Um Python sogar für den nicht-interaktiven Modus anzupassen,
+   siehe :ref:`tut-customize`.
 
 .. _GNU Readline: http://tiswww.case.edu/php/chet/readline/rltop.html
 .. _IPython: http://ipython.scipy.org/

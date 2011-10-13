@@ -643,6 +643,29 @@ zwei führende Unterstriche, höchstens ein folgender) wird im Text durch
 Rücksicht auf die syntaktische Position des Bezeichners, sofern er innerhalb der
 Definition der Klasse steht.
 
+Namensersetzung ist hilfreich, um Unterklassen zu ermöglichen Methoden zu
+überschreiben, ohne dabei Methodenaufrufe innerhalb der Klasse zu stören.  Zum
+Beispiel::
+
+   class Mapping:
+       def __init__(self, iterable):
+           self.items_list = []
+           self.__update(iterable)
+
+       def update(self, iterable):
+           for item in iterable:
+               self.items_list.append(item)
+
+       __update = update   # private Kopie der ursprünglichen update() Methode
+
+   class MappingSubclass(Mapping):
+
+       def update(self, keys, values):
+           # erstellt update() mit neuer Signatur
+           # macht aber __init__() nicht kaputt
+           for item in zip(keys, values):
+               self.items_list.append(item)
+
 Beachte, dass die Ersetzungsregeln vor allem dazu gedacht sind, Unfälle zu
 vermeiden; es ist immernoch möglich auf einen solchen als privat
 gekennzeichneten Namen von aussen zuzugreifen und ihn auch zu verändern.  Das
@@ -791,7 +814,7 @@ zurückgibt. Definiert die Klasse :meth:`__next__`, kann :meth:`__iter__` einfac
 ``self`` zurückgeben::
 
     class Reverse:
-       "Iterator for looping over a sequence backwards"
+       """Iterator for looping over a sequence backwards"""
        def __init__(self, data):
            self.data = data
            self.index = len(data)
@@ -802,6 +825,8 @@ zurückgibt. Definiert die Klasse :meth:`__next__`, kann :meth:`__iter__` einfac
                raise StopIteration
            self.index = self.index - 1
            return self.data[self.index]
+
+::
 
     >>> rev = Reverse('spam')
     >>> iter(rev)
@@ -831,6 +856,8 @@ Beispiel zeigt wie einfach die Erstellung von Generatoren ist::
    def reverse(data):
        for index in range(len(data)-1, -1, -1):
            yield data[index]
+
+::
 
    >>> for char in reverse('golf'):
    ...     print(char)

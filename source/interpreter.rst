@@ -179,6 +179,8 @@ Python-Installationsprogramm verknüpft automatisch ``.py``-Dateien mit
 ausführt. Die Dateinamenserweiterung kann auch ``.pyw`` lauten, in diesem Fall
 wird das normalerweise auftauchende Konsolenfenster unterdrückt.
 
+.. _tut-source-encoding:
+
 Kodierung von Quellcode
 -----------------------
 
@@ -241,6 +243,28 @@ Skript geschehen::
     filename = os.environ.get('PYTHONSTARTUP')
     if filename and os.path.isfile(filename):
         exec(open(filename).read())
+
+Die Customization Module
+------------------------
+
+Python bietet zwei Haken, um es anzupassen: :mod:`sitecustomize` und
+:mod:`usercustomize`.  Um es auszuprobieren, musst du zuerst den Ort deines
+Benutzer :file:`site-packages` Ordners herausfinden. Starte Python und gib dies
+ein::
+
+    >>> import site
+    >>> site.getusersitepackages()
+    '/home/user/.local/lib/python3.2/site-packages'
+
+Dort kannst du eine Datei namens :file:`usercustomize.py` anlegen und alles
+gewünschte eingeben.  Es wird jeden Aufruf von Python beeinflussen, es sei denn
+der Aufruf enthält die Option :option:`-s`, um den automatischen Import zu
+verhindern.
+
+:mod:`sitecustomize` funktioniert genauso, aber es wird typischerweise von einem
+Administrator im globalen :file:`site-packages` Ordner erstellt und vor
+:mod:`usercustomize` importiert.  Mehr dazu in der Dokumentation des
+:mod:`site`-Moduls.
 
 .. rubric:: Fußnoten
 
