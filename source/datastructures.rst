@@ -578,10 +578,10 @@ Die Bedingungen, die in ``while``- und ``if``-Anweisungen benutzt werden, könne
 jegliche Operatoren enthalten, nicht nur Vergleiche.
 
 Die Vergleichsoperatoren ``in`` und ``not in`` überprüfen, ob ein Wert in einer
-Sequenz (nicht) vorkommt. Sie überprüfen dabei auf Objektidentität, d.h. ob zwei
-Objekte dieselben sind; dies ist aber nur wichtig für veränderbare Objekte wie
-Listen. Alle Vergleichsoperatoren haben dieselbe Priorität, die geringer als die
-von numerischen Operatoren ist.
+Sequenz (nicht) vorkommt. Die Operatoren ``is`` und ``is not`` vergleichen auf
+Objektidentität, d.h. ob zwei Objekte dieselben sind; dies ist aber nur wichtig
+für veränderbare Objekte wie Listen. Alle Vergleichsoperatoren haben dieselbe
+Priorität, die geringer als die von numerischen Operatoren ist.
 
 Vergleiche können aneinandergereiht werden. Zum Beispiel überprüft ``a < b ==
 c``, ob ``a`` kleiner als ``b`` ist und darüberhinaus ``b`` gleich ``c`` ist.
