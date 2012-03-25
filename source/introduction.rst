@@ -202,8 +202,8 @@ Der Interpreter gibt das Ergebnis von Zeichenketten-Operationen auf die gleiche
 Weise aus, wie sie eingegeben werden: Innerhalb von Anführungszeichen und mit
 durch Backslashes maskierten Anführungszeichen oder anderen seltsamen Zeichen,
 um den exakten Wert wiederzugeben. Die Zeichenkette wird von doppelten
-Anführungszeichen eingeschlossen, wenn er ein einfaches Anführungszeichen, aber
-keine doppelten enthält, sonst wird er von einfachen Anführungszeichen
+Anführungszeichen eingeschlossen, wenn sie ein einfaches Anführungszeichen, aber
+keine doppelten enthält, sonst wird sie von einfachen Anführungszeichen
 eingeschlossen. Die Funktion :func:`print` produziert eine lesbarere Ausgabe.
 
 Es gibt mehrere Möglichkeiten, mehrzeilige Zeichenkettenliterale zu erzeugen,
