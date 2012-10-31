@@ -157,11 +157,6 @@ Eine  :keyword:`break`-Anweisung in einem Schleifenrumpf bewirkt --- wie in C
 --- dass an dieser Stelle mit sofortiger Wirkung die sie unmittelbar umgebende
 Schleife verlassen wird.
 
-Entsprechend bewirkt die :keyword:`continue`-Anweisung --- ebenso von C
-entliehen --- , dass an dieser Stelle wieder in den Schleifenkopf "gesprungen"
-und die nächste Iteration ausgeführt wird.  Der noch folgende Teil des
-Schleifenrumpfs wird nicht mehr ausgeführt.
-
 Auch Schleifen-Anweisungen können einen :keyword:`else`-Zweig haben. Dieser wird
 genau dann ausgeführt, wenn die Schleife *nicht* durch eine
 :keyword:`break`-Anweisung abgebrochen wurde. Das folgende Beispiel zur
@@ -187,6 +182,31 @@ Berechnung von Primzahlen veranschaulicht das. ::
 
 (Ja, dieser Code ist korrekt.  Schau genau hin: Die ``else`` Klausel gehört zur
 :keyword:`for`-Schleife, **nicht** zur :keyword:`if`-Anweisung.)
+
+Wenn die ``else`` Klausel bei einer Schleife benutzt wird, hat sie mehr mit dem
+``else`` einer :keyword:`try` Anweisung gemein, als mit dem der :keyword:`if`
+Anweisung: Die ``else`` Klausel eines :keyword:`try` wird ausgeführt, wenn keine
+Ausnahme auftritt und die einer Schleife, wenn kein ``break`` ausgeführt wird.
+Mehr Informationen zur :keyword:`try` Anweisung und Ausnahmen gibt es unter
+:ref:`tut-handling`.
+
+Entsprechend bewirkt die :keyword:`continue`-Anweisung --- ebenso von C
+entliehen --- , dass sofort mit der nächsten Iteration der Schleife fortgefahren
+wird::
+
+     >>> for num in range(2, 10):
+     ...     if num % 2 == 0:
+     ...         print("Found an even number", num)
+     ...         continue
+     ...     print("Found a number", num)
+     Found an even number 2
+     Found a number 3
+     Found an even number 4
+     Found a number 5
+     Found an even number 6
+     Found a number 7
+     Found an even number 8
+     Found a number 9
 
 .. _tut-pass:
 
@@ -375,7 +395,7 @@ Diese Funktion könnte auf mehrere Arten aufgerufen werden:
 
 * Oder indem man sogar alle übergibt:
   ``ask_ok("Willst du die Datei überschreiben?", 2, "Komm schon, nur Ja oder
-  Nein")`` 
+  Nein")``
 
 Das Beispiel führt auch noch das Schlüsselwort :keyword:`in` ein. Dieses
 überprüft ob ein gegebener Wert in einer Sequenz gegeben ist.
@@ -428,17 +448,19 @@ gemeinsam benutzt wird, kann man die Funktion folgendermaßen umschreiben::
 Schlüsselwortargumente
 ----------------------
 
-Funktionen können auch mit Schlüsselwortargumenten in der Form ``Schlüsselwort =
-Wert`` aufgerufen werden. Zum Beispiel könnte folgende Funktion::
+Funktionen können auch mit :term:`Schlüsselwortargumenten <keyword argument>` in
+der Form ``Schlüsselwort=Wert`` aufgerufen werden. Zum Beispiel die folgende
+Funktion::
 
-    def parrot(voltage, state='völlig steif',
-        action='fliegen', type='norwegische Blauling'):
+    def parrot(voltage, state='völlig steif', action='fliegen', type='norwegische Blauling'):
         print("-- Der Vogel würde selbst dann nicht", action, end=' ')
         print("selbst wenn Sie ihm ", voltage, "Volt durch den Schnabel jagen täten")
         print("-- Ganz erstaunlicher Vogel, der", type, "! Wunderhübsche Federn!")
         print("-- Er is", state, "!")
 
-in allen folgenden Variationen aufgerufen werden::
+mindestens ein Argument (``voltage``) akzeptiert drei optionale Argumente
+(``state``, ``action`` und ``type``) und kann mit allen folgenden Varianten
+aufgerufen werden::
 
     parrot(4000)
     parrot(action = 'VOOOOOM', voltage = 1000000)
@@ -452,13 +474,14 @@ die folgenden Aufrufe wären allerdings alle ungültig::
     parrot(110, voltage=220)     # doppelter Wert für ein Argument
     parrot(actor='John Cleese')  # unbekanntes Schlüsselwort
 
-Üblicherweise kommen zuerst positionsabhängige Argumente und danach
-Schlüsselwortargumente - von beiden ist eine beliebige Anzahl zulässig. Die
-Schlüsselworte müssen jedoch in der Funktionsdefinition enthalten sein, das
-heißt, der Funktion bekannt sein. Es ist unwichtig, ob sie einen Standardwert
-haben oder nicht. Kein Parameter darf mehr als einen Wert bekommen ---
-positionsabhängige Argumente können nicht als Schlüsselworte im selben Aufruf
-benutzt werden. Hier ein Beispiel, das wegen dieser Einschränkung scheitert::
+Bei einem Funktionsaufruf müssen Schlüsselwortargumente nach positionsabhängigen
+Argumenten kommen. Alle übergebenen Schlüsselwortargumente müssen jeweils auf eines der
+Argumente passen, die die Funktion akzeptiert (beispielsweise ist ``actor`` kein
+gültiges Argument für die ``parrot`` Funktion), wobei ihre Reihenfolge aber unwichtig
+ist. Das gilt auch für nicht-optionale Argumente (beispielsweise ist
+``parrot(voltage=1000)`` auch gültig). Kein Argument darf mehr als einen Wert
+zugewiesen bekommen.
+Ein Beispiel, das wegen dieser Einschränkung scheitert::
 
     >>> def function(a):
     ...     pass

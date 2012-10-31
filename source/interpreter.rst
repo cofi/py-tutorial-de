@@ -72,9 +72,7 @@ Verfügung steht.
 
 Wenn eine Skriptdatei verwendet wird, ist es oft hilfreich, das Skript
 auszuführen und danach in den interaktiven Modus zu wechseln.  Dies erreicht man
-durch die Option :option:`-i` vor dem Skript. Falls das Skript von der
-Standardeingabe gelesen wird, funktioniert dies - wie oben erläutert - nicht.
-
+durch die Option :option:`-i` vor dem Skript.
 
 .. _tut-argpassing:
 

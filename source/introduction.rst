@@ -625,17 +625,16 @@ Dieses Beispiel stellt ein paar neue Eigenschaften vor.
   (größer als), ``==`` (gleich), ``<=`` (kleiner oder gleich), ``>=`` (größer
   oder gleich) und ``!=`` (ungleich).
 
-* Der *Schleifenrumpf* ist *eingerückt* (*indented*):
-  Durch Einrückung wird in Python eine Gruppierung vorgenommen. Leider
-  unterstützt Python (noch!) keine intelligente Zeilenbearbeitungshilfe, deshalb
-  muss man selbst für jede eingerückte Zeile ein Tab oder Leerzeichen eingeben.
-  In der Praxis bereitet man kompliziertere Eingaben in einem Texteditor vor,
-  und die meisten Texteditoren verfügen über eine automatisch Einrückung.  Wird
-  eine zusammengesetzte Anweisung (*compound statement*) interaktiv
-  eingegegeben, muss eine Leerzeile darauf folgen, um anzuzeigen, dass sie
-  abgeschlossen ist (da der Interpreter nicht erahnen kann, wann man die letzte
-  Zeile eingegeben hat).  Zu beachten ist, dass jede Zeile innerhalb eines
-  Hauptblocks um den selben Betrag eingerückt sein muss!
+* Der *Schleifenrumpf* ist *eingerückt* (*indented*): Durch Einrückung wird in
+  Python eine Gruppierung vorgenommen. In der interaktiven Eingabeaufforderung
+  muss man Tabs oder Leerzeichen für jede eingerückte Zeile eingeben. In der
+  Praxis wird man kompliziertere Codestücke mit einem Texteditor vorbereiten und
+  alle vernünftigen Editoren haben eine Möglichkeit, um automatisch einzurücken.
+  Wenn eine zusammengesetzte Anweisung (*compound statement*) interaktiv
+  eingegeben wird, muss eine Leerzeile darauf folgen, um anzuzeigen, dass sie
+  komplett ist, da der Parser nicht erahnen kann, wenn man die letzte Zeile
+  eingegeben hat. Beachte, dass jede Zeile in einem zusammengehörigen Block
+  gleich eingerückt sein muss.
 
 * Die Funktion :func:`print` gibt den Wert des Ausdrucks aus, der ihr übergeben
   wurde. Die Ausgabe unterscheidet sich bei Mehrfachausdrücken, Fließkommazahlen

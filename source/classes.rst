@@ -204,6 +204,8 @@ die Variablenbindung beeinflussen::
 
 Die Ausgabe des Beispielcodes ist::
 
+  .. code-block:: none
+
    Nach der lokalen Zuweisung: test spam
    Nach der nonlocal Zuweisung: nonlocal spam
    Nach der global Zuweisung: nonlocal spam
@@ -497,7 +499,7 @@ des Arguments ``self`` benutzen::
 
 Methoden können globale Namen genauso wie normale Funktionen referenzieren. Der
 globale Gültigkeitsbereich der Methode ist das Modul, das die Klassendefinition
-enthält. (Die Klasse selbst wird nie als globaler Gültigkeitsbereich benutzt.)
+enthält. (Eine Klasse selbst wird nie als globaler Gültigkeitsbereich benutzt.)
 Während man selten einen guten Grund dafür hat globale Daten zu benutzen, gibt
 es viele berechtigte Verwendungen des globalen Gültigkeitsbereichs: Zum einen
 können Funktionen und Module, die in den globalen Gültigkeitsbereich importiert
