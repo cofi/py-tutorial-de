@@ -428,8 +428,9 @@ gemeinsam benutzt wird, kann man die Funktion folgendermaßen umschreiben::
 Schlüsselwortargumente
 ----------------------
 
-Funktionen können auch mit Schlüsselwortargumenten in der Form ``Schlüsselwort =
-Wert`` aufgerufen werden. Zum Beispiel könnte folgende Funktion::
+Funktionen können auch mit :term:`Schlüsselwortargumenten <keyword argument>` in
+der Form ``Schlüsselwort=Wert`` aufgerufen werden. Zum Beispiel könnte folgende
+Funktion::
 
     def parrot(voltage, state='völlig steif',
         action='fliegen', type='norwegische Blauling'):
@@ -441,8 +442,8 @@ Wert`` aufgerufen werden. Zum Beispiel könnte folgende Funktion::
 in allen folgenden Variationen aufgerufen werden::
 
     parrot(4000)
-    parrot(action = 'VOOOOOM', voltage = 1000000)
-    parrot('Viertausend', state = 'an den Gänseblümchen riechen')
+    parrot(action='VOOOOOM', voltage=1000000)
+    parrot('Viertausend', state='an den Gänseblümchen riechen')
     parrot('eine Million', 'keine Spur leben', 'springen')
 
 die folgenden Aufrufe wären allerdings alle ungültig::
@@ -452,13 +453,15 @@ die folgenden Aufrufe wären allerdings alle ungültig::
     parrot(110, voltage=220)     # doppelter Wert für ein Argument
     parrot(actor='John Cleese')  # unbekanntes Schlüsselwort
 
-Üblicherweise kommen zuerst positionsabhängige Argumente und danach
-Schlüsselwortargumente - von beiden ist eine beliebige Anzahl zulässig. Die
-Schlüsselworte müssen jedoch in der Funktionsdefinition enthalten sein, das
-heißt, der Funktion bekannt sein. Es ist unwichtig, ob sie einen Standardwert
-haben oder nicht. Kein Parameter darf mehr als einen Wert bekommen ---
-positionsabhängige Argumente können nicht als Schlüsselworte im selben Aufruf
-benutzt werden. Hier ein Beispiel, das wegen dieser Einschränkung scheitert::
+Bei einem Funktionsaufruf müssen Schlüsselwortargumente nach positionsabhängigen
+Argumenten kommen. Alle übergebenen Schlüsselwortargumente müssen jeweils auf eines der
+Argumente passen, die die Funktion akzeptiert (beispielsweise ist ``actor`` kein
+gültiges Argument für die ``parrot`` Funktion), wobei ihre Reihenfolge aber unwichtig
+ist. Das gilt auch für nicht-optionale Argumente (beispielsweise ist
+``parrot(voltage=1000)`` auch gültig). Kein Argument darf mehr als einen Wert
+zugewiesen bekommen.
+
+Ein Beispiel, das wegen dieser Einschränkung scheitert::
 
     >>> def function(a):
     ...     pass

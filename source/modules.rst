@@ -170,24 +170,22 @@ Der Modul-Suchpfad
 .. index:: triple: module; search; path
 
 Wenn ein Modul mit dem Namen :mod:`spam` importiert wird, sucht der Interpreter
-im aktuellen Verzeichnis nach einer Datei mit dem Namen :file:`spam.py` und dann
-in der Verzeichnisliste, die in der Umgebungsvariable :envvar:`PYTHONPATH`
-gesetzt ist. Diese hat die gleiche Syntax wie die Shell Variable :envvar:`PATH`,
-welche auch eine Verzeichnisliste ist. Falls :envvar:`PYTHONPATH` nicht gesetzt
-ist oder wenn die Datei nicht gefunden wurde, so wird die Suche in einem
-installationsabhängigen Pfad fortgesetzt; unter Unix ist das normalerweise:
-:file:`/usr/local/lib/python`.
+zuerst nach einem eingebauten Modul mit diesem Namen. Wird es nicht gefunden,
+sucht er nach einer Datei, die :file:`spam.py` benannt ist, in der Liste von
+Verzeichnissen der Variable :data:`sys.path`. :data:`sys.path` wird mit
 
-Tatsächlich werden Module in der Reihenfolge gesucht, in der sie in der Variable
-`sys.path` aufgeführt sind, welche mit dem aktuellen Verzeichnis, in dem sich
-auch das Skript befindet, beginnt, gefolgt von :envvar:`PYTHONPATH` und dem
-installationsabhängigen Standard-Pfad. Dies erlaubt Python-Programmen, die
-Suchpfade zu verändern, zu ersetzen oder die Reihenfolge zu ändern. Zu beachten
-ist, dass das Skript nicht den selben Namen haben darf wie eines der
-Standardmodule, da das aktuelle Verzeichnis ja auch im Suchpfad enthalten ist.
-In diesem Fall versucht Python das Skript als Modul zu importieren, was
-normalerweise zu einem Fehler führt. Siehe :ref:`tut-standardmodules` für mehr
-Informationen.
+* dem Verzeichnis, das das Eingabeskript enthält (oder das aktuelle Verzeichnis), 
+* :envvar:`PYTHONPATH` (eine Liste von Verzeichnissen, mit derselben Syntax wie
+  die Shell-Variable :envvar:`PATH`)
+* der installationsabhängige Standard.
+
+Nach der Initialisierung können Python-Programme :data:`sys.path`
+modifizieren. Das Verzeichnis, das das laufende Skript enthält befindet sich am
+Anfang des Suchpfads, noch vor den Pfaden der Standardbibliothek. Das bedeutet,
+dass Module in diesem Verzeichnis anstelle von Modulen der Standardbibliothek
+geladen werden, wenn sie denselben Namen haben. Dies ist ein Fehler, sofern man
+das Modul der Standardbibliothek nicht ersetzen will. Siehe Abschnitt
+:ref:`tut-standardmodules` für mehr Informationen.
 
 "Kompilierte" Python-Dateien
 ----------------------------

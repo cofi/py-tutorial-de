@@ -164,117 +164,140 @@ Beispiel::
 List Comprehensions
 -------------------
 
-List Comprehensions bieten einen prägnanten Weg, Listen aus Sequenzen zu
-erzeugen. Übliche Anwendungen sind solche, in denen man Listen erstellt, in
-denen jedes Element das Ergebnis eines Verfahrens ist, das auf jedes Mitglied
-einer Sequenz angewendet wird oder solche, in denen eine Teilfolge von
-Elementen, die eine bestimmte Bedingung erfüllen, erstellt wird.
+List Comprehensions bieten einen prägnanten Weg, um Listen zu erzeugen. Übliche
+Anwendungen sind solche, in denen man Listen erstellt, in denen jedes Element
+das Ergebnis eines Verfahrens ist, das auf jedes Mitglied einer Sequenz oder
+einem iterierbaren Objekt angewendet wird oder solche, in denen eine Teilfolge
+von Elementen, die eine bestimmte Bedingung erfüllen, erstellt wird.
+
+Zum Beispiel, wenn wir eine Liste von Quadratzahlen erstellen wollen, wie::
+
+    >>> squares = []
+    >>> for x in range(10):
+    ...     squares.append(x**2)
+    ...
+    >>> squares
+    [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+Dann können wir das gleiche mit::
+
+    squares = [x**2 for x in range(10)]
+
+erreichen. Dies ist auch äquivalent zu ``squares = list(map(lambda x: x**2,
+range(10)))``, aber es ist kürzer und lesbarer.
 
 Jede List Comprehension besteht aus eckigen Klammern, die einen Ausdruck gefolgt
 von einer :keyword:`for`-Klausel, enthalten. Danach sind beliebig viele
 :keyword:`for`- oder :keyword:`if`-Klauseln zulässig. Das Ergebnis ist eine
-Liste, deren Elemente durch das Auswerten des Ausdrucks im Kontext der
+neue Liste, deren Elemente durch das Auswerten des Ausdrucks im Kontext der
 :keyword:`for`- und :keyword:`if`-Klauseln, die darauf folgen, erzeugt werden.
-Würde der Ausdruck ein Tupel ergeben, muss er in Klammern stehen.
+Zum Beispiel kombiniert diese List Comprehension die Elemente zweier Listen,
+wenn sie nicht gleich sind::
 
-Hier nehmen wir eine Liste von Nummern und erzeugen eine, die das Dreifache
-jeder Nummer enthält::
+    >>> [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+    [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
 
-    >>> vec = [2, 4, 6]
-    >>> [3*x for x in vec]
-    [6, 12, 18]
+was äquivalent zu folgendem ist::
 
-Jetzt wird's ein wenig ausgefallener::
+    >>> combs = []
+    >>> for x in [1,2,3]:
+    ...     for y in [3,1,4]:
+    ...         if x != y:
+    ...             combs.append((x, y))
+    ...
+    >>> combs
+    [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
 
-    >>> [[x, x**2] for x in vec]
-    [[2, 4], [4, 16], [6, 36]]
+Beachte, dass die Reihenfolge der :keyword:`for` und :keyword:`if` Anweisungen
+in beiden Codestücken gleich ist.
 
-Hier wenden wir einen Methodenaufruf auf jedes Objekt in der Sequenz an::
+Falls der Ausdruck ein Tupel ist (z.B. ``(x, y)`` im vorigen Beispiel), muss er
+geklammert werden. ::
 
-
+    >>> vec = [-4, -2, 0, 2, 4]
+    >>> # erzeuge eine neue Liste mit den verdoppelten Werten
+    >>> [x*2 for x in vec]
+    [-8, -4, 0, 4, 8]
+    >>> # filtere die negativen Zahlen heraus
+    >>> [x for x in vec if x >= 0]
+    [0, 2, 4]
+    >>> # wende eine Funktion auf alle Elemente an
+    >>> [abs(x) for x in vec]
+    [4, 2, 0, 2, 4]
+    >>> # rufe eine Methode auf allen Elementen auf
     >>> freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
     >>> [weapon.strip() for weapon in freshfruit]
     ['banana', 'loganberry', 'passion fruit']
+    >>> # create a list of 2-tuples like (number, square)
+    >>> [(x, x**2) for x in range(6)]
+    [(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
+    >>> # das Tupel muss geklammert werden, sonst wird ein Fehler erzeugt
+    >>> [x, x**2 for x in range(6)]
+      File "<stdin>", line 1, in ?
+        [x, x**2 for x in range(6)]
+                   ^
+    SyntaxError: invalid syntax
+    >>> # verflache eine Liste durch eine LC mit zwei 'for'
+    >>> vec = [[1,2,3], [4,5,6], [7,8,9]]
+    >>> [num for elem in vec for num in elem]
+    [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-Indem wir eine :keyword:`if`-Klausel anwenden, können wir die Elemente filtern::
+List Comprehensions können auch komplexe Ausdrücke und verschachtelte Funktionen enthalten::
 
-   >>> [3*x for x in vec if x > 3]
-   [12, 18]
-   >>> [3*x for x in vec if x < 2]
-   []
-
-Tupel können oft ohne ihre Klammern erstellt werden, bei List Comprehensions
-jedoch nicht::
-
-   >>> [x, x**2 for x in vec]  # Fehler - Klammern für das Tupel benötigt
-     File "<stdin>", line 1, in ?
-       [x, x**2 for x in vec]
-                  ^
-   SyntaxError: invalid syntax
-   >>> [(x, x**2) for x in vec]
-   [(2, 4), (4, 16), (6, 36)]
-
-Hier sind ein paar verschachtelte :keyword:`for`-Schleifen und anderes
-ausgefallenes Verhalten::
-
-   >>> vec1 = [2, 4, 6]
-   >>> vec2 = [4, 3, -9]
-   >>> [x*y for x in vec1 for y in vec2]
-   [8, 6, -18, 16, 12, -36, 24, 18, -54]
-   >>> [x+y for x in vec1 for y in vec2]
-   [6, 5, -7, 8, 7, -5, 10, 9, -3]
-   >>> [vec1[i]*vec2[i] for i in range(len(vec1))]
-   [8, 12, -54]
-
-List Comprehensions können auf komplexe Ausdrücke und verschachtelte Funktionen
-angewendet werden::
-
-   >>> [str(round(355/113, i)) for i in range(1, 6)]
-   ['3.1', '3.14', '3.142', '3.1416', '3.14159']
+    >>> from math import pi
+    >>> [str(round(pi, i)) for i in range(1, 6)]
+    ['3.1', '3.14', '3.142', '3.1416', '3.14159']
 
 Verschachtelte List Comprehensions
 ----------------------------------
 
-Man kann List Comprehensions auch verschachteln, sofern man sich das traut. Sie
-sind ein mächtiges Werkzeug, aber, wie alle mächtigen Werkzeuge, sollten sie,
-wenn überhaupt, mit Bedacht benutzt werden.
+Der erste Ausruck in einer List Comprehension kann ein beliebiger Ausdruck sein,
+auch andere List Comprehensions.
 
-Denk einmal über das folgende Beispiel einer 3x3-Matrix nach, die über eine
-Liste von 3 Listen realisiert wird, wobei eine Liste eine Zeile darstellt::
+Beim folgenden Beispiel wird eine 3x4 Matrix mit drei Listen der Länge vier implementiert::
 
-    >>> mat = [
-    ...        [1, 2, 3],
-    ...        [4, 5, 6],
-    ...        [7, 8, 9],
-    ...       ]
+    >>> matrix = [
+    ...     [1, 2, 3, 4],
+    ...     [5, 6, 7, 8],
+    ...     [9, 10, 11, 12],
+    ... ]
 
-Wenn man jetzt die Zeilen und Spalten vertauschen wollte, könnte man eine List
-Comprehension benutzen::
+Die folgende List Comprehension vertauscht Listen und Spalten::
 
-    >>> print([[row[i] for row in mat] for i in [0, 1, 2]])
-    [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+    >>> [[row[i] for row in matrix] for i in range(4)]
+    [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
 
+Wie wir im vorherigen Abschnitt gesehen haben, wird die verschachtelte List
+Comprehension im Kontext des nachfolgenden :keyword:`for` ausgewertet, damit ist
+das Beispiel äquivalent zu folgendem::
 
-Bei *verschachtelten* List Comprehension muss man besonders sorgfältig vorgehen:
+    >>> transposed = []
+    >>> for i in range(4):
+    ...     transposed.append([row[i] for row in matrix])
+    ...
+    >>> transposed
+    [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
 
-    Damit Du Dich nicht beim verschachteln von List Comprehensions verzettelst,
-    lese sie von rechts nach links.
+was wiederum gleich zu folgendem ist::
 
-Eine ausführlichere Version dieses Schnipsels zeigt den Ablauf deutlich::
+    >>> transposed = []
+    >>> for i in range(4):
+    ...     # the following 3 lines implement the nested listcomp
+    ...     transposed_row = []
+    ...     for row in matrix:
+    ...         transposed_row.append(row[i])
+    ...     transposed.append(transposed_row)
+    ...
+    >>> transposed
+    [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
 
-    for i in [0, 1, 2]:
-        for row in mat:
-            print(row[i], end="")
-        print()
-
-Im echten Leben sollte man aber eingebaute Funktionen komplexen Anweisungen
+In Produktivcode sollte man aber eingebaute Funktionen komplexen Anweisungen
 vorziehen. Die Funktion :func:`zip` würde in diesem Fall gute Dienste leisten::
 
     >>> list(zip(*mat))
     [(1, 4, 7), (2, 5, 8), (3, 6, 9)]
 
-Für eine genaue Beschreibung für was das Sternchen ist, siehe
-:ref:`tut-unpacking-arguments`.
+Details zum Sternchen sind unter :ref:`tut-unpacking-arguments` zu finden.
 
 Die :keyword:`del`-Anweisung
 ============================
