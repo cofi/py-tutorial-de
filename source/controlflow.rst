@@ -432,8 +432,7 @@ Funktionen können auch mit :term:`Schlüsselwortargumenten <keyword argument>` 
 der Form ``Schlüsselwort=Wert`` aufgerufen werden. Zum Beispiel könnte folgende
 Funktion::
 
-    def parrot(voltage, state='völlig steif',
-        action='fliegen', type='norwegische Blauling'):
+    def parrot(voltage, state='völlig steif', action='fliegen', type='norwegische Blauling'):
         print("-- Der Vogel würde selbst dann nicht", action, end=' ')
         print("selbst wenn Sie ihm ", voltage, "Volt durch den Schnabel jagen täten")
         print("-- Ganz erstaunlicher Vogel, der", type, "! Wunderhübsche Federn!")
