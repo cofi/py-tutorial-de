@@ -228,7 +228,7 @@ geklammert werden. ::
     >>> freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
     >>> [weapon.strip() for weapon in freshfruit]
     ['banana', 'loganberry', 'passion fruit']
-    >>> # create a list of 2-tuples like (number, square)
+    >>> # erstelle eine Liste von 2-Tupeln der Form (zahl, quadrat)
     >>> [(x, x**2) for x in range(6)]
     [(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
     >>> # das Tupel muss geklammert werden, sonst wird ein Fehler erzeugt
