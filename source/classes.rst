@@ -102,8 +102,9 @@ wird erzeugt, wenn die Moduldefinition eingelesen wird; normalerweise existieren
 die Namensräume des Moduls auch solange bis der Interpreter beendet wird. Die
 Anweisungen, die auf oberster Ebene vom Interpreter aufgerufen werden, entweder
 von einem Skript oder interaktiv gelesen, werden als Teil des Moduls
-:mod:`__main__`, sodass sie ihren eigenen globalen Namensraum haben. (Die
-eingebauten Namen existieren ebenfalls in einem Modul namens :mod:`builtins`.)
+:mod:`__main__` behandelt, sodass sie ihren eigenen globalen Namensraum haben.
+(Die eingebauten Namen existieren ebenfalls in einem Modul namens
+:mod:`builtins`.)
 
 Der lokale Namensraum einer Funktion wird bei deren Aufruf erstellt und wird
 gelöscht, wenn sich die Funktion beendet oder eine Ausnahme auslöst, die nicht
