@@ -5,8 +5,6 @@ latexdir=${build}/latex
 epubdir=${build}/epub
 pbranch=$(hg branch)
 
-date=$(date +%Y-%m-%d)
-
 cd ${dir}
 make clean
 for branch in $(hg branches -q); do
@@ -15,8 +13,8 @@ for branch in $(hg branches -q); do
     cd ${latexdir}
     make all-pdf
     cd ${dir}
-    mv ${latexdir}/python-tutorial*.pdf ${dir}/tutorial-${branch}-${date}.pdf
+    mv ${latexdir}/python-tutorial*.pdf ${dir}/
     make epub
-    mv ${epubdir}/python-tutorial*.epub ${dir}/tutorial-${branch}-${date}.epub
+    mv ${epubdir}/python-tutorial*.epub ${dir}/
 done
 hg update ${pbranch}
