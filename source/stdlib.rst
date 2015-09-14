@@ -17,7 +17,7 @@ Betriebssystem zu interagieren::
    >>> os.getcwd()                         # das aktuelle Arbeitsverzeichnis
    'C:\\Python32'
    >>> os.chdir('/server/accesslogs')      # Arbeitsverzeichnis verändern
-   >>> os.system('os.system(mkdir today)') # Kommando in der Systemshell ausführen
+   >>> os.system('mkdir today') # Kommando in der Systemshell ausführen
    >>> 0
 
 Dabei sollte unbedingt beachtet werden, ``import os`` statt ``from os import
