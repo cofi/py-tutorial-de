@@ -60,17 +60,20 @@ Argumente in der Befehlszeile
 =============================
 
 Die meisten Skripte müssen Argumente aus der Befehlszeile verarbeiten. Diese
-Argumente werden als Liste im Attribut *argv* des Moduls 'mod'`sys`
-gespeichert. Die folgende Ausgabe erhält man, wenn man ``python demo.py
-eins zwei drei`` in der Eingabeaufforderung des Betriebssystems eingibt::
+Argumente werden als Liste im Attribut *argv* des Moduls :mod:`sys`
+gespeichert. Mit dem folgendem als ``demo.py`` gespeicherten Skript::
 
-   >>> import sys
-   >>> print sys.argv
+   import sys
+   print sys.argv
+
+erhält man die folgende Ausgabe, wenn man ``python demo.py
+eins zwei drei`` in der Befehlszeile des Betriebssystems eingibt::
+
    ['demo.py', 'eins', 'zwei', 'drei']
 
-Das Modul :mod:`getopt` verarbeitet *sys.argv* gemäß der üblichen Konventionen
-der aus Unix bekannten :func:`getopt`-Funktion. Erweiterte und flexiblere
-Möglichkeiten bietet das Modul :mod:`optparse`.
+Das Modul :mod:`getopt` verarbeitet *sys.argv* nach den üblichen Konventionen
+der Unixfunktion :func:`getopt`. Erweiterte und flexiblere Möglichkeiten bietet
+das Modul :mod:`argparse`.
 
 .. _tut-stderr:
 
