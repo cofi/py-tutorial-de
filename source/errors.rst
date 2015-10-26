@@ -327,8 +327,8 @@ Meistens gibt man den Ausnahmen Namen, die auf "Error" enden, ähnlich der
 Namensgebung der Standardausnahmen.
 
 Viele Standardmodule definieren ihre eigenen Ausnahmen, um Fehler zu melden, die
-in ihren Funktionen auftreten können. Mehr Informationen über Klassen findet
-sich in Kapitel :ref:`tut-classes`.
+in ihren Funktionen auftreten können. Mehr Informationen über Klassen sind
+in Kapitel :ref:`tut-classes` zu finden .
 
 
 .. _tut-cleanup:
