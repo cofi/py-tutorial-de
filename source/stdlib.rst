@@ -61,7 +61,7 @@ Argumente in der Befehlszeile
 
 Die meisten Skripte müssen Argumente aus der Befehlszeile verarbeiten. Diese
 Argumente werden als Liste im Attribut *argv* des Moduls :mod:`sys`
-gespeichert. Mit dem folgendem als ``demo.py`` gespeicherten Skript::
+gespeichert. Mit folgendem, als ``demo.py`` gespeicherten Skript::
 
    import sys
    print sys.argv
